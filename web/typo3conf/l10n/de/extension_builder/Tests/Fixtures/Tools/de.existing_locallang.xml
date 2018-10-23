@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="tx_test_index1"/>
+			<label index="tx_test_index2"/>
+		</languageKey>
+  </data>
+</T3locallangExt>

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-04-18T11:24:00Z" product-name="chancenportal">
+		<header/>
+		<body>
+			<trans-unit id="tx_chancenportal_domain_model_provider">
+				<source>Provider</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.subline">
+				<source>Subline</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.short_description">
+				<source>Short Description</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.long_description">
+				<source>Long Description</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.number_of_employees">
+				<source>Number Of Employees</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.participation">
+				<source>Participation</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.content_image">
+				<source>Content Image</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_salutation">
+				<source>Contact Salutation</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_name">
+				<source>Contact Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_jurisdiction">
+				<source>Contact Jurisdiction</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_phone">
+				<source>Contact Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_email">
+				<source>Contact Email</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.contact_image">
+				<source>Contact Image</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.phone2">
+				<source>Phone2</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.opening_hours">
+				<source>Opening Hours</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.active">
+				<source>Active</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.lat">
+				<source>Lat</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.lng">
+				<source>Lng</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.approved">
+				<source>Approved</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.reminder_email_send">
+				<source>Reminder Email Send</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.labels">
+				<source>Labels</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.offers">
+				<source>Offers</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.owner_group">
+				<source>Owner Group</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.carrier">
+				<source>Carrier</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.author">
+				<source>Author</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer">
+				<source>Offer</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.lat">
+				<source>Lat</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.lng">
+				<source>Lng</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.info">
+				<source>Info</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.short_description">
+				<source>Short Description</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.long_description">
+				<source>Long Description</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.speaker">
+				<source>Speaker</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.youtube">
+				<source>Youtube</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.conditions_of_participation">
+				<source>Conditions Of Participation</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.course_number">
+				<source>Course Number</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.allowed_participants">
+				<source>Allowed Participants</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.costs">
+				<source>Costs</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.all_ages">
+				<source>All Ages</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.access">
+				<source>Access</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.accessibility">
+				<source>Accessibility</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.participate">
+				<source>Participate</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.donate">
+				<source>Donate</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.provider_cooperation">
+				<source>Provider Cooperation</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.format">
+				<source>Format</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.no_costs">
+				<source>No Costs</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_salutation">
+				<source>Contact Salutation</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_name">
+				<source>Contact Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_jurisdiction">
+				<source>Contact Jurisdiction</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_phone">
+				<source>Contact Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_email">
+				<source>Contact Email</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.contact_image">
+				<source>Contact Image</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.active">
+				<source>Active</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.content_image">
+				<source>Content Image</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.active_date">
+				<source>Active Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.approved">
+				<source>Approved</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.date_type">
+				<source>Date Type</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.start_date">
+				<source>Start Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.end_date">
+				<source>End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.reminder_email_send">
+				<source>Reminder Email Send</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.dates">
+				<source>Dates</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.target_groups">
+				<source>Target Groups</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.district">
+				<source>District</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.last_editor">
+				<source>Last Editor</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_label">
+				<source>Label</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_label.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_label.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.start_date">
+				<source>Start Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.start_time">
+				<source>Start Time</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.end_date">
+				<source>End Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.end_time">
+				<source>End Time</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.active">
+				<source>Active</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontenduser">
+				<source>Frontend User</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontenduser.password_reset_hash">
+				<source>Password Reset Hash</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontenduser.confirmation_send">
+				<source>Confirmation Send</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontendusergroup">
+				<source>Frontend User Group</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_carrier">
+				<source>Carrier</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_carrier.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.color">
+				<source>Color</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.children">
+				<source>Children</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.parent">
+				<source>Parent</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_targetgroup">
+				<source>Target Group</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_targetgroup.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_district">
+				<source>District</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_district.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_log">
+				<source>Log</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_log.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_log.term">
+				<source>Term</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_log.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_log.offer">
+				<source>Offer</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_category.highlight_color">
+				<source>Highlight Color</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.provider_name">
+				<source>Provider Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.provider_info">
+				<source>Provider Info</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.no_dates">
+				<source>No Dates</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.weekday">
+				<source>Weekday</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_date.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.provider">
+				<source>Provider</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.teaser_images">
+				<source>Teaser Images</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.target_group">
+				<source>Target Group</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.frontend_user_group">
+				<source>Frontend User Group</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.teaser_image">
+				<source>Teaser Image</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontenduser.permission">
+				<source>Permission</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.type_of_carrier">
+				<source>Type Of Carrier</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

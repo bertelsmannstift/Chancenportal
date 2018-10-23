@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-08-09T15:12:50+02:00" product-name="ui_ce">
+    <header/>
+    <body>
+      <trans-unit id="wizards.newContentElement.kachel_teaser_title" xml:space="preserve">
+        <source>Kachel Teaser</source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.kachel_teaser_description" xml:space="preserve">
+        <source></source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.text_btn_title" xml:space="preserve">
+        <source>Text Button Element</source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.text_btn_description" xml:space="preserve">
+        <source></source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.text_image_title" xml:space="preserve">
+        <source>Text &amp; Bild</source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.text_image_description" xml:space="preserve">
+        <source></source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

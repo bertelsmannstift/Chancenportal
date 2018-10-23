@@ -1,0 +1,42 @@
+/**
+ * Page/Body Class Attribute
+ */
+lib.page.class = COA
+lib.page.class {
+	// Page alias or id as fallback
+	10 = TEXT
+	10 {
+		field = uid
+		noTrimWrap = |page-||
+	}
+
+	// Current level of the page within the tree structure
+	20 = TEXT
+	20 {
+		data = level:1
+		noTrimWrap = | pagelevel-||
+	}
+
+	// Language
+	30 = TEXT
+	30 {
+		data = TSFE:sys_language_uid
+		noTrimWrap = | language-||
+	}
+
+	// Backend layout
+    40 = TEXT
+    40.stdWrap {
+        cObject = TEXT
+        cObject {
+            data = pagelayout
+            split {
+                token = pagets__
+                1.current = 1
+                1.wrap = |
+            }
+        }
+        ifEmpty = Default
+        noTrimWrap = | layout-||
+    }
+}

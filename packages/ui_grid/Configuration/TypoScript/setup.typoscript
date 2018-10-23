@@ -1,0 +1,7 @@
+plugin.tx_uigrid {
+	view {
+		templateRootPaths.0 = {$plugin.tx_uigrid.view.templateRootPaths.0}
+		partialRootPaths.0 = {$plugin.tx_uigrid.view.partialRootPaths.0}
+		layoutRootPaths.0 = {$plugin.tx_uigrid.view.layoutRootPaths.0}
+	}
+}

@@ -1,0 +1,20 @@
+<section data-animation="fadeIn" class="container container--border">
+    <div class="row">
+        <div class="col-lg-9 col-sm-12 margin-sm">
+            <f:if condition="{data.tx_uice_text_btn_headline}">
+                <h2>{data.tx_uice_text_btn_headline}</h2>
+            </f:if>
+            <f:if condition="{data.tx_uice_text_btn_texfield}">
+                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_uice_text_btn_texfield}</f:format.html><br />
+            </f:if>
+        </div>
+
+        <f:if condition="{data.tx_uice_text_btn_text}">
+            <f:if condition="{data.tx_uice_text_btn_link}">
+                <div class="col-lg-3 col-sm-12 middle-lg end-lg flex-row">
+                    <f:link.page pageUid="{data.tx_uice_text_btn_link}" class="btn btn--full">{data.tx_uice_text_btn_text}</f:link.page>
+                </div>
+            </f:if>
+        </f:if>
+    </div>
+</section>

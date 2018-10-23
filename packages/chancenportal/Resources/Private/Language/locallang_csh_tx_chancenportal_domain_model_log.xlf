@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-04-18T11:24:00Z" product-name="chancenportal">
+		<header/>
+		<body>
+			<trans-unit id="date.description">
+				<source>date</source>
+			</trans-unit>
+			<trans-unit id="term.description">
+				<source>term</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>category</source>
+			</trans-unit>
+			<trans-unit id="offer.description">
+				<source>offer</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

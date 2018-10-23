@@ -1,0 +1,24 @@
+<div class="kachel-list--offers">
+    <custom-map icon="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/svg/Icon_Ort.svg" api-key="{settings.chancenportal.google_maps_api_key}">
+        <f:render partial="OfferResultItems" arguments="{_all}" />
+    </custom-map>
+
+    <div class="kachel-list__items kachel-list__items--offers">
+        <f:render partial="OfferResultItems" arguments="{_all}" />
+    </div>
+
+    <custom-pagination items-per-page="10" js-pagination=".kachel-list__items--offers"></custom-pagination>
+</div>
+
+<div class="kachel-list--providers">
+
+    <custom-map icon="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/svg/Icon_Ort.svg" api-key="{settings.chancenportal.google_maps_api_key}">
+        <f:render partial="ProviderResultItems" arguments="{_all}" />
+    </custom-map>
+
+    <div class="kachel-list__items kachel-list__items--providers">
+        <f:render partial="ProviderResultItems" arguments="{_all}" />
+    </div>
+
+    <custom-pagination items-per-page="10" js-pagination=".kachel-list__items--providers"></custom-pagination>
+</div>

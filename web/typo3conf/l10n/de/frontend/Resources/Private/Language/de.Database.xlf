@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T02:14:42Z" product-name="frontend">
+		<header/>
+		<body>
+			<trans-unit id="tt_content.asset_references">
+				<source>Media elements</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.asset_references.addFileReference">
+				<source>Add media file</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.palette.gallerySettings">
+				<source>Gallery Settings</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.palette.mediaAdjustments">
+				<source>Media Adjustments</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.palette.mediaAdjustments.imageborder">
+				<source>Border around each element</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.palette.mediaAdjustments.imageheight">
+				<source>Height of each element (px)</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.palette.mediaAdjustments.imagewidth">
+				<source>Width of each element (px)</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.table_caption" approved="yes">
+				<source>Table caption</source>
+				<target state="translated">Tabellenunterschrift</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_class">
+				<source>Table style</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.table_class.bordered">
+				<source>Bordered</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.table_class.default">
+				<source>Default</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.table_class.striped">
+				<source>Striped</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter" approved="yes">
+				<source>Field Delimiter</source>
+				<target state="translated">Feldbegrenzer</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter.124" approved="yes">
+				<source>| (Pipe)</source>
+				<target state="translated">| (Pipe)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter.44" approved="yes">
+				<source>, (Comma)</source>
+				<target state="translated">, (Komma)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter.58" approved="yes">
+				<source>: (Colon)</source>
+				<target state="translated">: (Doppelpunkt)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter.59" approved="yes">
+				<source>; (Semicolon)</source>
+				<target state="translated">; (Semikolon)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_delimiter.9" approved="yes">
+				<source>⇥ (Tab)</source>
+				<target state="translated">⇥ (Tab)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_enclosure" approved="yes">
+				<source>Text enclosure</source>
+				<target state="translated">Texteinfassung</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_enclosure.0" approved="yes">
+				<source>None</source>
+				<target state="translated">Keine</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_enclosure.34" approved="yes">
+				<source>" (Double quotes)</source>
+				<target state="translated">" (doppelte Anführungszeichen)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_enclosure.39" approved="yes">
+				<source>' (Single quotes)</source>
+				<target state="translated">' (einfache Anführungszeichen)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_header_position" approved="yes">
+				<source>Table header position</source>
+				<target state="translated">Position des Tabellenkopfes</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_header_position.0" approved="yes">
+				<source>No header</source>
+				<target state="translated">Keine Kopfzeile</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_header_position.1" approved="yes">
+				<source>Top</source>
+				<target state="translated">Oben</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_header_position.2" approved="yes">
+				<source>Left</source>
+				<target state="translated">Links</target>
+			</trans-unit>
+			<trans-unit id="tt_content.table_tfoot" approved="yes">
+				<source>Use table footer (wrap last row with &lt;tfoot&gt; tags)</source>
+				<target state="translated">Tabellenfuß verwenden (letzte Zeile in &lt;tfoot&gt;-Tags einschließen)</target>
+			</trans-unit>
+			<trans-unit id="tt_content.uploads_description">
+				<source>Display description</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.uploads_type">
+				<source>Display file/icon/thumbnail</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.uploads_type.0">
+				<source>Only file name</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.uploads_type.1">
+				<source>File name and file extension icon</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="tt_content.uploads_type.2">
+				<source>File name and thumbnail (if possible)</source>
+				<target/>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

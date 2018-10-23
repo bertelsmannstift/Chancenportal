@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+    <f:if condition="{providers}">
+        <f:then>
+            <f:for each="{providers}" as="provider">
+                <div data-lat="{provider.lat}" data-lng="{provider.lng}" class="kachel kachel--image-text">
+                    <a href="{f:uri.action(action: 'providerDetail', controller: 'Frontend', arguments: '{provider: provider}', pageUid: settings.chancenportal.pageIds.provider_detail)}">
+                        <div class="kachel__text">
+                            <h3 class="kachel__headline">
+                                {provider.name}
+                            </h3>
+                            <p>{provider.shortDescription}</p>
+                        </div>
+                        <f:if condition="{provider.logo}">
+                            <div class="kachel__image-wrapper">
+                                <div class="kachel__image" style="background-image:url('{f:uri.image(src: '{provider.logo.uid}', maxWidth: 200, treatIdAsReference: 1)}');"></div>
+                            </div>
+                        </f:if>
+                        <div class="kachel__arrow"></div>
+                    </a>
+                </div>
+            </f:for>
+        </f:then>
+        <f:else>
+            <span class="kachel-list__items-no-results">
+                Keine Anbieter zu Ihrer Suchanfrage vorhanden. Bitte passen Sie Ihre Such- und Filterkriterien an.
+            </span>
+        </f:else>
+    </f:if>
+</html>

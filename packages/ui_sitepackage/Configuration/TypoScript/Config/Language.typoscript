@@ -1,0 +1,15 @@
+/**
+ * Language Configuration
+ * https://docs.typo3.org/typo3cms/TyposcriptReference/8.7/Setup/Config/Index.html
+ */
+config {
+	// Default Language and localization
+	sys_language_uid = 0
+	language = de
+	locale_all = de_DE.UTF-8
+	htmlTag_langKey = de
+
+	// Localization handling
+	sys_language_mode = strict
+	sys_language_overlay = hideNonTranslated
+}

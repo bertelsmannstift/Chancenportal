@@ -1,0 +1,20 @@
+/**
+ * Form Configuration
+ */
+plugin.tx_form {
+    view {
+        templateRootPaths.10 = EXT:ui_forms/Resources/Private/Templates/
+        partialRootPaths.10 = EXT:ui_forms/Resources/Private/Partials/
+        layoutRootPaths.10 = EXT:ui_forms/Resources/Private/Layouts/
+    }
+}
+
+plugin.tx_form.settings.yamlConfigurations.110 = EXT:ui_forms/Configuration/Yaml/BaseSetup.yaml
+plugin.tx_form.settings.yamlConfigurations.120 = EXT:ui_forms/Configuration/Yaml/FormEditorSetup.yaml
+
+module.tx_form.settings.yamlConfigurations.110 = EXT:ui_forms/Configuration/Yaml/BaseSetup.yaml
+module.tx_form.settings.yamlConfigurations.120 = EXT:ui_forms/Configuration/Yaml/FormEditorSetup.yaml
+
+
+//plugin.tx_form.settings.yamlConfigurations.110 = fileadmin/Forms/Configuration.yaml
+//module.tx_form.settings.yamlConfigurations.110 = fileadmin/Forms/Configuration.yaml

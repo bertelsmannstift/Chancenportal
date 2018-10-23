@@ -1,0 +1,39 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	 xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	 xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+
+	<f:layout name="Content" />
+
+	<f:section name="Configuration">
+		<flux:form id="oneColumn">
+			<flux:form.option.group value="Grids" />
+			<flux:form.option.icon value="/typo3conf/ext/ui_grid/Resources/Public/Icons/Content/oneColumn.svg"/>
+			<flux:form.option.sorting value="1" />
+			<flux:grid>
+				<flux:grid.row>
+					<flux:grid.column name="center" style="width: 100%">
+                    </flux:grid.column>
+				</flux:grid.row>
+			</flux:grid>
+
+		</flux:form>
+	</f:section>
+
+	<f:section name="Preview">
+        <strong><f:translate key="LLL:EXT:ui_grid/Resources/Private/Language/locallang.xlf:flux.oneColumn" /></strong>
+	</f:section>
+
+	<f:section name="Main">
+        <section data-animation="fadeIn" class="container">
+            <f:if condition="{record.header}">
+                <h1>{record.header}</h1>
+            </f:if>
+            <div class="row margin">
+                <div class="col-lg-12">
+                    <flux:content.render area="center" />
+                </div>
+            </div>
+        </section>
+	</f:section>
+</div>

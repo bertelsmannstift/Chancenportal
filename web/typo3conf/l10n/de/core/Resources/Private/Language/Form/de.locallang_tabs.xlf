@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:05:54Z" product-name="core">
+		<header/>
+		<body>
+			<trans-unit id="access" approved="yes">
+				<source>Access</source>
+				<target state="translated">Zugriff</target>
+			</trans-unit>
+			<trans-unit id="accesscapabilities" approved="yes">
+				<source>Access capabilities</source>
+				<target state="translated">Zugriffsrechte</target>
+			</trans-unit>
+			<trans-unit id="categories" approved="yes">
+				<source>Categories</source>
+				<target state="translated">Kategorien</target>
+			</trans-unit>
+			<trans-unit id="extended" approved="yes">
+				<source>Extended</source>
+				<target state="translated">Erweitert</target>
+			</trans-unit>
+			<trans-unit id="general" approved="yes">
+				<source>General</source>
+				<target state="translated">Allgemein</target>
+			</trans-unit>
+			<trans-unit id="language" approved="yes">
+				<source>Language</source>
+				<target state="translated">Sprache</target>
+			</trans-unit>
+			<trans-unit id="notes" approved="yes">
+				<source>Notes</source>
+				<target state="translated">Hinweise</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,25 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:section name="Main">
+
+        <f:variable name="pageTitle" value="{data.title}" />
+
+        <v:page.rootline as="rootline">
+            <f:if condition="{rootline -> f:count()} > 1">
+
+                <f:if condition="{landingpageUid} > 0 && {v:page.info(pageUid: '{rootline.0.uid}', field: 'backend_layout')} != 'pagets__Landingpage'">
+                    <f:variable name="pageTitle" value="{pageTitle} – {v:page.info(pageUid: '{landingpageUid}', field: 'ui_landingpage_title')}" />
+                </f:if>
+
+                <f:variable name="pageTitle" value="{pageTitle} – {rootline.0.title}" />
+            </f:if>
+        </v:page.rootline>
+
+        <v:page.header.title title="{pageTitle}" whitespaceString=" " setIndexedDocTitle="1"/>
+
+        <h1 class="html5--outline--hidden">{pageTitle}</h1>
+    </f:section>
+
+</html>
+
+

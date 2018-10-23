@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T05:53:10Z" product-name="sys_action">
+		<header/>
+		<body>
+			<trans-unit id="sys_action" approved="yes">
+				<source>Action</source>
+				<target state="translated">Befehl</target>
+			</trans-unit>
+			<trans-unit id="sys_action.assign_to_groups" approved="yes">
+				<source>Assign action to groups:</source>
+				<target state="translated">Aktion Gruppen zuweisen:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.hidden" approved="yes">
+				<source>Deactivated:</source>
+				<target state="translated">Deaktiviert:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.new_record.pid" approved="yes">
+				<source>Select the page for the new record to be stored</source>
+				<target state="translated">Wählen Sie die Seite, auf der der neue Datensatz gespeichert werden soll</target>
+			</trans-unit>
+			<trans-unit id="sys_action.new_record.tablename" approved="yes">
+				<source>Record type</source>
+				<target state="translated">Datensatztyp</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t1_allowed_groups" approved="yes">
+				<source>Groups which may be assigned through the action:</source>
+				<target state="translated">Gruppen, die mit dieser Aktion zugewiesen werden können:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t1_copy_of_user" approved="yes">
+				<source>Template user:</source>
+				<target state="translated">Vorlage für Benutzer:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t1_create_user_dir" approved="yes">
+				<source>Create User Home Directory:</source>
+				<target state="translated">Heimverzeichnis des Benutzers erstellen:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t1_userprefix" approved="yes">
+				<source>User prefix:</source>
+				<target state="translated">Benutzerpräfix:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t3_listPid" approved="yes">
+				<source>List pid:</source>
+				<target state="translated">PID auflisten:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t3_tables" approved="yes">
+				<source>List only table:</source>
+				<target state="translated">Nur Tabelle auflisten:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.t4_recordsToEdit" approved="yes">
+				<source>Records to edit:</source>
+				<target state="translated">Zu bearbeitende Datensätze:</target>
+			</trans-unit>
+			<trans-unit id="sys_action.tab.access" approved="yes">
+				<source>Access</source>
+				<target state="translated">Zugriff</target>
+			</trans-unit>
+			<trans-unit id="sys_action.tab.create_user.settings" approved="yes">
+				<source>Settings</source>
+				<target state="translated">Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="sys_action.tab.edit_records.settings" approved="yes">
+				<source>Settings</source>
+				<target state="translated">Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="sys_action.tab.new_record.settings" approved="yes">
+				<source>Settings</source>
+				<target state="translated">Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="sys_action.tab.record_list.settings" approved="yes">
+				<source>Settings</source>
+				<target state="translated">Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="sys_action.type.1" approved="yes">
+				<source>Create Backend User</source>
+				<target state="translated">Backend-Benutzer erstellen</target>
+			</trans-unit>
+			<trans-unit id="sys_action.type.2" approved="yes">
+				<source>SQL query</source>
+				<target state="translated">SQL-Anfrage</target>
+			</trans-unit>
+			<trans-unit id="sys_action.type.3" approved="yes">
+				<source>Record list</source>
+				<target state="translated">Datensätze auflisten</target>
+			</trans-unit>
+			<trans-unit id="sys_action.type.4" approved="yes">
+				<source>Edit records</source>
+				<target state="translated">Datensätze bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="sys_action.type.5" approved="yes">
+				<source>New Record</source>
+				<target state="translated">Neuer Datensatz</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-lg-6 col-sm-12 margin-inner-sm">
+        <f:if condition="{data.tx_uice_text_image_align} == 0">
+            <f:then>
+                <f:image image="{data_tx_uice_text_image_image.0}" alt="{data_tx_uice_text_image_image.0.alternative}" title="{data_tx_uice_text_image_image.0.title}" maxWidth="800" class="img-responsive" />
+            </f:then>
+            <f:else>
+                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_uice_text_image_text}</f:format.html>
+            </f:else>
+        </f:if>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+        <f:if condition="{data.tx_uice_text_image_align} == 1">
+            <f:then>
+                <f:image image="{data_tx_uice_text_image_image.0}" alt="{data_tx_uice_text_image_image.0.alternative}" title="{data_tx_uice_text_image_image.0.title}" maxWidth="800" class="img-responsive" />
+            </f:then>
+            <f:else>
+                <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_uice_text_image_text}</f:format.html>
+            </f:else>
+        </f:if>
+    </div>
+</div>

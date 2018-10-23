@@ -1,0 +1,122 @@
+/**
+ * TCEForm Configuration
+ */
+TCEFORM {
+
+	pages {
+		/**
+		 * Disable appearance settings
+		 */
+		layout {
+			disabled = 1
+		}
+
+		/**
+		 * Disable custom fields by default
+		 */
+		ui_landingpage_title.disabled = 1
+        ui_company_logos.disabled = 1
+	}
+
+	pages_language_overlay {
+		/**
+		 * Disable custom fields by default
+		 */
+		ui_landingpage_title.disabled = 1
+	}
+
+	tt_content {
+		/**
+		 * Remove some CTypes
+		 */
+		CType {
+			// Content Elements
+			removeItems := addToList(bullets, table, uploads)
+
+			// Form Elements
+			removeItems := addToList(login)
+
+			// Menus
+			removeItems := addToList(menu_abstract, menu_categorized_content, menu_categorized_pages, menu_pages, menu_subpages, menu_recently_updated, menu_related_pages, menu_section, menu_section_pages, menu_sitemap, menu_sitemap_pages)
+
+			// Special Elements
+			removeItems := addToList(shortcut, div)
+		}
+
+		/**
+		 * Disable general header settings
+		 */
+		header_layout {
+			disabled = 1
+			altLabels {
+				1 = H1
+				2 = H2
+				3 = H3
+				4 = H4
+				5 = H5
+			}
+		}
+
+		header_position {
+			disabled = 1
+		}
+
+		date {
+			disabled = 1
+		}
+
+		header_link {
+			disabled = 1
+		}
+
+		/**
+		 * Disable appearance settings
+		 */
+		layout {
+			disabled = 1
+		}
+
+		frame_class {
+			disabled = 1
+		}
+
+		space_before_class {
+			disabled = 1
+		}
+
+		space_after_class {
+			disabled = 1
+		}
+
+		sectionIndex {
+			disabled = 1
+		}
+
+		linkToTop {
+			disabled = 1
+		}
+
+		/**
+		 * Remove Image Settings
+		 */
+		imagewidth {
+			disabled = 1
+		}
+
+		imageheight {
+			disabled = 1
+		}
+
+		imageborder {
+			disabled = 1
+		}
+
+		imagecols {
+			disabled = 1
+		}
+
+		image_zoom {
+			disabled = 1
+		}
+	}
+}

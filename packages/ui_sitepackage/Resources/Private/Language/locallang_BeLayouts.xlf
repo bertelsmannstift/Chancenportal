@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-08-24T10:11:39Z"
+		  product-name="ui_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="layout.Homepage">
+				<source>Mein Account Layout</source>
+			</trans-unit>
+			<trans-unit id="layout.Default">
+				<source>Default Layout</source>
+			</trans-unit>
+
+            <trans-unit id="columns.stage">
+                <source>Stage</source>
+            </trans-unit>
+			<trans-unit id="columns.main">
+				<source>Main Column</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,103 @@
+/**
+ * Configure Constants that should be available in fluid settings
+ */
+
+config.tx_extbase {
+    settings {
+        chancenportal {
+            pageIds {
+                theme = {$uandi.theme}
+
+                homepage = {$uandi.pageIds.homepage}
+                privacy = {$uandi.pageIds.privacy}
+
+                meta-header = {$uandi.pageIds.meta-header}
+                meta-footer = {$uandi.pageIds.meta-footer}
+
+                evaluations = 27
+                offer_preview = 32
+                offer_edit = 28
+                offer_detail = 33
+                offer_new = 28
+                offer_overview = 10
+                offer_search = 2
+                provider_overview = 3
+                provider_detail = 34
+                edituser = 26
+                useroverview = 9
+                provider = 8
+                provider_preview = 29
+                register = 21
+                login = 22
+                logout = 23
+                overview = 7
+                userdata = 12
+                myaccount = 6
+                footer = 13
+                lostpass = 24
+                provider_edit = 38
+                provider_new = 37
+                provider_list = 36
+            }
+
+            import_template = /typo3conf/ext/chancenportal/Resources/Public/vorlage.xls
+            xls_converter = /usr/local/bin/ssconvert
+            xls_converter_date_format = Y/m/d
+
+            use_zip_filter = {$plugin.tx_chancenportal_chancenportal.settings.use_zip_filter}
+
+            email {
+                sender = dweber@uandi.com
+                lost_password_subject = Passwort zurücksetzen
+                delete_offer_subject = Ihre Angebot wurde gelöscht
+                creator_changed_subject = Ihnen wurde ein Angebot zugeordnet
+                new_user_subject = Ihre Registrierung auf dem Chancenportal
+                new_user_reg_subject = Ein neuer Anbieter hat sich im Chancenportal registriert
+                confirm_subject = Ihr Konto auf dem Chancenportal wurde freigeschaltet
+                admin_new_user_added_subject = Sie wurden erfolgreich als Nutzer im Chancenportal angelegt
+                new_active_offer_subject = Neue Angebote im Chancenportal
+                request_approval_admin_subject = Neues Anbieterprofil auf dem Chancenportal
+                request_approval_subject = Ihr Anbieterprofil auf dem Chancenportal
+                provider_approved_subject = Ihr Anbieterprofil auf dem Chancenportal wurde freigeschaltet
+                request_offer_approval_admin_subject = Neues Angebot auf dem Chancenportal
+                request_offer_approval_subject = Neues Angebot auf dem Chancenportal
+            }
+
+            google_maps_api_key = {$plugin.tx_chancenportal_chancenportal.settings.google_maps_api_key}
+            activate_offer_approval = {$plugin.tx_chancenportal_chancenportal.settings.activate_offer_approval}
+            activate_account_takeover = {$plugin.tx_chancenportal_chancenportal.settings.activate_account_takeover}
+            show_google_translator = {$plugin.tx_chancenportal_chancenportal.settings.show_google_translator}
+
+            permissions {
+                planner_group = 3
+                provider_group = 4
+                admin_group = 5
+            }
+
+            storagePids {
+                frontend_user = 19
+                provider = 30
+                offer = 31
+            }
+
+            social {
+                twitter = {$uandi.social.twitter}
+                facebook = {$uandi.social.facebook}
+                linkedin = {$uandi.social.linkedin}
+                xing = {$uandi.social.xing}
+                youtube = {$uandi.social.youtube}
+                instagram = {$uandi.social.instagram}
+                googleplus = {$uandi.social.googleplus}
+            }
+
+            tracking {
+                google_analytics {
+                    code = {$uandi.tracking.google_analytics.code}
+                }
+                google_tagmanager {
+                    code = {$uandi.tracking.google_tagmanager.code}
+                }
+            }
+        }
+    }
+}

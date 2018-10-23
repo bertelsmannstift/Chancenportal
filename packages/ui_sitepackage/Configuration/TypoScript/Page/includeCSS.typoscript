@@ -1,0 +1,14 @@
+/**
+ * Stylesheet Configuration
+ */
+page.includeCSS {
+	10 = {$page.includePath.css}main.min.css
+	10 {
+		media = all
+	}
+	100 = https://fonts.googleapis.com/css?family=Signika:400,600,700
+	100 {
+		media = all
+		external = 1
+	}
+}

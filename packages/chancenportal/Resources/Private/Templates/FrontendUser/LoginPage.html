@@ -1,0 +1,60 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+
+    <section data-animation="fadeIn" class="container login-register margin">
+        <div class="row margin-inner">
+            <div class="col-lg-12">
+                <h1>{settings.registerHeadline}</h1>
+                <f:if condition="{settings.registerSubheadline}">
+                    <p>{settings.registerSubheadline}</p>
+                </f:if>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 margin-sm">
+                <f:if condition="{settings.registerText}">
+                    <f:format.html parseFuncTSPath="">
+                        {settings.registerText}
+                    </f:format.html>
+                </f:if>
+                <f:if condition="{settings.registerAdvantageText}">
+                    <div class="login-register__gray-box">
+                        <f:format.html parseFuncTSPath="">
+                            {settings.registerAdvantageText}
+                        </f:format.html>
+                    </div>
+                </f:if>
+            </div>
+            <div class="col-lg-offset-1 col-lg-5 col-sm-12 col-sm-offset-0">
+
+                <custom-ajax-form redirect-url="{f:uri.page(pageUid: settings.chancenportal.pageIds.overview, absolute: 1, linkAccessRestrictedPages: 1)}" url="{t:uri.ajaxAction( action: 'login', controller: 'FrontendUser', extensionName: 'chancenportal', pluginName: 'chancenportal' ) -> f:format.htmlentities()}" content-selector=".login-register__login-content">
+                    <div class="login-register__login-content">
+                        <div class="input">
+                            <label class="input__label">E-Mail*</label>
+                            <input type="email" name="email" class="input__field">
+                        </div>
+                        <div class="input">
+                            <label class="input__label">Passwort*</label>
+                            <input type="password" name="password" class="input__field">
+                        </div>
+                        <div class="flex end-lg">
+                            <div>
+                                <button type="submit" class="btn btn--primary">Anmelden</button>
+                                <div>
+                                    <a href="" class="login-register__link">Passwort vergessen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </custom-ajax-form>
+
+                <p class="login-register__noaccount">Sie sind neu hier und haben noch kein Konto?
+                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.register)}" class="login-register__link">Jetzt registrieren</a>
+                </p>
+                <div class="login-register__required">* Pflichtfelder</div>
+            </div>
+        </div>
+    </section>
+</f:section>
+</html>

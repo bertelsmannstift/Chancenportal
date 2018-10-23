@@ -1,0 +1,29 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <article class="teaser teaser--search">
+        <div class="teaser__img">
+            <f:if condition="{settings.teaserImage}">
+                <div style="background-image: url('{f:uri.image(src:'{settings.teaserImage}', treatIdAsReference: 1)}')"></div>
+            </f:if>
+        </div>
+
+        <div class="teaser__text">
+            <f:if condition="{settings.teaserHeadline}">
+                <h1 class="teaser__headline">{settings.teaserHeadline}</h1>
+            </f:if>
+            <f:if condition="{settings.teaserSubheadline}">
+                <h2 class="teaser__subheadline">{settings.teaserSubheadline}</h2>
+            </f:if>
+
+            <div>
+                <custom-ajax-form ajax="false" url="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_search)}" method="get" content-selector=".kachel-list__items" class="search">
+                    <v:variable.set name="show_more" value="1" />
+                    <v:variable.set name="auto_submit" value="0" />
+                    <f:render partial="SearchBox" arguments="{_all}" />
+                </custom-ajax-form>
+            </div>
+        </div>
+    </article>
+</f:section>
+</html>

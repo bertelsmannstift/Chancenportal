@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:05:54Z" product-name="core">
+		<header/>
+		<body>
+			<trans-unit id="debuggerconsole.autoscroll" xml:space="preserve" approved="yes">
+				<source>Scroll down automatically</source>
+			<target state="translated">Automatisch nach unten scrollen</target></trans-unit>
+			<trans-unit id="debuggerconsole.clear" xml:space="preserve" approved="yes">
+				<source>Clear</source>
+			<target state="translated">Leeren</target></trans-unit>
+			<trans-unit id="debuggerconsole.close" xml:space="preserve" approved="yes">
+				<source>Close</source>
+			<target state="translated">Schließen</target></trans-unit>
+			<trans-unit id="debuggerconsole.toggle.collapse" xml:space="preserve" approved="yes">
+				<source>Collapse</source>
+			<target state="translated">Einklappen</target></trans-unit>
+			<trans-unit id="debuggerconsole.toggle.expand" xml:space="preserve" approved="yes">
+				<source>Expand</source>
+			<target state="translated">Ausklappen</target></trans-unit>
+		</body>
+	</file>
+</xliff>

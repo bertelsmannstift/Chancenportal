@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:section name="Main">
+        <footer>
+            <div class="container footer">
+                <div class="row">
+                    <div class="col-lg-3 col-md-12 margin-inner-sm">
+                        <img src="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/logo.png" alt="Bertelsmann Stiftung" width="200">
+                    </div>
+                    <div class="col-lg-3 col-md-12 middle-lg flex">
+                        <div>© BERTELSMANN STIFTUNG <f:format.date date="now" format="Y" /></div>
+                    </div>
+                    <div class="footer__nav-wrapper col-lg-6 col-md-12 flex-row end-lg middle-lg start-md">
+                        <nav>
+                            <v:page.menu pageUid="{settings.chancenportal.pageIds.footer}" as="lvl1">
+                                <ul class="flex-row">
+                                    <f:for each="{lvl1}" as="lvl1_item">
+                                        <f:variable name="navigation_title" value="{lvl1_item.nav_title -> v:or(alternative: lvl1_item.title)}"/>
+                                        <li class="nav__item">
+                                            <f:link.page pageUid="{lvl1_item.uid}" additionalAttributes="{data-title: navigation_title}">
+                                                {navigation_title}
+                                            </f:link.page>
+                                        </li>
+                                    </f:for>
+                                </ul>
+                            </v:page.menu>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <f:if condition="{settings.chancenportal.show_google_translator}">
+                <div class="footer__lang">
+                    <div class="footer__lang-inner">
+                        <div id="google_translate_element"></div>
+                        <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({ pageLanguage: 'de', autoDisplay: false }, 'google_translate_element');
+                            }
+                        </script>
+                        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    </div>
+                </div>
+            </f:if>
+        </footer>
+    </f:section>
+</html>

@@ -1,0 +1,115 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <h1>
+        Anbieter
+    </h1>
+
+    <div class="row margin-inner">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm flex middle-lg">
+            <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.provider_new)}" class="my-account__add-link">neuen Anbieter anlegen</a>
+        </div>
+    </div>
+
+    <div class="row margin-inner">
+        <div class="col-lg-12">
+            <div class="input">
+                <label class="input__label">Suchbegriff</label>
+                <input type="text" id="filter_term" class="input__field">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-lg">
+            <f:if condition="{providers}">
+                <f:then>
+                    <custom-datatable search-input-selector="#filter_term" sorting="[{&quot;col&quot;: &quot;0&quot;}, {&quot;col&quot;: &quot;1&quot;}, {&quot;col&quot;: &quot;2&quot;}, {&quot;col&quot;: &quot;3&quot;}, {&quot;col&quot;: &quot;4&quot;}, {&quot;col&quot;: &quot;5&quot;}, {&quot;col&quot;: &quot;6&quot;}, {&quot;col&quot;: &quot;7&quot;}]">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th style="width: 5%;">ID</th>
+                                <th>Titel</th>
+                                <th>PLZ</th>
+                                <th>Autor</th>
+                                <th>Ersteller</th>
+                                <th>Erstellt</th>
+                                <th>Geändert</th>
+                                <th>Status</th>
+                                <th style="width: 4%;"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <f:for each="{providers}" as="provider">
+                                <tr>
+                                    <td>{provider.uid}</td>
+                                    <td>
+                                        <a href="{f:uri.action(action: 'adminCompanyProfilePage', arguments: '{provider: provider}', pageUid: settings.chancenportal.pageIds.provider_edit)}">{provider.name}</a>
+                                    </td>
+                                    <td>
+                                        {provider.zip}
+                                    </td>
+                                    <td>
+                                        <f:if condition="{provider.author}">
+                                            {provider.author.name}
+                                        </f:if>
+                                    </td>
+
+                                    <td>
+                                        <f:if condition="{provider.creator}">
+                                            {provider.creator.name}
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{provider.crdate}">
+                                            <f:format.date format="d.m.Y">{provider.crdate}</f:format.date>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{provider.tstamp}">
+                                            <f:format.date format="d.m.Y">{provider.tstamp}</f:format.date>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{provider.approved}">
+                                            <f:then>
+                                                <f:if condition="{provider.active}">
+                                                    <f:then>
+                                                        Aktiv
+                                                    </f:then>
+                                                    <f:else>
+                                                        Inaktiv
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <span style="color:#f9b000;">Warte auf Freigabe</span>
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <div class="custom-confirm" text="Wenn Sie den Anbieter löschen, werden alle Angebote und zugehörige Nutzerkonten gelöscht. Möchten Sie den Anbieter löschen?">
+                                            <a href="{f:uri.action(action: 'deleteProvider', arguments: '{provider: provider}')}">
+                                                <i class="icon-times-circle"></i>
+                                            </a>
+                                        </div>
+
+                                        <a href="{f:uri.action(action: 'adminCompanyProfilePage', arguments: '{provider: provider}', pageUid: settings.chancenportal.pageIds.provider_edit)}">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </f:for>
+                            </tbody>
+                        </table>
+                    </custom-datatable>
+                </f:then>
+                <f:else>
+                    Keine Anbieter vorhanden.
+                </f:else>
+            </f:if>
+        </div>
+    </div>
+
+</f:section>
+</html>

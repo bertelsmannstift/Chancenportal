@@ -1,0 +1,375 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <div class="row margin-inner-lg">
+        <div class="col-lg-12 col-sm-12 margin-sm">
+            <h1 class="margin-small">
+                Auswertungen
+            </h1>
+        </div>
+    </div>
+
+    <div class="row margin-lg">
+        <div class="col-lg-12 col-sm-12 margin-sm">
+            <div class="border-box border-box--container">
+                <div class="border-box__content">
+                    <h2>Angebote im Zeitverlauf</h2>
+
+                    <custom-ajax-form submit-after-load="true" ajax="true" url="{t:uri.ajaxAction( action: 'evaluationChartTime', controller: 'MyAccount', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}' ) -> f:format.htmlentities()}" method="get" content-selector="#time_chart">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="input">
+                                    <label class="input__label">Zielgruppe</label>
+                                    <custom-dropdown submit-on-change="true" show-tag="true" name="targetGroups" id="targetGroups" show-selected-title="true" placeholder="Alle Zielgruppen" multiple-select="true" options="{targetGroups}"></custom-dropdown>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="input">
+                                    <label class="input__label">Angebotskategorie/n</label>
+                                    <custom-dropdown submit-on-change="true" id="categories" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" allow-only-one-group-select="false" options="{categoriesForChart}"></custom-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <f:if condition="{settings.chancenportal.use_zip_filter}">
+                                <f:else>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <div class="input">
+                                            <label class="input__label">Stadtteil</label>
+                                            <custom-dropdown submit-on-change="true" show-tag="true" name="districts" id="districts" show-selected-title="true" placeholder="Stadtteil" multiple-select="true" options="{districts}"></custom-dropdown>
+                                        </div>
+                                    </div>
+                                </f:else>
+                            </f:if>
+
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="input">
+                                    <label class="input__label">PLZ</label>
+                                    <custom-dropdown submit-on-change="true" id="zip" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" allow-only-one-group-select="false" options="{plz}"></custom-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-inner">
+                            <div class="col-sm-12 col-lg-7">
+                                <div class="input">
+                                    <label class="input__label">Barrierefrei</label>
+                                    <div>
+                                        <custom-radio submit-on-change="true" is-checked="true" id="accessible_1" name="accessibility" value="1" theme="light" label="Keine Angabe"></custom-radio>
+                                        <custom-radio submit-on-change="true" is-checked="false" id="accessible_2" name="accessibility" value="2" theme="light" label="Ja"></custom-radio>
+                                        <custom-radio submit-on-change="true" is-checked="false', then: 'true', else: 'false')}" id="accessible_3" name="accessibility" value="3" theme="light" label="Nein"></custom-radio>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-5">
+                                <div class="input">
+                                    <label class="input__label">Kostenfrei</label>
+                                    <custom-select submit-on-change="true" label="Ja" theme="light" id="noCosts" name="noCosts" is-checked="{f:if(condition: '{offer.noCosts}', then: 'true', else: 'false')}" value="1" id="noCosts"></custom-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="time_chart">
+                            <f:render partial="EvaluationChartTime" arguments="{_all}" />
+                        </div>
+                    </custom-ajax-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="border-box border-box--container margin-lg">
+        <form action="" method="get" style="width: 100%;">
+            <div class="row margin-inner-lg">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="my-account__dates">
+                        <div class="my-account__label">Zeitraum:</div>
+                        <custom-datepicker show-tag="true" id="from_date" name="dates[]" placeholder="Von" end-date="#to_date" value="{startDate}"></custom-datepicker>
+                        <div class="my-account__seperator">-</div>
+                        <custom-datepicker show-tag="true" start-date="#from_date" id="to_date" name="dates[]" placeholder="Bis" value="{endDate}"></custom-datepicker>
+                        <button type="submit" class="btn btn--primary" style="height: 38px; padding: 10px; margin-left: 18px;">Filtern</button>
+                    </div>
+                    <div style="font-size: 13px;margin-top: 5px">
+                        Wirksam für alle folgenden Auswertungen
+                    </div>
+                </div>
+            </div>
+            <div class="row margin-inner">
+                <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                        <div class="border-box__content">
+                            <div class="row margin-inner-lg">
+                                <div class="col-lg-8 col-sm-12 flex middle-lg margin-inner-sm">
+                                    <h2 class="no-margin">
+                                        Kartenansicht
+                                    </h2>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 margin-sm">
+                                    <custom-dropdown submit-on-change="true" show-tag="true" id="category" show-selected-title="true" options="{categoriesDropdown}" value="{category}"></custom-dropdown>
+                                </div>
+                            </div>
+                            <custom-map show="true" icon="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/svg/Icon_Ort.svg" height="400" api-key="{settings.chancenportal.google_maps_api_key}">
+                                <div class="kachel-list__items">
+                                    <f:for each="{offerResults}" as="offer">
+                                        <div data-lat="{offer.lat}" data-lng="{offer.lng}" class="kachel kachel--theme-{offer.theme} kachel--light">
+                                            <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                                                <div class="kachel__inner">
+                                                    <div class="kachel__category">
+                                                        <f:if condition="{offer.mainCategory}">
+                                                            {offer.mainCategory.name}
+                                                        </f:if>
+                                                    </div>
+                                                    <div class="kachel__content">
+                                                        <h3 class="kachel__headline">
+                                                            {offer.name}
+                                                        </h3>
+                                                        <h4 class="kachel__subheadline">
+                                                            {offer.shortDescription}
+                                                        </h4>
+
+                                                        <div class="kachel__footer">
+                                                            <div class="kachel__location">
+                                                                {offer.district.name}
+                                                            </div>
+                                                            <div class="kachel__user">
+                                                                <f:for each="{offer.targetGroups}" as="group" iteration="i">
+                                                                    {group.name}<f:if condition="{i.isLast}"><f:else>, </f:else></f:if>
+                                                                </f:for>
+                                                            </div>
+
+                                                            <f:if condition="{c:OfferFormater(offer: '{offer}', output: 'date')}">
+                                                                <div class="kachel__calendar">
+                                                                    <c:OfferFormater offer="{offer}" output="date" />
+                                                                </div>
+                                                            </f:if>
+                                                            <f:if condition="{c:OfferFormater(offer: '{offer}', output: 'time')}">
+                                                                <div class="kachel__time"><c:OfferFormater offer="{offer}" output="time" /> Uhr</div>
+                                                            </f:if>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="kachel__arrow"></div>
+                                            </a>
+                                            <div class="kachel__map-arrow"></div>
+                                        </div>
+                                    </f:for>
+                                </div>
+                            </custom-map>
+                        </div>
+                        <div class="border-box__arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="row margin-inner">
+            <div class="col-lg-12 col-sm-12 margin-sm">
+                <div>
+                    <div class="border-box__content">
+                        <h2>Suche nach Kategorien</h2>
+                        <div class="row">
+                            <div class="col-lg-12 margin-inner-lg">
+                                <f:if condition="{categoryCount}">
+                                    <f:then>
+                                        <custom-chart items="{categories}" id="chart1" limit="true"></custom-chart>
+                                    </f:then>
+                                    <f:else>
+                                        Kein Einträge.
+                                    </f:else>
+                                </f:if>
+                            </div>
+                        </div>
+                        <f:if condition="{categoryCount} > 10">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 margin-sm flex end-lg">
+                                    <custom-trigger class-name="btn btn--primary" selector="#chart1" toggle-attr="limit" more="+ Mehr anzeigen" less="- Weniger anzeigen"></custom-trigger>
+                                </div>
+                            </div>
+                        </f:if>
+                    </div>
+                    <div class="border-box__arrow"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row margin-inner">
+            <div class="col-lg-12 col-sm-12 margin-sm">
+                <div>
+                    <div class="border-box__content">
+                        <h2>Häufigkeit der Angebotsaufrufe</h2>
+                        <div class="row">
+                            <div class="col-lg-12 margin-inner-lg">
+
+                                <f:if condition="{offerCount}">
+                                    <f:then>
+                                        <custom-chart items="{offers}" id="chart2" limit="true"></custom-chart>
+                                    </f:then>
+                                    <f:else>
+                                        Kein Einträge.
+                                    </f:else>
+                                </f:if>
+                            </div>
+                        </div>
+                        <f:if condition="{offerCount} > 10">
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 margin-sm flex end-lg">
+                                    <custom-trigger class-name="btn btn--primary" selector="#chart2" toggle-attr="limit" more="+ Mehr anzeigen" less="- Weniger anzeigen"></custom-trigger>
+                                </div>
+                            </div>
+                        </f:if>
+                    </div>
+                    <div class="border-box__arrow"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 margin-sm">
+                <div>
+                    <div class="border-box__content">
+                        <h2>Eingegebene Suchbegriffe</h2>
+
+                        <f:if condition="{terms}">
+                            <f:then>
+                                <dl>
+                                    <dt><strong>Suchbegriff</strong></dt>
+                                    <dd><strong>Anzahl</strong></dd>
+
+                                    <f:for each="{terms}" as="term" iteration="i">
+                                        <f:if condition="{i.index} < 10">
+                                            <dt>{term.name}</dt>
+                                            <dd>{term.count}</dd>
+                                        </f:if>
+                                    </f:for>
+                                </dl>
+                                <dl class="hide">
+                                    <f:for each="{terms}" as="term" iteration="i">
+                                        <f:if condition="{i.index} > 9">
+                                            <dt>{term.name}</dt>
+                                            <dd>{term.count}</dd>
+                                        </f:if>
+                                    </f:for>
+                                </dl>
+
+                                <f:if condition="{terms -> f:count()} > 10">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-sm-12 margin-sm flex end-lg">
+                                            <custom-trigger class-name="btn btn--primary" selector="#terms" toggle-class="hide" more="+ Mehr anzeigen" less="- Weniger anzeigen"></custom-trigger>
+                                        </div>
+                                    </div>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                Kein Einträge.
+                            </f:else>
+                        </f:if>
+
+                    </div>
+                    <div class="border-box__arrow"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-inner">
+        <div class="col-lg-12 col-sm-12 margin-sm">
+            <div class="border-box border-box--container">
+                <div class="border-box__content">
+                    <h2>Angebote nach Postleitzahl</h2>
+
+                    <custom-ajax-form submit-after-load="true" ajax="true" url="{t:uri.ajaxAction( action: 'evaluationChartPlz', controller: 'MyAccount', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}' ) -> f:format.htmlentities()}" method="get" content-selector="#plz_chart">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="input">
+                                    <label class="input__label">Zielgruppe</label>
+                                    <custom-dropdown submit-on-change="true" show-tag="true" name="targetGroups" id="targetGroups" show-selected-title="true" placeholder="Alle Zielgruppen" multiple-select="true" options="{targetGroups}"></custom-dropdown>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <div class="input">
+                                    <label class="input__label">Angebotskategorie/n</label>
+                                    <custom-dropdown submit-on-change="true" id="categories" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" allow-only-one-group-select="false" options="{categoriesForChart}"></custom-dropdown>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-inner">
+                            <div class="col-sm-12 col-lg-7">
+                                <div class="input">
+                                    <label class="input__label">Barrierefrei</label>
+                                    <div>
+                                        <custom-radio submit-on-change="true" is-checked="true" id="accessible_1" name="accessibility" value="1" theme="light" label="Keine Angabe"></custom-radio>
+                                        <custom-radio submit-on-change="true" is-checked="false" id="accessible_2" name="accessibility" value="2" theme="light" label="Ja"></custom-radio>
+                                        <custom-radio submit-on-change="true" is-checked="false', then: 'true', else: 'false')}" id="accessible_3" name="accessibility" value="3" theme="light" label="Nein"></custom-radio>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-lg-5">
+                                <div class="input">
+                                    <label class="input__label">Kostenfrei</label>
+                                    <custom-select submit-on-change="true" label="Ja" theme="light" id="noCosts" name="noCosts" is-checked="{f:if(condition: '{offer.noCosts}', then: 'true', else: 'false')}" value="1" id="noCosts"></custom-select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="plz_chart">
+                            <f:render partial="EvaluationChartPlz" arguments="{_all}" />
+                        </div>
+                    </custom-ajax-form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <f:if condition="{settings.chancenportal.use_zip_filter}">
+        <f:else>
+            <div class="row margin-lg">
+                <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                        <div class="border-box__content">
+                            <h2>Angebot nach Stadtteil</h2>
+
+                            <custom-ajax-form submit-after-load="true" ajax="true" url="{t:uri.ajaxAction( action: 'evaluationChartDistrict', controller: 'MyAccount', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}' ) -> f:format.htmlentities()}" method="get" content-selector="#district_chart">
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <div class="input">
+                                            <label class="input__label">Zielgruppe</label>
+                                            <custom-dropdown submit-on-change="true" show-tag="true" name="targetGroups" id="targetGroups" show-selected-title="true" placeholder="Alle Zielgruppen" multiple-select="true" options="{targetGroups}"></custom-dropdown>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6">
+                                        <div class="input">
+                                            <label class="input__label">Angebotskategorie/n</label>
+                                            <custom-dropdown submit-on-change="true" id="categories" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" allow-only-one-group-select="false" options="{categoriesForChart}"></custom-dropdown>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row margin-inner">
+                                    <div class="col-sm-12 col-lg-7">
+                                        <div class="input">
+                                            <label class="input__label">Barrierefrei</label>
+                                            <div>
+                                                <custom-radio submit-on-change="true" is-checked="true" id="accessible_1" name="accessibility" value="1" theme="light" label="Keine Angabe"></custom-radio>
+                                                <custom-radio submit-on-change="true" is-checked="false" id="accessible_2" name="accessibility" value="2" theme="light" label="Ja"></custom-radio>
+                                                <custom-radio submit-on-change="true" is-checked="false', then: 'true', else: 'false')}" id="accessible_3" name="accessibility" value="3" theme="light" label="Nein"></custom-radio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-5">
+                                        <div class="input">
+                                            <label class="input__label">Kostenfrei</label>
+                                            <custom-select submit-on-change="true" label="Ja" theme="light" id="noCosts" name="noCosts" is-checked="{f:if(condition: '{offer.noCosts}', then: 'true', else: 'false')}" value="1" id="noCosts"></custom-select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="district_chart">
+                                    <f:render partial="EvaluationChartDistrict" arguments="{_all}" />
+                                </div>
+                            </custom-ajax-form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </f:else>
+    </f:if>
+</f:section>

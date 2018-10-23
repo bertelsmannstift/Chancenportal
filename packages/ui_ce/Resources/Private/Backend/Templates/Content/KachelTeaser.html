@@ -1,0 +1,30 @@
+<f:if condition="{processedRow.tx_uice_kachel_teaser_cat}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_cat" /></strong>
+    {processedRow.tx_uice_kachel_teaser_cat} (raw={row.tx_uice_kachel_teaser_cat})<br>
+</f:if>
+<f:if condition="{processedRow.tx_uice_kachel_teaser_headline}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_headline" /></strong>
+    {processedRow.tx_uice_kachel_teaser_headline} (raw={row.tx_uice_kachel_teaser_headline})<br>
+</f:if>
+<f:if condition="{processedRow.tx_uice_kachel_teaser_text}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_text" /></strong>
+    {processedRow.tx_uice_kachel_teaser_text} (raw={row.tx_uice_kachel_teaser_text})<br>
+</f:if>
+<f:if condition="{processedRow.tx_uice_kachel_teaser_img}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_img" /></strong>
+<br><f:for each="{processedRow.tx_uice_kachel_teaser_img}" as="item">
+    <ul>
+        <li>
+    <ul>
+        <f:for each="{item.uid_local}" as="file">
+            <li><f:translate key="LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.uid_local" /> {file.table}|{file.uid}|{file.title} (id={item.uid})</li>
+        </f:for>
+    </ul>
+        </li>
+    </ul>
+</f:for>
+</f:if>
+<f:if condition="{processedRow.tx_uice_kachel_teaser_link}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_link" /></strong>
+    {processedRow.tx_uice_kachel_teaser_link} (raw={row.tx_uice_kachel_teaser_link})<br>
+</f:if>

@@ -1,0 +1,54 @@
+imports:
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
+    - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+
+editor:
+    config:
+        contentsCss: "/typo3conf/ext/ui_sitepackage/Resources/Public/assets_typo3_be/styles/rte.css"
+
+        defaultLanguage: "de"
+
+        stylesSet:
+            - { name: "Lead", element: "p", attributes: { 'class': 'lead' } }
+            - { name: "Table", element: "table", attributes: { 'class': 'table table-hover' } }
+            - { name: "Table Striped", element: "table", attributes: { 'class': 'table table-hover table-striped' } }
+            - { name: "Table Bordered", element: "table", attributes: { 'class': 'table table-hover table-bordered' } }
+            - { name: "Table Condensed", element: "table", attributes: { 'class': 'table table-hover table-condensed' } }
+            - { name: "Row Active", element: "tr", attributes: { 'class': 'active' } }
+            - { name: "Row Success", element: "tr", attributes: { 'class': 'success' } }
+            - { name: "Row Info", element: "tr", attributes: { 'class': 'info' } }
+            - { name: "Row Warning", element: "tr", attributes: { 'class': 'warning' } }
+            - { name: "Row Danger", element: "tr", attributes: { 'class': 'danger' } }
+            - { name: "Button Primary", element: "a", attributes: { 'class': 'btn btn-primary' } }
+
+        toolbarGroups:
+            - { name: styles, groups: [ format, styles ] }
+            - { name: basicstyles, groups: [ basicstyles ] }
+            - { name: paragraph, groups: [ list, indent, blocks, align ] }
+            - "/"
+            - { name: links, groups: [ links ] }
+            - { name: clipboard, groups: [ clipboard, cleanup, undo ] }
+            - { name: editing, groups: [ spellchecker ] }
+            - { name: insert, groups: [ insert ] }
+            - { name: tools, groups: [ table, specialchar ] }
+            - { name: document, groups: [ mode ] }
+
+        format_tags: "p;h3;h4;h5;pre"
+
+        justifyClasses:
+            - text-left
+            - text-center
+            - text-right
+            - text-justify
+
+        extraPlugins:
+            - justify
+
+        removePlugins:
+            - image
+
+        removeButtons:
+            - Anchor
+            - Underline
+            - Strike

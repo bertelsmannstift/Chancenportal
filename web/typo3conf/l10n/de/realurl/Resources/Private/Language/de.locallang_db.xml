@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="pages.tx_realurl_pathsegment">Pfadsegment für untergeordnete Seiten</label>
+			<label index="pages.tx_realurl_exclude">Nicht in sprechende URL aufnehmen</label>
+			<label index="pages.tx_realurl_path_override">Den gesamten Pfad überschreiben</label>
+			<label index="pages.palette_title">Sprechende URL</label>
+			<label index="tx_realurl_pathdata">RealURL-Pfaddaten</label>
+			<label index="tx_realurl_pathdata.page_id">Seiten-ID:</label>
+			<label index="tx_realurl_pathdata.rootpage_id">ID der Wurzelseite:</label>
+			<label index="tx_realurl_pathdata.language_id">Sprach-ID:</label>
+			<label index="tx_realurl_pathdata.mpvar">MP-Parameter:</label>
+			<label index="tx_realurl_pathdata.pagepath">Seitenpfad:</label>
+			<label index="tx_realurl_pathdata.expire">Verfällt:</label>
+			<label index="tx_realurl_uniqalias">Eindeutiger RealURL-Alias</label>
+			<label index="tx_realurl_uniqalias.expire">Verfällt:</label>
+			<label index="tx_realurl_uniqalias.lang">Sprach-ID:</label>
+			<label index="tx_realurl_uniqalias.tablename">Tabellenname:</label>
+			<label index="tx_realurl_uniqalias.value_alias">Wert-Alias:</label>
+			<label index="tx_realurl_uniqalias.value_id">Wert-ID:</label>
+			<label index="tx_realurl_uniqalias.field_alias">Feld-Alias:</label>
+			<label index="tx_realurl_uniqalias.field_id">Feld-ID:</label>
+			<label index="tx_realurl_urldata">RealURL-URL-Daten</label>
+			<label index="tx_realurl_urldata.page_id">Seiten-ID:</label>
+			<label index="tx_realurl_urldata.rootpage_id">ID der Wurzelseite:</label>
+			<label index="tx_realurl_urldata.original_url">Original-URL:</label>
+			<label index="tx_realurl_urldata.speaking_url">Sprechende URL:</label>
+			<label index="tx_realurl_urldata.request_variables">Anfrage-Variablen:</label>
+			<label index="tx_realurl_urldata.expire">Verfällt:</label>
+		</languageKey>
+  </data>
+</T3locallangExt>

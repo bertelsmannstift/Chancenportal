@@ -1,0 +1,36 @@
+/**
+ * Page Meta Configuration
+ */
+page.meta {
+	description {
+		data = page:description
+		ifEmpty.data = levelfield :-1, description, slide
+	}
+	keywords {
+		data = page:keywords
+		ifEmpty.data = levelfield :-1, keywords, slide
+	}
+	abstract {
+		data = page:abstract
+	}
+	title {
+		data = page:title
+	}
+	author {
+		data = page:author
+	}
+	date {
+		data = page:SYS_LASTCHANGED // page:crdate
+		date = Y-m-d
+	}
+	robots = {$page.meta.robots}
+	copyright = {$page.meta.copyright}
+	rating = {$page.meta.rating}
+	revisit-after = {$page.meta.revisit}
+
+	// Vieport Configuration
+	viewport = {$page.meta.viewport}
+	x-ua-compatible = {$page.meta.compatible}
+	format-detection = telephone=no
+    google = notranslate
+}

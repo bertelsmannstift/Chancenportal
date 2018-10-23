@@ -1,0 +1,12 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+    <v:page.breadCrumb showHiddenInMenu="1" entryLevel="2" useShortcutData="1" useShortcutTarget="1" as="breadcrumb">
+        <div class="breadcrumb">
+            <f:link.page pageUid="{settings.chancenportal.pageIds.homepage}"><f:translate key="breadcrumb.start" /></f:link.page>
+            <f:for each="{breadcrumb}" as="breadcrumbItem" iteration="iteration">
+                <f:if condition="!{breadcrumbItem.nav_hide} && !{breadcrumbItem.hidden}">
+                    <f:link.page pageUid="{breadcrumbItem.uid}"><v:or content="{breadcrumbItem.nav_title}" alternative="{breadcrumbItem.title}" /></f:link.page>
+                </f:if>
+            </f:for>
+        </div>
+    </v:page.breadCrumb>
+</html>

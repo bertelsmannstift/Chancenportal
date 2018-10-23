@@ -1,0 +1,19 @@
+<f:if condition="{data.tx_mask_text_image_text}">
+<f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_mask_text_image_text}</f:format.html><br />
+</f:if>
+
+<f:if condition="{data.tx_mask_text_image_image}">
+<f:for each="{data.tx_mask_text_image_image}" as="file">
+  <f:image image="{file}" alt="{file.alternative}" title="{file.title}" width="200" /><br />
+  {file.description} / {file.identifier}<br />
+</f:for>
+</f:if>
+
+<f:if condition="{data.tx_mask_text_image_align}">
+<f:switch expression="{data.tx_mask_text_image_align}">
+  <f:case value="1">Value is: 1</f:case>
+  <f:case value="2">Value is: 2</f:case>
+  <f:case value="3">Value is: 3</f:case>
+</f:switch><br />
+</f:if>
+

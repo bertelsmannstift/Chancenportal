@@ -1,0 +1,15 @@
+<strong>
+    <f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.CType.uice_textblock" />
+</strong>
+ 
+<div class="t3-page-ce-body-inner-teaser">
+    <f:if condition="{processedRow.header}">
+        <strong>{row.header}</strong><br>
+    </f:if>
+    <f:if condition="{processedRow.tx_uice_textblock_subheadline}">
+        {row.tx_uice_textblock_subheadline -> f:format.raw() -> f:format.crop(maxCharacters: '200')}<br>
+    </f:if>
+    <f:if condition="{processedRow.tx_uice_textblock_text}">
+        {row.tx_uice_textblock_text -> f:format.stripTags() -> f:format.crop(maxCharacters: '200')}<br>
+    </f:if>
+</div>

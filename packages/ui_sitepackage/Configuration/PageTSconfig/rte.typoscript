@@ -1,0 +1,8 @@
+/**
+ * RTE Configuration
+ */
+RTE {
+    default {
+        preset = Default
+    }
+}

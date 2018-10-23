@@ -1,0 +1,31 @@
+/**
+ * Overlay configuration for default FluidStyledContent Elements
+ */
+lib {
+    contentElement {
+        templateRootPaths.100 = EXT:ui_ce_overrides/Resources/Private/FluidStyledContent/Templates/
+        partialRootPaths.100 = EXT:ui_ce_overrides/Resources/Private/FluidStyledContent/Partials/
+        layoutRootPaths.100 = EXT:ui_ce_overrides/Resources/Private/FluidStyledContent/Layouts/
+    }
+}
+
+/**
+ * Overlay configuration for custom Content Elements
+ */
+tt_content {
+    uice_kachel_teaser {
+        layoutRootPaths.100 = {$plugin.tx_uiceoverrides.view.layoutRootPath}
+        partialRootPaths.100 = {$plugin.tx_uiceoverrides.view.partialRootPath}
+        templateRootPaths.100 = {$plugin.tx_uiceoverrides.view.templateRootPath}
+    }
+    uice_text_btn {
+        layoutRootPaths.100 = {$plugin.tx_uiceoverrides.view.layoutRootPath}
+        partialRootPaths.100 = {$plugin.tx_uiceoverrides.view.partialRootPath}
+        templateRootPaths.100 = {$plugin.tx_uiceoverrides.view.templateRootPath}
+    }
+    uice_text_image {
+        layoutRootPaths.100 = {$plugin.tx_uiceoverrides.view.layoutRootPath}
+        partialRootPaths.100 = {$plugin.tx_uiceoverrides.view.partialRootPath}
+        templateRootPaths.100 = {$plugin.tx_uiceoverrides.view.templateRootPath}
+    }
+}

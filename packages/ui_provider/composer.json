@@ -1,0 +1,15 @@
+{
+    "name": "ui/ui-provider",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "version": "3.0.7",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "UI\\UiProvider\\": "Classes"
+        }
+    }
+}

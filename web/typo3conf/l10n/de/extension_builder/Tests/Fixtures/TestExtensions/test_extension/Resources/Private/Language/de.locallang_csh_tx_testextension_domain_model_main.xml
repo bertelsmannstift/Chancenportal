@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="name.description"/>
+			<label index="identifier.description"/>
+			<label index="my_date.description"/>
+			<label index="child1.description"/>
+			<label index="children2.description"/>
+			<label index="child3.description"/>
+			<label index="children4.description"/>
+		</languageKey>
+  </data>
+</T3locallangExt>

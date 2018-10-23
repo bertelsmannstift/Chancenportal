@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-08-09T15:12:50+02:00" product-name="ui_ce">
+    <header/>
+    <body>
+      <trans-unit id="tt_content.tx_uice_kachel_teaser_cat" xml:space="preserve">
+        <source>Kategory</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_kachel_teaser_headline" xml:space="preserve">
+        <source>Überschrift</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_kachel_teaser_img" xml:space="preserve">
+        <source>Bild</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_kachel_teaser_link" xml:space="preserve">
+        <source>Link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_kachel_teaser_text" xml:space="preserve">
+        <source>Text</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_btn_headline" xml:space="preserve">
+        <source>Überschrift</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_btn_link" xml:space="preserve">
+        <source>Button Link</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_btn_texfield" xml:space="preserve">
+        <source>Text</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_btn_text" xml:space="preserve">
+        <source>Button Text</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_image_align" xml:space="preserve">
+        <source>Bildausrichtung</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_image_image" xml:space="preserve">
+        <source>Bild</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_image_text" xml:space="preserve">
+        <source>Text</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_image_align.I.0" xml:space="preserve">
+        <source>Links</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_uice_text_image_align.I.1" xml:space="preserve">
+        <source>Rechts</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.div._uice_" xml:space="preserve">
+        <source>ui_ce</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.uice_kachel_teaser" xml:space="preserve">
+        <source>Kachel Teaser</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.uice_text_btn" xml:space="preserve">
+        <source>Text Button Element</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.uice_text_image" xml:space="preserve">
+        <source>Text &amp; Bild</source>
+      </trans-unit>
+      <trans-unit id="tt_content.l10n_source" xml:space="preserve">
+        <source>l10n_source</source>
+      </trans-unit>
+      <trans-unit id="tt_content.l18n_diffsource" xml:space="preserve">
+        <source>l18n_diffsource</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_impexp_origuid" xml:space="preserve">
+        <source>tx_impexp_origuid</source>
+      </trans-unit>
+      <trans-unit id="tt_content.tx_flux_children" xml:space="preserve">
+        <source>tx_flux_children</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.I.29" xml:space="preserve">
+        <source>Form</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.I.34" xml:space="preserve">
+        <source>Kachel Teaser</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.I.35" xml:space="preserve">
+        <source>Text Button Element</source>
+      </trans-unit>
+      <trans-unit id="tt_content.CType.I.36" xml:space="preserve">
+        <source>Text &amp; Bild</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.0" xml:space="preserve">
+        <source>1</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.1" xml:space="preserve">
+        <source>2</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.2" xml:space="preserve">
+        <source>3</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.3" xml:space="preserve">
+        <source>4</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.4" xml:space="preserve">
+        <source>5</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.5" xml:space="preserve">
+        <source>6</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.6" xml:space="preserve">
+        <source>7</source>
+      </trans-unit>
+      <trans-unit id="tt_content.imagecols.I.7" xml:space="preserve">
+        <source>8</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.1" xml:space="preserve">
+        <source>1</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.2" xml:space="preserve">
+        <source>2</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.3" xml:space="preserve">
+        <source>3</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.4" xml:space="preserve">
+        <source>4</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.5" xml:space="preserve">
+        <source>5</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.6" xml:space="preserve">
+        <source>6</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.7" xml:space="preserve">
+        <source>7</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.8" xml:space="preserve">
+        <source>8</source>
+      </trans-unit>
+      <trans-unit id="tt_content.cols.I.9" xml:space="preserve">
+        <source>9</source>
+      </trans-unit>
+      <trans-unit id="tt_content.list_type.I.1" xml:space="preserve">
+        <source>Chancenportal</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

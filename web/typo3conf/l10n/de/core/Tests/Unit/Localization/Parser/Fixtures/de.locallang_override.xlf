@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:05:54Z" product-name="core">
+		<header/>
+		<body>
+			<trans-unit id="label1" approved="yes">
+				<source>This is my 1st label</source>
+				<target state="translated">Dies ist meine erste Beschriftung</target>
+			</trans-unit>
+			<trans-unit id="label2" approved="yes">
+				<source>This is my 2nd label</source>
+				<target state="translated">Dies ist meine zweite Beschriftung</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

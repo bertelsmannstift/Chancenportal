@@ -1,0 +1,56 @@
+TYPO3:
+  CMS:
+    Form:
+      persistenceManager:
+        allowedFileMounts:
+          10: '1:/Forms/'
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              renderingOptions:
+                templateRootPaths:
+                  100: 'EXT:ui_forms/Resources/Private/Templates/'
+                partialRootPaths:
+                  100: 'EXT:ui_forms/Resources/Private/Partials/'
+                layoutRootPaths:
+                  100: 'EXT:ui_forms/Resources/Private/Layouts/'
+                translation:
+                  translationFile:
+                    # default translation files for the frontend
+                    10: 'EXT:form/Resources/Private/Language/locallang.xlf'
+                    20: 'EXT:ui_forms/Resources/Private/Language/locallang.xlf'
+
+            FileUpload:
+              properties:
+                containerClassAttribute: 'input fileupload'
+                uploadLabel: 'Browse'
+
+            ImageUpload:
+              properties:
+                containerClassAttribute: 'input fileupload'
+                uploadLabel: 'Browse'
+
+            GridRow:
+              formEditor:
+                group: null
+
+            ContentElement:
+              formEditor:
+                group: null
+
+            Hidden:
+              formEditor:
+                group: null
+
+            Password:
+              formEditor:
+                group: null
+
+            AdvancedPassword:
+              formEditor:
+                group: null
+
+            DatePicker:
+              formEditor:
+                group: null

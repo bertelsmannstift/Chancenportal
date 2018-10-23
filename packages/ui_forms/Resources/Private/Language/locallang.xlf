@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0" xmlns:t3="http://typo3.org/schemas/xliff">
+    <file t3:id="1475977066" source-language="en" datatype="plaintext" original="messages" date="2016-10-09T03:38:32Z" product-name="form">
+        <header/>
+        <body>
+            <trans-unit id="element.FileUpload.properties.uploadLabel" xml:space="preserve">
+                <source>Select file</source>
+            </trans-unit>
+            <trans-unit id="element.ImageUpload.properties.uploadLabel" xml:space="preserve">
+                <source>Select file</source>
+            </trans-unit>
+
+            <trans-unit id="form.validation.error.general" xml:space="preserve">
+                <source>The form could not be sent. Please check your input and try again.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

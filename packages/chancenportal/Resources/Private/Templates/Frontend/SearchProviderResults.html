@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="main">
+    <section data-animation="fadeIn" class="container">
+        <h1>Anbieter durchsuchen</h1>
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <custom-ajax-form ajax="true" result-count-selector='[".search__count"]' count-on-selector='[".kachel-list__items--providers > .kachel"]' url="{t:uri.ajaxAction( action: 'searchProviderResultAjax', controller: 'Frontend', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}'  ) -> f:format.htmlentities()}" method="get" content-selector=".kachel-list__items-wrapper" class="search">
+                        <v:variable.set name="search_box_headline" value="Was für Anbieter suchen Sie?" />
+                        <v:variable.set name="auto_submit" value="1" />
+                        <v:variable.set name="show_more" value="0" />
+                        <f:render partial="SearchBox" arguments="{_all}" />
+                    </custom-ajax-form>
+
+                    <div class="row search__tags">
+                        <div class="col-lg-2 col-md-3 col-sm-12 flex middle-lg"><strong><span class="search__count">{providers -> f:count()}</span> Ergebnisse</strong></div>
+                        <div class="col-lg-10 col-md-9 col-sm-12 flex end-lg middle-lg">
+                            <custom-active-filter hide-delete-all="true"></custom-active-filter>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row kachel-list--providers">
+            <div class="col-lg-12">
+                <div class="kachel-list">
+                    <div class="row kachel-list__sorting">
+                        <div class="col-lg-6 margin-inner-md col-sm-12">
+                            <div class="flex middle-lg"><strong class="kachel-list__sort">Sortieren nach: </strong>
+                                <custom-dropdown form-selector=".search form" id="sort_providers" disable-toggle="true" show-selected-title="true" options="{sorting}"></custom-dropdown>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-12 end-lg col-sm-12 start-md start-sm">
+                            <a id="show_on_map" title="Auf Karte anzeigen" class="btn btn--primary btn--icon" data-toggle-class="btn--active" data-toggle-show-item=".kachel-list--providers custom-map">
+                                <i class="icon-map-marker"></i>
+                                Auf Karte anzeigen
+                            </a>
+                        </div>
+                    </div>
+                    <div class="kachel-list__items-wrapper">
+                        <f:render partial="SearchProviderResultAjax" arguments="{_all}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</f:section>
+</html>

@@ -1,0 +1,6 @@
+/**
+ * TypoScript Includes
+ */
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ui_sitepackage/Configuration/TypoScript/Config/" extensions="typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ui_sitepackage/Configuration/TypoScript/Lib/" extensions="typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ui_sitepackage/Configuration/TypoScript/Page/" extensions="typoscript">

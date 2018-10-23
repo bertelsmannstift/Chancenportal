@@ -1,0 +1,509 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-02-29T20:52:35Z" product-name="extension_builder" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="error.extension.0" approved="yes">
+				<source>An extension key must have minimum 3, maximum 30 characters (not counting underscores)</source>
+			<target state="translated">Ein Erweiterungsschlüssel muss mindestens 3 und höchstens 30 Zeichen besitzen (Unterstriche nicht eingeschlossen)</target></trans-unit>
+			<trans-unit id="error.extension.1" approved="yes">
+				<source>Illegal character(s) in extension key. Allowed characters are: a-z (lowercase), 0-9 and '_'
+					(underscore)
+				</source>
+			<target state="translated">Unzulässige(s) Zeichen im Erweiterungsschlüssel. Erlaubte Zeichen sind a-z (kleingeschrieben), 0-9 und '_' (Unterstrich)</target></trans-unit>
+			<trans-unit id="error.extension.2" approved="yes">
+				<source>The key may not begin with one of the following prefixes:
+					tx,u,user_,pages,tt_,sys_,ts_language_,csh_
+				</source>
+			<target state="translated">Der Schlüssel darf nicht mit einer der folgenden Zeichenketten beginnen: tx,u,user_,pages,tt_,sys_,ts_language_,csh_</target></trans-unit>
+			<trans-unit id="error.extension.3" approved="yes">
+				<source>Extension keys cannot start or end with 0-9 and '_' (underscore)</source>
+			<target state="translated">Erweiterungsschlüssel dürfen nicht mit mit 0-9 oder '_' (Unterstrich) beginnen oder enden</target></trans-unit>
+			<trans-unit id="error.extension.500" approved="yes">
+				<source>There is an existing piBased extension with this extension key. Please choose another extension
+					key or rename the existing extension directory
+				</source>
+			<target state="translated">Es gibt eine von piBase abgeleitete Erweiterung mit diesem Erweiterungsschlüssel. Bitte wählen Sie einen anderen Erweiterungsschlüssel oder benennen Sie das existierende Erweiterungsverzeichnis um</target></trans-unit>
+			<trans-unit id="name" approved="yes">
+				<source>Name</source>
+			<target state="translated">Name</target></trans-unit>
+			<trans-unit id="key" approved="yes">
+				<source>Key</source>
+			<target state="translated">Schlüssel</target></trans-unit>
+			<trans-unit id="extensionTitle" approved="yes">
+				<source>Extension title</source>
+			<target state="translated">Erweiterungstitel</target></trans-unit>
+			<trans-unit id="extensionKey" approved="yes">
+				<source>Extension Key</source>
+			<target state="translated">Erweiterungsschlüssel</target></trans-unit>
+			<trans-unit id="descr_extensionKey" approved="yes">
+				<source>The extensionkey should be lowercase and without spaces. It will be the unique identifier for
+					this extension.
+				</source>
+			<target state="translated">Der Erweiterungsschlüssel sollte kleingeschrieben und ohne Leerzeichen sein. Er wird der eindeutige Bezeichner für diese Erweiterung sein.</target></trans-unit>
+			<trans-unit id="vendorName">
+				<source>Vendor name</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Herstellername</target></alt-trans></trans-unit>
+			<trans-unit id="descr_vendorName">
+				<source>The vendor name is the first part of the new package identifier</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Der Herstellername ist der erste Teil der neuen Paketkennung</target></alt-trans></trans-unit>
+			<trans-unit id="short_description" approved="yes">
+				<source>Descr.</source>
+			<target state="translated">Beschr.</target></trans-unit>
+			<trans-unit id="description" approved="yes">
+				<source>Description</source>
+			<target state="translated">Beschreibung</target></trans-unit>
+			<trans-unit id="version" approved="yes">
+				<source>Version</source>
+			<target state="translated">Version</target></trans-unit>
+			<trans-unit id="target_version" approved="yes">
+				<source>Target version</source>
+			<target state="translated">Zielversion</target></trans-unit>
+			<trans-unit id="descr_target_version">
+				<source>Select the TYPO3 version the extension requires.</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Wähle die TYPO3 Version die diese Erweiterung benötigt.</target></alt-trans></trans-unit>
+			<trans-unit id="state" approved="yes">
+				<source>State</source>
+			<target state="translated">Status</target></trans-unit>
+			<trans-unit id="alpha" approved="yes">
+				<source>Alpha</source>
+			<target state="translated">Alpha</target></trans-unit>
+			<trans-unit id="beta" approved="yes">
+				<source>Beta</source>
+			<target state="translated">Beta</target></trans-unit>
+			<trans-unit id="stable" approved="yes">
+				<source>Stable</source>
+			<target state="translated">Stabil</target></trans-unit>
+			<trans-unit id="experimental" approved="yes">
+				<source>Experimental</source>
+			<target state="translated">Experimentell</target></trans-unit>
+			<trans-unit id="test" approved="yes">
+				<source>Test</source>
+			<target state="translated">Test</target></trans-unit>
+			<trans-unit id="category" approved="yes">
+				<source>Category</source>
+			<target state="translated">Kategorie</target></trans-unit>
+			<trans-unit id="custom_category" approved="yes">
+				<source>OR custom</source>
+			<target state="translated">ODER benutzerdefiniert</target></trans-unit>
+			<trans-unit id="descr_custom_category" approved="yes">
+				<source>You can define an own category here</source>
+			<target state="translated">Hier kann eine eigene Kategorie definiert werden</target></trans-unit>
+			<trans-unit id="descr_category" approved="yes">
+				<source>The category this extension belongs to in the extension manager.</source>
+			<target state="translated">Die Kategorie, zu der diese Erweiterung im Erweiterungsmanager gehört.</target></trans-unit>
+			<trans-unit id="misc" approved="yes">
+				<source>Miscellaneous</source>
+			<target state="translated">Verschiedenes</target></trans-unit>
+			<trans-unit id="services" approved="yes">
+				<source>Services</source>
+			<target state="translated">Dienste</target></trans-unit>
+			<trans-unit id="backend" approved="yes">
+				<source>Backend</source>
+			<target state="translated">Backend</target></trans-unit>
+			<trans-unit id="frontend" approved="yes">
+				<source>Frontend</source>
+			<target state="translated">Frontend</target></trans-unit>
+			<trans-unit id="templates" approved="yes">
+				<source>Templates</source>
+			<target state="translated">Vorlagen</target></trans-unit>
+			<trans-unit id="examples" approved="yes">
+				<source>Examples</source>
+			<target state="translated">Beispiele</target></trans-unit>
+			<trans-unit id="distribution">
+				<source>Distribution</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Distribution</target></alt-trans></trans-unit>
+			<trans-unit id="documentation" approved="yes">
+				<source>Documentation</source>
+			<target state="translated">Dokumentation</target></trans-unit>
+			<trans-unit id="disableVersioning" approved="yes">
+				<source>Disable versioning</source>
+			<target state="translated">Versionierung deaktivieren</target></trans-unit>
+			<trans-unit id="descr_disableVersioning">
+				<source>Check this if your extension needs no support for versioning. This will skip the creation of
+					versioning related columns in the database
+				</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Kreuze hier an, wenn die Erweiterung keine Unterstützung zur Versionierung benötigt. Dadurch wird die Erstellung von versionierungsbezogenen  Spalten in der Datenbank übersprungen</target></alt-trans></trans-unit>
+			<trans-unit id="disableLocalization">
+				<source>Disable localization</source>
+			<target></target><alt-trans xml:space="preserve" origin="fareith"><target>Übersetzung deaktivieren</target></alt-trans></trans-unit>
+			<trans-unit id="descr_disableLocalization">
+				<source>Check this if your extension needs no support for localization. This will skip the creation of
+					localization related columns in the database
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="skipGenerateDocumentationTemplate">
+				<source>Don't generate doc-template</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_skipGenerateDocumentationTemplate">
+				<source>Check this if you don't want a documentation-template generated for your extension.</source>
+			<target></target></trans-unit>
+			<trans-unit id="sourceLanguage">
+				<source>Source language for xliff files</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_sourceLanguage">
+				<source>The source language for xliff files is the language in which the "source" of a label is defined,
+					which can be translated into other languages. In general it should be english.
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="dependsOn" approved="yes">
+				<source>Depends on</source>
+			<target state="translated">Abhängig von</target></trans-unit>
+			<trans-unit id="descr_dependsOn">
+				<source>If the extension is depending on other extensions, enter the extension keys here (one per line
+					followed by a double arrow and the lowest version number).
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="persons" approved="yes">
+				<source>Persons</source>
+			<target state="translated">Personen</target></trans-unit>
+			<trans-unit id="role" approved="yes">
+				<source>Role</source>
+			<target state="translated">Rolle</target></trans-unit>
+			<trans-unit id="developer" approved="yes">
+				<source>Developer</source>
+			<target state="translated">Entwickler</target></trans-unit>
+			<trans-unit id="product_manager" approved="yes">
+				<source>Product Manager</source>
+			<target state="translated">Produkt-Manager</target></trans-unit>
+			<trans-unit id="email" approved="yes">
+				<source>Email</source>
+			<target state="translated">E-Mail</target></trans-unit>
+			<trans-unit id="company" approved="yes">
+				<source>Company</source>
+			<target state="translated">Firma</target></trans-unit>
+			<trans-unit id="plugins" approved="yes">
+				<source>Frontend plugins</source>
+			<target state="translated">Frontend Plug-Ins</target></trans-unit>
+			<trans-unit id="descr_plugins" approved="yes">
+				<source>The frontend plugins which have to be registered in the extension</source>
+			<target state="translated">Die Frontend-Plug-Ins, welche von der Erweiterung registriert werden müssen</target></trans-unit>
+			<trans-unit id="controller_action_combinations">
+				<source>Controller action combinations</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_controller_action_combinations">
+				<source>Here you can configure, which controller action combinations this plugin/module should have.
+					Example: &lt;br /&gt;Blog =&gt; list,show &lt;br /&gt;(one controller per line, actions comma
+					separated) &lt;br /&gt;If you leave this empty, all available actions are configured for this
+					plugin.
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="noncacheable_actions">
+				<source>Non cacheable actions</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_noncacheable_actions">
+				<source>Typically create, delete and update actions should not be cached. (Same format as above)
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="switchableActions">
+				<source>Switchable actions</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_switchableActions">
+				<source>Make actions switchable in the plugin's form. One line for the label, one for the list of
+					allowed Controller-&gt;action pairs (semicolon separated). Example: &lt;br /&gt;Display items&lt;br
+					/&gt;Model-&gt;list; Model-&gt;show;&lt;br /&gt;Admin&lt;br /&gt;Model-&gt;new; Model-&gt;create;
+					Model-&gt;edit; Model-&gt;update;
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="backendModules" approved="yes">
+				<source>Backend modules</source>
+			<target state="translated">Backend-Module</target></trans-unit>
+			<trans-unit id="mainModule" approved="yes">
+				<source>Main module</source>
+			<target state="translated">Hauptmodul</target></trans-unit>
+			<trans-unit id="uniqueInThisModel" approved="yes">
+				<source>Should be unique for this model</source>
+			<target state="translated">Soll für dieses Modell eindeutig sein</target></trans-unit>
+			<trans-unit id="type" approved="yes">
+				<source>Type</source>
+			<target state="translated">Typ</target></trans-unit>
+			<trans-unit id="more" approved="yes">
+				<source>More</source>
+			<target state="translated">Mehr</target></trans-unit>
+			<trans-unit id="moreOptions" approved="yes">
+				<source>More options</source>
+			<target state="translated">Mehr Optionen</target></trans-unit>
+			<trans-unit id="advancedOptions" approved="yes">
+				<source>Advanced options</source>
+			<target state="translated">Fortgeschrittene Optionen</target></trans-unit>
+			<trans-unit id="remove" approved="yes">
+				<source>Remove</source>
+			<target state="translated">Entfernen</target></trans-unit>
+			<trans-unit id="add" approved="yes">
+				<source>Add</source>
+			<target state="translated">Hinzufügen</target></trans-unit>
+			<trans-unit id="zeroToOne" approved="yes">
+				<source>1:1</source>
+			<target state="translated">1:1</target></trans-unit>
+			<trans-unit id="manyToOne" approved="yes">
+				<source>n:1</source>
+			<target state="translated">n:1</target></trans-unit>
+			<trans-unit id="zeroToMany" approved="yes">
+				<source>1:n</source>
+			<target state="translated">1:n</target></trans-unit>
+			<trans-unit id="manyToMany" approved="yes">
+				<source>m:n</source>
+			<target state="translated">m:n</target></trans-unit>
+			<trans-unit id="renderType">
+				<source>Render type</source>
+			<target></target></trans-unit>
+			<trans-unit id="desc_renderType">
+				<source>How should the relation be displayed in backend forms?</source>
+			<target></target></trans-unit>
+			<trans-unit id="selectSingleBox">
+				<source>Dropdown (multiple)</source>
+			<target></target></trans-unit>
+			<trans-unit id="selectCheckBox">
+				<source>Checkboxes</source>
+			<target></target></trans-unit>
+			<trans-unit id="selectMultipleSideBySide">
+				<source>Side by side multi select</source>
+			<target></target></trans-unit>
+			<trans-unit id="inline">
+				<source>Inline (IRRE)</source>
+			<target></target></trans-unit>
+			<trans-unit id="select">
+				<source>Dropdown</source>
+			<target></target></trans-unit>
+			<trans-unit id="isExcludeField" approved="yes">
+				<source>Is exclude field?</source>
+			<target state="translated">ist Ausschlußfeld?</target></trans-unit>
+			<trans-unit id="descr_isExcludeField" approved="yes">
+				<source>If set to true, this field will only be visible for admin users per default</source>
+			<target state="translated">Wenn auf true gesetzt, wird dieses Feld standardmäßig nur für Administratoren sichtbar sein</target></trans-unit>
+			<trans-unit id="newModelObject" approved="yes">
+				<source>New model object</source>
+			<target state="translated">Neues Modell-Objekt</target></trans-unit>
+			<trans-unit id="domainObjectSettings" approved="yes">
+				<source>Domain object settings</source>
+			<target state="translated">Einstellungen des Domainobjekts</target></trans-unit>
+			<trans-unit id="objectType" approved="yes">
+				<source>Object type</source>
+			<target state="translated">Objekttyp</target></trans-unit>
+			<trans-unit id="descr_objectType" approved="yes">
+				<source>Value objects are simple objects that are defined by their value and have no 'identity'</source>
+			<target state="translated">Wertobjekte sind einfache Objekte, die durch ihren Wert definiert sind und keine 'Identität' besitzen</target></trans-unit>
+			<trans-unit id="entity" approved="yes">
+				<source>Entity</source>
+			<target state="translated">Entität</target></trans-unit>
+			<trans-unit id="valueObject" approved="yes">
+				<source>Value object</source>
+			<target state="translated">Wertobjekt</target></trans-unit>
+			<trans-unit id="isAggregateRoot">
+				<source>Is aggregate root?</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_isAggregateRoot" approved="no">
+				<source>If true, the extension builder will generate a repository for this model</source>
+			<target state="needs-translation">Wenn ausgewählt wird der Extension-Builder ein Repository und Standard-Kontroller-Aktionen für dieses Modell erzeugen</target></trans-unit>
+			<trans-unit id="enableSorting">
+				<source>Enable sorting?</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_enableSorting">
+				<source>If true, sorting in the backend is enabled</source>
+			<target></target></trans-unit>
+			<trans-unit id="addDeletedField">
+				<source>Add deleted field</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_addDeletedField">
+				<source>Deleting a record with "delete" field will not really delete the record, but just set the delete
+					flag to true
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="addHiddenField">
+				<source>Add hidden field</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_addHiddenField">
+				<source>The hidden field is an "enable" field. Only records which are not hidden will be displayed
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="addStarttimeEndtimeFields">
+				<source>Add starttime/endtime fields</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_addStarttimeEndtimeFields">
+				<source>If set, the related records will have a startime and endtime as "enable" field</source>
+			<target></target></trans-unit>
+			<trans-unit id="enableCategorizable">
+				<source>Enable categorization?</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_enableCategorizable">
+				<source>If true, categorization in the backend is enabled for this model</source>
+			<target></target></trans-unit>
+			<trans-unit id="mapToTable">
+				<source>Map to existing table</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_mapToTable">
+				<source>If the model should extend an existing table, you can configure this here</source>
+			<target></target></trans-unit>
+			<trans-unit id="parentClass">
+				<source>Extend existing model class</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_parentClass">
+				<source>If this model should extend an existing other model, name it here</source>
+			<target></target></trans-unit>
+			<trans-unit id="defaultActions" approved="yes">
+				<source>Default actions</source>
+			<target state="translated">Standardaktionen</target></trans-unit>
+			<trans-unit id="actionType" approved="yes">
+				<source>Action type</source>
+			<target state="translated">Aktionstyp</target></trans-unit>
+			<trans-unit id="descr_actionType" approved="yes">
+				<source>For each selected action, the extension builder will generate a template and a action method in
+					the controller of this model. If the model is an aggregate root the default CRUD actions will be
+					generated per default.
+				</source>
+			<target state="translated">Für jede gewählte Aktion wird der Extension-Builder eine Vorlage und eine Aktions-Methode im Kontroller dieses Modells erzeugen. Wenn das Modell eine aggregate root (gemeinsame Wurzel) ist werden die standard CRUD (Create=Anlegen,Read=Lesen,Update=Aktualisieren,Delete=Löschen)-Aktionen automatisch erzeugt.</target></trans-unit>
+			<trans-unit id="show" approved="yes">
+				<source>show</source>
+			<target state="translated">Anzeige</target></trans-unit>
+			<trans-unit id="list" approved="yes">
+				<source>list</source>
+			<target state="translated">Liste</target></trans-unit>
+			<trans-unit id="create_new" approved="yes">
+				<source>new/create</source>
+			<target state="translated">Neu/Erstellen</target></trans-unit>
+			<trans-unit id="edit_update" approved="yes">
+				<source>edit/update</source>
+			<target state="translated">Bearbeiten/Aktualisieren</target></trans-unit>
+			<trans-unit id="delete" approved="yes">
+				<source>delete</source>
+			<target state="translated">Löschen</target></trans-unit>
+			<trans-unit id="properties" approved="yes">
+				<source>Properties</source>
+			<target state="translated">Eigenschaften</target></trans-unit>
+			<trans-unit id="propertyName" approved="yes">
+				<source>Property name</source>
+			<target state="translated">Eigenschaftenname</target></trans-unit>
+			<trans-unit id="descr_propertyName" approved="yes">
+				<source>The name should be lowerCamelCase and unique in this model</source>
+			<target state="translated">Der Name sollte lowerCamelCase und im Modell eindeutig sein</target></trans-unit>
+			<trans-unit id="propertyType" approved="yes">
+				<source>Property type</source>
+			<target state="translated">Typ der Eigenschaft</target></trans-unit>
+			<trans-unit id="descr_propertyType">
+				<source>All types with * are not yet supported by the frontend form generation/validation</source>
+			<target></target></trans-unit>
+			<trans-unit id="string" approved="yes">
+				<source>String</source>
+			<target state="translated">String</target></trans-unit>
+			<trans-unit id="text" approved="yes">
+				<source>Text</source>
+			<target state="translated">Text</target></trans-unit>
+			<trans-unit id="richText">
+				<source>Rich text*</source>
+			<target></target></trans-unit>
+			<trans-unit id="integer" approved="yes">
+				<source>Integer</source>
+			<target state="translated">Integer</target></trans-unit>
+			<trans-unit id="floatingPoint" approved="yes">
+				<source>Floating point</source>
+			<target state="translated">Gleitkommazahl</target></trans-unit>
+			<trans-unit id="boolean" approved="yes">
+				<source>Boolean</source>
+			<target state="translated">Boolesch</target></trans-unit>
+			<trans-unit id="dateTime" approved="no">
+				<source>DateTime (timestamp)</source>
+			<target state="needs-translation">Datum und Zeit</target><alt-trans xml:space="preserve" origin="smove"><target>Datum/Uhrzeit (Zeitstempel)</target></alt-trans><alt-trans xml:space="preserve" origin="nicodh"><target>Datum/Uhrzeit (Timestamp)</target></alt-trans></trans-unit>
+			<trans-unit id="date" approved="no">
+				<source>Date (timestamp)</source>
+			<target state="needs-translation">Datum*</target><alt-trans xml:space="preserve" origin="smove"><target>Datum (Zeitstempel)</target></alt-trans><alt-trans xml:space="preserve" origin="nicodh"><target>Datum (Timestamp)*</target></alt-trans></trans-unit>
+			<trans-unit id="nativeDateTime" approved="no">
+				<source>DateTime</source>
+			<target state="needs-translation">Datum und Zeit</target></trans-unit>
+			<trans-unit id="nativeDate" approved="no">
+				<source>Date</source>
+			<target state="needs-translation">Datum*</target></trans-unit>
+			<trans-unit id="time" approved="yes">
+				<source>Time*</source>
+			<target state="translated">Zeit*</target></trans-unit>
+			<trans-unit id="timeSec" approved="yes">
+				<source>Time/Sec*</source>
+			<target state="translated">Zeit/Sekunden*</target></trans-unit>
+			<trans-unit id="selectList" approved="yes">
+				<source>Select list</source>
+			<target state="translated">Auswahlliste</target></trans-unit>
+			<trans-unit id="file" approved="yes">
+				<source>File*</source>
+			<target state="translated">Datei*</target></trans-unit>
+			<trans-unit id="image" approved="yes">
+				<source>Image*</source>
+			<target state="translated">Bild*</target></trans-unit>
+			<trans-unit id="fileReference" approved="yes">
+				<source>File reference*</source>
+			<target state="translated">Dateireferenz*</target></trans-unit>
+			<trans-unit id="folder" approved="yes">
+				<source>Folder*</source>
+			<target state="translated">Ordner*</target></trans-unit>
+			<trans-unit id="password" approved="yes">
+				<source>Password</source>
+			<target state="translated">Passwort</target></trans-unit>
+			<trans-unit id="allowedFileTypes">
+				<source>Allowed file types</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_allowedFileTypes">
+				<source>Comma separated file endings like: doc,ods</source>
+			<target></target></trans-unit>
+			<trans-unit id="maxItems">
+				<source>Allowed number of files</source>
+			<target></target></trans-unit>
+			<trans-unit id="isRequired" approved="yes">
+				<source>Is required?</source>
+			<target state="translated">Ist Pflichtfeld?</target></trans-unit>
+			<trans-unit id="relations" approved="yes">
+				<source>Relations</source>
+			<target state="translated">Beziehungen</target></trans-unit>
+			<trans-unit id="relationName" approved="yes">
+				<source>Name</source>
+			<target state="translated">Name</target></trans-unit>
+			<trans-unit id="descr_relationName" approved="yes">
+				<source>The name should be lowerCamelCase and unique in this model</source>
+			<target state="translated">Der Name sollte lowerCamelCase und im Modell eindeutig sein</target></trans-unit>
+			<trans-unit id="extensionProperties" approved="yes">
+				<source>Extension properties</source>
+			<target state="translated">Eigenschaften der Erweiterung</target></trans-unit>
+			<trans-unit id="tab_label" approved="yes">
+				<source>Tab label</source>
+			<target state="translated">Tab-Beschriftung</target></trans-unit>
+			<trans-unit id="lazyLoading" approved="yes">
+				<source>Lazy loading</source>
+			<target state="translated">Verzögertes Laden</target></trans-unit>
+			<trans-unit id="descr_lazyLoading" approved="yes">
+				<source>Make this relation lazy loading</source>
+			<target state="translated">Diese Beziehung verzögert laden (lazy loading)</target></trans-unit>
+			<trans-unit id="foreignRelationClass">
+				<source>Relation to external class</source>
+			<target></target></trans-unit>
+			<trans-unit id="descr_foreignRelationClass">
+				<source>If this is a relation to an external model, enter the (full qualified) class name here. The
+					class must exist and be loadable
+				</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_invalidConfigurationTitle">
+				<source>Invalid configuration!</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_invalidExtensionPropertiesTitle">
+				<source>Invalid extension properties</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_invalidExtensionProperties">
+				<source>Please check the fields in the left panel</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_duplicatePropertyNamesTitle">
+				<source>Duplicate property names</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_missingModelName">
+				<source>Please enter a model name!</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_duplicateModelNamesTitle">
+				<source>Duplicate model names</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_invalidModelConfiguration">
+				<source>Invalid fields in model: </source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_extensionSaveError">
+				<source>Extension could not be saved:</source>
+			<target></target></trans-unit>
+			<trans-unit id="modeler_loadPipeConfirmMessage">
+				<source>Do you really want to clear the current working board and load the selected pipe? Unsaved changes will get lost!</source>
+			<target></target></trans-unit>
+		</body>
+	</file>
+</xliff>

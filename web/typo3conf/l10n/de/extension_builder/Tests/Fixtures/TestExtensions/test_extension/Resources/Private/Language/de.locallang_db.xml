@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="tx_testextension_domain_model_main"/>
+			<label index="tx_testextension_domain_model_main.name"/>
+			<label index="tx_testextension_domain_model_main.identifier"/>
+			<label index="tx_testextension_domain_model_main.my_date"/>
+			<label index="tx_testextension_domain_model_main.child1"/>
+			<label index="tx_testextension_domain_model_main.children2"/>
+			<label index="tx_testextension_domain_model_main.child3"/>
+			<label index="tx_testextension_domain_model_main.children4"/>
+			<label index="tx_testextension_domain_model_child1"/>
+			<label index="tx_testextension_domain_model_child1.name"/>
+			<label index="tx_testextension_domain_model_child1.flag"/>
+			<label index="tx_testextension_domain_model_child2"/>
+			<label index="tx_testextension_domain_model_child2.name"/>
+			<label index="tx_testextension_domain_model_child2.date_property1"/>
+			<label index="tx_testextension_domain_model_child2.date_property2"/>
+			<label index="tx_testextension_domain_model_child2.date_property3"/>
+			<label index="tx_testextension_domain_model_child2.date_property4"/>
+			<label index="tx_testextension_domain_model_child3"/>
+			<label index="tx_testextension_domain_model_child3.name"/>
+			<label index="tx_testextension_domain_model_child3.password"/>
+			<label index="tx_testextension_domain_model_child3.image_property"/>
+			<label index="tx_testextension_domain_model_child4"/>
+			<label index="tx_testextension_domain_model_child4.name"/>
+			<label index="tx_testextension_domain_model_child4.file_property"/>
+		</languageKey>
+  </data>
+</T3locallangExt>

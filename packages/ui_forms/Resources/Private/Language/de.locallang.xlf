@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2015-08-24T10:11:39Z" product-name="ui_sitepackage">
+        <header />
+        <body>
+            <trans-unit id="element.ImageUpload.properties.SummaryPage.altText" xml:space="preserve">
+                <source>uploaded image</source>
+                <target>Hochgeladenes Bild</target>
+            </trans-unit>
+            <trans-unit id="element.DatePicker.properties.timeSelectorHourLabel" xml:space="preserve">
+                <source>Hour</source>
+                <target>Stunde</target>
+            </trans-unit>
+            <trans-unit id="element.DatePicker.properties.timeSelectorMinuteLabel" xml:space="preserve">
+                <source>Minute</source>
+                <target>Minute</target>
+            </trans-unit>
+
+            <trans-unit id="validation.error.1221560910" xml:space="preserve">
+                <source>This field is mandatory</source>
+                <target>Dieses Feld ist ein Pflichtfeld</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221560718" xml:space="preserve">
+                <source>This field is mandatory</source>
+                <target>Dieses Feld ist ein Pflichtfeld</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1347992400" xml:space="preserve">
+                <source>This field is mandatory</source>
+                <target>Dieses Feld ist ein Pflichtfeld</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1347992453" xml:space="preserve">
+                <source>This field is mandatory</source>
+                <target>Dieses Feld ist ein Pflichtfeld</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1238087674" xml:space="preserve">
+                <source>Please enter a valid Date</source>
+                <target>Bitte geben Sie ein gültiges Datum ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221551320" xml:space="preserve">
+                <source>Please enter letters or digits</source>
+                <target>Bitte geben Sie Buchstaben oder Zahlen ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221565786" xml:space="preserve">
+                <source>Please enter a valid text (e.g. without XML tags)</source>
+                <target>Bitte geben Sie einen gültigen Text ein (z.B. ohne XML Tags)</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1238110957" xml:space="preserve">
+                <source>Please enter a valid text</source>
+                <target>Bitte geben Sie einen gültigen Text ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1269883975" xml:space="preserve">
+                <source>Please enter a valid text</source>
+                <target>Bitte geben Sie einen gültigen Text ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1428504122" xml:space="preserve">
+                <source>Please enter a text between %s and %s characters</source>
+                <target>Bitte geben Sie einen Text mit %s bis %s Zeichen ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1238108068" xml:space="preserve">
+                <source>Please enter a text which is longer than %s characters</source>
+                <target>Bitte geben Sie einen Text ein, der länger als %s Zeichen ist</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1238108069" xml:space="preserve">
+                <source>Please enter a text which is not longer than %s characters</source>
+                <target>Bitte geben Sie einen Text ein, der nicht länger als %s Zeichen ist</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221559976" xml:space="preserve">
+                <source>Please enter a valid email address</source>
+                <target>Bitte geben Sie eine korrekte E-Mail-Adresse an</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221560494" xml:space="preserve">
+                <source>Please enter a valid number</source>
+                <target>Bitte geben Sie eine gültige Zahl ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221560288" xml:space="preserve">
+                <source>Please enter a valid floating point number</source>
+                <target>Bitte geben Sie eine gültige Fließkommazahl ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221563685" xml:space="preserve">
+                <source>Please enter a valid number</source>
+                <target>Bitte geben Sie eine gültige Zahl ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221561046" xml:space="preserve">
+                <source>Please enter a valid number between %s and %s</source>
+                <target>Bitte geben Sie eine gültige Zahl zwischen %s und %s  ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1221565130" xml:space="preserve">
+                <source>Please enter a valid value</source>
+                <target>Bitte geben Sie einen gültigen Wert ein</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1475002976" xml:space="preserve">
+                <source>The given subject is not countable.</source>
+                <target>Der eingegebene Wert ist nicht zählbar</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1475002994" xml:space="preserve">
+                <source>Please select %s to %s elements.</source>
+                <target>Bitte wählen Sie %s bis %s Elements aus</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1471708998" xml:space="preserve">
+                <source>The media type "%s" is not allowed for this file.</source>
+                <target>Der Typ "%s" ist nicht erlaubt</target>
+            </trans-unit>
+            <trans-unit id="validation.error.1476396435" xml:space="preserve">
+                <source>Do not fill this field</source>
+                <target>Füllen Sie dieses Feld bitte nicht aus</target>
+            </trans-unit>
+
+            <trans-unit id="element.FileUpload.properties.uploadLabel" xml:space="preserve">
+                <source>Select file</source>
+                <target>Datei wählen</target>
+            </trans-unit>
+            <trans-unit id="element.ImageUpload.properties.uploadLabel" xml:space="preserve">
+                <source>Select file</source>
+                <target>Datei wählen</target>
+            </trans-unit>
+
+            <trans-unit id="form.validation.error.general" xml:space="preserve">
+                <source>The form could not be sent. Please check your input and try again.</source>
+                <target>Das Formular konnte leider nicht versendet werden. Bitte prüfen Sie die Eingaben und versuchen Sie es erneut.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

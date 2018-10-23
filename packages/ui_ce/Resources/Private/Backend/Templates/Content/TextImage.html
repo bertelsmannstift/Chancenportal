@@ -1,0 +1,22 @@
+<f:if condition="{processedRow.tx_uice_text_image_text}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_image_text" /></strong>
+    {processedRow.tx_uice_text_image_text} (raw={row.tx_uice_text_image_text})<br>
+</f:if>
+<f:if condition="{processedRow.tx_uice_text_image_image}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_image_image" /></strong>
+<br><f:for each="{processedRow.tx_uice_text_image_image}" as="item">
+    <ul>
+        <li>
+    <ul>
+        <f:for each="{item.uid_local}" as="file">
+            <li><f:translate key="LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.uid_local" /> {file.table}|{file.uid}|{file.title} (id={item.uid})</li>
+        </f:for>
+    </ul>
+        </li>
+    </ul>
+</f:for>
+</f:if>
+<f:if condition="{processedRow.tx_uice_text_image_align}">
+    <strong><f:translate key="LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_image_align" /></strong>
+    {processedRow.tx_uice_text_image_align.0} (raw={row.tx_uice_text_image_align})<br>
+</f:if>

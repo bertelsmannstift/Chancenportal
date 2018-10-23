@@ -1,0 +1,137 @@
+/**
+ * Configure RealUrl
+ *
+ * This Config gets parsed by \UI\UiProvider\Hooks\RealurlConfigurationHook
+ * and is used to create the realurl_autoconf.php file.
+ */
+
+config.tx_extbase.settings.uandi.realurl {
+    fixedPostVars {
+
+            angebot {
+                0 {
+                    GETvar = tx_chancenportal_chancenportal[offer]
+                    lookUpTable {
+                        table = tx_chancenportal_domain_model_offer
+                        addWhereClause = AND NOT deleted
+                        id_field = uid
+                        alias_field = name
+                        languageGetVar = L
+                        languageExceptionUids =
+                        languageField = sys_language_uid
+                        transOrigPointerField = l10n_parent
+                        useUniqueCache = 1
+                        useUniqueCache_conf {
+                            strtolower = 1
+                            spaceCharacter = -
+                        }
+                    }
+                }
+                1 {
+                    GETvar = tx_chancenportal_chancenportal[action]
+                    noMatch = bypass
+                }
+                2 {
+                    GETvar = tx_chancenportal_chancenportal[controller]
+                    noMatch = bypass
+                }
+            }
+            angebot_edit {
+                0 {
+                    GETvar = tx_chancenportal_chancenportal[offer]
+                    lookUpTable {
+                        table = tx_chancenportal_domain_model_offer
+                        addWhereClause = AND NOT deleted
+                        id_field = uid
+                        alias_field = uid
+                        languageGetVar = L
+                        languageExceptionUids =
+                        languageField = sys_language_uid
+                        transOrigPointerField = l10n_parent
+                        useUniqueCache = 1
+                        useUniqueCache_conf {
+                            strtolower = 1
+                            spaceCharacter = -
+                        }
+                    }
+                }
+                1 {
+                    GETvar = tx_chancenportal_chancenportal[action]
+                    noMatch = bypass
+                }
+                2 {
+                    GETvar = tx_chancenportal_chancenportal[controller]
+                    noMatch = bypass
+                }
+                3 {
+                    GETvar = tx_chancenportal_chancenportal[saved]
+                }
+            }
+            anbieter {
+                0 {
+                    GETvar = tx_chancenportal_chancenportal[provider]
+                    lookUpTable {
+                        table = tx_chancenportal_domain_model_provider
+                        addWhereClause = AND NOT deleted
+                        id_field = uid
+                        alias_field = name
+                        languageGetVar = L
+                        languageExceptionUids =
+                        languageField = sys_language_uid
+                        transOrigPointerField = l10n_parent
+                        useUniqueCache = 1
+                        useUniqueCache_conf {
+                            strtolower = 1
+                            spaceCharacter = -
+                        }
+                    }
+                }
+                1 {
+                    GETvar = tx_chancenportal_chancenportal[action]
+                    noMatch = bypass
+                }
+                2 {
+                    GETvar = tx_chancenportal_chancenportal[controller]
+                    noMatch = bypass
+                }
+            }
+            anbieter_edit {
+                0 {
+                    GETvar = tx_chancenportal_chancenportal[provider]
+                    lookUpTable {
+                        table = tx_chancenportal_domain_model_provider
+                        addWhereClause = AND NOT deleted
+                        id_field = uid
+                        alias_field = uid
+                        languageGetVar = L
+                        languageExceptionUids =
+                        languageField = sys_language_uid
+                        transOrigPointerField = l10n_parent
+                        useUniqueCache = 1
+                        useUniqueCache_conf {
+                            strtolower = 1
+                            spaceCharacter = -
+                        }
+                    }
+                }
+                1 {
+                    GETvar = tx_chancenportal_chancenportal[action]
+                    noMatch = bypass
+                }
+                2 {
+                    GETvar = tx_chancenportal_chancenportal[controller]
+                    noMatch = bypass
+                }
+                3 {
+                    GETvar = tx_chancenportal_chancenportal[saved]
+                    noMatch = bypass
+                }
+            }
+            34 = anbieter
+            29 = anbieter_edit
+            38 = anbieter_edit
+            33 = angebot
+            28 = angebot_edit
+            32 = angebot_edit
+    }
+}

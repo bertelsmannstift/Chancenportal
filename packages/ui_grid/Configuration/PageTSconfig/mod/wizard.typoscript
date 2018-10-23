@@ -1,0 +1,5 @@
+/**
+ * Set Grid tab position
+ */
+
+mod.wizards.newContentElement.wizardItems.Grid.after = common

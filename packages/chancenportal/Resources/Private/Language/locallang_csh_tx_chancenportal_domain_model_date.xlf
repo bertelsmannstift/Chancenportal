@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-04-18T11:24:00Z" product-name="chancenportal">
+		<header/>
+		<body>
+			<trans-unit id="start_date.description">
+				<source>startDate</source>
+			</trans-unit>
+			<trans-unit id="start_time.description">
+				<source>startTime</source>
+			</trans-unit>
+			<trans-unit id="end_date.description">
+				<source>endDate</source>
+			</trans-unit>
+			<trans-unit id="end_time.description">
+				<source>endTime</source>
+			</trans-unit>
+			<trans-unit id="active.description">
+				<source>active</source>
+			</trans-unit>
+			<trans-unit id="weekday.description">
+				<source>weekday</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>type</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

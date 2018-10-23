@@ -1,0 +1,516 @@
+<f:render partial="ThemeColors" arguments="{themeColors: themeColors}"/>
+
+<section data-animation="fadeIn" class="container article-detail">
+    <div class="row info-nav__actions">
+        <div class="col-lg-6">
+            <f:if condition="{offer.preview}">
+                <f:else>
+                    <a href="#" class="info-nav__backlink">zurück</a>
+                </f:else>
+            </f:if>
+        </div>
+        <div class="col-lg-6 end-lg">
+            <custom-sharer title="{provider.name}"><span class="info-nav__share">Teilen</span></custom-sharer>
+        </div>
+    </div>
+
+    <div class="row margin-inner">
+        <div class="col-lg-6 col-sm-12 margin-inner-sm center-lg flex-col">
+            <h1 class="article-detail__headline">{provider.name}</h1>
+            <f:if condition="{provider.subline}">
+                <h2 class="article-detail__subheadline">{provider.subline}</h2>
+            </f:if>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 end-lg middle-lg start-sm flex">
+            <f:link.email email="{provider.email}" class="btn btn--primary">
+                <span>Anbieter kontaktieren</span></f:link.email>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <nav class="nav nav--tab">
+                <ul class="nav__items">
+                    <li class="nav__item nav__item--active">
+                        <a href="#">Über den Anbieter</a>
+                    </li>
+                    <f:if condition="{provider.activeOffers -> f:count()} || {provider.inActiveOffers -> f:count()}">
+                        <li class="nav__item">
+                            <a href="#angebote">Zu den Angeboten</a>
+                        </li>
+                    </f:if>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-sm-12 margin-inner-sm">
+            <div class="article-detail__text">
+                <f:if condition="{provider.longDescription}">
+                    <f:format.html parseFuncTSPath="">
+                        {provider.longDescription}
+                    </f:format.html>
+                </f:if>
+
+                <f:if condition="{provider.preview}">
+                    <f:then>
+                        <f:if condition="{provider.contentImageString}">
+                            <div class="article-detail__content_image"><img src="{provider.contentImageString}"></div>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{provider.contentImage}">
+                            <div class="article-detail__content_image"><f:image image="{provider.contentImage}" maxWidth="842"></f:image></div>
+                        </f:if>
+                    </f:else>
+                </f:if>
+
+                <f:if condition="{provider.categories}">
+
+                    <div class="article-detail__categories">
+                        <strong>Anbieter in Kategorien</strong>
+
+                        <div>
+                            <f:for each="{provider.categories}" as="category">
+                                <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_search)}#category={category.uid}"
+                                   class="btn btn--small btn--cat-{category.theme}">
+                                    <span>{category.name}</span>
+                                </a>
+                            </f:for>
+                        </div>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-12 col-md-4 col-md-offset-0 col-lg-offset-1 col-sm-offset-0">
+            <div class="article-detail__infos">
+                <f:if condition="{provider.openingHours}">
+                    <h3>Öffnungszeiten</h3>
+                    <div>
+                        <div>
+                            <f:format.nl2br>{provider.openingHours}</f:format.nl2br>
+                        </div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{provider.carrier}">
+                    <div>
+                        <strong>Träger</strong>
+                        <div>{provider.carrier.name}</div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{provider.numberOfEmployees}">
+                    <div>
+                        <strong>Mitarbeiterzahl</strong>
+                        <div>{provider.numberOfEmployees}</div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{provider.participation}">
+                    <div>
+                        <strong>Engagement</strong>
+                        <div>
+                            <f:if condition="{provider.participation} == 1">
+                                Erwünscht
+                            </f:if>
+                            <f:if condition="{provider.participation} == 2">
+                                Möglich
+                            </f:if>
+                            <f:if condition="{provider.participation} == 3">
+                                Nicht möglich
+                            </f:if>
+                        </div>
+                    </div>
+                </f:if>
+
+                <f:if condition="{provider.labels}">
+                    <f:for each="{provider.labels}" as="label">
+                        <div>
+                            <strong>{label.name}</strong>
+                            <div>
+                                <f:format.html>{label.text}</f:format.html>
+                            </div>
+                        </div>
+                    </f:for>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container">
+    <div class="article-detail__offer-box">
+        <div class="row">
+            <div class="col-lg-5 col-md-6 col-sm-12 margin-inner-sm margin-inner-md">
+                <h3>Adresse und Kontakt</h3>
+                <div class="flex-row">
+
+
+                    <f:if condition="{provider.preview}">
+                        <f:then>
+                            <f:if condition="{provider.logoString} > 0">
+                                <f:then>
+                                    <div class="article-detail__img__center">
+                                        <div class="article-detail__img">
+                                            <f:image src="{provider.logoString}" treatIdAsReference="1" maxWidth="280"></f:image>
+                                        </div>
+                                    </div>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{provider.logoString}">
+                                        <f:then>
+                                            <div class="article-detail__img__center">
+                                                <div class="article-detail__img">
+                                                    <img src="{provider.logoString}">
+                                                </div>
+                                            </div>
+                                        </f:then>
+                                    </f:if>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{provider.logo}">
+                                <div class="article-detail__img__center">
+                                    <div class="article-detail__img">
+                                        <f:image image="{provider.logo}" maxWidth="280"></f:image>
+                                    </div>
+                                </div>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+
+
+                    <div class="article-detail__imgtext{f:if(condition: '{provider.logo} || {provider.logoString}', else: ' article-detail__imgtext--no-image')}">
+                        <div><strong>{provider.name}</strong></div>
+                        <div>{provider.street}</div>
+                        <div>{provider.city}</div>
+
+                        <a href="https://www.google.com/maps?q={provider.address -> f:format.urlencode()}" target="_blank">Auf Karte anzeigen</a>
+                        <br><br>
+
+                        <f:if condition="{provider.phone}">
+                            <div>{provider.phone}</div>
+                        </f:if>
+
+                        <f:if condition="{provider.phone2}">
+                            <div>{provider.phone2}</div>
+                        </f:if>
+
+                        <div>
+                            <f:link.email email="{provider.email}" />
+                        </div>
+                        <f:if condition="{provider.website}">
+                            <div>
+                                <a href="{provider.website}" target="_blank" style="word-break: break-word;">{provider.website}</a>
+                            </div>
+                        </f:if>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12 margin-inner-md">
+                <h3>
+                    <f:if condition="{provider.contactName}">
+                        <f:if condition="{provider.contactSalutation} === 0">
+                            <f:then>
+                                Ihre Ansprechpartnerin
+                            </f:then>
+                            <f:else>
+                                Ihr Ansprechpartner
+                            </f:else>
+                        </f:if>
+                    </f:if>
+                    <br/>
+                </h3>
+                <div class="flex-row">
+                    <f:if condition="{provider.contactName}">
+                        <div class="article-detail__img__center">
+                            <div class="article-detail__img article-detail__img--profile">
+                                <f:if condition="{provider.contactImage} || {provider.contactImageString}">
+                                    <f:then>
+                                        <f:if condition="{provider.preview}">
+                                            <f:then>
+                                                <f:if condition="{provider.contactImageString} > 0">
+                                                    <f:then>
+                                                        <f:image src="{provider.contactImageString}" treatIdAsReference="1" height="80c" width="80c"></f:image>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <f:if condition="{provider.contactImageString}">
+                                                            <f:then>
+                                                                <div class="article-detail__img__bg" style="background-image: url('{provider.contactImageString}');"></div>
+                                                            </f:then>
+                                                            <f:else>
+                                                                <img src="/typo3conf/ext/chancenportal/Resources/Public/svg/ansprechpartner.svg">
+                                                            </f:else>
+                                                        </f:if>
+
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <f:image image="{provider.contactImage}" height="80c" width="80c"></f:image>
+                                            </f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>
+                                        <img src="/typo3conf/ext/chancenportal/Resources/Public/svg/ansprechpartner.svg">
+                                    </f:else>
+                                </f:if>
+                            </div>
+                        </div>
+                    </f:if>
+                    <div class="article-detail__imgtext">
+                        <div><strong>{provider.contactName}</strong></div>
+                        <f:if condition="{provider.contactJurisdiction}">
+                            <div>{provider.contactJurisdiction}</div>
+                        </f:if>
+                        <f:if condition="{provider.contactPhone}">
+                            <div>{provider.contactPhone}</div>
+                        </f:if>
+                        <f:if condition="{provider.contactEmail}">
+                            <div>
+                                <f:link.email email="{provider.contactEmail}" />
+                            </div>
+                        </f:if>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12 col-sm-12 end-lg middle-lg flex start-md">
+                <f:link.email email="{provider.email}" class="btn btn--primary"><span>Anbieter kontaktieren</span>
+                </f:link.email>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<f:if condition="{provider.activeOffers -> f:count()} || {provider.inActiveOffers -> f:count()}">
+    <section id="angebote" class="container">
+
+        <div class="row search__tags">
+            <div class="col-lg-12 col-sm-12 flex middle-lg bottom-lg margin-inner">
+                <div>
+                    <div class="search__tabs">
+                        <div class="search__tab search__tab--active" data-toggle-class="search__tab--active" data-toggle-items=".provider__offers,.provider__offer_archive" data-toggle-show=".provider__offers">
+                            <strong>Aktuelle Angebote</strong>
+                        </div>
+                        <div class="search__tab" data-toggle-class="search__tab--active" data-toggle-items=".provider__offers,.provider__offer_archive" data-toggle-show=".provider__offer_archive">
+                            <strong>Abgelaufene Angebote</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row provider__offers">
+            <div class="col-lg-12">
+                <f:if condition="{provider.activeOffers -> f:count()}">
+                    <f:then>
+                        <div data-animation="fadeIn" class="container">
+                            <div class="row margin-inner">
+                                <f:for each="{provider.activeOffers}" as="offer" iteration="i">
+
+                                    <f:if condition="{i.index} <= 7">
+                                        <div
+                                            class="col-lg-3 col-sm-12 col-md-6 margin-inner">
+                                            <div class="kachel kachel--theme-{offer.theme}">
+                                                <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                                                    <div class="kachel__inner">
+                                                        <div class="kachel__category">
+                                                            <f:if condition="{offer.mainCategory}">
+                                                                {offer.mainCategory.name}
+                                                            </f:if>
+                                                        </div>
+                                                        <div class="kachel__content">
+                                                            <h3 class="kachel__headline">
+                                                                {offer.name}
+                                                            </h3>
+                                                            <h4 class="kachel__subheadline">
+                                                                {offer.shortDescription}
+                                                            </h4>
+
+                                                            <div class="kachel__date">
+
+                                                                <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
+                                                                    <div class="kachel__calendar">
+                                                                        <c:OfferFormater offer="{offer}" output="date" long="0"  />
+                                                                    </div>
+                                                                </f:if>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kachel__arrow"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </f:if>
+
+                                    <f:if condition="{i.index} > 7">
+                                        <div
+                                            class="col-lg-3 col-sm-12 col-md-6 article-detail__offers_hidden margin-inner">
+                                            <div class="kachel kachel--theme-{offer.theme}">
+                                                <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                                                    <div class="kachel__inner">
+                                                        <div class="kachel__category">
+                                                            <f:if condition="{offer.mainCategory}">
+                                                                {offer.mainCategory.name}
+                                                            </f:if>
+                                                        </div>
+                                                        <div class="kachel__content">
+                                                            <h3 class="kachel__headline">
+                                                                {offer.name}
+                                                            </h3>
+                                                            <h4 class="kachel__subheadline">
+                                                                {offer.shortDescription}
+                                                            </h4>
+
+                                                            <div class="kachel__date">
+
+                                                                <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
+                                                                    <div class="kachel__calendar">
+                                                                        <c:OfferFormater offer="{offer}" output="date" long="0"  />
+                                                                    </div>
+                                                                </f:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kachel__arrow"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                            <f:if condition="{provider.activeOffers -> f:count()} > 8">
+
+                                <div class="row">
+                                    <div class="col-lg-12 center-lg">
+                                        <a href="#" data-more-items=".article-detail__offers_hidden,.show-less" data-less-items=".show-more" class="btn btn--primary">
+                                            <span class="show-more">Mehr Angebote anzeigen</span>
+                                            <span class="show-less">Weniger Angebote anzeigen</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </f:if>
+
+                        </div>
+                    </f:then>
+                    <f:else>
+                        Keine aktuellen Angebote.
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+        <div class="row provider__offer_archive">
+            <div class="col-lg-12">
+                <f:if condition="{provider.inActiveOffers -> f:count()}">
+                    <f:then>
+                        <div data-animation="fadeIn" class="container">
+                            <div class="row margin-inner">
+                                <f:for each="{provider.inActiveOffers}" as="offer" iteration="i">
+
+                                    <f:if condition="{i.index} <= 7">
+                                        <div
+                                            class="col-lg-3 col-sm-12 col-md-6 margin-inner">
+                                            <div class="kachel kachel--theme-{offer.theme}">
+                                                <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                                                    <div class="kachel__inner">
+                                                        <div class="kachel__category">
+                                                            <f:if condition="{offer.mainCategory}">
+                                                                {offer.mainCategory.name}
+                                                            </f:if>
+                                                        </div>
+                                                        <div class="kachel__content">
+                                                            <h3 class="kachel__headline">
+                                                                {offer.name}
+                                                            </h3>
+                                                            <h4 class="kachel__subheadline">
+                                                                {offer.shortDescription}
+                                                            </h4>
+
+                                                            <div class="kachel__date">
+
+                                                                <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
+                                                                    <div class="kachel__calendar">
+                                                                        <c:OfferFormater offer="{offer}" output="date" long="0"  />
+                                                                    </div>
+                                                                </f:if>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kachel__arrow"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </f:if>
+
+                                    <f:if condition="{i.index} > 7">
+                                        <div
+                                            class="col-lg-3 col-sm-12 col-md-6 article-detail__offers_hidden margin-inner">
+                                            <div class="kachel kachel--theme-{offer.theme}">
+                                                <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                                                    <div class="kachel__inner">
+                                                        <div class="kachel__category">
+                                                            <f:if condition="{offer.mainCategory}">
+                                                                {offer.mainCategory.name}
+                                                            </f:if>
+                                                        </div>
+                                                        <div class="kachel__content">
+                                                            <h3 class="kachel__headline">
+                                                                {offer.name}
+                                                            </h3>
+                                                            <h4 class="kachel__subheadline">
+                                                                {offer.shortDescription}
+                                                            </h4>
+
+                                                            <div class="kachel__date">
+
+                                                                <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
+                                                                    <div class="kachel__calendar">
+                                                                        <c:OfferFormater offer="{offer}" output="date" long="0"  />
+                                                                    </div>
+                                                                </f:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kachel__arrow"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                            <f:if condition="{provider.activeOffers -> f:count()} > 8">
+
+                                <div class="row">
+                                    <div class="col-lg-12 center-lg">
+                                        <a href="#" data-more-items=".article-detail__offers_hidden,.show-less" data-less-items=".show-more" class="btn btn--primary">
+                                            <span class="show-more">Mehr Angebote anzeigen</span>
+                                            <span class="show-less">Weniger Angebote anzeigen</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </f:if>
+
+                        </div>
+                    </f:then>
+                    <f:else>
+                        Keine abgelaufenen Angebote.
+                    </f:else>
+                </f:if>
+            </div>
+        </div>
+    </section>
+</f:if>

@@ -1,0 +1,110 @@
+<div class="row search__row margin-inner-sm">
+    <div class="col-lg-6 col-md-12 margin-inner-md">
+        <div class="search__label">
+            <span>
+                <f:if condition="{search_box_headline}">
+                    <f:then>
+                        {search_box_headline}
+                    </f:then>
+                    <f:else>
+                        Was für Angebote suchen Sie?
+                    </f:else>
+                </f:if>
+            </span>
+        </div>
+        <div class="search__fields search__fields--joined">
+            <custom-dropdown submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" id="category" show-selected-title="true"
+                             options="{categories}"></custom-dropdown>
+            <custom-input css-class="search__input" id="term" show-tag="true" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" placeholder="Suchbegriff"></custom-input>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-md-12">
+
+        <div class="search__label">
+            Wo suchen Sie?
+        </div>
+
+        <f:if condition="{settings.chancenportal.use_zip_filter}">
+            <f:then>
+                <div class="search__fields--submit">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-6 margin-inner-md">
+                            <custom-input css-class="search__input" id="zip" placeholder="PLZ oder Ort" show-tag="true" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}"></custom-input>
+                        </div>
+                        <div class="col-lg-4 col-md-6 margin-inner-md">
+
+                            <custom-dropdown submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" id="distance" show-selected-title="true"
+                                             options="{perimeters}"></custom-dropdown>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 end-lg margin-inner-md">
+                            <button title="Suchen" type="submit" class="btn search__submit btn--primary">
+                                <span>Suchen</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </f:then>
+            <f:else>
+                <div class="search__fields search__fields--submit">
+                    <custom-dropdown submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" allow-group-selection="false" show-tag="true" id="districts" show-selected-title="true" multiple-select="true" placeholder="Alle Ortsteile"
+                                     options="{districts}" class="search__dropdown--full"></custom-dropdown>
+
+                    <button title="Suchen" type="submit" class="btn search__submit btn--primary">
+                        <span>Suchen</span>
+                    </button>
+                </div>
+            </f:else>
+        </f:if>
+        <f:if condition="{show_more}">
+            <custom-trigger toggle-class="search__fields--showhide" selector="#hidden-box" more="+ Mehr anzeigen" less="- Weniger anzeigen"
+                            class="search__trigger"></custom-trigger>
+        </f:if>
+    </div>
+</div>
+
+<f:if condition="{show_more}">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="hidden-box" class="search__fields search__fields--showhide">
+                <custom-dropdown id="date" show-selected-title="true" placeholder="Zeit / Zeitraum">
+                    <div class="search__fields__layer">
+                        <custom-radio submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" is-checked="true" id="timerange" disabled-selector="#from_date,#to_date"
+                                      show-selector="#to_date,#from_date,.search__fields__dates,.search__fields__seperator" hide-selector="#single_date,.search__fields__weekdays"
+                                      name="dateType" value="1"
+                                      label="Zeitraum"></custom-radio>
+                        <custom-radio id="singledate" name="dateType" disabled-selector="#single_date" show-selector=".search__fields__dates,#single_date"
+                                      hide-selector="#from_date,#to_date,.search__fields__seperator,.search__fields__weekdays" value="2"
+                                      label="Festes Datum"></custom-radio>
+                        <div class="search__fields__dates">
+                            <custom-datepicker submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" id="from_date" name="dates[]" placeholder="Von"></custom-datepicker>
+                            <div class="search__fields__seperator">-</div>
+                            <custom-datepicker submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" id="to_date" name="dates[]" placeholder="Bis"></custom-datepicker>
+                            <custom-datepicker submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" id="single_date" name="dates[]" placeholder="Datum"></custom-datepicker>
+                        </div>
+                        <custom-radio id="days" name="dateType"
+                                      hide-selector=".search__fields__dates"
+                                      show-selector=".search__fields__weekdays"
+                                      disabled-selector="#mo,#di,#mi,#do,#fr,#sa,#so" value="3"
+                                      label="Nur an bestimmten Wochentagen"></custom-radio>
+                        <div class="search__fields__weekdays">
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Mo." value="1" is-disabled="true" id="mo"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Di." value="1" is-disabled="true" id="di"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Mi." value="1" is-disabled="true" id="mi"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Do." value="1" is-disabled="true" id="do"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Fr." value="1" is-disabled="true" id="fr"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="Sa." value="1" is-disabled="true" id="sa"></custom-select>
+                            <custom-select submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" label="So." value="1" is-disabled="true" id="so"></custom-select>
+                        </div>
+                    </div>
+                </custom-dropdown>
+                <custom-dropdown id="targetGroups" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" allow-group-selection="false" show-tag="true" show-selected-title="true" placeholder="Alter / Zielgruppe" multiple-select="true"
+                                 options="{targetGroups}"></custom-dropdown>
+                <custom-select label="Barrierefrei" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="accessibility"></custom-select>
+                <custom-select label="Kostenfrei" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="noCosts"></custom-select>
+            </div>
+        </div>
+    </div>
+</f:if>
+

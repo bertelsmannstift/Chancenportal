@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Extension-Builder</label>
+			<label index="mlang_labels_tabdescr">Objekte der Erweiterung anzeigen/verändern</label>
+			<label index="mlang_Tx_ExtensionBuilder_domain_model_person_developer">Entwickler</label>
+			<label index="mlang_Tx_ExtensionBuilder_domain_model_person_product_manager">Produktmanager</label>
+		</languageKey>
+  </data>
+</T3locallangExt>

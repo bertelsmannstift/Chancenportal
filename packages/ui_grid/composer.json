@@ -1,0 +1,15 @@
+{
+    "name": "ui/ui-grid",
+    "type": "typo3-cms-extension",
+    "description": "",
+    "authors": [],
+    "require": {
+        "typo3/cms-core": "^8.7",
+        "uandi-typo3/ui_provider": "^3.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "UI\\UiGrid\\": "Classes"
+        }
+    }
+}

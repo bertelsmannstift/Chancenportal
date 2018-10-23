@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-04-18T11:24:00Z" product-name="chancenportal">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="subline.description">
+				<source>subline</source>
+			</trans-unit>
+			<trans-unit id="short_description.description">
+				<source>shortDescription</source>
+			</trans-unit>
+			<trans-unit id="long_description.description">
+				<source>longDescription</source>
+			</trans-unit>
+			<trans-unit id="number_of_employees.description">
+				<source>numberOfEmployees</source>
+			</trans-unit>
+			<trans-unit id="participation.description">
+				<source>participation</source>
+			</trans-unit>
+			<trans-unit id="content_image.description">
+				<source>contentImage</source>
+			</trans-unit>
+			<trans-unit id="logo.description">
+				<source>logo</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="website.description">
+				<source>website</source>
+			</trans-unit>
+			<trans-unit id="contact_salutation.description">
+				<source>contactSalutation</source>
+			</trans-unit>
+			<trans-unit id="contact_name.description">
+				<source>contactName</source>
+			</trans-unit>
+			<trans-unit id="contact_jurisdiction.description">
+				<source>contactJurisdiction</source>
+			</trans-unit>
+			<trans-unit id="contact_phone.description">
+				<source>contactPhone</source>
+			</trans-unit>
+			<trans-unit id="contact_email.description">
+				<source>contactEmail</source>
+			</trans-unit>
+			<trans-unit id="contact_image.description">
+				<source>contactImage</source>
+			</trans-unit>
+			<trans-unit id="phone.description">
+				<source>phone</source>
+			</trans-unit>
+			<trans-unit id="phone2.description">
+				<source>phone2</source>
+			</trans-unit>
+			<trans-unit id="opening_hours.description">
+				<source>openingHours</source>
+			</trans-unit>
+			<trans-unit id="active.description">
+				<source>active</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="address.description">
+				<source>address</source>
+			</trans-unit>
+			<trans-unit id="lat.description">
+				<source>lat</source>
+			</trans-unit>
+			<trans-unit id="lng.description">
+				<source>lng</source>
+			</trans-unit>
+			<trans-unit id="approved.description">
+				<source>approved</source>
+			</trans-unit>
+			<trans-unit id="reminder_email_send.description">
+				<source>reminderEmailSend</source>
+			</trans-unit>
+			<trans-unit id="labels.description">
+				<source>labels</source>
+			</trans-unit>
+			<trans-unit id="offers.description">
+				<source>offers</source>
+			</trans-unit>
+			<trans-unit id="owner_group.description">
+				<source>ownerGroup</source>
+			</trans-unit>
+			<trans-unit id="carrier.description">
+				<source>carrier</source>
+			</trans-unit>
+			<trans-unit id="categories.description">
+				<source>categories</source>
+			</trans-unit>
+			<trans-unit id="creator.description">
+				<source>creator</source>
+			</trans-unit>
+			<trans-unit id="author.description">
+				<source>author</source>
+			</trans-unit>
+			<trans-unit id="teaser_images.description">
+				<source>teaserImages</source>
+			</trans-unit>
+			<trans-unit id="teaser_image.description">
+				<source>teaserImage</source>
+			</trans-unit>
+			<trans-unit id="type_of_carrier.description">
+				<source>typeOfCarrier</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,56 @@
+.form-control-wrap {
+    max-width: none !important
+}
+
+textarea.formengine-textarea {
+    max-height: 150px !important
+}
+
+select.form-control-adapt {
+    width: 100%
+}
+
+.form-multigroup-wrap select.form-control[multiple],
+.form-multigroup-wrap select.form-control[size] {
+    height: 125px
+}
+
+.form-wizards-bottom .form-wizards-items {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.form-wizards-bottom .form-wizards-items > .btn-group {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin-right: 10px
+}
+
+.form-irre-header-cell > img[src$=".svg"] {
+    max-width:45px;
+    max-height:30px;
+    width:auto;
+    height:auto;
+}
+
+.table .col-title > img[src$=".svg"] {
+    max-width: 64px;
+    height:auto;
+}
+
+.t3-page-ce-body-inner-teaser {
+     display: block;
+     padding: 10px 0 4px 0px;
+     border-top: 1px solid #CACACA;
+     margin-top: 6px;
+ }
+
+.t3-page-ce-body-inner-teaser ul,
+.t3-page-ce-body-inner-teaser ol {
+    margin: 0;
+    padding: 10px 0 10px 30px;
+}

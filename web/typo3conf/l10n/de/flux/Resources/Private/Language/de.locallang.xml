@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="newContentWizard.fluxContent">Flux-Inhalt</label>
+			<label index="tt_content.tx_flux_container">Inhalts-Container</label>
+			<label index="tt_content.tx_flux_parent">Eltern-Element</label>
+			<label index="tt_content.tx_flux_column">Inhaltsbereich des Eltern-Elements</label>
+			<label index="tt_content.tx_flux_children">Unterelement</label>
+			<label index="tt_content.tabs.relation">Relationen</label>
+			<label index="tt_content.tx_flux_options">Option(en)</label>
+			<label index="flux.clearValue">Wert leeren</label>
+			<label index="pipes.standard.label">Standard-Pipe (keine Aktion)</label>
+			<label index="pipes.controller.label">Controller-Action-Pipe</label>
+			<label index="pipes.email.label">E-Mail-Versand-Pipe</label>
+			<label index="pipes.flashMessage.label">FlashMessage-Weiterleitungs-Pipe</label>
+			<label index="pipes.typeConverter.label">Extbase-TypeConverter-Pipe</label>
+			<label index="reference">Referenz auf den Inhalt von Seite '%s' - Anklicken um zum Original zu springen.</label>
+			<label index="user.no_fields">Keine Felder im Formular gefunden</label>
+			<label index="user.no_selection">Kein Formular ausgewählt/konfiguriert (Mehr Informationen mit aktiviertem Flux-Debug)</label>
+			<label index="user.no_template">Keine FlexForm-Quelle ausgewählt. Grund sind üblicherweise nicht-korrekte Template-Pfade aus einem ConfigurationProvider. Im Fall von FED/FluidContent/FluidPages kann dies auch hervorgerufen werden wenn kein Seitenmplate oder Fluid-Content Elementen-Typ ausgewählt wurde. Die kann sicher als sicherer "Fehler" betrachtet werden, da er nur bei aktiviertem Debug-Mode in Flux ausgegeben wird. Folgender Parameter führte zu diesem Fehler:</label>
+			<label index="flux.this_table_does_not_exist.fields.input">flux.this_table_does_not_exist.fields.input</label>
+			<label index="flux.this_table_does_not_exist">flux.this_table_does_not_exist</label>
+			<label index="new">Neues Inhaltselement an dieser Stelle einfügen</label>
+			<label index="paste">An dieser Stelle einfügen</label>
+			<label index="paste_reference">An dieser Stelle als Referenz einfügen</label>
+		</languageKey>
+  </data>
+</T3locallangExt>

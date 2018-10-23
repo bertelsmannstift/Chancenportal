@@ -1,0 +1,427 @@
+<f:render partial="ThemeColors" arguments="{themeColors: themeColors}"/>
+
+<f:if condition="{provider.active} && {provider.approved}">
+    <div class="my-account__status"><strong>Status:</strong> Freigegeben + Online</div>
+</f:if>
+
+<f:if condition="{provider.active} && {provider.approved} == 0">
+    <div class="my-account__status my-account__status--wait"><strong>Status:</strong> Warte auf Freigabe</div>
+</f:if>
+
+<f:if condition="{saved}">
+    <div class="info-box margin-inner-lg">
+        Die Einstellungen wurden gespeichert!
+    </div>
+</f:if>
+
+<f:form
+    name="provider"
+    object="{provider}"
+    action="{action}"
+    method="post"
+    enctype="multipart/form-data"
+    class="form-to-validate"
+    novalidate="1">
+
+    <div class="row margin-lg">
+        <div class="col-lg-4 col-sm-12 margin-sm">
+            <h1 class="margin-small">
+                Anbieterprofil
+            </h1>
+        </div>
+        <div class="col-lg-8 col-sm-12 end-lg">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="preview"></c:formConfiguration>
+            <custom-preview>
+                <button type="submit" class="btn" name="tx_chancenportal_chancenportal[provider][preview]" value="1">Vorschau</button>
+            </custom-preview>
+
+            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                <f:then>
+                    <button type="submit" class="btn" style="margin-left: 20px">Speichern</button>
+                </f:then>
+                <f:else>
+                    <f:if condition="{provider.approved} == 0">
+                        <f:then>
+                            <button type="submit" class="btn" style="margin-left: 20px">Zur Freigabe einreichen</button>
+                        </f:then>
+                        <f:else>
+                            <button type="submit" class="btn" style="margin-left: 20px">Speichern</button>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:security.ifHasRole>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <div class="info-box margin-inner-lg">
+                Hinweis: Wenn der Anbieter inaktiv ist, werden auch keine Angebote des Anbieters angezeigt.<br/>
+                Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Anbieterseite angezeigt.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 end-lg">
+            <div>
+                <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                    <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="approved"></c:formConfiguration>
+                    <custom-select style="margin-right: 15px" label="Anbieter genehmigen" theme="light" name="tx_chancenportal_chancenportal[provider][approved]" value="1" id="tx_chancenportal_chancenportal[provider][approved]" is-checked="{f:if(condition: '{provider.approved}', then: 'true', else: 'false')}"></custom-select>
+                </f:security.ifHasRole>
+
+                <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                    <f:then>
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="active"></c:formConfiguration>
+                        <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[provider][active]" value="1" id="tx_chancenportal_chancenportal[provider][active]" is-checked="{f:if(condition: '{provider.active}', then: 'true', else: 'false')}"></custom-select>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{provider.approved}">
+                            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="active"></c:formConfiguration>
+                            <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[provider][active]" value="1" id="tx_chancenportal_chancenportal[provider][active]" is-checked="{f:if(condition: '{provider.active}', then: 'true', else: 'false')}"></custom-select>
+                        </f:if>
+                    </f:else>
+                </f:security.ifHasRole>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <h2>Über den Anbieter</h2>
+        </div>
+    </div>
+
+    <f:if condition="{provider.name}">
+        <f:then>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'name\', className: \' input--error\'}')}">
+                        <label class="input__label">Name der Organisation*</label>
+                        <f:form.textfield property="name" class="input__field" required="1" />
+                        <f:render partial="FieldError" arguments="{object: object, fieldName: 'name', errorMsg: 'Geben Sie einen Namen ein.'}"/>
+                    </div>
+                </div>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'name\', className: \' input--error\'}')}">
+                        <label class="input__label">Name der Organisation*</label>
+                        <f:form.textfield property="name" placeholder="" class="input__field" required="1" />
+                        <f:render partial="FieldError" arguments="{object: object, fieldName: 'name', errorMsg: 'Geben Sie einen Namen ein.'}"/>
+                    </div>
+                </div>
+            </div>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{users}">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="input">
+                    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'author\', className: \' input--error\'}')}">
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="author"></c:formConfiguration>
+                        <label class="input__label">Autor</label>
+                        <custom-dropdown id="tx_chancenportal_chancenportal[provider][author]" placeholder="Bitte wählen" theme="light" show-selected-title="true" options="{users}"></custom-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </f:if>
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'subline\', className: \' input--error\'}')}">
+                <label class="input__label">Unterzeile Organisation</label>
+                <f:form.textfield property="subline" class="input__field" />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'subline', errorMsg: 'Geben Sie einen Namen ein.'}"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input">
+                <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'type\', className: \' input--error\'}')}">
+                    <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="categories"></c:formConfiguration>
+                    <label class="input__label">Kategorie/n*</label>
+                    <custom-dropdown id="tx_chancenportal_chancenportal[provider][categories]" allow-only-one-group-select="false" required="true" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" options="{categories}"></custom-dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'shortDescription\', className: \' input--error\'}')}">
+                <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="shortDescription"></c:formConfiguration>
+
+                <label class="input__label">Kurzbeschreibung / Teaser-Text (max.200 Zeichen)*</label>
+                <textarea name="tx_chancenportal_chancenportal[provider][shortDescription]" cols="30" rows="10" maxlength="200" class="input__field" required="required" style="height:120px;min-height:120px;">{provider.shortDescription}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="longDescription"></c:formConfiguration>
+            <custom-rte-input name="tx_chancenportal_chancenportal[provider][longDescription]" type="textarea" label="Langbeschreibung" min-height="400" value="{provider.longDescription}"></custom-rte-input>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-lg">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="contentImageString"></c:formConfiguration>
+
+            <custom-upload name="tx_chancenportal_chancenportal[provider][contentImageString]" input-files='{contentImage}' label="Content-Bild hinzufügen (max. 1)" editor="true" max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <h2>Zahlen und Fakten</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <div class="info-box margin-inner-lg">
+                <strong>Wichtiges im Überblick</strong><br/>
+                Hier haben Sie die Möglichkeit, bestimmte Details und/oder Besonderheiten Ihrer Einrichtung einzutragen
+            </div>
+        </div>
+    </div>
+    <f:comment>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'type\', className: \' input--error\'}')}">
+                    <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="carrier"></c:formConfiguration>
+
+                    <label class="input__label">Art des Trägers</label>
+                    <custom-dropdown id="tx_chancenportal_chancenportal[provider][carrier]" theme="light" show-selected-title="true" options="{carrierItems}"></custom-dropdown>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'numberOfEmployees\', className: \' input--error\'}')}">
+                    <label class="input__label">Mitarbeiterzahl</label>
+                    <f:form.textfield property="numberOfEmployees" class="input__field" />
+                    <f:render partial="FieldError" arguments="{object: object, fieldName: 'numberOfEmployees', errorMsg: 'Geben Sie einen Namen ein.'}"/>
+                </div>
+            </div>
+        </div>
+    </f:comment>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-lg">
+            <div class="input">
+
+                <label class="input__label">Engagement / Mitwirkung</label>
+                <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="participation"></c:formConfiguration>
+
+                <div>
+                    <custom-radio is-checked="{f:if(condition: '{provider.participation} == 0', then: 'true', else: 'false')}" id="participation_0" name="tx_chancenportal_chancenportal[provider][participation]" value="" theme="light" label="Keine Angabe"></custom-radio>
+                    <custom-radio is-checked="{f:if(condition: '{provider.participation} == 1', then: 'true', else: 'false')}" id="participation_1" name="tx_chancenportal_chancenportal[provider][participation]" value="1" theme="light" label="Erwünscht"></custom-radio>
+                    <custom-radio is-checked="{f:if(condition: '{provider.participation} == 2', then: 'true', else: 'false')}" id="participation_2" name="tx_chancenportal_chancenportal[provider][participation]" value="2" theme="light" label="Möglich"></custom-radio>
+                    <custom-radio is-checked="{f:if(condition: '{provider.participation} == 3', then: 'true', else: 'false')}" id="participation_3" name="tx_chancenportal_chancenportal[provider][participation]" value="3" theme="light" label="Nicht möglich"></custom-radio>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-lg">
+            <div class="my-account__individuell-info">- Hier können Sie optional weitere Informationen zu Ihrer Organisation hinzufügen. Diese werden in der rechten Spalte unter Zahlen und Fakten ausgespielt. -</div>
+        </div>
+    </div>
+
+    <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="labels"></c:formConfiguration>
+
+
+    <custom-new-line class="margin-lg">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="rte-margin">
+                    <div class="input">
+                        <label class="input__label">Titel</label>
+                        <input type="text" name="tx_chancenportal_chancenportal[provider][labels][0][name]" class="input__field">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="input input--rte">
+                    <custom-rte-input name="tx_chancenportal_chancenportal[provider][labels][0][text]" value="" type="textarea" label="Beschreibung" min-height="100" :rte="true"></custom-rte-input>
+                </div>
+            </div>
+        </div>
+        <f:if condition="{provider.labels}">
+            <f:then>
+                <f:for each="{provider.labels}" as="label" iteration="iteration">
+
+                    <div class="row" data-item>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="rte-margin">
+                                <div class="input">
+                                    <label class="input__label">Titel</label>
+                                    <input type="text" name="tx_chancenportal_chancenportal[provider][labels][{iteration.index}][name]" value="{label.name}" class="input__field">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+
+                            <custom-rte-input name="tx_chancenportal_chancenportal[provider][labels][0][text]" value="{label.text}" type="textarea" label="Beschreibung" min-height="100" :rte="true"></custom-rte-input>
+                        </div>
+                    </div>
+                </f:for>
+            </f:then>
+        </f:if>
+
+    </custom-new-line>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <h2>Adresse und Kontakt</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-lg">
+
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="logoString"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="logoName"></c:formConfiguration>
+
+            <custom-upload name="tx_chancenportal_chancenportal[provider][logoString]" file-name="tx_chancenportal_chancenportal[provider][logoName]" label="Logo hinzufügen (max. 1)" input-files='{logo}' max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="address"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="lng"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="lat"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="zip"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="street"></c:formConfiguration>
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="city"></c:formConfiguration>
+
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'address\', className: \' input--error\'}')}">
+                <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[provider][street]" name-city="tx_chancenportal_chancenportal[provider][city]" label="Adresse *" required="true" value="{provider.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[provider][lng]" name-zip="tx_chancenportal_chancenportal[provider][zip]" name-lat="tx_chancenportal_chancenportal[provider][lat]" name="tx_chancenportal_chancenportal[provider][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'email\', className: \' input--error\'}')}">
+                <label class="input__label">E-Mail*</label>
+                <f:form.textfield property="email" class="input__field" required="1" type="email" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">Telefonnummer</label>
+                <f:form.textfield property="phone" class="input__field" maxlength="200" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">2. Telefonnummer</label>
+                <f:form.textfield property="phone2" class="input__field" maxlength="200" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'website\', className: \' input--error\'}')}">
+                <label class="input__label">Website</label>
+                <f:form.textfield property="website" placeholder="" class="input__field" />
+            </div>
+        </div>
+    </div>
+    <div class="row margin-lg">
+        <div class="col-lg-12">
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'website\', className: \' input--error\'}')}">
+                <label class="input__label">Öffnungszeiten</label>
+                <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="openingHours"></c:formConfiguration>
+                <textarea name="tx_chancenportal_chancenportal[provider][openingHours]" cols="30" rows="10" class="input__field" style="height:120px;min-height:120px;">{provider.openingHours}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <h2>Ansprechpartner/in</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 margin-inner-sm">
+            <div class="info-box margin-inner-lg">
+                Die Angabe spezifischer Kontaktangaben für die/den Ansprechpartner/in sind freiwillig. Es wird in jedem Fall einen Kontakt-Button mit der allgemeinen Anbieter Email-Adresse geben.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">Anrede</label>
+                <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="contactSalutation"></c:formConfiguration>
+                <custom-dropdown id="tx_chancenportal_chancenportal[provider][contactSalutation]" show-selected-title="true" options="{salutations}"></custom-dropdown>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">Vorname und Name</label>
+                <f:form.textfield property="contactName" class="input__field" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="input">
+                <label class="input__label">Zuständigkeit</label>
+                <f:form.textfield property="contactJurisdiction" class="input__field" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">Telefon</label>
+                <f:form.textfield property="contactPhone" class="input__field" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="input">
+                <label class="input__label">E-Mail</label>
+                <f:form.textfield property="contactEmail" class="input__field" type="email" />
+            </div>
+        </div>
+    </div>
+    <div class="row margin-lg">
+        <div class="col-lg-12 col-sm-12">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="contactImageString"></c:formConfiguration>
+            <custom-upload name="tx_chancenportal_chancenportal[provider][contactImageString]" label="Profilfoto hinzufügen (max. 1)" input-files='{contactImage}' max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 margin-inner-sm flex middle-lg">
+            <custom-confirm reload="true" text="Angaben wirklich verwerfen?">
+                <a href="#" class="my-account__cancel-link">Angaben verwerfen</a>
+            </custom-confirm>
+        </div>
+        <div class="col-lg-4 col-sm-12 margin-inner-sm">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="preview"></c:formConfiguration>
+            <custom-preview>
+                <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[provider][preview]" value="1">Vorschau</button>
+            </custom-preview>
+        </div>
+        <div class="col-lg-4 col-sm-12 margin-inner-sm">
+            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                <f:then>
+                    <button type="submit" class="btn btn--full">Speichern</button>
+                </f:then>
+                <f:else>
+                    <f:if condition="{provider.approved} == 0">
+                        <f:then>
+                            <button type="submit" class="btn btn--full">Zur Freigabe einreichen</button>
+                        </f:then>
+                        <f:else>
+                            <button type="submit" class="btn btn--full">Speichern</button>
+                        </f:else>
+                    </f:if>
+                </f:else>
+            </f:security.ifHasRole>
+        </div>
+    </div>
+</f:form>

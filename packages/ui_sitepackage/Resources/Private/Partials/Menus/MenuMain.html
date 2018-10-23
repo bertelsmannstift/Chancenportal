@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:section name="Main">
+        <v:page.menu as="lvl1">
+            <nav class="nav">
+                <ul class="nav__items">
+                    <f:for each="{lvl1}" as="lvl1_item" iteration="iterator">
+                        <f:variable name="navigation_title" value="{lvl1_item.nav_title -> v:or(alternative: lvl1_item.title)}"/>
+                        <li class="nav__item">
+                            <f:link.page pageUid="{lvl1_item.uid}" class="main-navigation__item__link" additionalAttributes="{data-title: navigation_title}">
+                                {navigation_title}
+                            </f:link.page>
+                        </li>
+
+                        <f:if condition="{iterator.isLast}">
+
+                            <f:security.ifAuthenticated>
+                                <f:then>
+                                    <li class="nav__item nav__item--logout">
+                                        <f:link.page pageUid="{settings.chancenportal.pageIds.overview}" class="main-navigation__item__link">
+                                            <f:translate key="header.menu.login" default="Mein Konto" />
+                                        </f:link.page>
+                                    </li>
+                                    <li class="nav__item">
+                                        <f:link.page pageUid="{settings.chancenportal.pageIds.logout}" class="main-navigation__item__link">
+                                            Abmelden
+                                        </f:link.page>
+                                    </li>
+                                </f:then>
+                                <f:else>
+                                    <li class="nav__item nav__item--login">
+                                        <f:link.page pageUid="{settings.chancenportal.pageIds.login}" class="main-navigation__item__link">
+                                            <f:translate key="header.menu.login" default="Anmelden" />
+                                        </f:link.page>
+                                    </li>
+                                </f:else>
+                            </f:security.ifAuthenticated>
+
+                        </f:if>
+
+                    </f:for>
+                </ul>
+            </nav>
+        </v:page.menu>
+    </f:section>
+</html>

@@ -1,0 +1,69 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+<f:render partial="ThemeColors" arguments="{themeColors: themeColors}"/>
+    <f:if condition="{offers}">
+        <f:then>
+            <f:for each="{offers}" as="offer">
+
+                <div data-lat="{offer.lat}" data-lng="{offer.lng}" data-uid="{offer.uid}" data-type="{offer.dateType}" data-date="{f:format.date(format: 'd.m.Y', date: offer.nextDate)}" class="kachel kachel--theme-{offer.theme} kachel--light">
+                    <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+
+                        <div class="kachel__inner">
+                            <div class="kachel__category">
+                                <f:if condition="{offer.mainCategory}">
+                                    {offer.mainCategory.name}
+                                </f:if>
+                            </div>
+                            <div class="kachel__content">
+                                <h3 class="kachel__headline">
+                                    {offer.name}
+                                </h3>
+                                <h4 class="kachel__subheadline">
+                                    {offer.shortDescription}
+                                </h4>
+
+                                <div class="kachel__footer">
+                                    <div class="kachel__location">
+
+                                        <f:if condition="{settings.chancenportal.use_zip_filter}">
+                                            <f:then>
+                                                {offer.city}
+                                            </f:then>
+                                            <f:else>
+                                                {offer.district.name}
+                                            </f:else>
+                                        </f:if>
+
+                                    </div>
+                                    <f:if condition="{offer.targetGroups}">
+
+                                        <div class="kachel__user">
+                                            <f:for each="{offer.targetGroups}" as="group" iteration="i">
+                                                {group.name}<f:if condition="{i.isLast}"><f:else>, </f:else></f:if>
+                                            </f:for>
+                                        </div>
+
+                                    </f:if>
+                                    <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
+                                        <div class="kachel__calendar">
+                                            <c:OfferFormater offer="{offer}" output="date" long="0" />
+                                        </div>
+                                    </f:if>
+                                    <f:if condition="{c:OfferFormater(offer: '{offer}', output: 'time', long: true)}">
+                                        <div class="kachel__time"><c:OfferFormater offer="{offer}" output="time" /> Uhr</div>
+                                    </f:if>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kachel__arrow"></div>
+                    </a>
+                    <div class="kachel__map-arrow"></div>
+                </div>
+            </f:for>
+        </f:then>
+        <f:else>
+            <span class="kachel-list__items-no-results">
+                Keine Angebote zu Ihrer Suchanfrage vorhanden. Bitte passen Sie Ihre Such- und Filterkriterien an.
+            </span>
+        </f:else>
+    </f:if>
+</html>

@@ -1,0 +1,22 @@
+<f:form.validationResults for="{object}">
+    <f:if condition="{validationResults.flattenedErrors}">
+        <f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
+            <f:for each="{errors}" as="error">
+                <f:if condition="{0:propertyPath} == {0:'user.{fieldName}'}">
+                    <f:then>
+                        <div class="input__error">
+                            {errorMsg}
+                        </div>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{0:'{fieldName}'} == {0:'{error.code}'}">
+                            <div class="input__error">
+                                {errorMsg}
+                            </div>
+                        </f:if>
+                    </f:else>
+                </f:if>
+            </f:for>
+        </f:for>
+    </f:if>
+</f:form.validationResults>

@@ -1,0 +1,16 @@
+<f:if condition="{data.tx_uice_text_btn_headline}">
+    {data.tx_uice_text_btn_headline}<br />
+</f:if>
+
+<f:if condition="{data.tx_uice_text_btn_texfield}">
+    <f:format.html parseFuncTSPath="lib.parseFunc_RTE">{data.tx_uice_text_btn_texfield}</f:format.html><br />
+</f:if>
+
+<f:if condition="{data.tx_uice_text_btn_text}">
+    {data.tx_uice_text_btn_text}<br />
+</f:if>
+
+<f:if condition="{data.tx_uice_text_btn_link}">
+    <f:link.page pageUid="{data.tx_uice_text_btn_link}">{data.tx_uice_text_btn_link}</f:link.page><br />
+</f:if>
+

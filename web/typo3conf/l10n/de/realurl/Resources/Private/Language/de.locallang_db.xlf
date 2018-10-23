@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z" product-name="realurl" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="pages.tx_realurl_pathsegment" xml:space="preserve" approved="yes">
+				<source>Speaking URL path segment</source>
+			<target state="translated">Pfadsegment für untergeordnete Seiten</target></trans-unit>
+			<trans-unit id="pages.tx_realurl_exclude" xml:space="preserve" approved="yes">
+				<source>Exclude from speaking URL</source>
+			<target state="translated">Nicht in sprechende URL aufnehmen</target></trans-unit>
+			<trans-unit id="pages.tx_realurl_path_override" xml:space="preserve" approved="yes">
+				<source>Override the whole page path</source>
+			<target state="translated">Den gesamten Pfad überschreiben</target></trans-unit>
+			<trans-unit id="pages.palette_title" xml:space="preserve" approved="yes">
+				<source>Speaking URL</source>
+			<target state="translated">Sprechende URL</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata" approved="yes">
+				<source>RealURL Path Data</source>
+			<target state="translated">RealURL-Pfaddaten</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.page_id" approved="yes">
+				<source>Page id:</source>
+			<target state="translated">Seiten-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.rootpage_id" approved="yes">
+				<source>Root page id:</source>
+			<target state="translated">ID der Wurzelseite:</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.language_id" approved="yes">
+				<source>Language id:</source>
+			<target state="translated">Sprach-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.mpvar" approved="yes">
+				<source>MP parameter:</source>
+			<target state="translated">MP-Parameter:</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.pagepath" approved="yes">
+				<source>Page path:</source>
+			<target state="translated">Seitenpfad:</target></trans-unit>
+			<trans-unit id="tx_realurl_pathdata.expire" approved="yes">
+				<source>Expires:</source>
+			<target state="translated">Verfällt:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias" approved="yes">
+				<source>RealURL Unique Alias</source>
+			<target state="translated">Eindeutiger RealURL-Alias</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.expire" approved="yes">
+				<source>Expires:</source>
+			<target state="translated">Verfällt:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.lang" approved="yes">
+				<source>Language id:</source>
+			<target state="translated">Sprach-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.tablename" approved="yes">
+				<source>Table name:</source>
+			<target state="translated">Tabellenname:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.value_alias" approved="yes">
+				<source>Value alias:</source>
+			<target state="translated">Wert-Alias:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.value_id" approved="yes">
+				<source>Value id:</source>
+			<target state="translated">Wert-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.field_alias" approved="yes">
+				<source>Field alias:</source>
+			<target state="translated">Feld-Alias:</target></trans-unit>
+			<trans-unit id="tx_realurl_uniqalias.field_id" approved="yes">
+				<source>Field id:</source>
+			<target state="translated">Feld-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata" approved="yes">
+				<source>RealURL URL Data</source>
+			<target state="translated">RealURL-URL-Daten</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.page_id" approved="yes">
+				<source>Page id:</source>
+			<target state="translated">Seiten-ID:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.rootpage_id" approved="yes">
+				<source>Root page id:</source>
+			<target state="translated">ID der Wurzelseite:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.original_url" approved="yes">
+				<source>Original URL:</source>
+			<target state="translated">Original-URL:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.speaking_url" approved="yes">
+				<source>Speaking URL:</source>
+			<target state="translated">Sprechende URL:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.request_variables" approved="yes">
+				<source>Request variables:</source>
+			<target state="translated">Anfrage-Variablen:</target></trans-unit>
+			<trans-unit id="tx_realurl_urldata.expire" approved="yes">
+				<source>Expires:</source>
+			<target state="translated">Verfällt:</target></trans-unit>
+		</body>
+	</file>
+</xliff>

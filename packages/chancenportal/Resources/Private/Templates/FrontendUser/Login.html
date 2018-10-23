@@ -1,0 +1,21 @@
+<div>
+    <div class="input input--error">
+        <label class="input__label">E-Mail*</label>
+        <input type="email" name="email" class="input__field">
+        <div class="input__error">
+            Ihr Anmeldeversuch ist leider fehlgeschlagen. Bitte geben Sie eine gültige Kombination aus E-Mail und
+            Passwort ein.
+        </div>
+    </div>
+    <div class="input">
+        <label class="input__label">Passwort*</label>
+        <input type="password" name="password" class="input__field">
+    </div>
+
+    <div class="flex-col bottom-lg">
+        <button type="submit" class="btn login-overlay__submit btn--primary">
+            <f:translate key="header.login" default="Anmelden"/>
+        </button>
+        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.lostpass)}" class="login-overlay__link"><f:translate key="header.lost_password" default="Passwort vergessen"/></a>
+    </div>
+</div>

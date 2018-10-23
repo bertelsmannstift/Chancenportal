@@ -1,0 +1,23 @@
+<f:if condition="{data.tx_uice_kachel_teaser_cat}">
+    {data.tx_uice_kachel_teaser_cat}<br />
+</f:if>
+
+<f:if condition="{data.tx_uice_kachel_teaser_headline}">
+    {data.tx_uice_kachel_teaser_headline}<br />
+</f:if>
+
+<f:if condition="{data.tx_uice_kachel_teaser_text}">
+    <f:format.nl2br>{data.tx_uice_kachel_teaser_text}</f:format.nl2br><br />
+</f:if>
+
+<f:if condition="{data_tx_uice_kachel_teaser_img}">
+    <f:for each="{data_tx_uice_kachel_teaser_img}" as="file">
+        <f:image image="{file}" alt="{file.alternative}" title="{file.title}" width="200" /><br />
+        {file.description} / {file.identifier}<br />
+    </f:for>
+</f:if>
+
+<f:if condition="{data.tx_uice_kachel_teaser_link}">
+    <f:link.page pageUid="{data.tx_uice_kachel_teaser_link}">{data.tx_uice_kachel_teaser_link}</f:link.page><br />
+</f:if>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2017-12-13T14:25:47Z" product-name="ui_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="pages.tabs.ui_sitepackage_settings">
+				<source>Seiten-Einstellungen</source>
+			</trans-unit>
+			<trans-unit id="pages.ui_sitepackage_site_logo">
+				<source>Logo</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2017-12-13T14:25:47Z" product-name="ui_provider">
+		<header/>
+		<body>
+			<trans-unit id="cropVariants.default">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.desktop">
+				<source>Desktop</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.tablet">
+				<source>Tablet</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.mobile">
+				<source>Mobile</source>
+			</trans-unit>
+
+			<trans-unit id="cropVariants.aspectRatios.16_9">
+				<source>16:9</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.4_3">
+				<source>4:3</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.NaN">
+				<source>Free</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

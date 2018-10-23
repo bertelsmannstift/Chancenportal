@@ -1,0 +1,66 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:section name="Main">
+         <header class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-12">
+                        <div class="header__logo">
+                            <f:if condition="{rootPageInfo.ui_sitepackage_site_logo}">
+                                <div class="header__logo__svg">
+                                    <a href="/">
+                                        {v:resource.record.fal(uid: 1, field: 'ui_sitepackage_site_logo', table: 'pages') -> v:variable.set(name: 'pageMedia')}
+                                        <f:if condition="{pageMedia}">
+                                            <f:image class="img-responsive" src="{pageMedia.0.url}" maxHeight="69"></f:image>
+                                        </f:if>
+                                    </a>
+                                </div>
+                            </f:if>
+                            <div class="header__logo__title">
+                                <div>{rootline.0.title}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-sm-12 bottom-lg">
+                        <custom-menu>
+                            <f:render partial="Menus/MenuMain" section="Main" arguments="{_all}" />
+                        </custom-menu>
+
+                        <f:security.ifAuthenticated>
+                            <f:else>
+
+                                <custom-login-overlay redirect-url="{f:uri.page(pageUid: settings.chancenportal.pageIds.overview, absolute: 1, linkAccessRestrictedPages: 1)}" url="{t:uri.ajaxAction( action: 'login', controller: 'FrontendUser', extensionName: 'chancenportal', pluginName: 'chancenportal' ) -> f:format.htmlentities()}" toggle-selector=".nav__item--login">
+                                    <div class="login-overlay__content">
+                                        <h3><f:translate key="header.login" default="Anmelden"/></h3>
+                                        <p><f:translate key="header.login_text" default="Melden Sie sich mit Ihrem Anbieterkonto an, um Angebote einzustellen und zu verwalten."/></p>
+                                        <div>
+                                            <label for="login-email">
+                                                <f:translate key="header.email" default="E-Mail"/>
+                                                <input id="login-email" name="email" type="email"/>
+                                            </label>
+                                            <label for="login-password">
+                                                <f:translate key="header.password" default="Passwort"/>
+                                                <input id="login-password" name="password" type="password"/>
+                                            </label>
+                                            <div class="flex-col bottom-lg">
+                                                <button type="submit" class="btn login-overlay__submit btn--primary">
+                                                    <span><f:translate key="header.login" default="Anmelden"/></span>
+                                                </button>
+                                                <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.lostpass)}" class="login-overlay__link"><f:translate key="header.lost_password" default="Passwort vergessen"/></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="login-overlay__footer">
+                                        <div><f:translate key="header.no_account_text" default="Sie sind neu hier und haben noch kein Konto?"/></div>
+                                        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.register)}" class="login-overlay__link"><f:translate key="header.register_text" default="Jetzt registrieren"/></a>
+                                    </div>
+                                </custom-login-overlay>
+                            </f:else>
+                        </f:security.ifAuthenticated>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    </f:section>
+</html>

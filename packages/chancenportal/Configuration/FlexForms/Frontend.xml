@@ -1,0 +1,260 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Chancenportal</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Frontend-Element</label>
+                            <onChange>reload</onChange>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">- Bitte wählen -</numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="21">
+                                        <numIndex index="0">Angebots-Kacheln</numIndex>
+                                        <numIndex index="1">Frontend->offersTeaser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="22">
+                                        <numIndex index="0">Anbieter-Kacheln</numIndex>
+                                        <numIndex index="1">Frontend->providerTeaser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="20">
+                                        <numIndex index="0">Registrierung</numIndex>
+                                        <numIndex index="1">FrontendUser->registerPage;FrontendUser->create</numIndex>
+                                    </numIndex>
+                                    <numIndex index="17">
+                                        <numIndex index="0">Suchergebnisse Angebote</numIndex>
+                                        <numIndex index="1">Frontend->searchResults;Frontend->searchResultAjax</numIndex>
+                                    </numIndex>
+                                    <numIndex index="19">
+                                        <numIndex index="0">Suchergebnisse Anbieter</numIndex>
+                                        <numIndex index="1">Frontend->searchProviderResults;Frontend->searchProviderResultAjax</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Anmeldung</numIndex>
+                                        <numIndex index="1">FrontendUser->loginPage</numIndex>
+                                    </numIndex>
+                                    <numIndex index="24">
+                                        <numIndex index="0">Passwort vergessen</numIndex>
+                                        <numIndex index="1">FrontendUser->lostPasswordPage</numIndex>
+                                    </numIndex>
+                                    <numIndex index="16">
+                                        <numIndex index="0">Such-Teaser</numIndex>
+                                        <numIndex index="1">Frontend->teaser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="18">
+                                        <numIndex index="0">Angebot Detailseite</numIndex>
+                                        <numIndex index="1">Frontend->offerDetail</numIndex>
+                                    </numIndex>
+                                    <numIndex index="23">
+                                        <numIndex index="0">Anbieter Detailseite</numIndex>
+                                        <numIndex index="1">Frontend->providerDetail</numIndex>
+                                    </numIndex>
+                                    <numIndex index="4">
+                                        <numIndex index="0">Logout</numIndex>
+                                        <numIndex index="1">FrontendUser->logoutPage</numIndex>
+                                    </numIndex>
+
+                                    <numIndex index="25">
+                                        <numIndex index="0">Mein Konto - Auswertungen</numIndex>
+                                        <numIndex index="1">MyAccount->evaluations;MyAccount->evaluationChartPlz;MyAccount->evaluationChartDistrict;MyAccount->evaluationChartTime</numIndex>
+                                    </numIndex>
+                                    <numIndex index="11">
+                                        <numIndex index="0">Mein Konto - Persönliche Daten</numIndex>
+                                        <numIndex index="1">FrontendUser->myDataPage;FrontendUser->myDataSave</numIndex>
+                                    </numIndex>
+                                    <numIndex index="12">
+                                        <numIndex index="0">Mein Konto - Nutzerverwaltung - Hinzufügen / Bearbeiten</numIndex>
+                                        <numIndex index="1">FrontendUser->userEditPage;FrontendUser->userEditSave</numIndex>
+                                    </numIndex>
+                                    <numIndex index="7">
+                                        <numIndex index="0">Mein Konto - Nutzerverwaltung - Übersicht</numIndex>
+                                        <numIndex index="1">FrontendUser->userManagementPage;FrontendUser->loginAs;FrontendUser->deleteUser</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5">
+                                        <numIndex index="0">Mein Konto - Übersicht</numIndex>
+                                        <numIndex index="1">MyAccount->overviewPage</numIndex>
+                                    </numIndex>
+                                    <numIndex index="6">
+                                        <numIndex index="0">Mein Konto - Anbieterprofil</numIndex>
+                                        <numIndex index="1">MyAccount->companyProfilePage;MyAccount->companyProfileSave</numIndex>
+                                    </numIndex>
+                                    <numIndex index="27">
+                                        <numIndex index="0">Mein Konto - Anbieterprofil für Stadtredakteur</numIndex>
+                                        <numIndex index="1">MyAccount->adminCompanyProfilePage;MyAccount->adminCompanyProfileSave</numIndex>
+                                    </numIndex>
+
+                                    <numIndex index="9">
+                                        <numIndex index="0">Mein Konto - Angebot anlegen / bearbeiten</numIndex>
+                                        <numIndex index="1">MyAccount->newOfferPage;MyAccount->newOfferSave</numIndex>
+                                    </numIndex>
+                                    <numIndex index="15">
+                                        <numIndex index="0">Mein Konto - Angebote</numIndex>
+                                        <numIndex index="1">MyAccount->offerPage;MyAccount->deleteOffer;MyAccount->exportOffers</numIndex>
+                                    </numIndex>
+                                    <numIndex index="26">
+                                        <numIndex index="0">Mein Konto - Anbieter</numIndex>
+                                        <numIndex index="1">MyAccount->providerPage;MyAccount->deleteProvider</numIndex>
+                                    </numIndex>
+                                    <numIndex index="13">
+                                        <numIndex index="0">Mein Konto - Anbieter Vorschau</numIndex>
+                                        <numIndex index="1">MyAccount->providerPreviewRedirect;MyAccount->providerPreview</numIndex>
+                                    </numIndex>
+                                    <numIndex index="14">
+                                        <numIndex index="0">Mein Konto - Angebots-Vorschau</numIndex>
+                                        <numIndex index="1">MyAccount->offerPreviewRedirect;MyAccount->offerPreview</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+
+                    <settings.registerHeadline>
+                        <TCEforms>
+                            <label>Headline</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0">FIELD:switchableControllerActions:=:FrontendUser->registerPage;FrontendUser->create</numIndex>
+                                    <numIndex index="1">FIELD:switchableControllerActions:=:FrontendUser->loginPage</numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.registerHeadline>
+                    <settings.registerSubheadline>
+                        <TCEforms>
+                            <label>Subheadline</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0">FIELD:switchableControllerActions:=:FrontendUser->registerPage;FrontendUser->create</numIndex>
+                                    <numIndex index="1">FIELD:switchableControllerActions:=:FrontendUser->loginPage</numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.registerSubheadline>
+
+                    <settings.registerText>
+                        <TCEforms>
+                            <label>Text</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0">FIELD:switchableControllerActions:=:FrontendUser->registerPage;FrontendUser->create</numIndex>
+                                    <numIndex index="1">FIELD:switchableControllerActions:=:FrontendUser->loginPage</numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>text</type>
+                                <cols>24</cols>
+                                <rows>3</rows>
+                                <enableRichtext>true</enableRichtext>
+                            </config>
+                            <defaultExtras>
+                                rte_transform
+                            </defaultExtras>
+
+                        </TCEforms>
+                    </settings.registerText>
+                    <settings.registerAdvantageText>
+                        <TCEforms>
+                            <label>Vorteile Text</label>
+                            <displayCond>
+                                <OR>
+                                    <numIndex index="0">FIELD:switchableControllerActions:=:FrontendUser->registerPage;FrontendUser->create</numIndex>
+                                    <numIndex index="1">FIELD:switchableControllerActions:=:FrontendUser->loginPage</numIndex>
+                                </OR>
+                            </displayCond>
+                            <config>
+                                <type>text</type>
+                                <cols>24</cols>
+                                <rows>3</rows>
+                                <enableRichtext>true</enableRichtext>
+                            </config>
+                            <defaultExtras>
+                                rte_transform
+                            </defaultExtras>
+
+                        </TCEforms>
+                    </settings.registerAdvantageText>
+
+                    <settings.teaserHeadline>
+                        <TCEforms>
+                            <label>Headline</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Frontend->teaser</displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.teaserHeadline>
+
+                    <settings.teaserSubheadline>
+                        <TCEforms>
+                            <label>Subheadline</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Frontend->teaser</displayCond>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.teaserSubheadline>
+
+                    <settings.teaserImage>
+                        <TCEforms>
+                            <label>Teaser Background Image</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Frontend->teaser</displayCond>
+                            <config>
+                                <type>inline</type>
+                                <maxitems>99</maxitems>
+                                <foreign_table>sys_file_reference</foreign_table>
+                                <!--<foreign_field>uid_foreign</foreign_field>-->
+                                <foreign_table_field>tablenames</foreign_table_field>
+                                <foreign_label>uid_local</foreign_label>
+                                <foreign_sortby>sorting_foreign</foreign_sortby>
+                                <foreign_selector>uid_local</foreign_selector>
+                                <foreign_selector_fieldTcaOverride type="array">
+                                    <config>
+                                        <appearance>
+                                            <elementBrowserType>file</elementBrowserType>
+                                            <elementBrowserAllowed>jpg,png</elementBrowserAllowed>
+                                        </appearance>
+                                    </config>
+                                </foreign_selector_fieldTcaOverride>
+                                <foreign_match_fields type="array">
+                                    <fieldname>image</fieldname>
+                                </foreign_match_fields>
+                                <appearance type="array">
+                                    <newRecordLinkAddTitle>1</newRecordLinkAddTitle>
+                                    <headerThumbnail>
+                                        <field>uid_local</field>
+                                        <height>64</height>
+                                        <width>64</width>
+                                    </headerThumbnail>
+                                </appearance>
+                            </config>
+                        </TCEforms>
+                    </settings.teaserImage>
+
+
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

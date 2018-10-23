@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3RecordDocument>
+	<header type="array">
+		<XMLversion>1.0</XMLversion>
+		<meta type="array">
+			<title>TYPO3 Blueprint</title>
+			<description></description>
+			<notes></notes>
+			<packager_username>tsuessen</packager_username>
+			<packager_name></packager_name>
+			<packager_email></packager_email>
+			<TYPO3_version>8.7.12</TYPO3_version>
+			<created>Thursday 12. April 2018</created>
+		</meta>
+		<static_tables index="relStaticTables" type="array">
+			<tablename index="0">_ALL</tablename>
+		</static_tables>
+		<excludeMap type="array"></excludeMap>
+		<softrefCfg type="array"></softrefCfg>
+		<extensionDependencies type="array"></extensionDependencies>
+		<charset>utf-8</charset>
+		<pagetree type="array">
+			<node index="1" type="array">
+				<uid>1</uid>
+			</node>
+		</pagetree>
+		<records type="array">
+			<table index="pages" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>0</pid>
+					<title>Welcome</title>
+					<size>1630</size>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+			<table index="sys_template" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>1</pid>
+					<title>Template</title>
+					<size>1575</size>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array">
+						<softref_element index="include_static_file:ext_fileref:2" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:form/Configuration/TypoScript/</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:5" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_provider/Configuration/TypoScript</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:8" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_sitepackage/Configuration/TypoScript</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:11" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_grid/Configuration/TypoScript</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:14" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_ce/Configuration/TypoScript/</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:17" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_ce_overrides/Configuration/TypoScript</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:20" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:ui_forms/Configuration/TypoScript</matchString>
+						</softref_element>
+						<softref_element index="include_static_file:ext_fileref:23" type="array">
+							<field>include_static_file</field>
+							<spKey>ext_fileref</spKey>
+							<matchString>EXT:fluid_styled_content/Configuration/TypoScript/</matchString>
+						</softref_element>
+					</softrefs>
+				</rec>
+			</table>
+			<table index="tt_content" type="array">
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>1</pid>
+					<title>TYPO3 Blueprint</title>
+					<size>2840</size>
+					<relations index="rels" type="array"></relations>
+					<softrefs type="array"></softrefs>
+				</rec>
+			</table>
+		</records>
+		<pid_lookup type="array">
+			<page_contents index="0" type="array">
+				<table index="pages" type="array">
+					<item index="1">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="1" type="array">
+				<table index="sys_template" type="array">
+					<item index="1">1</item>
+				</table>
+				<table index="tt_content" type="array">
+					<item index="2">1</item>
+				</table>
+			</page_contents>
+		</pid_lookup>
+	</header>
+	<records type="array">
+		<tablerow index="pages:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">0</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="tstamp" type="integer">1523520072</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="perms_everybody" type="integer">0</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="crdate" type="integer">1523448256</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="title">Welcome</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="TSconfig" type="NULL"></field>
+				<field index="is_siteroot" type="integer">1</field>
+				<field index="php_tree_stop" type="integer">0</field>
+				<field index="url"></field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="urltype" type="integer">1</field>
+				<field index="shortcut" type="integer">0</field>
+				<field index="shortcut_mode" type="integer">0</field>
+				<field index="no_cache" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="subtitle"></field>
+				<field index="layout" type="integer">0</field>
+				<field index="target"></field>
+				<field index="media" type="integer">0</field>
+				<field index="lastUpdated" type="integer">0</field>
+				<field index="keywords" type="NULL"></field>
+				<field index="cache_timeout" type="integer">0</field>
+				<field index="cache_tags"></field>
+				<field index="newUntil" type="integer">0</field>
+				<field index="description" type="NULL"></field>
+				<field index="no_search" type="integer">0</field>
+				<field index="SYS_LASTCHANGED" type="integer">1523523160</field>
+				<field index="abstract" type="NULL"></field>
+				<field index="module"></field>
+				<field index="extendToSubpages" type="integer">0</field>
+				<field index="author"></field>
+				<field index="author_email"></field>
+				<field index="nav_title"></field>
+				<field index="nav_hide" type="integer">0</field>
+				<field index="content_from_pid" type="integer">0</field>
+				<field index="mount_pid" type="integer">0</field>
+				<field index="mount_pid_ol" type="integer">0</field>
+				<field index="alias"></field>
+				<field index="l18n_cfg" type="integer">0</field>
+				<field index="fe_login_mode" type="integer">0</field>
+				<field index="backend_layout">pagets__Homepage</field>
+				<field index="backend_layout_next_level">pagets__Default</field>
+				<field index="tsconfig_includes" type="NULL"></field>
+				<field index="tx_impexp_origuid" type="integer">0</field>
+				<field index="categories" type="integer">0</field>
+				<field index="tx_realurl_pathsegment"></field>
+				<field index="tx_realurl_pathoverride" type="integer">0</field>
+				<field index="tx_realurl_exclude" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+		<tablerow index="sys_template:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">1</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="tstamp" type="integer">1523520066</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="crdate" type="integer">1523448308</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="title">Template</field>
+				<field index="sitetitle"></field>
+				<field index="hidden" type="integer">0</field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="root" type="integer">1</field>
+				<field index="clear" type="integer">3</field>
+				<field index="include_static_file">EXT:form/Configuration/TypoScript/,EXT:ui_provider/Configuration/TypoScript,EXT:ui_sitepackage/Configuration/TypoScript,EXT:ui_grid/Configuration/TypoScript,EXT:ui_ce/Configuration/TypoScript/,EXT:ui_ce_overrides/Configuration/TypoScript,EXT:ui_forms/Configuration/TypoScript,EXT:fluid_styled_content/Configuration/TypoScript/</field>
+				<field index="constants">uandi {
+    // Page IDs
+    pageIds {
+        homepage = 1
+        
+        meta-header = 0
+        meta-footer = 0
+    }
+    
+    // Social Accounts
+    social {
+        twitter =
+        facebook =
+        linkedin =
+        xing =
+        youtube =
+        instagram =
+        googleplus =
+    }
+  
+    // Tracking Configuration
+    tracking {
+        google_analytics {
+            code =
+        }
+        google_tagmanager {
+            code =
+        }
+    }
+}</field>
+				<field index="config"></field>
+				<field index="nextLevel"></field>
+				<field index="description"></field>
+				<field index="basedOn"></field>
+				<field index="deleted" type="integer">0</field>
+				<field index="includeStaticAfterBasedOn" type="integer">0</field>
+				<field index="static_file_mode" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="include_static_file" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="ext_fileref" type="array">
+								<softref_element index="2" type="array">
+									<matchString>EXT:form/Configuration/TypoScript/</matchString>
+								</softref_element>
+								<softref_element index="5" type="array">
+									<matchString>EXT:ui_provider/Configuration/TypoScript</matchString>
+								</softref_element>
+								<softref_element index="8" type="array">
+									<matchString>EXT:ui_sitepackage/Configuration/TypoScript</matchString>
+								</softref_element>
+								<softref_element index="11" type="array">
+									<matchString>EXT:ui_grid/Configuration/TypoScript</matchString>
+								</softref_element>
+								<softref_element index="14" type="array">
+									<matchString>EXT:ui_ce/Configuration/TypoScript/</matchString>
+								</softref_element>
+								<softref_element index="17" type="array">
+									<matchString>EXT:ui_ce_overrides/Configuration/TypoScript</matchString>
+								</softref_element>
+								<softref_element index="20" type="array">
+									<matchString>EXT:ui_forms/Configuration/TypoScript</matchString>
+								</softref_element>
+								<softref_element index="23" type="array">
+									<matchString>EXT:fluid_styled_content/Configuration/TypoScript/</matchString>
+								</softref_element>
+							</softref_key>
+						</keys>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">1</field>
+				<field index="t3ver_oid" type="integer">0</field>
+				<field index="t3ver_id" type="integer">0</field>
+				<field index="t3ver_wsid" type="integer">0</field>
+				<field index="t3ver_label"></field>
+				<field index="t3ver_state" type="integer">0</field>
+				<field index="t3ver_stage" type="integer">0</field>
+				<field index="t3ver_count" type="integer">0</field>
+				<field index="t3ver_tstamp" type="integer">0</field>
+				<field index="t3ver_move_id" type="integer">0</field>
+				<field index="t3_origuid" type="integer">0</field>
+				<field index="tstamp" type="integer">1523523754</field>
+				<field index="crdate" type="integer">1523523750</field>
+				<field index="cruser_id" type="integer">1</field>
+				<field index="editlock" type="integer">0</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="CType">uice_textblock</field>
+				<field index="header">TYPO3 Blueprint</field>
+				<field index="header_position"></field>
+				<field index="rowDescription"></field>
+				<field index="bodytext" type="NULL"></field>
+				<field index="bullets_type" type="integer">0</field>
+				<field index="uploads_description" type="integer">0</field>
+				<field index="uploads_type" type="integer">0</field>
+				<field index="assets" type="integer">0</field>
+				<field index="image" type="integer">0</field>
+				<field index="imagewidth" type="integer">0</field>
+				<field index="imageorient" type="integer">0</field>
+				<field index="imagecols" type="integer">2</field>
+				<field index="imageborder" type="integer">0</field>
+				<field index="media" type="integer">0</field>
+				<field index="layout" type="integer">0</field>
+				<field index="frame_class">default</field>
+				<field index="deleted" type="integer">0</field>
+				<field index="cols" type="integer">0</field>
+				<field index="spaceBefore" type="integer">0</field>
+				<field index="spaceAfter" type="integer">0</field>
+				<field index="space_before_class"></field>
+				<field index="space_after_class"></field>
+				<field index="records" type="NULL"></field>
+				<field index="pages" type="NULL"></field>
+				<field index="starttime" type="integer">0</field>
+				<field index="endtime" type="integer">0</field>
+				<field index="colPos" type="integer">0</field>
+				<field index="subheader"></field>
+				<field index="fe_group"></field>
+				<field index="header_link"></field>
+				<field index="image_zoom" type="integer">0</field>
+				<field index="header_layout">0</field>
+				<field index="list_type"></field>
+				<field index="sectionIndex" type="integer">1</field>
+				<field index="linkToTop" type="integer">0</field>
+				<field index="file_collections" type="NULL"></field>
+				<field index="filelink_size" type="integer">0</field>
+				<field index="filelink_sorting"></field>
+				<field index="target"></field>
+				<field index="date" type="integer">0</field>
+				<field index="recursive" type="integer">0</field>
+				<field index="imageheight" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="pi_flexform" type="NULL"></field>
+				<field index="accessibility_title"></field>
+				<field index="accessibility_bypass" type="integer">0</field>
+				<field index="accessibility_bypass_text"></field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l18n_diffsource">a:16:{s:5:&quot;CType&quot;;N;s:6:&quot;colPos&quot;;N;s:6:&quot;header&quot;;N;s:29:&quot;tx_uice_textblock_subheadline&quot;;N;s:22:&quot;tx_uice_textblock_text&quot;;N;s:32:&quot;tx_uice_textblock_media_position&quot;;N;s:23:&quot;tx_uice_textblock_image&quot;;N;s:16:&quot;sys_language_uid&quot;;N;s:6:&quot;hidden&quot;;N;s:9:&quot;starttime&quot;;N;s:7:&quot;endtime&quot;;N;s:8:&quot;fe_group&quot;;N;s:8:&quot;editlock&quot;;N;s:10:&quot;categories&quot;;N;s:14:&quot;rowDescription&quot;;N;s:16:&quot;tx_flux_children&quot;;N;}</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="selected_categories" type="NULL"></field>
+				<field index="category_field"></field>
+				<field index="table_class"></field>
+				<field index="table_caption" type="NULL"></field>
+				<field index="table_delimiter" type="integer">124</field>
+				<field index="table_enclosure" type="integer">0</field>
+				<field index="table_header_position" type="integer">0</field>
+				<field index="table_tfoot" type="integer">0</field>
+				<field index="tx_impexp_origuid" type="integer">0</field>
+				<field index="l10n_state" type="NULL"></field>
+				<field index="categories" type="integer">0</field>
+				<field index="tx_uice_textblock_headline" type="NULL"></field>
+				<field index="tx_uice_textblock_image" type="integer">0</field>
+				<field index="tx_uice_textblock_media" type="integer">0</field>
+				<field index="tx_uice_textblock_media_position"></field>
+				<field index="tx_uice_textblock_subheadline">Subheadline</field>
+				<field index="tx_uice_textblock_text">&lt;p&gt;Richtext&lt;/p&gt;</field>
+				<field index="tx_mask_textblock_headline" type="NULL"></field>
+				<field index="tx_mask_textblock_subheadline" type="NULL"></field>
+				<field index="tx_mask_textblock_text" type="NULL"></field>
+				<field index="tx_mask_textblock_media_position" type="NULL"></field>
+				<field index="tx_mask_textblock_image" type="integer">0</field>
+				<field index="tx_mask_textblock_media" type="integer">0</field>
+				<field index="tx_flux_parent" type="integer">0</field>
+				<field index="tx_flux_children" type="NULL"></field>
+				<field index="tx_flux_column"></field>
+			</fieldlist>
+			<related index="rels" type="array"></related>
+		</tablerow>
+	</records>
+</T3RecordDocument>

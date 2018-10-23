@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-01-01T01:00:00Z" product-name="test_extension" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>This is not required</source>
+			<target></target></trans-unit>
+			<trans-unit id="identifier.description">
+				<source>This is required</source>
+			<target></target></trans-unit>
+			<trans-unit id="my_date.description">
+				<source>Just a date</source>
+			<target></target></trans-unit>
+			<trans-unit id="child1.description">
+				<source>This is a 1:1 relation</source>
+			<target></target></trans-unit>
+			<trans-unit id="children2.description">
+				<source>This is a 1:n relation</source>
+			<target></target></trans-unit>
+			<trans-unit id="child3.description">
+				<source>This is a n:1 relation</source>
+			<target></target></trans-unit>
+			<trans-unit id="children4.description">
+				<source>This is a m:n relation</source>
+			<target></target></trans-unit>
+		</body>
+	</file>
+</xliff>

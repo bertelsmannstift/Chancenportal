@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:48:25Z" product-name="realurl" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="mlang_tabs_tab" approved="yes">
+				<source>Speaking URLs</source>
+			<target state="translated">Sprechende URLs</target></trans-unit>
+			<trans-unit id="mlang_labels_tablabel" approved="yes">
+				<source>Speaking URL management</source>
+			<target state="translated">RealURL-Verwaltung</target></trans-unit>
+			<trans-unit id="mlang_labels_tabdescr" approved="yes">
+				<source>Management for speaking URLs in TYPO3 CMS</source>
+			<target state="translated">Verwaltung für sprechende URLs in TYPO3 CMS</target></trans-unit>
+			<trans-unit id="module.index" approved="yes">
+				<source>Overview</source>
+			<target state="translated">Überblick</target></trans-unit>
+			<trans-unit id="module.index.intro_functions" approved="yes">
+				<source>This is a RealURL administration module. It provides functions that you can select from the selector at the top. Here is the overview of the provided functions.</source>
+			<target state="translated">Das ist ein RealURL-Verwaltungsmodul. Es stellt Funktionen zur Verfügung, die Sie aus dem Auswahlfeld oben auswählen können. Hier ist die Übersicht der verfügbaren Funktionen.</target></trans-unit>
+			<trans-unit id="module.aliases" approved="yes">
+				<source>Aliases</source>
+			<target state="translated">Aliasse</target></trans-unit>
+			<trans-unit id="module.aliases" approved="yes">
+				<source>Aliases</source>
+			<target state="translated">Aliasse</target></trans-unit>
+			<trans-unit id="module.aliases.intro" approved="yes">
+				<source>This module manages aliases that are created for items like news or addresses or any other custom types of data.</source>
+			<target state="translated">Dieses Modul verwaltet Aliasse, die für Elemente wie Nachrichten oder Adressen oder andere, benutzerdefinierte Typen von Daten erstellt worden sind.</target></trans-unit>
+			<trans-unit id="module.aliases.not_available" approved="yes">
+				<source>Currently there are no aliases available.</source>
+			<target state="translated">Im Moment sind keine Aliasse verfügbar.</target></trans-unit>
+			<trans-unit id="module.aliases.not_found" approved="yes">
+				<source>The sellected alias is no longer available.</source>
+			<target state="translated">Der ausgewählte Alias ist nicht mehr verfügbar.</target></trans-unit>
+			<trans-unit id="module.aliases.available" approved="yes">
+				<source>Available aliases</source>
+			<target state="translated">Verfügbare Aliasse</target></trans-unit>
+			<trans-unit id="module.aliases.available.select" approved="yes">
+				<source>Select alias type:</source>
+			<target state="translated">Wählen Sie einen Typ von Alias:</target></trans-unit>
+			<trans-unit id="module.aliases.deleted" approved="yes">
+				<source>The alias was deleted.</source>
+			<target state="translated">Der Alias wurde gelöscht.</target></trans-unit>
+			<trans-unit id="module.aliases.all_deleted" approved="yes">
+				<source>Aliases were deleted.</source>
+			<target state="translated">Die Aliasse wurden gelöscht.</target></trans-unit>
+			<trans-unit id="module.aliases.edit.submit" approved="yes">
+				<source>Save</source>
+			<target state="translated">Speichern</target></trans-unit>
+			<trans-unit id="module.aliases.edit.back" approved="yes">
+				<source>Cancel</source>
+			<target state="translated">Abbrechen</target></trans-unit>
+			<trans-unit id="module.aliases.edit.alias_value" approved="yes">
+				<source>Alias value:</source>
+			<target state="translated">Aliaswert:</target></trans-unit>
+			<trans-unit id="module.aliases.edit.alias_info.tablename" approved="yes">
+				<source>Table name:</source>
+			<target state="translated">Tabellenname:</target></trans-unit>
+			<trans-unit id="module.aliases.edit.alias_info.uid" approved="yes">
+				<source>Record uid:</source>
+			<target state="translated">Datensatz-UID:</target></trans-unit>
+			<trans-unit id="module.aliases.edit.alias_info.field_value" approved="yes">
+				<source>Field value:</source>
+			<target state="translated">Feldwert:</target></trans-unit>
+			<trans-unit id="module.aliases.edit.saved" approved="yes">
+				<source>Alias successfully updated.</source>
+			<target state="translated">Alias erfolgreich aktualisiert.</target></trans-unit>
+			<trans-unit id="module.aliases.edit.error.already_exists" approved="yes">
+				<source>Such alias already exists for another record in this language.</source>
+			<target state="translated">Ein derartiger Alias existiert bereits für einen anderen Datensatz in dieser Sprache.</target></trans-unit>
+			<trans-unit id="module.aliases.edit.error.bad_alias_value" approved="yes">
+				<source>Alias value may only contain the following characters: %s</source>
+			<target state="translated">Der Aliaswert darf nur die folgenden Zeichen enthalten: %s</target></trans-unit>
+			<trans-unit id="module.aliases.search.for" approved="yes">
+				<source>Search alias value for:</source>
+			<target state="translated">Aliaswert suchen für:</target></trans-unit>
+			<trans-unit id="module.aliases.search.submit" approved="yes">
+				<source>Submit</source>
+			<target state="translated">Absenden</target></trans-unit>
+			<trans-unit id="module.aliases.search.reset" approved="yes">
+				<source>Reset</source>
+			<target state="translated">Zurücksetzen</target></trans-unit>
+			<trans-unit id="module.url_cache" approved="yes">
+				<source>URL Data</source>
+			<target state="translated">URL-Daten</target></trans-unit>
+			<trans-unit id="module.url_cache.intro" approved="yes">
+				<source><![CDATA[This module allows you to view and remove URLs for pages. URL data contains complete URLs consisting from page path and any encoded parameters. Note that it is <strong>extremely dangerous</strong> to manipulate these entries manually! Your installation can be broken if you do so.]]></source>
+			<target state="translated">Dieses Modul erlaubt es, URLs zu suchen und zu entfernen. Die URL-Daten enthalten vollständige URLs bestehend aus Seitenpfad und jeglichen kodierten Parametern. Beachten Sie, dass es &lt;strong&gt;sehr&lt;/strong&gt; gefährlich ist, diese Einträge manuell zu bearbeiten! Sie können dadurch Ihre Installation beschädigen.</target></trans-unit>
+			<trans-unit id="module.path_cache" approved="yes">
+				<source>Path Data</source>
+			<target state="translated">Pfaddaten</target></trans-unit>
+			<trans-unit id="module.path_cache.intro" approved="yes">
+				<source><![CDATA[This module allows you to view and remove page path data. Note that it is <strong>extremely dangerous</strong> to manipulate these entries manually! Your installation can be broken if you do so.]]></source>
+			<target state="translated">Dieses Modul erlaubt es, Pfaddaten für Seiten zu suchen und zu entfernen. Beachten Sie, dass es &lt;strong&gt;sehr&lt;/strong&gt; gefährlich ist, diese Einträge manuell zu bearbeiten! Sie können dadurch Ihre Installation beschädigen.</target></trans-unit>
+			<trans-unit id="module.configuration" approved="yes">
+				<source>Configuration</source>
+			<target state="translated">Konfiguration</target></trans-unit>
+			<trans-unit id="module.configuration.intro" approved="yes">
+				<source><![CDATA[This module will show you RealURL configuration as RealURL will see it (including default values).</p><p><strong>Note:</strong> your TYPO3 solution provider may use its own ways to configure RealURL at runtime. If that's the case, this module may not show confguration accurately. If you suspect that this is the case, contact your TYPO3 solution provider.]]></source>
+			<target state="translated">Dieses Modul zeigt die RealURL-Konfiguration, wie RealURL sie sieht (inklusive Standardwerten).&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Hinweis:&lt;/strong&gt; Ihr Anbieter von TYPO3-Lösungen benutzt möglicherweise eigene Wege, um RealURL während der Laufzeit zu konfigurieren. In diesem Fall mag dieses Modul die Konfiguration nicht akkurat anzeigen. Wenn Sie vermuten, dass dies der Fall ist, kontaktieren Sie Ihren Anbieter von TYPO3-Lösungen.</target></trans-unit>
+			<trans-unit id="module.dateTimeFormat" approved="yes">
+				<source>d.m.Y H:i</source>
+			<target state="translated">d.m.Y H:i</target></trans-unit>
+			<trans-unit id="module.tableHeader.alias" approved="yes">
+				<source>Alias</source>
+			<target state="translated">Alias</target></trans-unit>
+			<trans-unit id="module.tableHeader.id" approved="yes">
+				<source>Id</source>
+			<target state="translated">ID</target></trans-unit>
+			<trans-unit id="module.tableHeader.language" approved="yes">
+				<source>Language</source>
+			<target state="translated">Sprache</target></trans-unit>
+			<trans-unit id="module.tableHeader.expire" approved="yes">
+				<source>Expires</source>
+			<target state="translated">Läuft ab</target></trans-unit>
+			<trans-unit id="viewhelper.languageFromId.defaultLanguage" approved="yes">
+				<source>Default</source>
+			<target state="translated">Standard</target></trans-unit>
+			<trans-unit id="module.deleteAliasesOfType" approved="yes">
+				<source>Delete all aliases of this type</source>
+			<target state="translated">Alle Aliasse dieses Typs löschen</target></trans-unit>
+			<trans-unit id="module.js.deleteSingleAlias" approved="yes">
+				<source>Do you want to delete this alias?</source>
+			<target state="translated">Diesen Alias tatsächlich löschen?</target></trans-unit>
+			<trans-unit id="module.js.yes" approved="yes">
+				<source>Yes</source>
+			<target state="translated">Ja</target></trans-unit>
+			<trans-unit id="module.js.no" approved="yes">
+				<source>No</source>
+			<target state="translated">Nein</target></trans-unit>
+			<trans-unit id="module.js.confirmTitle" approved="yes">
+				<source>Confirm</source>
+			<target state="translated">Bestätigen</target></trans-unit>
+			<trans-unit id="module.js.deleteAliases" approved="yes">
+				<source>Do you want to delete all aliases of this type?</source>
+			<target state="translated">Tatsächlich alle Aliasse dieses Typs löschen?</target></trans-unit>
+			<trans-unit id="module.tableHeader.speaking_url" approved="yes">
+				<source>Speaking URL</source>
+			<target state="translated">Sprechende URL</target></trans-unit>
+			<trans-unit id="module.tableHeader.original_url" approved="yes">
+				<source>Original URL</source>
+			<target state="translated">Original-URL</target></trans-unit>
+			<trans-unit id="module.tableHeader.rootpage_id" approved="yes">
+				<source>Root page id</source>
+			<target state="translated">ID der Wurzelseite</target></trans-unit>
+			<trans-unit id="module.tableHeader.page_path" approved="yes">
+				<source>Page path</source>
+			<target state="translated">Seitenpfad</target></trans-unit>
+			<trans-unit id="module.tableHeader.mp_var" approved="yes">
+				<source>Mount point</source>
+			<target state="translated">Freigabepunkt</target></trans-unit>
+			<trans-unit id="module.js.deleteSingleCacheEntry" approved="yes">
+				<source>Do you want to delete this entry? This can be harmful for your installation!</source>
+			<target state="translated">Diesen Eintrag tatsächlich löschen? Dies kann Ihrer Installation schaden!</target></trans-unit>
+			<trans-unit id="module.js.deleteCacheEntries" approved="yes">
+				<source>Do you want to delete all entries for this page? This can be harmful for your installation!</source>
+			<target state="translated">Tatsächlich alle Einträge für diese Seite löschen? Dies kann Ihrer Installation schaden!</target></trans-unit>
+			<trans-unit id="module.deleteCacheEntriesForPage" approved="yes">
+				<source>Delete all entries for this page (harmful!)</source>
+			<target state="translated">Alle Einträge dieser Seite löschen (schädlich!)</target></trans-unit>
+			<trans-unit id="module.flushCache" approved="yes">
+				<source>Flush all entries (harmful!)</source>
+			<target state="translated">Alle Einträge löschen (schädlich!)</target></trans-unit>
+			<trans-unit id="module.js.flushCache" approved="yes">
+				<source>Do you want to remove all entries? This WILL cause performance issues with the web site and can make some pages inaccessible!</source>
+			<target state="translated">Tatsächlich alle Einträge entfernen? Dies WIRD die Performance Ihrer Website negativ beeinflussen und kann Seiten unzugänglich machen!</target></trans-unit>
+			<trans-unit id="module.url_cache.entry_deleted" approved="yes">
+				<source>Entry was removed.</source>
+			<target state="translated">Eintrag wurde entfernt.</target></trans-unit>
+			<trans-unit id="module.url_cache.all_entries_deleted" approved="yes">
+				<source>All entries for this page were removed.</source>
+			<target state="translated">Alle Einträge für diese Seite wurden entfernt.</target></trans-unit>
+			<trans-unit id="module.url_cache.flushed" approved="yes">
+				<source>All cache entries were removed.</source>
+			<target state="translated">Alle Cacheeinträge wurden entfernt.</target></trans-unit>
+			<trans-unit id="module.path_cache.entry_deleted" approved="yes">
+				<source>Entry was removed.</source>
+			<target state="translated">Eintrag wurde entfernt.</target></trans-unit>
+			<trans-unit id="module.url_cache.duplicate_url" approved="yes">
+				<source>URL conflict detected: '%s' is also used on page(s): %s</source>
+			<target state="translated">URL-Konflikt festgestellt: '%s' wird ebenfalls auf der folgenden oder den folgenden Seiten benutzt: %s</target></trans-unit>
+			<trans-unit id="module.path_cache.duplicate_path" approved="yes">
+				<source>Path conflict detected: '%s' is also used on page(s): %s</source>
+			<target state="translated">Pfad-Konflikt festgestellt: '%s' wird ebenfalls auf der folgenden oder den folgenden Seiten benutzt: %s</target></trans-unit>
+		</body>
+	</file>
+</xliff>

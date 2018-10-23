@@ -1,0 +1,23 @@
+<f:if condition="{providers -> f:count()}">
+    <section data-animation="fadeIn" class="container container--more">
+        <h1>Auswahl einiger Anbieter</h1>
+
+        <div class="row">
+            <f:for each="{providers}" as="provider" iteration="i">
+
+                <div class="col-lg-3 col-md-6 col-sm-12 {f:if(condition: '{i.isLast}', else: 'margin-sm')} {f:if(condition: '{i.index} < 2', then: 'margin-md')}">
+                    <a href="{f:uri.action(action: 'providerDetail', controller: 'Frontend', arguments: '{provider: provider}', pageUid: settings.chancenportal.pageIds.provider_detail)}" class="border-box">
+                        <div class="border-box__content">
+                            <h2 class="border-box__headline">{provider.name}</h2>
+                            <div class="border-box__text">{provider.shortDescription}</div>
+                        </div>
+                        <div class="border-box__arrow"></div>
+                    </a>
+                </div>
+            </f:for>
+        </div>
+        <div class="container__show-more">
+            <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.provider_overview)}">Mehr Anzeigen</a>
+        </div>
+    </section>
+</f:if>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:51:46Z" product-name="form">
+		<header/>
+		<body>
+			<trans-unit id="formManager.cancel" xml:space="preserve" approved="yes">
+                <source>Cancel</source>
+            <target state="translated">Abbrechen</target></trans-unit>
+			<trans-unit id="formManager.duplicateFormWizard.step1.title" xml:space="preserve" approved="yes">
+                <source>Duplicate form "{0}"</source>
+            <target state="translated">Formular "{0}" duplizieren</target></trans-unit>
+			<trans-unit id="formManager.duplicateFormWizard.step2.errorMessage" xml:space="preserve">
+                <source>The form could not be saved:</source>
+            <target/></trans-unit>
+			<trans-unit id="formManager.duplicateFormWizard.step2.errorTitle" xml:space="preserve">
+                <source>Duplicate</source>
+            <target/></trans-unit>
+			<trans-unit id="formManager.form_name" xml:space="preserve" approved="yes">
+                <source>Form name</source>
+            <target state="translated">Formularname</target></trans-unit>
+			<trans-unit id="formManager.form_prototype" xml:space="preserve" approved="yes">
+                <source>Form prototype</source>
+            <target state="translated">Formular-Prototyp</target></trans-unit>
+			<trans-unit id="formManager.form_save_path" xml:space="preserve" approved="yes">
+                <source>Form storage</source>
+            <target state="translated">Formularspeicher</target></trans-unit>
+			<trans-unit id="formManager.form_template" xml:space="preserve" approved="yes">
+                <source>Start template</source>
+            <target state="translated">Ausgangsvorlage</target></trans-unit>
+			<trans-unit id="formManager.new_form_name" xml:space="preserve" approved="yes">
+                <source>New form name</source>
+            <target state="translated">Neuer Formularname</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step1.advanced" xml:space="preserve" approved="yes">
+                <source>Advanced settings</source>
+            <target state="translated">Fortgeschrittene Einstellungen</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step1.noStorages" xml:space="preserve" approved="yes">
+                <source>No accessible form storage folders</source>
+            <target state="translated">Keine zugänglichen Formularspeicherordner</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step1.title" xml:space="preserve" approved="yes">
+                <source>Create new form</source>
+            <target state="translated">Neues Formular erstellen</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step2.title" xml:space="preserve" approved="yes">
+                <source>Advanced settings</source>
+            <target state="translated">Fortgeschrittene Einstellungen</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step3.message" xml:space="preserve" approved="yes">
+                <source>Now you are ready to create your new form.</source>
+            <target state="translated">Sie sind nun bereit, Ihr neues Formular zu erstellen.</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step3.title" xml:space="preserve" approved="yes">
+                <source>Ready</source>
+            <target state="translated">Fertig</target></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step4.errorMessage" xml:space="preserve">
+                <source>The form could not be saved:</source>
+            <target/></trans-unit>
+			<trans-unit id="formManager.newFormWizard.step4.errorTitle" xml:space="preserve">
+                <source>Create</source>
+            <target/></trans-unit>
+			<trans-unit id="formManager.no_references" xml:space="preserve" approved="yes">
+                <source>There are no references yet</source>
+            <target state="translated">Es gibt noch keine Referenzen</target></trans-unit>
+			<trans-unit id="formManager.page" xml:space="preserve" approved="yes">
+                <source>Page</source>
+            <target state="translated">Seite</target></trans-unit>
+			<trans-unit id="formManager.record" xml:space="preserve" approved="yes">
+                <source>Record</source>
+            <target state="translated">Datensatz</target></trans-unit>
+			<trans-unit id="formManager.references.headline" xml:space="preserve" approved="yes">
+                <source>References for "{0}"</source>
+            <target state="translated">Referenzen für "{0}"</target></trans-unit>
+			<trans-unit id="formManager.references.title" xml:space="preserve" approved="yes">
+                <source>References</source>
+            <target state="translated">Referenzen</target></trans-unit>
+			<trans-unit id="formManager.remove_form" xml:space="preserve" approved="yes">
+                <source>Remove</source>
+            <target state="translated">Entfernen</target></trans-unit>
+			<trans-unit id="formManager.remove_form_message" xml:space="preserve" approved="yes">
+                <source>Are you sure that you want to remove this form?</source>
+            <target state="translated">Dieses Formular tatsächlich entfernen?</target></trans-unit>
+			<trans-unit id="formManager.remove_form_title" xml:space="preserve" approved="yes">
+                <source>Remove form</source>
+            <target state="translated">Formular entfernen</target></trans-unit>
+		</body>
+	</file>
+</xliff>

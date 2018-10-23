@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="de" datatype="plaintext" original="messages" date="2018-04-18T11:24:00Z" product-name="chancenportal">
+		<header/>
+		<body>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="address.description">
+				<source>address</source>
+			</trans-unit>
+			<trans-unit id="lat.description">
+				<source>lat</source>
+			</trans-unit>
+			<trans-unit id="lng.description">
+				<source>lng</source>
+			</trans-unit>
+			<trans-unit id="info.description">
+				<source>info</source>
+			</trans-unit>
+			<trans-unit id="short_description.description">
+				<source>shortDescription</source>
+			</trans-unit>
+			<trans-unit id="long_description.description">
+				<source>longDescription</source>
+			</trans-unit>
+			<trans-unit id="speaker.description">
+				<source>speaker</source>
+			</trans-unit>
+			<trans-unit id="images.description">
+				<source>images</source>
+			</trans-unit>
+			<trans-unit id="youtube.description">
+				<source>youtube</source>
+			</trans-unit>
+			<trans-unit id="conditions_of_participation.description">
+				<source>conditionsOfParticipation</source>
+			</trans-unit>
+			<trans-unit id="course_number.description">
+				<source>courseNumber</source>
+			</trans-unit>
+			<trans-unit id="allowed_participants.description">
+				<source>allowedParticipants</source>
+			</trans-unit>
+			<trans-unit id="costs.description">
+				<source>costs</source>
+			</trans-unit>
+			<trans-unit id="all_ages.description">
+				<source>allAges</source>
+			</trans-unit>
+			<trans-unit id="access.description">
+				<source>access</source>
+			</trans-unit>
+			<trans-unit id="accessibility.description">
+				<source>accessibility</source>
+			</trans-unit>
+			<trans-unit id="participate.description">
+				<source>participate</source>
+			</trans-unit>
+			<trans-unit id="donate.description">
+				<source>donate</source>
+			</trans-unit>
+			<trans-unit id="provider_cooperation.description">
+				<source>providerCooperation</source>
+			</trans-unit>
+			<trans-unit id="format.description">
+				<source>format</source>
+			</trans-unit>
+			<trans-unit id="no_costs.description">
+				<source>noCosts</source>
+			</trans-unit>
+			<trans-unit id="contact_salutation.description">
+				<source>contactSalutation</source>
+			</trans-unit>
+			<trans-unit id="contact_name.description">
+				<source>contactName</source>
+			</trans-unit>
+			<trans-unit id="contact_jurisdiction.description">
+				<source>contactJurisdiction</source>
+			</trans-unit>
+			<trans-unit id="contact_phone.description">
+				<source>contactPhone</source>
+			</trans-unit>
+			<trans-unit id="contact_email.description">
+				<source>contactEmail</source>
+			</trans-unit>
+			<trans-unit id="contact_image.description">
+				<source>contactImage</source>
+			</trans-unit>
+			<trans-unit id="active.description">
+				<source>active</source>
+			</trans-unit>
+			<trans-unit id="content_image.description">
+				<source>contentImage</source>
+			</trans-unit>
+			<trans-unit id="active_date.description">
+				<source>activeDate</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="approved.description">
+				<source>approved</source>
+			</trans-unit>
+			<trans-unit id="date_type.description">
+				<source>dateType</source>
+			</trans-unit>
+			<trans-unit id="start_date.description">
+				<source>startDate</source>
+			</trans-unit>
+			<trans-unit id="end_date.description">
+				<source>endDate</source>
+			</trans-unit>
+			<trans-unit id="reminder_email_send.description">
+				<source>reminderEmailSend</source>
+			</trans-unit>
+			<trans-unit id="dates.description">
+				<source>dates</source>
+			</trans-unit>
+			<trans-unit id="target_groups.description">
+				<source>targetGroups</source>
+			</trans-unit>
+			<trans-unit id="categories.description">
+				<source>categories</source>
+			</trans-unit>
+			<trans-unit id="district.description">
+				<source>district</source>
+			</trans-unit>
+			<trans-unit id="creator.description">
+				<source>creator</source>
+			</trans-unit>
+			<trans-unit id="last_editor.description">
+				<source>lastEditor</source>
+			</trans-unit>
+			<trans-unit id="provider_name.description">
+				<source>providerName</source>
+			</trans-unit>
+			<trans-unit id="provider_info.description">
+				<source>providerInfo</source>
+			</trans-unit>
+			<trans-unit id="no_dates.description">
+				<source>noDates</source>
+			</trans-unit>
+			<trans-unit id="provider.description">
+				<source>provider</source>
+			</trans-unit>
+			<trans-unit id="target_group.description">
+				<source>targetGroup</source>
+			</trans-unit>
+			<trans-unit id="frontend_user_group.description">
+				<source>frontendUserGroup</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

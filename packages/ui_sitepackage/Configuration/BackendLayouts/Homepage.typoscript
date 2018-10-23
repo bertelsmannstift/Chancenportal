@@ -1,0 +1,37 @@
+/**
+ * BackendLayout Configuration
+ */
+mod.web_layout.BackendLayouts {
+    Homepage {
+        title = LLL:EXT:ui_sitepackage/Resources/Private/Language/locallang_BeLayouts.xlf:layout.Homepage
+        config {
+            backend_layout {
+                colCount = 1
+                rowCount = 2
+                rows {
+                    1 {
+                        columns {
+                            1 {
+                                name = LLL:EXT:ui_sitepackage/Resources/Private/Language/locallang_BeLayouts.xlf:columns.main
+                                colspan = 1
+                                rowspan = 1
+                                colPos = 0
+                                allowed = flux_onecolumn, flux_twocolumn, flux_threecolumn, html, list, uice_kachel_teaser, uice_text_btn, text, uice_text_image
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        icon = EXT:ui_sitepackage/Resources/Public/Icons/BackendLayouts/Homepage.png
+    }
+}
+
+TCEFORM.tt_content.CType.keepItems < mod.web_layout.BackendLayouts.Homepage.config.backend_layout.rows.1.columns.1.allowed
+
+/**
+ * Enable TCEForm fields for this BeLayout
+ */
+[UI\UiProvider\TypoScript\BeLayoutCondition Homepage]
+    TCEFORM.pages.ui_company_logos.disabled = 0
+[end]

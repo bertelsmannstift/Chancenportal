@@ -1,0 +1,95 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+<f:render partial="ThemeColors" arguments="{themeColors: themeColors}"/>
+    <f:if condition="{offers -> f:count()}">
+        <section data-animation="fadeIn" class="container  container--more">
+            <h1>Aktuelle Angebote</h1>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kachel-grid">
+                        <f:for each="{offers}" as="offer" iteration="i">
+                            <f:if condition="{i.isFirst}">
+                                <div>
+
+                                    <div data-date="{f:format.date(format: 'd.m.Y', date: offer.nextDate)}" class="kachel kachel--theme-{offer.theme}<f:if condition="{offer.images.0}"><f:then> kachel--with-image" style="background-image: url('{f:uri.image(image: offer.images.0)}');"</f:then><f:else>"</f:else></f:if>>
+                                        <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+                                            <f:if condition="{offer.images.0}"><div class="kachel__gradient"></div></f:if>
+                                            <div class="kachel__inner">
+                                                <div class="kachel__category">
+                                                    <f:if condition="{offer.mainCategory}">
+                                                        {offer.mainCategory.name}
+                                                    </f:if>
+                                                </div>
+                                                <div class="kachel__content">
+                                                    <h3 class="kachel__headline">
+                                                        {offer.name}
+                                                    </h3>
+                                                    <h4 class="kachel__subheadline">
+                                                        {offer.shortDescription}
+                                                    </h4>
+
+                                                    <div class="kachel__date">
+
+                                                        <f:if condition="{c:OfferFormater(offer: offer, output: 'date', latest: 1)}">
+                                                            <c:OfferFormater offer="{offer}" output="date" latest="1" />
+                                                        </f:if>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="kachel__arrow"></div>
+                                        </a>
+                                        <div class="kachel__map-arrow"></div>
+                                    </div>
+                                </div>
+                            </f:if>
+                        </f:for>
+
+                        <div>
+                            <div>
+                                <f:for each="{offers}" as="offer" iteration="i">
+                                    <f:if condition="{i.isFirst}">
+                                        <f:else>
+                                            <div class="kachel kachel--theme-{offer.theme}">
+                                                <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
+                                                    <f:if condition="{offer.images.0}"><div class="kachel__gradient"></div></f:if>
+                                                    <div class="kachel__inner">
+                                                        <div class="kachel__category">
+                                                            <f:if condition="{offer.mainCategory}">
+                                                                {offer.mainCategory.name}
+                                                            </f:if>
+                                                        </div>
+                                                        <div class="kachel__content">
+                                                            <h3 class="kachel__headline">
+                                                                {offer.name}
+                                                            </h3>
+                                                            <h4 class="kachel__subheadline">
+                                                                {offer.shortDescription}
+                                                            </h4>
+
+
+                                                            <div class="kachel__date">
+
+                                                                <f:if condition="{c:OfferFormater(offer: offer, output: 'date', latest: 1)}">
+                                                                    <c:OfferFormater offer="{offer}" output="date" long="0" />
+                                                                </f:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="kachel__arrow"></div>
+                                                </a>
+                                                <div class="kachel__map-arrow"></div>
+                                            </div>
+                                        </f:else>
+                                    </f:if>
+                                </f:for>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__show-more">
+                <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_search)}">Mehr Anzeigen</a>
+            </div>
+        </section>
+    </f:if>
+</html>

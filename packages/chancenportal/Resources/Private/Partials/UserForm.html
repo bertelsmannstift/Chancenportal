@@ -1,0 +1,148 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+
+<f:if condition="{saved}">
+    <div class="info-box margin-inner-lg">
+        Die Einstellungen wurden gespeichert!
+    </div>
+</f:if>
+
+<f:if condition="{error}">
+    <div class="info-box margin-inner-lg">
+        Es gibt bereits ein Benuzter mit dieser E-Mail-Adresse, bitte wählen Sie eine andere.
+    </div>
+</f:if>
+
+<f:comment>
+    <f:form.validationResults for="{object}">
+        <f:debug>{validationResults}</f:debug>
+    </f:form.validationResults>
+</f:comment>
+
+<f:form
+    name="user"
+    object="{user}"
+    action="{action}"
+    enctype="multipart/form-data">
+
+    <f:if condition="{user.uid}">
+        <f:then>
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'new_username\', className: \' input--error\'}')}">
+                <label class="input__label">E-Mail</label>
+                <f:form.textfield type="email" name="new_username" class="input__field" value="{user.username}" required="1" />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'new_username', errorMsg: 'Es existiert bereits ein Benutzer mit dieser E-Mail.'}"/>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'username\', className: \' input--error\'}')}">
+                <label class="input__label">E-Mail</label>
+                <f:form.textfield property="username" class="input__field" />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'username', errorMsg: 'Geben Sie eine gültige E-Mail-Adresse ein.'}"/>
+            </div>
+        </f:else>
+    </f:if>
+
+    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+
+        <f:if condition="{action} === 'userEditSave'">
+            <c:formConfiguration property="tx_chancenportal_chancenportal[user]" allowProperties="companyGroup"></c:formConfiguration>
+
+            <div class="input">
+                <label class="input__label">Anbieter</label>
+                <custom-dropdown id="tx_chancenportal_chancenportal[user][companyGroup]" show-selected-title="true" options="{companyGroups}" empty-toggle-selector=".companyname"></custom-dropdown>
+            </div>
+
+            <div class="companyname input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'company\', className: \' input--error\'}')}">
+                <label class="input__label">Anbietername</label>
+                <f:form.textfield property="company" class="input__field" />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'company', errorMsg: 'Geben Sie eine Organisation ein.'}"/>
+            </div>
+        </f:if>
+
+    </f:security.ifHasRole>
+
+    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+        <f:if condition="{showCurrentPassword}">
+            <f:else>
+                <c:formConfiguration property="tx_chancenportal_chancenportal[user]" allowProperties="group"></c:formConfiguration>
+
+                <div class="input">
+                    <label class="input__label">Benutzerrolle</label>
+                    <custom-dropdown id="tx_chancenportal_chancenportal[user][group]" show-selected-title="true" options="{groups}"></custom-dropdown>
+                </div>
+            </f:else>
+        </f:if>
+    </f:security.ifHasRole>
+
+    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'name\', className: \' input--error\'}')}">
+        <label class="input__label">Name*</label>
+        <f:form.textfield property="name" class="input__field" />
+        <f:render partial="FieldError" arguments="{object: object, fieldName: 'name', errorMsg: 'Geben Sie einen Namen ein.'}"/>
+    </div>
+
+    <f:if condition="{showCurrentPassword}">
+        <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'password\', className: \' input--error\'}')}">
+            <label class="input__label">Ihr aktuelles Passwort</label>
+            <f:form.password name="password" class="input__field" value=""  />
+            <f:render partial="FieldError" arguments="{object: object, fieldName: 'password', errorMsg: 'Falsches Passwort.'}"/>
+        </div>
+    </f:if>
+
+    <f:if condition="{user.uid}">
+        <f:then>
+
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'new_password\', className: \' input--error\'}')}">
+                <label class="input__label">Neues Passwort</label>
+                <f:form.password name="new_password" class="input__field" value=""  />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'new_password', errorMsg: 'Bitte geben Sie ein Passwort mit mind. 7 Zeichen ein.'}"/>
+            </div>
+
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'new_password_repeat\', className: \' input--error\'}')}">
+                <label class="input__label">Wiederholen Sie das neue Passwort</label>
+                <f:form.password name="new_password_repeat" class="input__field" value=""  />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'new_password_repeat', errorMsg: 'Die Passwörter stimmen nicht überein.'}"/>
+            </div>
+
+        </f:then>
+        <f:else>
+
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'password\', className: \' input--error\'}')}">
+                <label class="input__label">Passwort*</label>
+                <f:form.password name="password" class="input__field" value=""  />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'password', errorMsg: 'Bitte geben Sie ein Passwort mit mind. 7 Zeichen ein.'}"/>
+            </div>
+
+            <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'password_repeat\', className: \' input--error\'}')}">
+                <label class="input__label">Wiederholen Sie das neue Passwort*</label>
+                <f:form.password name="password_repeat" class="input__field" value=""  />
+                <f:render partial="FieldError" arguments="{object: object, fieldName: 'password_repeat', errorMsg: 'Die Passwörter stimmen nicht überein.'}"/>
+            </div>
+        </f:else>
+    </f:if>
+
+    <f:if condition="{user.uid}">
+        <f:else>
+            <div class="row margin-inner">
+                <div class="col-lg-12 col-sm-12 flex middle-inner">
+                    <div class="info-box">
+                        Bitte beachten Sie: beim Speichern des neuen Benutzers wird automatisch eine Bestätigungs-E-Mail mit den Anmeldedaten an die oben angegebene Adresse verschickt.
+                    </div>
+                </div>
+            </div>
+        </f:else>
+    </f:if>
+
+    <div class="row margin-inner">
+        <div class="col-lg-6 col-sm-12 flex middle-lg">
+            <f:if condition="{action} === 'userEditSave'">
+                <c:formConfiguration property="tx_chancenportal_chancenportal[user]" allowProperties="disable"></c:formConfiguration>
+                <custom-select label="Aktiv" theme="light" name="tx_chancenportal_chancenportal[user][disable]" value="1" id="tx_chancenportal_chancenportal[user][disable]" is-checked="{f:if(condition: '{user.disable}', then: 'false', else: 'true')}"></custom-select>
+            </f:if>
+        </div>
+        <div class="col-lg-6 col-sm-12 margin-inner-sm flex end-lg">
+            <button type="submit" class="btn btn--primary">Speichern</button>
+        </div>
+    </div>
+    <div class="login-register__required">* Pflichtfelder</div>
+
+</f:form>
+</html>

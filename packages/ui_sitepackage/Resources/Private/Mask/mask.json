@@ -1,0 +1,197 @@
+{
+    "tt_content": {
+        "elements": {
+            "kachel_teaser": {
+                "label": "Kachel Teaser",
+                "key": "kachel_teaser",
+                "shortLabel": "",
+                "description": "",
+                "icon": "",
+                "color": "#000000",
+                "columns": [
+                    "tx_mask_kachel_teaser_cat",
+                    "tx_mask_kachel_teaser_headline",
+                    "tx_mask_kachel_teaser_text"
+                ],
+                "labels": [
+                    "Kategory",
+                    "\u00dcberschrift",
+                    "Text"
+                ]
+            },
+            "text_btn": {PageLayoutViewDrawItem
+                "label": "Text Button Element",
+                "key": "text_btn",
+                "shortLabel": "",
+                "description": "",
+                "icon": "",
+                "color": "#000000",
+                "columns": [
+                    "tx_mask_text_btn_headline",
+                    "tx_mask_text_btn_texfield",
+                    "tx_mask_text_btn_text",
+                    "tx_mask_text_btn_link"
+                ],
+                "labels": [
+                    "\u00dcberschrift",
+                    "Text",
+                    "Button Text",
+                    "Button Link"
+                ],
+                "options": {
+                    "1": "rte"
+                }
+            }
+        },
+        "sql": {
+            "tx_mask_text_btn_headline": {
+                "tt_content": {
+                    "tx_mask_text_btn_headline": "tinytext"
+                }
+            },
+            "tx_mask_text_btn_texfield": {
+                "tt_content": {
+                    "tx_mask_text_btn_texfield": "text"
+                }
+            },
+            "tx_mask_text_btn_text": {
+                "tt_content": {
+                    "tx_mask_text_btn_text": "tinytext"
+                }
+            },
+            "tx_mask_text_btn_link": {
+                "tt_content": {
+                    "tx_mask_text_btn_link": "tinytext"
+                }
+            },
+            "tx_mask_kachel_teaser_cat": {
+                "tt_content": {
+                    "tx_mask_kachel_teaser_cat": "tinytext"
+                }
+            },
+            "tx_mask_kachel_teaser_headline": {
+                "tt_content": {
+                    "tx_mask_kachel_teaser_headline": "tinytext"
+                }
+            },
+            "tx_mask_kachel_teaser_text": {
+                "tt_content": {
+                    "tx_mask_kachel_teaser_text": "text"
+                }
+            }
+        },
+        "tca": {
+            "tx_mask_text_btn_headline": {
+                "config": {
+                    "type": "input",
+                    "eval": "",
+                    "default": "",
+                    "placeholder": "",
+                    "size": "",
+                    "max": "",
+                    "is_in": ""
+                },
+                "exclude": "1",
+                "key": "text_btn_headline"
+            },
+            "tx_mask_text_btn_texfield": {
+                "config": {
+                    "type": "text",
+                    "eval": "",
+                    "richtextConfiguration": "default",
+                    "enableRichtext": "1",
+                    "cols": "",
+                    "rows": "",
+                    "default": "",
+                    "placeholder": "",
+                    "max": ""
+                },
+                "exclude": "1",
+                "key": "text_btn_texfield"
+            },
+            "tx_mask_text_btn_text": {
+                "config": {
+                    "type": "input",
+                    "eval": "",
+                    "default": "",
+                    "placeholder": "",
+                    "size": "",
+                    "max": "",
+                    "is_in": ""
+                },
+                "exclude": "1",
+                "key": "text_btn_text"
+            },
+            "tx_mask_text_btn_link": {
+                "config": {
+                    "type": "input",
+                    "renderType": "inputLink",
+                    "softref": "typolink",
+                    "fieldControl": {
+                        "linkPopup": {
+                            "options": {
+                                "title": "Link",
+                                "windowOpenParameters": "height=300,width=500,status=0,menubar=0,scrollbars=1",
+                                "blindLinkOptions": ""
+                            }
+                        }
+                    },
+                    "wizards": {
+                        "link": {
+                            "icon": "actions-wizard-link",
+                            "params": {
+                                "allowedExtensions": ""
+                            }
+                        }
+                    },
+                    "eval": "",
+                    "default": "",
+                    "placeholder": "",
+                    "size": ""
+                },
+                "exclude": "1",
+                "key": "text_btn_link"
+            },
+            "tx_mask_kachel_teaser_cat": {
+                "config": {
+                    "type": "input",
+                    "eval": "",
+                    "default": "",
+                    "placeholder": "",
+                    "size": "",
+                    "max": "100",
+                    "is_in": ""
+                },
+                "exclude": "1",
+                "key": "kachel_teaser_cat"
+            },
+            "tx_mask_kachel_teaser_headline": {
+                "config": {
+                    "type": "input",
+                    "eval": "",
+                    "default": "",
+                    "placeholder": "",
+                    "size": "",
+                    "max": "100",
+                    "is_in": ""
+                },
+                "exclude": "1",
+                "key": "kachel_teaser_headline"
+            },
+            "tx_mask_kachel_teaser_text": {
+                "config": {
+                    "type": "text",
+                    "eval": "",
+                    "cols": "",
+                    "rows": "",
+                    "default": "",
+                    "placeholder": "",
+                    "max": "200",
+                    "format": ""
+                },
+                "exclude": "1",
+                "key": "kachel_teaser_text"
+            }
+        }
+    }
+}

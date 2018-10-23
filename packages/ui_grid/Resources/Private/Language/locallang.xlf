@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" product-name="ui_grid" date="2018-01-09T11:46:01+01:00">
+		<header/>
+		<body>
+			<trans-unit id="flux.oneColumn">
+				<source>1-Column Grid</source>
+			</trans-unit>
+			<trans-unit id="flux.oneColumn.description">
+				<source>One-Column sized grid element.</source>
+			</trans-unit>
+			<trans-unit id="flux.oneColumn.columns.center">
+				<source>Center</source>
+			</trans-unit>
+			<trans-unit id="flux.oneColumn.sheets.background">
+				<source>Background color</source>
+			</trans-unit>
+
+			<trans-unit id="flux.twoColumn">
+				<source>2-Spalten Grid</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.description">
+				<source>Zweispaltiges Inhalts Element</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.columns.left">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.columns.right">
+				<source>Rechts</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.sheets.width">
+				<source>Spalten Breite</source>
+			</trans-unit>
+
+			<trans-unit id="flux.twoColumn.fields.settings.column_width_xs">
+				<source>Default</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.fields.settings.column_width_sm">
+				<source>Small (≥ 768px)</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.fields.settings.column_width_md">
+				<source>Medium (≥ 946px)</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.fields.settings.column_width_lg">
+				<source>Large (≥ 1440px)</source>
+			</trans-unit>
+			<trans-unit id="flux.twoColumn.fields.settings.column_width_xl">
+				<source>Extra large (≥ 1700px)</source>
+			</trans-unit>
+
+			<trans-unit id="flux.threeColumn">
+				<source>3-Spalten Grid</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.description">
+				<source>Dreispaltiges Inhalts Element</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.columns.left">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.columns.center">
+				<source>Mitte</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.columns.right">
+				<source>Rechts</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

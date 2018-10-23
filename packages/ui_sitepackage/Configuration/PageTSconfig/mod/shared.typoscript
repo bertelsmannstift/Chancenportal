@@ -1,0 +1,7 @@
+/**
+ * Shared Options for BE Modules
+ */
+mod.SHARED {
+    defaultLanguageLabel = Deutsch
+    defaultLanguageFlag = de
+}

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2012-04-14T17:43:11Z" product-name="extension_builder" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="Tx_ExtensionBuilder_extension" approved="yes">
+				<source>Extension Builder: Extension</source>
+			<target state="translated">Extension Builder: Erweiterung</target><alt-trans xml:space="preserve" origin="littlegee"><target>Extension Builder: Extension</target></alt-trans><alt-trans xml:space="preserve" origin="piphi"><target>Erweiterungs-Baukasten: Erweiterung</target></alt-trans><alt-trans xml:space="preserve" origin="7elix"><target>Erweiterung</target></alt-trans><alt-trans xml:space="preserve" origin="7elix"><target>Extension Builder: Erweiterung</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.extensionkey" approved="yes">
+				<source>extensionKey</source>
+			<target state="translated">Erweiterungsschlüssel</target><alt-trans xml:space="preserve" origin="piphi"><target>Erweiterungsidentifikation</target></alt-trans><alt-trans xml:space="preserve" origin="7elix"><target>Erweiterungsschlüssel</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Extension Key</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.title" approved="yes">
+				<source>Title</source>
+			<target state="translated">Titel</target><alt-trans xml:space="preserve" origin="littlegee"><target>Titel</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.description" approved="yes">
+				<source>Description</source>
+			<target state="translated">Beschreibung</target><alt-trans xml:space="preserve" origin="littlegee"><target>Beschreibung</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.state" approved="yes">
+				<source>State</source>
+			<target state="translated">Status</target><alt-trans xml:space="preserve" origin="littlegee"><target>Status</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.languages" approved="yes">
+				<source>Languages</source>
+			<target state="translated">Sprachen</target><alt-trans xml:space="preserve" origin="littlegee"><target>Sprachen</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.persons" approved="yes">
+				<source>Persons</source>
+			<target state="translated">Personen</target><alt-trans xml:space="preserve" origin="7elix"><target>Beteiligte Personen</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Personen</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_extension.domainobjects" approved="yes">
+				<source>Domain Objects</source>
+			<target state="translated">Domain-Objekte</target><alt-trans xml:space="preserve" origin="littlegee"><target>Domain Objekte</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_person" approved="yes">
+				<source>Extension Builder: Person</source>
+			<target state="translated">Extension Builder: Person</target><alt-trans xml:space="preserve" origin="7elix"><target>Person</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Extension Builder: Person</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_person.name" approved="yes">
+				<source>Person Name</source>
+			<target state="translated">Name der Person</target><alt-trans xml:space="preserve" origin="7elix"><target>Name</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Name der Person</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_person.email" approved="yes">
+				<source>Person Email</source>
+			<target state="translated">E-Mail der Person</target><alt-trans xml:space="preserve" origin="7elix"><target>E-Mail</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Email der Person</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_person.role" approved="yes">
+				<source>Role</source>
+			<target state="translated">Rolle</target><alt-trans xml:space="preserve" origin="7elix"><target>Aufgabe</target></alt-trans><alt-trans xml:space="preserve" origin="littlegee"><target>Rolle</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_person.extension" approved="yes">
+				<source>Extension</source>
+			<target state="translated">Erweiterung</target><alt-trans xml:space="preserve" origin="littlegee"><target>Extension</target></alt-trans><alt-trans xml:space="preserve" origin="piphi"><target>Erweiterung</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects" approved="yes">
+				<source>Extension Builder: Domain Objects</source>
+			<target state="translated">Extension Builder: Domainobjekte</target><alt-trans xml:space="preserve" origin="littlegee"><target>Extension Builder: Domain Objekte</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.name" approved="yes">
+				<source>Name</source>
+			<target state="translated">Name</target><alt-trans xml:space="preserve" origin="littlegee"><target>Name</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.description" approved="yes">
+				<source>Description</source>
+			<target state="translated">Beschreibung</target><alt-trans xml:space="preserve" origin="littlegee"><target>Beschreibung</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.relateddomainobjects" approved="yes">
+				<source>Related Domain Objects</source>
+			<target state="translated">Verwandte Domainobjekte</target><alt-trans xml:space="preserve" origin="littlegee"><target>Verwandte Domain Objekte</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.extension" approved="yes">
+				<source>Extension this Domain Object belongs to</source>
+			<target state="translated">Erweiterungen, zu denen dieses Domainobjekt gehört</target><alt-trans xml:space="preserve" origin="piphi"><target>Erweiterungen, zu denen dieses Domain gehört</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.backendconfigurationoptions" approved="yes">
+				<source>Backend Configuration Options</source>
+			<target state="translated">Optionen zur Backend-Konfiguration</target><alt-trans xml:space="preserve" origin="littlegee"><target>Backend Konfiguration Optionen</target></alt-trans><alt-trans xml:space="preserve" origin="bego68"><target>Optionen zur Backend Konfiguration</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_domainObjects.properties" approved="yes">
+				<source>Properties</source>
+			<target state="translated">Eigenschaften</target><alt-trans xml:space="preserve" origin="littlegee"><target>Eigenschaften</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties" approved="yes">
+				<source>Extension Builder: Properties</source>
+			<target state="translated">Extension Builder: Eigenschaften</target><alt-trans xml:space="preserve" origin="littlegee"><target>Extension Builder: Eigenschaften</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties.name" approved="yes">
+				<source>Name</source>
+			<target state="translated">Name</target><alt-trans xml:space="preserve" origin="littlegee"><target>Name</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties.description" approved="yes">
+				<source>Description</source>
+			<target state="translated">Beschreibung</target><alt-trans xml:space="preserve" origin="littlegee"><target>Beschreibung</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties.validationrules" approved="yes">
+				<source>validationRules</source>
+			<target state="translated">Validierungsregeln</target><alt-trans xml:space="preserve" origin="piphi"><target>Validierungs-Regeln</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties.isrequired" approved="yes">
+				<source>isRequired</source>
+			<target state="translated">Pflichtfeld</target><alt-trans xml:space="preserve" origin="littlegee"><target>Pflichtfeld</target></alt-trans></trans-unit>
+			<trans-unit id="Tx_ExtensionBuilder_properties.accessmethods" approved="yes">
+				<source>Access Methods</source>
+			<target state="translated">Zugriffsmethoden</target><alt-trans xml:space="preserve" origin="littlegee"><target>Zugriffsmethoden</target></alt-trans></trans-unit>
+		</body>
+	</file>
+</xliff>

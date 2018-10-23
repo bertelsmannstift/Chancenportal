@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:51:46Z" product-name="form">
+		<header/>
+		<body>
+			<trans-unit id="formEditor.element.AdvancedPassword.editor.confirmationLabel.predefinedDefaults" xml:space="preserve" approved="yes">
+                <source>Confirmation</source>
+            <target state="translated">Bestätigung</target></trans-unit>
+			<trans-unit id="formEditor.elements.AdvancedPassword.editor.confirmationLabel.label" xml:space="preserve" approved="yes">
+                <source>Confirmation label</source>
+            <target state="translated">Beschriftung des Bestätigungsknopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.AdvancedPassword.label" xml:space="preserve" approved="yes">
+                <source>Advanced password</source>
+            <target state="translated">Sichereres Passwort</target></trans-unit>
+			<trans-unit id="formEditor.elements.BaseFormElementMixin.editor.label.label" xml:space="preserve" approved="yes">
+                <source>Form name</source>
+            <target state="translated">Formularname</target></trans-unit>
+			<trans-unit id="formEditor.elements.Checkbox.label" xml:space="preserve" approved="yes">
+                <source>Checkbox</source>
+            <target state="translated">Checkbox</target></trans-unit>
+			<trans-unit id="formEditor.elements.ContentElement.editor.contentElement.buttonLabel" xml:space="preserve" approved="yes">
+                <source>tt_content</source>
+            <target state="translated">tt_content</target></trans-unit>
+			<trans-unit id="formEditor.elements.ContentElement.editor.contentElement.label" xml:space="preserve" approved="yes">
+                <source>Content element uid</source>
+            <target state="translated">uid des Inhaltselements</target></trans-unit>
+			<trans-unit id="formEditor.elements.ContentElement.label" xml:space="preserve" approved="yes">
+                <source>Content element</source>
+            <target state="translated">Inhaltselement</target></trans-unit>
+			<trans-unit id="formEditor.elements.ContentElement.selectContentElement" xml:space="preserve" approved="yes">
+                <source>No content element selected</source>
+            <target state="translated">Kein Inhaltselement ausgewählt</target></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.dateFormat.label" xml:space="preserve">
+                <source>Date format</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.displayTimeSelector.label" xml:space="preserve">
+                <source>Display time selector</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.enableDatePicker.label" xml:space="preserve">
+                <source>Enable datepicker (needs jQuery UI)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.validators.DateTime.label" xml:space="preserve" approved="yes">
+                <source>Date/time</source>
+            <target state="translated">Datum/Uhrzeit</target></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.validators.EmptyValue.label" xml:space="preserve" approved="yes">
+                <source>Add validator</source>
+            <target state="translated">Validator hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.editor.validators.label" xml:space="preserve" approved="yes">
+                <source>Validators</source>
+            <target state="translated">Validatoren</target></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.label" xml:space="preserve" approved="yes">
+                <source>Date picker</source>
+            <target state="translated">Datumsauswahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.DatePicker.validators.DateTime.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Date/time</source>
+            <target state="translated">Datum/Uhrzeit</target></trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.editor.label.label" xml:space="preserve" approved="yes">
+                <source>Fieldset name</source>
+            <target state="translated">Name der Feldgruppe</target></trans-unit>
+			<trans-unit id="formEditor.elements.Fieldset.label" xml:space="preserve" approved="yes">
+                <source>Fieldset</source>
+            <target state="translated">Feldgruppe</target></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.doc" xml:space="preserve">
+                <source>Documents (doc)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.docx" xml:space="preserve">
+                <source>Documents (docx)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.label" xml:space="preserve" approved="yes">
+                <source>Allowed file mime types</source>
+            <target state="translated">Zulässige Mime-Typen</target></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.ods" xml:space="preserve">
+                <source>Documents (ods)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.odt" xml:space="preserve">
+                <source>Documents (odt)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.pdf" xml:space="preserve">
+                <source>Documents (pdf)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.xls" xml:space="preserve">
+                <source>Documents (xls)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.editor.allowedMimeTypes.xlsx" xml:space="preserve">
+                <source>Documents (xlsx)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FileUpload.label" xml:space="preserve" approved="yes">
+                <source>File upload</source>
+            <target state="translated">Dateiupload</target></trans-unit>
+			<trans-unit id="formEditor.elements.FileUploadMixin.editor.saveToFileMount.label" xml:space="preserve" approved="yes">
+                <source>Uploads save path</source>
+            <target state="translated">Speicherpfad für Uploads</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.DeleteUploads.label" xml:space="preserve" approved="yes">
+                <source>Delete uploads</source>
+            <target state="translated">Uploads löschen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.EmailToReceiver.label" xml:space="preserve" approved="no">
+                <source>Email to receiver (you)</source>
+            <target state="needs-translation">E-Mail an Empfänger</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.EmailToSender.label" xml:space="preserve" approved="no">
+                <source>Email to sender (form submitter)</source>
+            <target state="needs-translation">E-Mail an Absender</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.EmptyValue.label" xml:space="preserve" approved="yes">
+                <source>Add finisher</source>
+            <target state="translated">Finisher hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.label" xml:space="preserve" approved="yes">
+                <source>Finishers</source>
+            <target state="translated">Finisher</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.finishers.Redirect.label" xml:space="preserve" approved="yes">
+                <source>Redirect to a page</source>
+            <target state="translated">Weiterleitung zu einer Seite</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.submitButtonLabel.label" xml:space="preserve" approved="yes">
+                <source>Submit label</source>
+            <target state="translated">Beschriftung des Absenden-Knopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.editor.submitButtonLabel.value" xml:space="preserve">
+                <source>Submit</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.label" xml:space="preserve">
+                <source>Grid viewport configuration</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.lg.label" xml:space="preserve">
+                <source>Large</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.md.label" xml:space="preserve">
+                <source>Medium</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.numbersOfColumnsToUse.fieldExplanationText" xml:space="preserve">
+                <source>Leave empty for auto calculation</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.numbersOfColumnsToUse.label" xml:space="preserve">
+                <source>Numbers of columns for viewport "{@viewPortLabel}"</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.sm.label" xml:space="preserve">
+                <source>Small</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.gridColumnViewPortConfiguration.xs.label" xml:space="preserve">
+                <source>Extra small</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.label.label" xml:space="preserve" approved="no">
+                <source>Label</source>
+            <target state="needs-translation">Name des Elements</target></trans-unit>
+			<trans-unit id="formEditor.elements.FormElement.editor.requiredValidator.label" xml:space="preserve" approved="yes">
+                <source>Required field</source>
+            <target state="translated">Pflichtfeld</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Closure.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Execute a closure</source>
+            <target state="translated">Closure ausführen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Confirmation.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Confirmation message</source>
+            <target state="translated">Bestätigungsmeldung</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.DeleteUploads.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Delete uploads</source>
+            <target state="translated">Uploads löschen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.attachUploads.label" xml:space="preserve" approved="yes">
+                <source>Attach uploads</source>
+            <target state="translated">Uploads hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.blindCarbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>BCC address</source>
+            <target state="translated">BCC-Adresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.carbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>CC address</source>
+            <target state="translated">CC-Adresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.format.1" xml:space="preserve" approved="yes">
+                <source>Plain text</source>
+            <target state="translated">Nur-Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.format.2" xml:space="preserve" approved="yes">
+                <source>HTML</source>
+            <target state="translated">HTML</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.format.label" xml:space="preserve" approved="yes">
+                <source>Format</source>
+            <target state="translated">Format</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.header.label" xml:space="preserve" approved="no">
+                <source>Email to receiver (you)</source>
+            <target state="needs-translation">E-Mail senden (Empfänger)</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.language.1" xml:space="preserve" approved="yes">
+                <source>EN</source>
+            <target state="translated">EN</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.language.label" xml:space="preserve" approved="yes">
+                <source>Translation language</source>
+            <target state="translated">Sprache</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.recipientAddress.fieldExplanationText" xml:space="preserve">
+                <source>The email address of the recipient to whom the email should be sent (e.g. your company's email address).</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.recipientAddress.label" xml:space="preserve" approved="yes">
+                <source>Recipient address</source>
+            <target state="translated">Empfängeradresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.recipientName.fieldExplanationText" xml:space="preserve">
+                <source>The name of the recipient which appears in your email client (e.g. your company's name).</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.recipientName.label" xml:space="preserve" approved="yes">
+                <source>Recipient name</source>
+            <target state="translated">Empfängername</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.replyToAddress.label" xml:space="preserve" approved="yes">
+                <source>Reply-to address</source>
+            <target state="translated">Antwortadresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.senderAddress.fieldExplanationText" xml:space="preserve">
+                <source>The email address of the sender which appears in your email client. If you want, you can use the "insert formelement identifier" dropdown to choose a form element which holds the website visitors email address.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.senderAddress.label" xml:space="preserve" approved="yes">
+                <source>Sender address</source>
+            <target state="translated">Absenderadresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.senderName.fieldExplanationText" xml:space="preserve">
+                <source>The name of the sender which appears in your email client. If you want, you can use the "insert formelement identifier" dropdown to choose one or more form elements which holds the website visitors name.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.senderName.label" xml:space="preserve" approved="yes">
+                <source>Sender name</source>
+            <target state="translated">Absendername</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToReceiver.editor.subject.label" xml:space="preserve" approved="yes">
+                <source>Subject</source>
+            <target state="translated">Betreff</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.attachUploads.label" xml:space="preserve" approved="yes">
+                <source>Attach uploads</source>
+            <target state="translated">Uploads hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.blindCarbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>BCC address</source>
+            <target state="translated">BCC-Adresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.carbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>CC address</source>
+            <target state="translated">CC-Adresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.format.1" xml:space="preserve" approved="yes">
+                <source>Plain text</source>
+            <target state="translated">Nur-Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.format.2" xml:space="preserve" approved="yes">
+                <source>HTML</source>
+            <target state="translated">HTML</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.format.label" xml:space="preserve" approved="yes">
+                <source>Format</source>
+            <target state="translated">Format</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.header.label" xml:space="preserve" approved="no">
+                <source>Email to sender (form submitter)</source>
+            <target state="needs-translation">E-Mail senden (Absender)</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.recipientAddress.fieldExplanationText" xml:space="preserve">
+                <source>The email address of the website visitor to whom the email should be sent. You can use the "insert formelement identifier" dropdown to choose a form element which holds the website visitors email address.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.recipientAddress.label" xml:space="preserve" approved="yes">
+                <source>Recipient address</source>
+            <target state="translated">Empfängeradresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.recipientName.fieldExplanationText" xml:space="preserve">
+                <source>The name of the website visitor which appears in the website visitor email client. You can use the "insert formelement identifier" dropdown to choose one or more form elements which holds the website visitors name.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.recipientName.label" xml:space="preserve" approved="yes">
+                <source>Recipient name</source>
+            <target state="translated">Empfängername</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.replyToAddress.label" xml:space="preserve" approved="yes">
+                <source>Reply-to address</source>
+            <target state="translated">Antwortadresse</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.senderAddress.fieldExplanationText" xml:space="preserve">
+                <source>The email address of the sender (e.g. your company's email address) which appears in the website visitor email client.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.senderAddress.label" xml:space="preserve" approved="yes">
+                <source>Sender address</source>
+            <target state="translated">Adresse des Absenders</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.senderName.fieldExplanationText" xml:space="preserve">
+                <source>The name of the sender (e.g. your company's name) which appears in the website visitor email client.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.senderName.label" xml:space="preserve" approved="yes">
+                <source>Sender name</source>
+            <target state="translated">Name des Absenders</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.EmailToSender.editor.subject.label" xml:space="preserve" approved="yes">
+                <source>Subject</source>
+            <target state="translated">Betreff</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.FlashMessage.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Flash message</source>
+            <target state="translated">Flash-Nachricht</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Redirect.editor.additionalParameters.label" xml:space="preserve" approved="yes">
+                <source>Additional parameters</source>
+            <target state="translated">Zusätzliche Parameter</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Redirect.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Redirect to a page</source>
+            <target state="translated">Zu einer Seite weiterleiten</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Redirect.editor.pageUid.buttonLabel" xml:space="preserve" approved="yes">
+                <source>Pages</source>
+            <target state="translated">Seiten</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.Redirect.editor.pageUid.label" xml:space="preserve" approved="yes">
+                <source>Page</source>
+            <target state="translated">Seite</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.finisher.SaveToDatabase.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Save the mail to the Database</source>
+            <target state="translated">E-Mail in der Datenbank speichern</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.saveErrorFlashMessageMessage" xml:space="preserve">
+                <source>The form could not be saved:</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Form.saveErrorFlashMessageTitle" xml:space="preserve" approved="yes">
+                <source>Save</source>
+            <target state="translated">Speichern</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.saveSuccessFlashMessageMessage" xml:space="preserve" approved="yes">
+                <source>The form has been successfully saved.</source>
+            <target state="translated">Das Formular wurde erfolgreich gespeichert.</target></trans-unit>
+			<trans-unit id="formEditor.elements.Form.saveSuccessFlashMessageTitle" xml:space="preserve" approved="yes">
+                <source>Save</source>
+            <target state="translated">Speichern</target></trans-unit>
+			<trans-unit id="formEditor.elements.GridContainer.editor.label.label" xml:space="preserve">
+                <source>Container name (not visible within Frontend)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.GridContainer.label" xml:space="preserve">
+                <source>Grid: Container</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.GridRow.editor.label.label" xml:space="preserve">
+                <source>Row name (not visible within frontend)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.GridRow.label" xml:space="preserve">
+                <source>Grid: Row</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Hidden.editor.defaultValue.label" xml:space="preserve">
+                <source>Value</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Hidden.label" xml:space="preserve">
+                <source>Hidden</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.ImageUpload.editor.allowedMimeTypes.bmp" xml:space="preserve">
+                <source>Images (bmp)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.ImageUpload.editor.allowedMimeTypes.jpg" xml:space="preserve">
+                <source>Images (jpg)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.ImageUpload.editor.allowedMimeTypes.label" xml:space="preserve" approved="yes">
+                <source>Allowed file mime types</source>
+            <target state="translated">Zulässige Mime-Typen</target></trans-unit>
+			<trans-unit id="formEditor.elements.ImageUpload.editor.allowedMimeTypes.png" xml:space="preserve">
+                <source>Images (png)</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.ImageUpload.label" xml:space="preserve" approved="yes">
+                <source>Image upload</source>
+            <target state="translated">Bildupload</target></trans-unit>
+			<trans-unit id="formEditor.elements.MinimumMaximumEditorsMixin.editor.maximum.label" xml:space="preserve" approved="yes">
+                <source>Maximum</source>
+            <target state="translated">Maximum</target></trans-unit>
+			<trans-unit id="formEditor.elements.MinimumMaximumEditorsMixin.editor.minimum.label" xml:space="preserve" approved="yes">
+                <source>Minimum</source>
+            <target state="translated">Minimum</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiCheckbox.label" xml:space="preserve" approved="yes">
+                <source>Multi checkbox</source>
+            <target state="translated">Checkbox zur Mehrfachauswahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelectionMixin.editor.validators.Count.label" xml:space="preserve" approved="yes">
+                <source>Number of submitted values</source>
+            <target state="translated">Anzahl der übermittelten Werte</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelectionMixin.editor.validators.EmptyValue.label" xml:space="preserve" approved="yes">
+                <source>Add validator</source>
+            <target state="translated">Validator hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelectionMixin.editor.validators.label" xml:space="preserve" approved="yes">
+                <source>Validators</source>
+            <target state="translated">Validatoren</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelectionMixin.validators.Count.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Number of submitted values</source>
+            <target state="translated">Anzahl der übermittelten Werte</target></trans-unit>
+			<trans-unit id="formEditor.elements.MultiSelect.label" xml:space="preserve" approved="yes">
+                <source>Multi select</source>
+            <target state="translated">Mehrfachauswahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.Page.editor.label.label" xml:space="preserve" approved="no">
+                <source>Step name</source>
+            <target state="needs-translation">Seitenname</target></trans-unit>
+			<trans-unit id="formEditor.elements.Page.editor.nextButtonLabel.label" xml:space="preserve" approved="no">
+                <source>Next button label</source>
+            <target state="needs-translation">Beschriftung des Nächste-Knopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.Page.editor.nextButtonLabel.value" xml:space="preserve" approved="no">
+                <source>Next step</source>
+            <target state="needs-translation">Neue Seite</target></trans-unit>
+			<trans-unit id="formEditor.elements.Page.editor.previousButtonLabel.label" xml:space="preserve" approved="no">
+                <source>Previous button label</source>
+            <target state="needs-translation">Beschriftung des Vorherige-Knopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.Page.editor.previousButtonLabel.value" xml:space="preserve">
+                <source>Previous step</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.Page.label" xml:space="preserve" approved="no">
+                <source>Step</source>
+            <target state="needs-translation">Seite</target></trans-unit>
+			<trans-unit id="formEditor.elements.Password.label" xml:space="preserve" approved="yes">
+                <source>Password</source>
+            <target state="translated">Passwort</target></trans-unit>
+			<trans-unit id="formEditor.elements.RadioButton.label" xml:space="preserve" approved="yes">
+                <source>Radio button</source>
+            <target state="translated">Auswahlknopf</target></trans-unit>
+			<trans-unit id="formEditor.elements.ReadOnlyFormElement.editor.label.label" xml:space="preserve" approved="no">
+                <source>Label</source>
+            <target state="needs-translation">Name des Elements</target></trans-unit>
+			<trans-unit id="formEditor.elements.SelectionMixin.editor.inactiveOption.fieldExplanationText" xml:space="preserve">
+                <source>If set, this label will be shown as first option.</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.SelectionMixin.editor.inactiveOption.label" xml:space="preserve">
+                <source>Inactive option</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.SelectionMixin.editor.options.label" xml:space="preserve" approved="yes">
+                <source>Choices</source>
+            <target state="translated">Optionen</target></trans-unit>
+			<trans-unit id="formEditor.elements.SelectionMixin.editor.options.removeLastAvailableRowFlashMessageMessage" xml:space="preserve" approved="yes">
+                <source>There must be at least one row within your options.</source>
+            <target state="translated">Es muss mindestens eine Reihe in Ihren Optionen existieren.</target></trans-unit>
+			<trans-unit id="formEditor.elements.SelectionMixin.editor.options.removeLastAvailableRowFlashMessageTitle" xml:space="preserve" approved="yes">
+                <source>Error</source>
+            <target state="translated">Fehler</target></trans-unit>
+			<trans-unit id="formEditor.elements.SingleSelect.label" xml:space="preserve" approved="yes">
+                <source>Single select</source>
+            <target state="translated">Einfachauswahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.StaticText.editor.staticText.label" xml:space="preserve" approved="yes">
+                <source>Text</source>
+            <target state="translated">Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.StaticText.label" xml:space="preserve" approved="yes">
+                <source>Static text</source>
+            <target state="translated">Statischer Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.editor.label.label" xml:space="preserve" approved="no">
+                <source>Step name</source>
+            <target state="needs-translation">Seitenname</target></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.editor.nextButtonLabel.label" xml:space="preserve" approved="no">
+                <source>Next button label</source>
+            <target state="needs-translation">Beschriftung des Nächste-Knopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.editor.nextButtonLabel.value" xml:space="preserve" approved="no">
+                <source>Next step</source>
+            <target state="needs-translation">Neue Seite</target></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.editor.previousButtonLabel.label" xml:space="preserve" approved="no">
+                <source>Previous button label</source>
+            <target state="needs-translation">Beschriftung des Vorherige-Knopfes</target></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.editor.previousButtonLabel.value" xml:space="preserve">
+                <source>Previous step</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.elements.SummaryPage.label" xml:space="preserve" approved="no">
+                <source>Summary step</source>
+            <target state="needs-translation">Zusammenfassungsseite</target></trans-unit>
+			<trans-unit id="formEditor.elements.Textarea.label" xml:space="preserve" approved="yes">
+                <source>Textarea</source>
+            <target state="translated">Textfeld</target></trans-unit>
+			<trans-unit id="formEditor.elements.Text.label" xml:space="preserve" approved="yes">
+                <source>Text</source>
+            <target state="translated">Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.defaultValue.label" xml:space="preserve" approved="yes">
+                <source>Default value</source>
+            <target state="translated">Standardwert</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.placeholder.label" xml:space="preserve" approved="yes">
+                <source>Placeholder</source>
+            <target state="translated">Platzhalter</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.Alphanumeric.label" xml:space="preserve" approved="yes">
+                <source>Alphanumeric</source>
+            <target state="translated">Alphanumerisch</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.EmailAddress.label" xml:space="preserve" approved="yes">
+                <source>Email</source>
+            <target state="translated">E-Mail</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.EmptyValue.label" xml:space="preserve" approved="yes">
+                <source>Add validator</source>
+            <target state="translated">Validator hinzufügen</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.Float.label" xml:space="preserve" approved="yes">
+                <source>Floating-point number</source>
+            <target state="translated">Fließkommazahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.Integer.label" xml:space="preserve" approved="yes">
+                <source>Integer number</source>
+            <target state="translated">Ganzzahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.label" xml:space="preserve" approved="yes">
+                <source>Validators</source>
+            <target state="translated">Validatoren</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.NumberRange.label" xml:space="preserve" approved="yes">
+                <source>Number range</source>
+            <target state="translated">Zahlenbereich</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.RegularExpression.label" xml:space="preserve" approved="yes">
+                <source>Regular expression</source>
+            <target state="translated">Regulärer Ausdruck</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.StringLength.label" xml:space="preserve" approved="yes">
+                <source>String length</source>
+            <target state="translated">Länge des Strings</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.editor.validators.Text.label" xml:space="preserve" approved="yes">
+                <source>Non-XML text</source>
+            <target state="translated">Nicht-XML-Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.Alphanumeric.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Alphanumeric</source>
+            <target state="translated">Alphanumerisch</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.EmailAddress.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Email</source>
+            <target state="translated">E-Mail</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.Float.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Floating-point number</source>
+            <target state="translated">Fließkommazahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.Integer.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Integer number</source>
+            <target state="translated">Ganzzahl</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.NumberRange.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Number range</source>
+            <target state="translated">Zahlenbereich</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.RegularExpression.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Regular expression</source>
+            <target state="translated">Regulärer Ausdruck</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.RegularExpression.editor.regex.fieldExplanationText" xml:space="preserve" approved="yes">
+                <source>Enter a valid PHP PCRE regular expression here.</source>
+            <target state="translated">Geben Sie hier einen validen regulären PHP-PCRE-Ausdruck ein.</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.RegularExpression.editor.regex.label" xml:space="preserve" approved="yes">
+                <source>Regular expression</source>
+            <target state="translated">Regulärer Ausdruck</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.StringLength.editor.header.label" xml:space="preserve" approved="yes">
+                <source>String length</source>
+            <target state="translated">Länge des Strings</target></trans-unit>
+			<trans-unit id="formEditor.elements.TextMixin.validators.Text.editor.header.label" xml:space="preserve" approved="yes">
+                <source>Non-XML text</source>
+            <target state="translated">Nicht-XML-Text</target></trans-unit>
+			<trans-unit id="formEditor.elements.UnknownElement" xml:space="preserve" approved="no">
+                <source>Unknown element</source>
+            <target state="needs-translation">Unbekanntes Element</target></trans-unit>
+			<trans-unit id="formEditor.formElementGroups.container.label" xml:space="preserve" approved="yes">
+                <source>Container elements</source>
+            <target state="translated">Containerelemente</target></trans-unit>
+			<trans-unit id="formEditor.formElementGroups.custom.label" xml:space="preserve" approved="yes">
+                <source>Advanced elements</source>
+            <target state="translated">Fortgeschrittene Elemente</target></trans-unit>
+			<trans-unit id="formEditor.formElementGroups.input.label" xml:space="preserve" approved="yes">
+                <source>Basic elements</source>
+            <target state="translated">Grundlegende Elemente</target></trans-unit>
+			<trans-unit id="formEditor.formElementGroups.page.label" xml:space="preserve" approved="no">
+                <source>Step types</source>
+            <target state="needs-translation">Seitentypen</target></trans-unit>
+			<trans-unit id="formEditor.formElementGroups.select.label" xml:space="preserve" approved="yes">
+                <source>Select elements</source>
+            <target state="translated">Elemente auswählen</target></trans-unit>
+			<trans-unit id="formEditor.formElementPropertyValidatorsDefinition.FormElementIdentifierWithinCurlyBraces.label" xml:space="preserve" approved="yes">
+                <source>Invalid form element</source>
+            <target state="translated">Ungültiges Form-Element</target></trans-unit>
+			<trans-unit id="formEditor.formElementPropertyValidatorsDefinition.Integer.label" xml:space="preserve" approved="yes">
+                <source>Not a number</source>
+            <target state="translated">Keine Zahl</target></trans-unit>
+			<trans-unit id="formEditor.formElementPropertyValidatorsDefinition.NaiveEmail.label" xml:space="preserve" approved="yes">
+                <source>Invalid email address</source>
+            <target state="translated">Ungültige E-Mail-Adresse</target></trans-unit>
+			<trans-unit id="formEditor.formElementPropertyValidatorsDefinition.NotEmpty.label" xml:space="preserve" approved="yes">
+                <source>Required</source>
+            <target state="translated">Erforderlich</target></trans-unit>
+			<trans-unit id="formEditor.form_settings_button" xml:space="preserve">
+                <source>Settings</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.header" xml:space="preserve" approved="no">
+                <source>Form editor</source>
+            <target state="needs-translation">Formulareditor</target></trans-unit>
+			<trans-unit id="formEditor.insert_elements" xml:space="preserve" approved="yes">
+                <source>Insert elements</source>
+            <target state="translated">Elemente einfügen</target></trans-unit>
+			<trans-unit id="formEditor.inspector.editor.formelement_selector.no_elements" xml:space="preserve">
+                <source>No elements available</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.inspector.editor.formelement_selector.title" xml:space="preserve">
+                <source>Insert formelement identifier</source>
+            <target/></trans-unit>
+			<trans-unit id="formEditor.loading" xml:space="preserve" approved="yes">
+                <source>Loading...</source>
+            <target state="translated">Lädt...</target></trans-unit>
+			<trans-unit id="formEditor.modals.close.cancleButton" xml:space="preserve" approved="yes">
+                <source>No, I will continue editing</source>
+            <target state="translated">Nein, ich werde die Bearbeitung fortsetzen</target></trans-unit>
+			<trans-unit id="formEditor.modals.close.confirmButton" xml:space="preserve" approved="yes">
+                <source>Yes, discard my changes</source>
+            <target state="translated">Ja, meine Änderungen verwerfen</target></trans-unit>
+			<trans-unit id="formEditor.modals.close.dialogMessage" xml:space="preserve" approved="yes">
+                <source>You have currently unsaved changes. Are you sure that you want to discard all changes?</source>
+            <target state="translated">Sie haben ungespeicherte Änderungen. Alle Änderungen verwerfen?</target></trans-unit>
+			<trans-unit id="formEditor.modals.close.dialogTitle" xml:space="preserve" approved="yes">
+                <source>Do you want to quit without saving?</source>
+            <target state="translated">Die Seite verlassen ohne zu speichern?</target></trans-unit>
+			<trans-unit id="formEditor.modals.insertElements.dialogTitle" xml:space="preserve" approved="yes">
+                <source>New element</source>
+            <target state="translated">Neues Element</target></trans-unit>
+			<trans-unit id="formEditor.modals.newPages.dialogTitle" xml:space="preserve" approved="no">
+                <source>New step</source>
+            <target state="needs-translation">Neue Seite</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.cancleButton" xml:space="preserve" approved="yes">
+                <source>Cancel</source>
+            <target state="translated">Abbrechen</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.confirmButton" xml:space="preserve" approved="yes">
+                <source>Remove</source>
+            <target state="translated">Entfernen</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.dialogMessage" xml:space="preserve" approved="yes">
+                <source>Are you sure that you want to remove this element?</source>
+            <target state="translated">Sind Sie sicher, dass Sie dieses Element löschen möchten?</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.dialogTitle" xml:space="preserve" approved="yes">
+                <source>Remove element?</source>
+            <target state="translated">Element entfernen?</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.lastAvailablePageFlashMessageMessage" xml:space="preserve" approved="no">
+                <source>There must be at least one step within your form.</source>
+            <target state="needs-translation">Es muss mindestens eine Seite innerhalb Ihres Formulars existieren.</target></trans-unit>
+			<trans-unit id="formEditor.modals.removeElement.lastAvailablePageFlashMessageTitle" xml:space="preserve" approved="yes">
+                <source>Error</source>
+            <target state="translated">Fehler</target></trans-unit>
+			<trans-unit id="formEditor.modals.validationErrors.confirmButton" xml:space="preserve" approved="yes">
+                <source>OK</source>
+            <target state="translated">OK</target></trans-unit>
+			<trans-unit id="formEditor.modals.validationErrors.dialogMessage" xml:space="preserve" approved="yes">
+                <source>Some elements are not configured properly. Please check the following elements:</source>
+            <target state="translated">Einige Elemente wurden nicht richtig konfiguriert. Bitte prüfen Sie die folgenden Elemente:</target></trans-unit>
+			<trans-unit id="formEditor.modals.validationErrors.dialogTitle" xml:space="preserve" approved="yes">
+                <source>Alert</source>
+            <target state="translated">Warnung</target></trans-unit>
+			<trans-unit id="formEditor.new_page_button" xml:space="preserve" approved="no">
+                <source>Create new step</source>
+            <target state="needs-translation">Neue Seite erstellen</target></trans-unit>
+			<trans-unit id="formEditor.pagination.title" xml:space="preserve" approved="no">
+                <source>Step {0} of {1}</source>
+            <target state="needs-translation">Seite {0} von {1}</target></trans-unit>
+			<trans-unit id="formEditor.redo_button" xml:space="preserve" approved="yes">
+                <source>Redo</source>
+            <target state="translated">Wiederholen</target></trans-unit>
+			<trans-unit id="formEditor.save_button" xml:space="preserve" approved="yes">
+                <source>Save</source>
+            <target state="translated">Speichern</target></trans-unit>
+			<trans-unit id="formEditor.spinner" xml:space="preserve" approved="yes">
+                <source>Loading...</source>
+            <target state="translated">Lädt...</target></trans-unit>
+			<trans-unit id="formEditor.stage.toolbar.new_element" xml:space="preserve" approved="yes">
+                <source>Create new element</source>
+            <target state="translated">Neues Element erstellen</target></trans-unit>
+			<trans-unit id="formEditor.stage.toolbar.new_element.after" xml:space="preserve" approved="yes">
+                <source>After</source>
+            <target state="translated">Nach</target></trans-unit>
+			<trans-unit id="formEditor.stage.toolbar.new_element.inside" xml:space="preserve" approved="yes">
+                <source>Inside</source>
+            <target state="translated">Innen</target></trans-unit>
+			<trans-unit id="formEditor.stage.toolbar.remove" xml:space="preserve" approved="yes">
+                <source>Remove</source>
+            <target state="translated">Entfernen</target></trans-unit>
+			<trans-unit id="formEditor.structure" xml:space="preserve" approved="yes">
+                <source>Structure</source>
+            <target state="translated">Struktur</target></trans-unit>
+			<trans-unit id="formEditor.undo_button" xml:space="preserve" approved="yes">
+                <source>Undo</source>
+            <target state="translated">Rückgängig</target></trans-unit>
+			<trans-unit id="formManagerController.deleteAction.error.body" xml:space="preserve" approved="yes">
+                <source>The form "%s" could not be deleted.</source>
+            <target state="translated">Das Formular "%s" konnte nicht gelöscht werden.</target></trans-unit>
+			<trans-unit id="formManagerController.deleteAction.error.title" xml:space="preserve" approved="yes">
+                <source>Delete error</source>
+            <target state="translated">Löschfehler</target></trans-unit>
+			<trans-unit id="formManager.create_new_form" xml:space="preserve" approved="yes">
+                <source>Create a new form</source>
+            <target state="translated">Neues Formular erstellen</target></trans-unit>
+			<trans-unit id="formManager.delete_form" xml:space="preserve" approved="yes">
+                <source>Remove this form</source>
+            <target state="translated">Dieses Formular entfernen</target></trans-unit>
+			<trans-unit id="formManager.delete_form_not_allowed" xml:space="preserve" approved="yes">
+                <source>Delete this form is not allowed.</source>
+            <target state="translated">Dieses Formular zu löschen ist nicht erlaubt.</target></trans-unit>
+			<trans-unit id="formManager.duplicate_form_not_allowed" xml:space="preserve" approved="no">
+                <source>Duplicate this form is not allowed.</source>
+            <target state="needs-translation">Dieses Formular zu löschen ist nicht erlaubt.</target></trans-unit>
+			<trans-unit id="formManager.duplicate_identifier" xml:space="preserve" approved="yes">
+                <source>Duplicate identifier!</source>
+            <target state="translated">Doppelter Bezeichner!</target></trans-unit>
+			<trans-unit id="formManager.duplicate_this_form" xml:space="preserve" approved="yes">
+                <source>Duplicate this form</source>
+            <target state="translated">Dieses Formular duplizieren</target></trans-unit>
+			<trans-unit id="formManager.edit_existing_forms" xml:space="preserve" approved="yes">
+                <source>Edit existing forms</source>
+            <target state="translated">Bestehende Formulare bearbeiten</target></trans-unit>
+			<trans-unit id="formManager.edit_form" xml:space="preserve" approved="yes">
+                <source>Edit this form</source>
+            <target state="translated">Dieses Formular bearbeiten</target></trans-unit>
+			<trans-unit id="formManager.edit_form_not_allowed" xml:space="preserve" approved="yes">
+                <source>Edit this form is not allowed.</source>
+            <target state="translated">Dieses Formulars zu bearbeiten ist nicht erlaubt.</target></trans-unit>
+			<trans-unit id="formManager.form_name" xml:space="preserve" approved="yes">
+                <source>Form name</source>
+            <target state="translated">Formularname</target></trans-unit>
+			<trans-unit id="formManager.headline" xml:space="preserve" approved="yes">
+                <source>Manage forms</source>
+            <target state="translated">Formulare verwalten</target></trans-unit>
+			<trans-unit id="formManager.invalid" xml:space="preserve">
+                <source>Invalid YAML file!</source>
+            <target/></trans-unit>
+			<trans-unit id="formManager.location" xml:space="preserve" approved="yes">
+                <source>Location</source>
+            <target state="translated">Ort</target></trans-unit>
+			<trans-unit id="formManager.no_forms" xml:space="preserve" approved="yes">
+                <source>No form available.</source>
+            <target state="translated">Kein Formular verfügbar.</target></trans-unit>
+			<trans-unit id="formManager.options" xml:space="preserve" approved="yes">
+                <source>Options</source>
+            <target state="translated">Optionen</target></trans-unit>
+			<trans-unit id="formManager.references" xml:space="preserve" approved="yes">
+                <source>References</source>
+            <target state="translated">Referenzen</target></trans-unit>
+			<trans-unit id="formManager.selectablePrototypesConfiguration.standard.label" xml:space="preserve" approved="yes">
+                <source>Standard</source>
+            <target state="translated">Standard</target></trans-unit>
+			<trans-unit id="formManager.selectablePrototypesConfiguration.standard.newFormTemplates.blankForm.label" xml:space="preserve" approved="yes">
+                <source>Blank form</source>
+            <target state="translated">Leeres Formular</target></trans-unit>
+			<trans-unit id="formManager.selectablePrototypesConfiguration.standard.newFormTemplates.simpleContactForm.label" xml:space="preserve" approved="yes">
+                <source>Simple contact form (ext:form example)</source>
+            <target state="translated">Einfaches Kontaktformular (ext:form)</target></trans-unit>
+			<trans-unit id="formManager.show_references" xml:space="preserve" approved="yes">
+                <source>Show references for this form</source>
+            <target state="translated">Referenzen für dieses Formular anzeigen</target></trans-unit>
+			<trans-unit id="module.shortcut_name" xml:space="preserve" approved="yes">
+                <source>Form manager</source>
+            <target state="translated">Formularmanager</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.blindCarbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the blind copy recipient</source>
+            <target state="translated">E-Mail-Adresse des BCC-Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.carbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the copy recipient</source>
+            <target state="translated">E-Mail-Adresse des CC-Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.format.1" xml:space="preserve" approved="yes">
+                <source>HTML</source>
+            <target state="translated">HTML</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.format.2" xml:space="preserve" approved="yes">
+                <source>Plain text</source>
+            <target state="translated">Nur-Text</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.format.label" xml:space="preserve" approved="yes">
+                <source>Format of the email</source>
+            <target state="translated">Format der E-Mail</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.label" xml:space="preserve" approved="no">
+                <source>Email to receiver (you)</source>
+            <target state="needs-translation">E-Mail an Empfänger</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.language.1" xml:space="preserve" approved="yes">
+                <source>Default</source>
+            <target state="translated">Standard</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.language.label" xml:space="preserve" approved="yes">
+                <source>Translation language</source>
+            <target state="translated">Sprache der Übersetzung</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.recipientAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the recipient</source>
+            <target state="translated">E-Mail-Adresse des Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.recipientName.label" xml:space="preserve" approved="yes">
+                <source>Human-readable name of the recipient</source>
+            <target state="translated">Menschenlesbarer Name des Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.replyToAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of to be used as reply-to email</source>
+            <target state="translated">E-Mail Adresse, die als Antwortadresse genutzt werden soll</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.senderAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the sender</source>
+            <target state="translated">E-Mail-Adresse des Absenders</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.senderName.label" xml:space="preserve" approved="yes">
+                <source>Human-readable name of the sender</source>
+            <target state="translated">Menschenlesbarer Name des Absenders</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToReceiver.subject.label" xml:space="preserve" approved="yes">
+                <source>Subject of the email</source>
+            <target state="translated">Betreff der E-Mail</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.blindCarbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the blind copy recipient</source>
+            <target state="translated">E-Mail-Adresse des BCC-Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.carbonCopyAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the copy recipient</source>
+            <target state="translated">E-Mail-Adresse des CC-Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.format.1" xml:space="preserve" approved="yes">
+                <source>HTML</source>
+            <target state="translated">HTML</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.format.2" xml:space="preserve" approved="yes">
+                <source>Plain text</source>
+            <target state="translated">Nur-Text</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.format.label" xml:space="preserve" approved="yes">
+                <source>The format of the email</source>
+            <target state="translated">Das Format der E-Mail</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.label" xml:space="preserve" approved="no">
+                <source>Email to sender (form submitter)</source>
+            <target state="needs-translation">E-Mail an Absender</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.recipientAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the recipient</source>
+            <target state="translated">E-Mail-Adresse des Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.recipientName.label" xml:space="preserve" approved="yes">
+                <source>Human-readable name of the recipient</source>
+            <target state="translated">Menschenlesbarer Name des Empfängers</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.replyToAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of to be used as reply-to email</source>
+            <target state="translated">E-Mail Adresse, die als Antwortadresse benutzt werden soll</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.senderAddress.label" xml:space="preserve" approved="yes">
+                <source>Email address of the sender</source>
+            <target state="translated">E-Mail-Adresse des Absenders</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.senderName.label" xml:space="preserve" approved="yes">
+                <source>Human-readable name of the sender</source>
+            <target state="translated">Menschenlesbarer Name des Absenders</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.EmailToSender.subject.label" xml:space="preserve" approved="yes">
+                <source>Subject of the email</source>
+            <target state="translated">Betreff der E-Mail</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.Redirect.additionalParameters.label" xml:space="preserve" approved="yes">
+                <source>Additional link parameter</source>
+            <target state="translated">Zusätzliche Linkparameter</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.Redirect.label" xml:space="preserve" approved="yes">
+                <source>Redirect</source>
+            <target state="translated">Weiterleitung</target></trans-unit>
+			<trans-unit id="tt_content.finishersDefinition.Redirect.pageUid.label" xml:space="preserve" approved="yes">
+                <source>Page</source>
+            <target state="translated">Seite</target></trans-unit>
+			<trans-unit id="tt_content.pi_flexform.formframework.overrideFinishers" xml:space="preserve" approved="yes">
+                <source>Override finisher settings</source>
+            <target state="translated">Finisher-Einstellungen überschreiben</target></trans-unit>
+			<trans-unit id="tt_content.pi_flexform.formframework.persistenceIdentifier" xml:space="preserve" approved="yes">
+                <source>Form definition</source>
+            <target state="translated">Formulardefinition</target></trans-unit>
+			<trans-unit id="tt_content.pi_flexform.formframework.selectPersistenceIdentifier" xml:space="preserve" approved="yes">
+                <source>Please select a form definition</source>
+            <target state="translated">Bitte wählen Sie eine Formulardefinition</target></trans-unit>
+			<trans-unit id="tt_content.pi_flexform.formframework.sheet_general" xml:space="preserve" approved="yes">
+                <source>General</source>
+            <target state="translated">Allgemein</target></trans-unit>
+			<trans-unit id="tt_content.preview.inaccessiblePersistenceIdentifier" xml:space="preserve">
+                <source>"%s" (no read access).</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.invalidFrameworkConfiguration" xml:space="preserve">
+                <source>"%s" (Invalid ext:form configuration).</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.invalidFrameworkConfiguration.text" xml:space="preserve">
+                <source>Invalid ext:form configuration. %s</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.invalidFrameworkConfiguration.title" xml:space="preserve">
+                <source>Invalid configuration.</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.invalidPersistenceIdentifier" xml:space="preserve">
+                <source>Invalid form "%s".</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.noPersistenceIdentifier" xml:space="preserve">
+                <source>No form selected.</source>
+            <target/></trans-unit>
+			<trans-unit id="tt_content.preview.notExistingdPersistenceIdentifier" xml:space="preserve">
+                <source>The form "%s" does not exists.</source>
+            <target/></trans-unit>
+		</body>
+	</file>
+</xliff>

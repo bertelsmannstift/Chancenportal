@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:05:54Z" product-name="core">
+		<header/>
+		<body>
+			<trans-unit id="FileUtility.CannotCopyFolderIntoTargetFolderBecauseTheTargetFolderIsAlreadyWithinTheFolderToBeCopied" approved="yes">
+				<source>Cannot copy folder "%s" into target folder "%s", because the target folder is already within the folder to be copied!</source>
+				<target state="translated">Ordner "%s" kann nicht in Zielordner "%s" kopiert werden, weil der Zielordner sich bereits in dem zu kopierenden Ordner befindet!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Ordner „%s“ kann nicht in Zielordner „%s“ kopiert werden, weil der Zielordner sich bereits in dem zu kopierenden Ordner befindet!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.CannotMoveFolderIntoTargetFolderBecauseTheTargetFolderIsAlreadyWithinTheFolderToBeMoved" approved="yes">
+				<source>Cannot move folder "%s" into target folder "%s", because the target folder is already within the folder to be moved!</source>
+				<target state="translated">Ordner "%s" kann nicht in Zielordner "%s" verschoben werden, weil der Zielordner sich bereits in dem zu verschiebenden Ordner befindet!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.CouldNotAccessAllNecessaryResources" approved="yes">
+				<source>Could not access all necessary resources. Source file or destination maybe was not within your mountpoints? T="%s", D="%s"</source>
+				<target state="translated">Kein Zugriff auf alle notwendigen Ressourcen. Liegen Quell- und Zieldatei innerhalb Ihrer Freigabepunkte? Z="%s", Q="%s"</target>
+				<note>T=target, in deutsch Z=Ziel. D=destination, in deutsch Q=Quelle.</note>
+			</trans-unit>
+			<trans-unit id="FileUtility.CouldNotDeleteDirectory" approved="yes">
+				<source>Could not delete directory! Is directory "%s" empty? (You are not allowed to delete directories recursively).</source>
+				<target state="translated">Verzeichnis konnte nicht gelöscht werden! Ist das Verzeichnis "%s" leer? (Sie haben keine Berechtigung, Verzeichnisse rekursiv zu löschen.)</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.CouldNotDeleteDirectory1" approved="yes">
+				<source>Could not delete directory "%s"! There might be a problem with write permissions.</source>
+				<target state="translated">Verzeichnis "%s" konnte nicht gelöscht werden! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ konnte nicht gelöscht werden! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.CouldNotDeleteFile" approved="yes">
+				<source>Could not delete file "%s". There might be a problem with write permissions.</source>
+				<target state="translated">Datei "%s" konnte nicht gelöscht werden. Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ konnte nicht gelöscht werden. Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DestinationExistedAlready" approved="yes">
+				<source>Destination "%s" already exists!</source>
+				<target state="translated">Ziel "%s" existiert bereits!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Ziel „%s“ existiert bereits!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DestinationPathWasNotWithinYourMountpoints" approved="yes">
+				<source>Destination path "%s" was not within your mountpoints!</source>
+				<target state="translated">Zielpfad "%s" liegt nicht innerhalb Ihrer Freigabepunkte!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Zielpfad „%s“ liegt nicht innerhalb Ihrer Freigabepunkte!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DestinationWasNotADirectory" approved="yes">
+				<source>Destination "%s" was not a directory.</source>
+				<target state="translated">Ziel "%s" war kein Verzeichnis.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Ziel „%s“ war kein Verzeichnis.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryCopiedTo" approved="yes">
+				<source>Directory "%s" copied to "%s".</source>
+				<target state="translated">Verzeichnis "%s" wurde nach "%s" kopiert.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde nach „%s“ kopiert.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryCreatedIn" approved="yes">
+				<source>Directory "%s" created in "%s".</source>
+				<target state="translated">Verzeichnis "%s" wurde in "%s" erstellt.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde in „%s“ erstellt.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryMovedTo" approved="yes">
+				<source>Directory "%s" moved to "%s".</source>
+				<target state="translated">Verzeichnis "%s" wurde nach "%s" verschoben.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde nach „%s“ verschoben.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryNotCreated" approved="yes">
+				<source>Directory "%s" not created. There might be a problem with write permissions in "%s"?</source>
+				<target state="translated">Verzeichnis "%s" wurde nicht erstellt. Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde nicht erstellt. Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryRenamedFromTo" approved="yes">
+				<source>Directory renamed from "%s" to "%s".</source>
+				<target state="translated">Verzeichnis wurde von "%s" nach "%s" umbenannt.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis wurde von „%s“ nach „%s“ umbenannt.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryRenamedSameName" approved="yes">
+				<source>Directory "%s" was not renamed. (Same name as before)</source>
+				<target state="translated">Verzeichnis "%s" wurde nicht umbenannt. (Selber Name wie zuvor.)</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde nicht umbenannt. (Selber Name wie zuvor.)</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryWasNotCopiedTo" approved="yes">
+				<source>Directory "%s" WAS NOT copied to "%s"! There might be a problem with write permissions</source>
+				<target state="translated">Verzeichnis "%s" wurde NICHT nach "%s" kopiert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde NICHT nach „%s“ kopiert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryWasNotMovedTo" approved="yes">
+				<source>Directory "%s" WAS NOT moved to "%s"! There might be a problem with write permissions</source>
+				<target state="translated">Verzeichnis "%s" wurde NICHT nach "%s" verschoben! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde NICHT nach „%s“ verschoben! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.DirectoryWasNotRenamed" approved="yes">
+				<source>Directory "%s" was not renamed! There might be a problem with write permissions in "%s"?</source>
+				<target state="translated">Verzeichnis "%s" wurde nicht umbenannt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Verzeichnis „%s“ wurde nicht umbenannt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.ExtensionOfFileNameIsNotAllowedIn" approved="yes">
+				<source>Extension of file name "%s" is not allowed in "%s"!</source>
+				<target state="translated">Erweiterung von Datei "%s" in "%s" ist nicht erlaubt!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Erweiterung von Datei „%s“ in „%s“ ist nicht erlaubt!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.ExtensionOfFileNameOrWasNotAllowed" approved="yes">
+				<source>Extension of file name "%s" or "%s" was not allowed!</source>
+				<target state="translated">Erweiterung von Datei "%s" oder "%s" ist nicht erlaubt!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Erweiterung von Datei „%s“ oder „%s“ ist nicht erlaubt!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.ExtensionOfFileWasNotAllowed" approved="yes">
+				<source>Extension of file "%s" was not allowed!</source>
+				<target state="translated">Erweiterung von Datei "%s" ist nicht erlaubt!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Erweiterung von Datei „%s“ ist nicht erlaubt!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileAlreadyExistsInFolder" approved="yes">
+				<source>File "%s" already exists in folder "%s"!</source>
+				<target state="translated">Datei "%s" in Ordner "%s" existiert bereits!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ in Ordner „%s“ existiert bereits!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileCopiedTo" approved="yes">
+				<source>File "%s" copied to "%s".</source>
+				<target state="translated">Datei "%s" wurde nach "%s" kopiert.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nach „%s“ kopiert.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileCreated" approved="yes">
+				<source>File created: "%s".</source>
+				<target state="translated">Datei erstellt: "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei erstellt: „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileExistedAlreadyIn" approved="yes">
+				<source>File existed already in "%s"!</source>
+				<target state="translated">Datei existiert bereits in "%s"!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei existiert bereits in „%s“!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileExtensionIsNotATextfileFormat" approved="yes">
+				<source>File extension "%s" is not a textfile format! (%s).</source>
+				<target state="translated">Dateierweiterung "%s" gehört nicht zu einem Textdateiformat! (%s)</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Dateierweiterung „%s“ gehört nicht zu einem Textdateiformat! (%s)</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileExtensionIsNotzip" approved="yes">
+				<source>File extension is not "zip".</source>
+				<target state="translated">Dateierweiterung ist nicht "zip".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Dateierweiterung ist nicht „zip“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileMovedTo" approved="yes">
+				<source>File "%s" moved to "%s".</source>
+				<target state="translated">Datei "%s" wurde nach "%s" verschoben.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nach „%s“ verschoben.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileNameWasNotAllowed" approved="yes">
+				<source>File name "%s" was not allowed!</source>
+				<target state="translated">Dateiname "%s" ist nicht erlaubt!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Dateiname „%s“ ist nicht erlaubt!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileOrDestinationWasNotWithinYourMountpoints" approved="yes">
+				<source>File "%s" or destination "%s" was not within your mountpoints!</source>
+				<target state="translated">Datei "%s" oder Ziel "%s" liegt nicht innerhalb Ihrer Freigabepunkte!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ oder Ziel „%s“ liegt nicht innerhalb Ihrer Freigabepunkte!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileOrDirectoryExistedAlready" approved="yes">
+				<source>File or directory "%s" already exists!</source>
+				<target state="translated">Datei oder Verzeichnis "%s" existiert bereits!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei oder Verzeichnis „%s“ existiert bereits!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileRenamedFromTo" approved="yes">
+				<source>File renamed from "%s" to "%s".</source>
+				<target state="translated">Datei wurde von "%s" nach "%s" umbenannt.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei wurde von „%s“ nach „%s“ umbenannt.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileRenamedSameName" approved="yes">
+				<source>File "%s" was not renamed. (Same name as before)</source>
+				<target state="translated">Datei "%s" wurde nicht umbenannt. (Selber Name wie zuvor.)</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nicht umbenannt. (Selber Name wie zuvor.) </target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileSavedToBytesMd5" approved="yes">
+				<source>File saved to "%s", bytes: %s, MD5: %s.</source>
+				<target state="translated">Datei gespeichert unter "%s", Bytes: %s, MD5: %s.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei gespeichert unter „%s“, Bytes: %s, MD5: %s.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileWasNotCopiedTo" approved="yes">
+				<source>File "%s" WAS NOT copied to "%s"! There might be a problem with write permissions.</source>
+				<target state="translated">Datei "%s" wurde NICHT nach "%s" kopiert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde NICHT nach „%s“ kopiert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileWasNotCreated" approved="yes">
+				<source>File "%s" was not created! There might be a problem with write permissions in "%s"?</source>
+				<target state="translated">Datei "%s" wurde nicht erstellt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nicht erstellt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileWasNotRenamed" approved="yes">
+				<source>File "%s" was not renamed! There might be a problem with write permissions in "%s"?</source>
+				<target state="translated">Datei "%s" wurde nicht umbenannt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nicht umbenannt! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileWasNotSaved" approved="yes">
+				<source>File "%s" was not saved! There might be a problem with write permissions.</source>
+				<target state="translated">Datei "%s" wurde nicht gespeichert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nicht gespeichert! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.FileWasNotSaved2" approved="yes">
+				<source>File "%s" was not saved! File extension rejected!</source>
+				<target state="translated">Datei "%s" wurde nicht gespeichert! Dateierweiterung zurückgewiesen!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wurde nicht gespeichert! Dateierweiterung zurückgewiesen!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.InvalidFolderName" approved="yes">
+				<source>Invalid folder name "%s"!</source>
+				<target state="translated">Der Ordnername "%s" ist ungültig!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Der Ordnername „%s“ ist ungültig!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.NoFileWasUploaded" approved="yes">
+				<source>No file was uploaded!</source>
+				<target state="translated">Es wurde keine Datei hochgeladen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.NoFileWasUploadedForReplacing" approved="yes">
+				<source>No file was uploaded for replacing!</source>
+				<target state="translated">Es wurde keine Datei zum Ersetzen hochgeladen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.NoNameForNewFolderGiven" approved="yes">
+				<source>No name for new folder given!</source>
+				<target state="translated">Es wurde kein Name für den neuen Ordner angegeben!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.NoUniqueFilenameAvailableIn" approved="yes">
+				<source>No unique filename available in "%s"!</source>
+				<target state="translated">In "%s" ist kein eindeutiger Dateiname verfügbar!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>In „%s“ ist kein eindeutiger Dateiname verfügbar!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.ReplacingFileTo" approved="yes">
+				<source>Replacing file "%s" to "%s".</source>
+				<target state="translated">Datei "%s" wird durch "%s" ersetzt.</target>
+				<alt-trans xml:space="preserve" origin="friedolin">
+					<target>Datei "%s" ersetzt "%s".</target>
+				</alt-trans>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ wird durch „%s“ ersetzt.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.TargetAlreadyExists" approved="yes">
+				<source>Target "%s" already exists!</source>
+				<target state="translated">Ziel "%s" existiert bereits!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Ziel „%s“ existiert bereits!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.TargetWasNotAFile" approved="yes">
+				<source>Target "%s" was not a file!</source>
+				<target state="translated">Ziel "%s" ist keine Datei!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Ziel „%s“ ist keine Datei!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.TargetWasNotWithinYourMountpoints" approved="yes">
+				<source>Target was not within your mountpoints! T="%s".</source>
+				<target state="translated">Ziel liegt nicht innerhalb Ihrer Freigabepunkte! Z="%s".</target>
+				<note>T=target, in deutsch Z=Ziel.</note>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheFileDidNotExist" approved="yes">
+				<source>The file "%s" did not exist!</source>
+				<target state="translated">Datei "%s" war nicht vorhanden!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Datei „%s“ war nicht vorhanden!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheFunctionToCopyAFileBetweenStoragesIsNotYetImplemented" approved="yes">
+				<source>The function to copy a file between storages is not yet implemented.</source>
+				<target state="translated">Die Funktion, eine Datei zwischen Speichern zu kopieren, ist noch nicht implementiert.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheFunctionToCopyAFolderBetweenStoragesIsNotYetImplemented" approved="yes">
+				<source>The function to copy a folder between storages is not yet implemented.</source>
+				<target state="translated">Die Funktion, einen Ordner zwischen Speichern zu kopieren, ist noch nicht implementiert.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheFunctionToMoveAFileBetweenStoragesIsNotYetImplemented" approved="yes">
+				<source>The function to move a file between storages is not yet implemented.</source>
+				<target state="translated">Die Funktion, eine Datei zwischen Speichern zu verschieben, ist noch nicht implementiert.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheFunctionToMoveAFolderBetweenStoragesIsNotYetImplemented" approved="yes">
+				<source>The function to move a folder between storages is not yet implemented.</source>
+				<target state="translated">Die Funktion, einen Ordner zwischen Speichern zu verschieben, ist noch nicht implementiert.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheUploadedFileExceedsTheSize-limit" approved="yes">
+				<source>The uploaded file "%s" exceeds the size-limit</source>
+				<target state="translated">Die hochgeladene Datei "%s" überschreitet de Größenbeschränkung.</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Die hochgeladene Datei „%s“ überschreitet de Größenbeschränkung.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.TheUploadHasFailedNoUploadedFileFound" approved="yes">
+				<source>The upload has failed, no uploaded file found!</source>
+				<target state="translated">Das Hochladen ist fehlgeschlagen; es wurde keine hochgeladene Datei gefunden!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.UnzippingFileIn" approved="yes">
+				<source>Unzipping file "%s" in "%s".</source>
+				<target state="translated">Entpacken der Datei "%s" in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Entpacken der Datei „%s“ in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.UploadedFileCouldNotBeMoved" approved="yes">
+				<source>Uploaded file could not be moved! There might be a problem with write permissions in "%s"?</source>
+				<target state="translated">Die hochgeladene Datei konnte nicht verschoben werden! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Die hochgeladene Datei konnte nicht verschoben werden! Möglicherweise gibt es ein Problem mit den Schreibberechtigungen in „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.UploadingFileTo" approved="yes">
+				<source>Uploading file "%s" to "%s".</source>
+				<target state="translated">Hochladen der Datei "%s" nach "%s".</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Hochladen der Datei „%s“ nach „%s“.</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToAccessTheDirectory" approved="yes">
+				<source>You are not allowed to access the directory.</source>
+				<target state="translated">Sie haben keine Berechtigung, auf dieses Verzeichnis zuzugreifen.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToAccessTheFile" approved="yes">
+				<source>You are not allowed to access the file.</source>
+				<target state="translated">Sie haben keine Berechtigung, auf diese Datei zuzugreifen.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToCopyDirectories" approved="yes">
+				<source>You are not allowed to copy directories.</source>
+				<target state="translated">Sie haben keine Berechtigung, Verzeichnisse zu kopieren.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToCopyFiles" approved="yes">
+				<source>You are not allowed to copy files.</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien zu kopieren.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToCreateDirectories" approved="yes">
+				<source>You are not allowed to create directories!</source>
+				<target state="translated">Sie haben keine Berechtigung, Verzeichnisse zu erstellen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToCreateFiles" approved="yes">
+				<source>You are not allowed to create files!</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien zu erstellen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToEditFiles" approved="yes">
+				<source>You are not allowed to edit files!</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien zu bearbeiten!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToMoveDirectories" approved="yes">
+				<source>You are not allowed to move directories.</source>
+				<target state="translated">Sie haben keine Berechtigung, Verzeichnisse zu verschieben.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToMoveFiles" approved="yes">
+				<source>You are not allowed to move files.</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien zu verschieben.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToOverride" approved="yes">
+				<source>You are not allowed to override "%s"!</source>
+				<target state="translated">Sie haben keine Berechtigung, "%s" zu überschreiben!</target>
+				<alt-trans xml:space="preserve" origin="christian-hellmuth">
+					<target>Sie haben keine Berechtigung, „%s“ zu überschreiben!</target>
+				</alt-trans>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToRenameDirectories" approved="yes">
+				<source>You are not allowed to rename directories!</source>
+				<target state="translated">Sie haben keine Berechtigung, Verzeichnisse umzubenennen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToRenameFiles" approved="yes">
+				<source>You are not allowed to rename files!</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien umzubenennen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToUnzipFiles" approved="yes">
+				<source>You are not allowed to unzip files.</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien zu entpacken.</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouAreNotAllowedToUploadFiles" approved="yes">
+				<source>You are not allowed to upload files!</source>
+				<target state="translated">Sie haben keine Berechtigung, Dateien hochzuladen!</target>
+			</trans-unit>
+			<trans-unit id="FileUtility.YouDontHaveFullAccessToTheDestinationDirectory" approved="yes">
+				<source>You don't have full access to the destination directory "%s"!</source>
+				<target state="translated">Sie haben keinen vollen Zugriff auf das Zielverzeichnis "%s"!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

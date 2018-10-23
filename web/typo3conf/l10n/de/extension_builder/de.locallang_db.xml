@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="Tx_ExtensionBuilder_extension">Extension Builder: Erweiterung</label>
+			<label index="Tx_ExtensionBuilder_extension.extensionkey">Erweiterungsschlüssel</label>
+			<label index="Tx_ExtensionBuilder_extension.title">Titel</label>
+			<label index="Tx_ExtensionBuilder_extension.description">Beschreibung</label>
+			<label index="Tx_ExtensionBuilder_extension.state">Status</label>
+			<label index="Tx_ExtensionBuilder_extension.languages">Sprachen</label>
+			<label index="Tx_ExtensionBuilder_extension.persons">Personen</label>
+			<label index="Tx_ExtensionBuilder_extension.domainobjects">Domain-Objekte</label>
+			<label index="Tx_ExtensionBuilder_person">Extension Builder: Person</label>
+			<label index="Tx_ExtensionBuilder_person.name">Name der Person</label>
+			<label index="Tx_ExtensionBuilder_person.email">E-Mail der Person</label>
+			<label index="Tx_ExtensionBuilder_person.role">Rolle</label>
+			<label index="Tx_ExtensionBuilder_person.extension">Erweiterung</label>
+			<label index="Tx_ExtensionBuilder_domainObjects">Extension Builder: Domainobjekte</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.name">Name</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.description">Beschreibung</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.relateddomainobjects">Verwandte Domainobjekte</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.extension">Erweiterungen, zu denen dieses Domainobjekt gehört</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.backendconfigurationoptions">Optionen zur Backend-Konfiguration</label>
+			<label index="Tx_ExtensionBuilder_domainObjects.properties">Eigenschaften</label>
+			<label index="Tx_ExtensionBuilder_properties">Extension Builder: Eigenschaften</label>
+			<label index="Tx_ExtensionBuilder_properties.name">Name</label>
+			<label index="Tx_ExtensionBuilder_properties.description">Beschreibung</label>
+			<label index="Tx_ExtensionBuilder_properties.validationrules">Validierungsregeln</label>
+			<label index="Tx_ExtensionBuilder_properties.isrequired">Pflichtfeld</label>
+			<label index="Tx_ExtensionBuilder_properties.accessmethods">Zugriffsmethoden</label>
+		</languageKey>
+  </data>
+</T3locallangExt>

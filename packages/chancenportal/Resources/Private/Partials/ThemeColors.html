@@ -1,0 +1,88 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+    <v:asset.style name="themeCss" group="atheme" fluid="1" trim="1">
+
+        <f:for each="{themeColors}" as="themeColor">
+            <f:if condition="{themeColor.color}">
+
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> {
+            background-color: <f:format.raw>{themeColor.color}</f:format.raw>
+            }
+
+                .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__arrow:after, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__date, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__footer, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__headline, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__subheadline, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> p {
+                color: #fff;
+                }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__gradient {
+            background: -webkit-gradient(linear,left top,left bottom,from(<f:format.raw>{themeColor.color}</f:format.raw>),to(rgba(0,158,227,0)));
+            background: linear-gradient(180deg,<f:format.raw>{themeColor.color}</f:format.raw> 0,rgba(0,158,227,0))
+            }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__category, .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__category:hover {
+            background-color: <f:format.raw>{themeColor.color3}</f:format.raw> !important;
+            }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw> .kachel__category:before {
+            border-color: transparent <f:format.raw>{themeColor.color2}</f:format.raw> transparent transparent
+            }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw>:hover {
+            background-color: <f:format.raw>{themeColor.color2}</f:format.raw>
+            }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw>:hover .kachel__gradient {
+            background: -webkit-gradient(linear,left top,left bottom,from(<f:format.raw>{themeColor.color2}</f:format.raw>),to(rgba(0,158,227,0)));
+            background: linear-gradient(180deg,<f:format.raw>{themeColor.color2}</f:format.raw> 0,rgba(0,158,227,0))
+            }
+
+            .kachel.kachel--theme-<f:format.raw>{themeColor.uid}</f:format.raw>:hover .kachel__map-arrow:after {
+            border-top-color: <f:format.raw>{themeColor.color2}</f:format.raw>
+            }
+
+                .article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .article-detail__teaser-info {
+                background-color: <f:format.raw>{themeColor.color}</f:format.raw>
+                }
+
+                .article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .nav.nav--tab .nav__items .nav__item.nav__item--active,.article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .nav.nav--tab .nav__items .nav__item:hover {
+                border-bottom: 4px solid <f:format.raw>{themeColor.color}</f:format.raw>
+                }
+
+                .article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .nav.nav--tab .nav__items .nav__item.nav__item--active a,.article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .nav.nav--tab .nav__items .nav__item:hover a {
+                color: <f:format.raw>{themeColor.color}</f:format.raw>
+                }
+
+                .article-detail--cat-<f:format.raw>{themeColor.uid}</f:format.raw> .article-detail__infos-block .icon i:before {
+                color: <f:format.raw>{themeColor.color}</f:format.raw>
+                }
+
+
+                .kachel.kachel--light {
+                background-color: #fff;
+                border: 1px solid #eaeaea
+                }
+
+                .kachel.kachel--light .kachel__arrow,.kachel.kachel--light .kachel__footer,.kachel.kachel--light .kachel__headline,.kachel.kachel--light .kachel__subheadline,.kachel.kachel--light p {
+                color: #323232
+                }
+
+                .kachel.kachel--light .kachel__arrow:after,.kachel.kachel--light .kachel__footer:after,.kachel.kachel--light .kachel__headline:after,.kachel.kachel--light .kachel__subheadline:after,.kachel.kachel--light p:after {
+                color: #323232
+                }
+
+                .kachel.kachel--light:hover .kachel__arrow,.kachel.kachel--light:hover .kachel__footer,.kachel.kachel--light:hover .kachel__headline,.kachel.kachel--light:hover .kachel__subheadline,.kachel.kachel--light:hover p {
+                color: #fff
+                }
+
+                .kachel.kachel--light:hover .kachel__arrow:after,.kachel.kachel--light:hover .kachel__arrow:before,.kachel.kachel--light:hover .kachel__footer:after,.kachel.kachel--light:hover .kachel__footer:before,.kachel.kachel--light:hover .kachel__headline:after,.kachel.kachel--light:hover .kachel__headline:before,.kachel.kachel--light:hover .kachel__subheadline:after,.kachel.kachel--light:hover .kachel__subheadline:before,.kachel.kachel--light:hover p:after,.kachel.kachel--light:hover p:before {
+                color: #fff
+                }
+
+                .kachel.kachel--light:hover .kachel__arrow:before,.kachel.kachel--light:hover .kachel__footer>div:after,.kachel.kachel--light:hover .kachel__footer>div:before {
+                color: #fff
+                }
+
+            </f:if>
+        </f:for>
+
+    </v:asset.style>
+</html>

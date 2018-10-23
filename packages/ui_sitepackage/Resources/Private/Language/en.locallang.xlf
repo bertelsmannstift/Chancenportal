@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+    <file source-language="de" target-language="en" datatype="plaintext" original="messages" date="2015-08-24T10:11:39Z" product-name="ui_sitepackage">
+        <header />
+        <body>
+            <trans-unit id="html5outline.navigation.main">
+                <source>Hauptnavigation</source>
+                <target>Main Navigation</target>
+            </trans-unit>
+            <trans-unit id="html5outline.navigation.footer">
+                <source>Fußzeilennavigation</source>
+                <target>Footer Navigation</target>
+            </trans-unit>
+            <trans-unit id="html5outline.navigation.footer-meta">
+                <source>Metanavigation (Fußzeile)</source>
+                <target>Metanavigation (Footer)</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.start">
+                <source>Start</source>
+                <target>Start</target>
+            </trans-unit>
+            <trans-unit id="cookienotification.content">
+                <source><![CDATA[
+                    <p>
+                    	Diese Webseite verwendet Cookies. Wenn Sie auf der Seite weitersurfen, stimmen sie der Cookie-Nutzung zu. Hier finden sie unsere <a href="%1$s">Datenbestimmungen</a>
+                    </p>
+                ]]></source>
+                <target><![CDATA[
+                    <p>
+                        Our website uses cookies. By using our website, you consent to our use of cookies. If you continue browsing the site, you agree to the cookie usage. Find our privacy policy <a href="%1$s">here</a>
+                    </p>
+                ]]></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

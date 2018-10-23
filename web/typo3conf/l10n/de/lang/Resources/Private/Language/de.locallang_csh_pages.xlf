@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T03:38:24Z" product-name="lang">
+		<header/>
+		<body>
+			<trans-unit id=".description" approved="yes">
+				<source>A 'Page' record usually represents a webpage in TYPO3. All pages have an ID number (UID) by which they can be linked and referenced. The 'Page' record itself does not contain the content of the page. 'Page Content' records (Content Elements) are used for this.</source>
+				<target state="translated">Ein Datensatz "Seite" repräsentiert üblicherweise eine Webseite in TYPO3. Alle Seiten haben eine ID-Nummer (UID), über die sie verlinkt und referenziert werden können. Ein Seitendatensatz enthält nicht selbst den Inhalt der Seite. Für den Inhalt werden "Seiteninhalte" erstellt.</target>
+			</trans-unit>
+			<trans-unit id=".details" xml:space="preserve" approved="yes">
+				<source>The 'pages' table is the backbone of TYPO3. All records editable by the main modules in TYPO3 must belong to a page. It's exactly like files and folders on your computer's hard drive.
+
+&lt;b&gt;The Page Tree&lt;/b&gt;
+The pages are organized in a tree structure that reflects the organization of your website.
+
+&lt;b&gt;UID, PID and the page tree root&lt;/b&gt;
+All database elements have a field 'uid' which is a unique identification number. They also have a field 'pid' (page id) which holds the ID number of the page to which they belong. If the 'pid' field is zero, the record is found in the 'root.' Only administrators are allowed access to the root. Table records must be configured to either belong to a page or be found in the root.
+
+&lt;b&gt;Storage of Database Records&lt;/b&gt;
+Depending on the 'Type', a page may also represent general storage for database elements in TYPO3. In this case, it is not available as a webpage but is used internally in the page tree as a place to store items such as users, subscriptions, etc. Such pages are typically of the type "Folder".</source>
+			<target state="translated">Die Seitentabelle ist das Rückgrat von TYPO3. Alle Datensätze der Standardmodule müssen zu einer Seite gehören. Dies entspricht in etwa Dateien und Ordnern auf der Festplatte Ihres PCs.
+
+&lt;b&gt;Der Seitenbaum&lt;/b&gt;
+Die Seiten sind in einer Baumstruktur angeordnet, die die Organisation Ihrer Website widerspiegelt.
+
+&lt;b&gt;UID, PID und die Wurzel des Baums&lt;/b&gt;
+Alle Datenbankelemente besitzen ein Feld "uid", das eine eindeutige Identifikation zulässt. Zusätzlich haben alle Datenbankelemente ein Feld "pid" (Page-ID, Seiten-ID), welches die "uid" der Seite ("page id") enthält, zu der sie gehören. Falls das Feld "pid" gleich 0 ist, so befindet sich der Datensatz in der Wurzel ("root") des Baums. Nur Administratoren ist der Zugriff auf die Wurzel gestattet. Tabelleneinträge müssen entweder zu einer Seite gehören oder sich in der Wurzel befinden.
+
+&lt;b&gt;Speichern von Datensätzen&lt;/b&gt;
+In Abhängigkeit vom "Typ" der Seite kann eine Seite auch einen allgemeinen Speicher für beliebige Datenbankelemente in TYPO3 darstellen. In diesem Fall ist sie nicht als Web-Seite verfügbar, sondern nur intern im Seitenbaum als Speicherort für Objekte wie Benutzer, Abonnements, Domänen usw. Solche Seiten haben in der Regel den Typ "Ordner".</target></trans-unit>
+			<trans-unit id="doktype.description" approved="yes">
+				<source>The page type determines whether the page is normal webpage, a shortcut to another webpage, or used in other internal ways.</source>
+				<target state="translated">Der Seitentyp beeinflusst, ob die Seite eine normale Web-Seite oder ein Verweis zu einer anderen Seite ist oder ob sie für andere, interne Zwecke genutzt wird.</target>
+			</trans-unit>
+			<trans-unit id="doktype.details" xml:space="preserve" approved="yes">
+				<source>'Standard' is the most common page type and is used for normal webpages.
+'Folder' is a page type which is not shown as a webpage; instead, it stores records of your choice.
+'Recycler' is a garbage can. Pages and records in a recycler are not visible in the frontend.
+
+&lt;b&gt;Notice&lt;/b&gt; Each page type is represented by a unique icon. The available page types can be restricted for users so all of the options described above may not be visible. Finally, some records may only be allowed on certain page types, but any record can be placed in a 'Folder.'
+
+&lt;b&gt;$PAGES_TYPES [Technical]&lt;/b&gt;
+The restrictions that apply to each page type is defined in the global array $PAGES_TYPES. When extensions add tables to TYPO3 they may need to register their tables in $PAGES_TYPES so they can be created on standard pages.</source>
+			<target state="translated">"Standard" ist der gebröuchlichste Seitentyp und repräsentiert eine normale Webseite.
+"Ordner" ist ein Seitentyp, der &lt;i&gt;nicht&lt;/i&gt; als Webseite angezeigt wird; stattdessen speichert er Datensätze beliebigen Typs.
+"Papierkorb" ist ein Mülleimer. Seiten und Datensätze im Papierkorb werden im Frontend nicht angezeigt.
+
+&lt;b&gt;Hinweis:&lt;/b&gt; Jeder Seitentyp wird durch ein spezielles Symbol dargestellt. Die verfügbaren Seitentypen können je nach Benutzer definiert werden; einige der genannten Typen stehen einem bestimmten Benutzer daher möglicherweise nicht zur Verfügung. Beachten Sie außerdem, dass bestimmte Datensätze nur auf bestimmten Seitentypen erlaubt sind. Der Typ "Ordner" erlaubt alle Typen.
+
+&lt;b&gt;$PAGES_TYPES [Technisch]&lt;/b&gt;
+Die Einschränkungen zu jedem Seitentyp sind im globalen Array $PAGES_TYPES definiert. Wenn Erweiterungen neue Tabellen zu TYPO3 hinzufügen ist es eventuell erforderlich, dass sie ihre Tabellen in $PAGES_TYPES registrieren, so dass Datensätze für diese Tabellen auf normalen Seiten hinzugefügt werden können.</target></trans-unit>
+			<trans-unit id="_doktype.image" approved="yes">
+				<source>EXT:lang/Resources/Public/Images/cshimages/pages_4.png</source>
+				<target state="translated">EXT:lang/Resources/Public/Images/cshimages/pages_4.png</target>
+				<note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+				<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			</trans-unit>
+			<trans-unit id="doktype.image_descr" approved="yes">
+				<source>This snippet of the page tree shows regular pages (white icons) at the top of this screenshot. You also see a Recycler page. Any records stored in a Reycler page are considered trash and not shown on the website. The gray folders icons represent "Folders". They cannot be viewed as regular webpages but serve as storage pages for other database records.</source>
+				<target state="translated">Dieser Ausschnitt des Seitenbaums zeigt einige normale Seiten (weiße Symbole) im oberen Teil des Bildschirmfotos. Der Papierkorb ("Garbage") mit seinem besonderen Symbol ist ebenfalls sichtbar. Elemente im Papierkorb sind Kandidaten für eine endgültige Löschung und werden auf der Website nicht angezeigt. Die grauen Ordnersymbole repräsentieren "Ordner". Diese werden ebenfalls niemals als Web-Seiten angezeigt, sondern ermöglichen die Speicherung beliebiger Daten.</target>
+			</trans-unit>
+			<trans-unit id="_doktype.seeAlso" xml:space="preserve" approved="yes">
+				<source>be_groups:pagetypes_select,
+About $PAGES_TYPES | https://docs.typo3.org/typo3cms/CoreApiReference/PageTypes/</source>
+				<target state="translated">be_groups:pagetypes_select,
+Über $PAGES_TYPES | https://docs.typo3.org/typo3cms/CoreApiReference/PageTypes/</target><note from="developer">A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note>
+			<note>A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note></trans-unit>
+			<trans-unit id="editlock.description" approved="yes">
+				<source>If set, non-admin users cannot edit the page properties or any records on the page, but may still edit subpages. They cannot create new records or pages on the page either.</source>
+				<target state="translated">Wenn sie gesetzt ist bewirkt diese Option, dass Benutzer, die nicht Administratoren sind, weder die Seiteneigenschaften noch Seiteninhalte bearbeiten können. Sie können auch keine neuen Seiteninhalte und keine neuen Kindseiten erzeugen. Existierende Kindseiten können sie aber bearbeiten.</target>
+			</trans-unit>
+			<trans-unit id="fe_login_mode.description" approved="yes">
+				<source>The Login Behavior allows the logins and other related featured to be disabled for this page.</source>
+				<target state="translated">Das Anmeldeverhalten ermöglicht es, die Möglichkeit angemeldet zu sein und zugehörige Funktionen für diese Seite zu deaktivieren.</target>
+			</trans-unit>
+			<trans-unit id="fe_login_mode.details" xml:space="preserve" approved="yes">
+				<source>When a user logs into TYPO3's frontend, each page and/or its Content Elements can be set to restrict access based on the user's login.
+
+By disabling logins, restrictions are removed and the content is accessible whether or not a user is logged in and regardless of Frontend usergroup settings. When logins are disabled for a page, cache headers can be sent again.</source>
+			<target state="translated">Wenn sich ein Benutzer am TYPO3-Frontend anmeldet, wird bei jeder Seite und/oder ihren Inhaltselementen überprüft, welche Inhalte der Benutzer sehen kann.
+
+Bei Deaktivierung von Anmeldungen werden diese Beschränkungen entfernt und der Inhalt ist dann unabhängig von Anmeldestatus und Mitgliedschaft in verschiedenen Frontend-Benutzergruppen sichtbar. Dies ermöglicht wieder das Senden zwischengespeicherter Header.</target></trans-unit>
+			<trans-unit id="_.image" xml:space="preserve" approved="yes">
+				<source>EXT:lang/Resources/Public/Images/cshimages/pages_1.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_2.png,</source>
+				<target state="translated">EXT:lang/Resources/Public/Images/cshimages/pages_1.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_2.png,</target><note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note></trans-unit>
+			<trans-unit id=".image_descr" xml:space="preserve" approved="yes">
+				<source>The most basic fields on a page are the 'Disable Page' option, the 'Type' of page ("doktype") and the 'Page Title'.
+Pages are arranged in a page tree in TYPO3. The page from the editing form in the previous screenshot was the "Intro" page from this page tree. As you can see it belongs in the root of the page tree and has a number of subpages pages under it.</source>
+			<target state="translated">Die wichtigsten Felder einer "Seite" sind: die Option "Seite deaktivieren", der Typ der Seite ("doktype") und der "Seitentitel".
+Seiten sind in TYPO3 in einem Baum organisiert. Die gezeigte Seite des Bearbeitungsformulars im Bild ist die Seite "Intro" des Seitenbaums. Wie Sie sehen können, ist sie der Wurzel des Baums zugeordnet und besitzt eine Reihe von "Kindseiten".</target></trans-unit>
+			<trans-unit id="php_tree_stop.description" approved="yes">
+				<source>Stops backend rendering of the page tree in navigation and lists.</source>
+				<target state="translated">Stoppt die Darstellung des Seitenbaums in der Navigation und Listen.</target>
+			</trans-unit>
+			<trans-unit id="php_tree_stop.details" xml:space="preserve" approved="yes">
+				<source>If you enable this option, the page tree will not expand that branch. Instead you will see a red "+" which indicates that the page tree stops here because the Stop Page Tree option is enabled.
+
+This option was designed to prevent the display of a branch with an unmanageable number of subpages. By clicking on the red "+" the page will become a temporary mount point in the navigation frame, thus facilitating easier navigation and editing.</source>
+			<target state="translated">Ist diese Option aktiviert, ist dieser Ast im Seitenbaum nicht mehr aufgeklappt darstellbar. Stattdessen ist ein rotes "+" zu sehen, das darauf hinweist, dass der Seitenbaum hier stoppt, weil diese Option aktiviert ist.
+
+Die Option ermöglicht es, zu verhindern, dass Äste mit unhandhabbar vielen Kindseiten angezeigt werden. Wird das rote "+"-Zeichen angeklickt, wird die Seite als "Temporärer Einstiegspunkt" im Navigations-Frame dargestellt, wodurch Navigation und Bearbeitung erleichtert werden.</target></trans-unit>
+			<trans-unit id="_php_tree_stop.image" xml:space="preserve" approved="yes">
+				<source>EXT:lang/Resources/Public/Images/cshimages/pages_8.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_6.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_7.png</source>
+				<target state="translated">EXT:lang/Resources/Public/Images/cshimages/pages_8.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_6.png,
+EXT:lang/Resources/Public/Images/cshimages/pages_7.png</target><note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note></trans-unit>
+			<trans-unit id="php_tree_stop.image_descr" xml:space="preserve" approved="yes">
+				<source>Here the "Stop page tree" option is enabled.
+In the page tree, this setting is reflected with the red "+" and the Expand/Collapse page tree icon will be disabled for that branch of the tree.
+If you click the red "+" the page will be mounted temporarily in the navigation frame.</source>
+			<target state="translated">Hier ist die Option "Seitenbaum stoppen" gesetzt.
+Im Seitenbaum ist der gesetzte Schalter sichtbar durch das rote "+" und der Ast des Baums kann nicht mehr aufgeklappt werden.
+Nach Anklicken des roten "+" wird der Ast als "Temporärer Einstiegspunkt" an Stelle des Seitenbaums dargestellt.</target></trans-unit>
+			<trans-unit id="_php_tree_stop.seeAlso" approved="yes">
+				<source>_MOD_web_info:pagetree_overview</source>
+				<target state="translated">_MOD_web_info:pagetree_overview</target>
+				<note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+				<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			</trans-unit>
+			<trans-unit id="_.seeAlso" xml:space="preserve" approved="yes">
+				<source>xMOD_csh_corebe:pagetree,
+tt_content,
+About pages | https://docs.typo3.org/typo3cms/GettingStartedTutorial/GeneralPrinciples/PageTree/</source>
+				<target state="translated">xMOD_csh_corebe:pagetree,
+tt_content,
+Über Seiten | https://docs.typo3.org/typo3cms/GettingStartedTutorial/GeneralPrinciples/PageTree/</target><note from="developer">A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note>
+			<note>A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note></trans-unit>
+			<trans-unit id="storage_pid.description" approved="yes">
+				<source>A General Record Storage Page is a global page for storing of general database elements (records) of a website. This could be for templates, frontend users, and other records that are not limited to a single page but shared across the whole website.</source>
+				<target state="translated">Eine "Allgemeine Datensatzsammlung" ist eine globale Seite zum Speichern allgemeiner Datenbankelemente (Datensätze) einer Website. Das könnten Templates, Frontend-Benutzer und andere Datensätze sein, die nicht nur auf einer einzelne Seite benutzt, sondern die auf der gesamten Website verwendet werden sollen.</target>
+			</trans-unit>
+			<trans-unit id="storage_pid.details" xml:space="preserve" approved="yes">
+				<source>It is recommended that extensions support the "General Record Storage Pages" so that the extension accesses records in this location by default when not configured to look elsewhere.
+
+A General Record Storage Page is typically a page of the "Folder" type.</source>
+			<target state="translated">Es wird empfohlen, dass Anwendungen das Konzept der "Allgemeinen Datensatzsammlung" unterstützen, so dass sie standardmäßig ihre Daten dort suchen und nur durch spezielle Konfiguration dazu gebracht werden, anderswo danach zu suchen.
+
+Seiten, die als "Allgemeine Datensatzsammlung" dienen, sind typischerweise vom Typ "Ordner".</target></trans-unit>
+			<trans-unit id="_storage_pid.seeAlso" approved="yes">
+				<source>The Storage Folder | https://docs.typo3.org/typo3cms/GettingStartedTutorial/GeneralPrinciples/SpecialPages/Index.html#folders</source>
+				<target state="translated">Der Speicherordner | https://docs.typo3.org/typo3cms/GettingStartedTutorial/GeneralPrinciples/SpecialPages/Index.html#folders</target>
+			</trans-unit>
+			<trans-unit id="title.description" approved="yes">
+				<source>Enter the title of the page or folder. This field is required.</source>
+				<target state="translated">Geben Sie den Titel der Seite oder des Ordners ein! Dieses Feld ist ein Pflichtfeld.</target>
+			</trans-unit>
+			<trans-unit id="title.details" xml:space="preserve" approved="yes">
+				<source>The 'Page Title' is used to represent the page visually in the system, for example in the page tree. Also the 'Page Title' is used by default for navigation links on webpages.
+You can always change the 'Page Title' without affecting links to a page. This is because pages are always referenced by ID number, not their title.
+You can use any characters in the 'Page Title'.</source>
+			<target state="translated">Der "Seitentitel" repräsentiert die Seite im System, z.B. im Seitenbaum. Außerdem wird der Seitentitel als Standardtext für die Navigation von Seite zu Seite verwendet.
+Der Seitentitel kann jederzeit geändert werden, ohne dass dies bestehende, interne Links zu der Seite beeinflussen würde. Intern werden die Seiten über ihre ID referenziert, statt über den Titel.
+Im Feld "Seitentitel" sind beliebige Zeichen erlaubt.</target></trans-unit>
+			<trans-unit id="_title.image" approved="yes">
+				<source>EXT:lang/Resources/Public/Images/cshimages/pages_3.png</source>
+				<target state="translated">EXT:lang/Resources/Public/Images/cshimages/pages_3.png</target>
+				<note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+				<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			</trans-unit>
+			<trans-unit id="title.image_descr" approved="yes">
+				<source>The field for the 'Page Title' has a small "Required" icon next to it; You must supply a 'Page Title'. You cannot save the new page unless you enter a title for it.</source>
+				<target state="translated">Das Feld für den "Seitentitel" ist mit einem kleinen "Pflichtfeld"-Symbol ausgezeichnet: Sie &lt;b&gt;müssen&lt;/b&gt; einen Seitentitel eingeben, sonst können Sie die Seite nicht speichern.</target>
+			</trans-unit>
+			<trans-unit id="TSconfig.description" approved="yes">
+				<source>Page TSconfig.</source>
+				<target state="translated">Seiten-TSconfig.</target>
+			</trans-unit>
+			<trans-unit id="TSconfig.details" xml:space="preserve" approved="yes">
+				<source>'TypoScript' is a concept for entering values in a hierarchical structure that is used to create templates for TYPO3 websites.
+The same principles of storing a hierarchy of values is also used to configure various Backend functionality such as Modules and the RTE.
+The 'TSconfig' for an individual page is actually an accumulation of all 'TSconfig' values beginning from the root page and trickling downward to the current page. This means the TSconfig on the current page will affect all of its subpages as well. All TSconfig in use on a page is available from the 'Page TSconfig' menu in the 'Web&gt;Info' Module (requires the "info_pagetsconfig" extension to be installed).</source>
+			<target state="translated">"TypoScript" ist ein Konzept zur Konfiguration von Werten in einer Baumstruktur. Es wird für die Konfiguration von Templates für TYPO3-Webseiten verwendet.
+Das gleiche Prinzip der Eingabe von Werten in einer Hierarchie wird ebenfalls verwendet, um verschiedene Funktionen des Backends, etwa Funktionen von Modulen, und den "Rich Text Editor" einzustellen.
+Das "TSconfig" für eine Seite ist die Summe aller "TSconfig"-Werte von der Wurzel des Seitenbaums bis zur aktuellen Seite. So werden alle Kindseiten der aktuellen Seite ebenfalls von deren Seiten-"TSconfig" beeinflusst. Eine Darstellung des wirksamen Seiten-"TSconfig" können Sie über das Menü "Seiten-TSconfig" im Modul "Web &gt; Info" einsehen (wenn die Erweiterung "info_pagetsconfig" installiert ist).</target></trans-unit>
+			<trans-unit id="_TSconfig.image" approved="yes">
+				<source>EXT:lang/Resources/Public/Images/cshimages/pages_5.png</source>
+				<target state="translated">EXT:lang/Resources/Public/Images/cshimages/pages_5.png</target>
+				<note from="developer">This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+				<note>This string contains an internal text, which must not be changed. Just copy the original text into the translation field. For more information have a look at the Tutorial.</note>
+			</trans-unit>
+			<trans-unit id="TSconfig.image_descr" approved="yes">
+				<source>Page TSconfig customizing layout labels in the Page Module. Note that the Page TSconfig is specific to that page and will be inherited by its subpages.</source>
+				<target state="translated">Seiten-TSconfig zur Anpassung von Texten im Seitenmodul. Beachten Sie, dass die Konfiguration für die aktuelle Seite und alle Kindseiten gilt: Kindseiten erben die Konfiguration von Vaterseiten.</target>
+			</trans-unit>
+			<trans-unit id="_TSconfig.seeAlso" xml:space="preserve" approved="yes">
+				<source>_MOD_web_info:tsconfig_hierarchy,
+More about Page TSconfig | https://docs.typo3.org/typo3cms/TSconfigReference/PageTsconfig/</source>
+				<target state="translated">_MOD_web_info:tsconfig_hierarchy,
+Mehr über Seiten-TSconfig | https://docs.typo3.org/typo3cms/TSconfigReference/PageTsconfig/</target><note from="developer">A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note>
+			<note>A part of this string is an internal text, which must not be changed. Just copy this part into the translation field and do not change it. For more information have a look at the Tutorial.</note></trans-unit>
+			<trans-unit id="TSconfig.syntax" xml:space="preserve" approved="yes">
+				<source>Basic TypoScript Syntax &lt;em&gt;without&lt;/em&gt; 'Constants.'
+
+It is recommended that only admin users have access to this field!</source>
+			<target state="translated">Einfache TypoScript-Syntax &lt;em&gt;ohne&lt;/em&gt; "Konstanten".
+
+Es wird dringend empfohlen, dass nur erfahrene Administratoren Zugriff auf dieses Feld erhalten!</target></trans-unit>
+		</body>
+	</file>
+</xliff>

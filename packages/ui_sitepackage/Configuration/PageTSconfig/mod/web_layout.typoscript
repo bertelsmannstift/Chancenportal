@@ -1,0 +1,10 @@
+/**
+ * Options for BE Web Layout
+ */
+mod.web_layout {
+	// Localization Options
+	localization {
+		enableTranslate = 0
+		enableCopy = 1
+	}
+}

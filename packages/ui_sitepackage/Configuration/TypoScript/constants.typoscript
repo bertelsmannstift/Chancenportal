@@ -1,0 +1,81 @@
+/**
+ * Custom Project Constants
+ */
+uandi {
+	// Social Accounts
+	social {
+		facebook = https://www.facebook.com/CreateYourOwnCareer
+		twitter = https://www.twitter.com/BertelsmannCYOC
+		xing = https://www.xing.com/net/createyourowncareer/
+		linkedin = https://www.linkedin.com/groups?about=&gid=52863&trk=anet
+		youtube = https://www.youtube.com/BertelsmannCareers
+	}
+}
+
+
+/**
+ * Page Rendering Constants
+ */
+page {
+
+	fluidtemplate {
+		layoutRootPath = EXT:ui_sitepackage/Resources/Private/Layouts/
+        partialRootPath = EXT:ui_sitepackage/Resources/Private/Partials/
+        templateRootPath = EXT:ui_sitepackage/Resources/Private/Templates/
+	}
+
+	includePath {
+		css = EXT:ui_sitepackage/Resources/Public/assets/css/
+		javascript = EXT:ui_sitepackage/Resources/Public/assets/js/
+		assets = EXT:ui_sitepackage/Resources/Public/assets/
+	}
+
+	meta {
+		// cat=ui_sitepackage/meta; type=string; label=Site Copyright Information
+		copyright =
+		// cat=ui_sitepackage/meta; type=string; label=Site Rating Information
+		rating =
+		// cat=ui_sitepackage/meta; type=string; label=Site Revisit-After Setting
+		revisit = 7 days
+        // cat=ui_sitepackage/meta; type=string; label=Site Robots Setting
+        robots = index,follow
+
+        viewport = width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no
+        apple-mobile-web-app-capable = no
+        compatible = ie=edge,chrome=1
+        google = notranslate
+	}
+
+	lll = LLL:EXT:ui_sitepackage/Resources/Private/Language/locallang.xlf
+}
+
+/**
+ * Configuration Constants
+ */
+config {
+	no_cache = 0
+	compressJs = 1
+	compressCss = 1
+	concatenateJs = 1
+	concatenateCss = 1
+	admPanel = 0
+	contentObjectExceptionHandler = 1
+	headerComment (
+		u+i interact
+	    Kommunikationsagentur
+	    www.uandi.com
+    )
+}
+
+[applicationContext = Development*]
+config {
+	no_cache = 1
+	compressJs = 0
+	compressCss = 0
+	concatenateJs = 0
+	concatenateCss = 0
+	admPanel = 1
+	contentObjectExceptionHandler = 0
+
+}
+[global]

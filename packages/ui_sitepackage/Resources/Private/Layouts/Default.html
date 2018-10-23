@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:uandi="http://typo3.org/ns/UI/UiProvider/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:comment>
+        #
+        # Set default canonical tag
+        #
+    </f:comment>
+    <uandi:page.header.canonicalTag url="{f:uri.page(pageUid: '{data.uid}', absolute: 1)}" />
+
+    <f:variable name="rootline" value="{v:page.rootline()}" />
+    <f:variable name="rootPageInfo" value="{v:page.info(pageUid: '{rootline.0.uid}')}" />
+
+    <f:if condition="{data.uid} == {settings.chancenportal.pageIds.provider_detail} || {data.uid} == {settings.chancenportal.pageIds.offer_detail}">
+        <f:else>
+            <f:render partial="Misc/PageTitle" section="Main" arguments="{_all}" />
+        </f:else>
+    </f:if>
+
+
+    <div>
+        <f:render partial="Header" section="Main" arguments="{_all}" />
+
+        <main class="main">
+            <f:render section="Main" arguments="{_all}" />
+        </main>
+
+        <f:render partial="Footer" section="Main" arguments="{_all}" />
+    </div>
+
+
+</html>

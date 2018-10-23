@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:39:57Z" product-name="fluid_styled_content">
+		<header/>
+		<body>
+			<trans-unit id="editIcon.bullets" approved="yes">
+				<source>Edit bullet list</source>
+				<target state="translated">Aufzählungsliste bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.header" approved="yes">
+				<source>Edit header</source>
+				<target state="translated">Überschrift bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.html" approved="yes">
+				<source>Edit pure HTML content</source>
+				<target state="translated">HTML-Inhalt bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.image">
+				<source>Edit image</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="editIcon.list" approved="yes">
+				<source>Change/configure plugin</source>
+				<target state="translated">Plug-In ändern/konfigurieren</target>
+			</trans-unit>
+			<trans-unit id="editIcon.menu" approved="yes">
+				<source>Edit menu/sitemap</source>
+				<target state="translated">Menü/Sitemap bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.shortcut" approved="yes">
+				<source>Edit record list</source>
+				<target state="translated">Datensatzliste bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.table" approved="yes">
+				<source>Edit table</source>
+				<target state="translated">Tabelle bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.textmedia" approved="yes">
+				<source>Edit text &amp; media</source>
+				<target state="translated">Text &amp; Medien bearbeiten</target>
+			</trans-unit>
+			<trans-unit id="editIcon.textpic">
+				<source>Edit text &amp; images</source>
+				<target/>
+			</trans-unit>
+			<trans-unit id="editIcon.uploads" approved="yes">
+				<source>Edit file list</source>
+				<target state="translated">Dateiliste bearbeiten</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

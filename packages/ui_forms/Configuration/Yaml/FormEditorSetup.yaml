@@ -1,0 +1,65 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formEditor:
+            translationFile:
+              10: 'EXT:form/Resources/Private/Language/Database.xlf'
+              20: 'EXT:ui_forms/Resources/Private/Language/Database.xlf'
+          formElementsDefinition:
+            Form:
+              formEditor:
+                editors:
+                  210:
+                    identifier: 'headline'
+                    templateName: 'Inspector-TextEditor'
+                    label: 'formEditor.elements.Form.editor.headline.label'
+                    propertyPath: 'renderingOptions.headline'
+                  220:
+                    identifier: 'subheadline'
+                    templateName: 'Inspector-TextareaEditor'
+                    label: 'formEditor.elements.Form.editor.subheadline.label'
+                    propertyPath: 'renderingOptions.subheadline'
+                  230:
+                    identifier: 'contact-element'
+                    templateName: 'Inspector-Typo3WinBrowserEditor'
+                    label: 'formEditor.elements.Form.editor.contact-element.label'
+                    buttonLabel: 'formEditor.elements.Form.editor.contact-element.button-label'
+                    browsableType: tt_content
+                    propertyPath: 'renderingOptions.contact-element'
+                  900:
+                    selectOptions:
+                      60:
+                        value: 'Confirmation'
+                        label: 'Confirmation'
+
+                propertyCollections:
+                  finishers:
+                    50:
+                      identifier: 'Confirmation'
+                      editors:
+                        300:
+                          identifier: 'message'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'formEditor.elements.Form.finisher.Confirmation.editor.message.label'
+                          propertyPath: 'options.message'
+                          fieldExplanationText: 'formEditor.elements.Form.finisher.Confirmation.editor.message.fieldExplanationText'
+
+            Checkbox:
+              formEditor:
+                editors:
+                  210:
+                    identifier: 'label-link'
+                    templateName: 'Inspector-Typo3WinBrowserEditor'
+                    buttonLabel: 'formEditor.elements.Checkbox.editor.label-link.button.label'
+                    label: 'formEditor.elements.Checkbox.editor.label-link.label'
+                    browsableType: pages
+                    propertyPath: 'properties.fluidAdditionalAttributes.labelLink'
+                    fieldExplanationText: 'formEditor.elements.Checkbox.editor.label-link.fieldExplanationText'
+                  211:
+                    identifier: 'label-linktext'
+                    templateName: 'Inspector-TextEditor'
+                    label: 'formEditor.elements.Checkbox.editor.label-linktext.label'
+                    propertyPath: 'properties.fluidAdditionalAttributes.labelLinktext'
+                    fieldExplanationText: 'formEditor.elements.Checkbox.editor.label-linktext.fieldExplanationText'

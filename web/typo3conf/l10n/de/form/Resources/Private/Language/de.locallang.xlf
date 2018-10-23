@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2018-04-17T01:51:46Z" product-name="form">
+		<header/>
+		<body>
+			<trans-unit id="element.DatePicker.properties.timeSelectorHourLabel" xml:space="preserve">
+                <source>Hour</source>
+            <target/></trans-unit>
+			<trans-unit id="element.DatePicker.properties.timeSelectorMinuteLabel" xml:space="preserve">
+                <source>Minute</source>
+            <target/></trans-unit>
+			<trans-unit id="element.ImageUpload.properties.SummaryPage.altText" xml:space="preserve" approved="yes">
+                <source>uploaded image</source>
+            <target state="translated">hochgeladenes Bild</target></trans-unit>
+			<trans-unit id="form_new_wizard_description" xml:space="preserve">
+                <source>A form allowing website users to submit messages.</source>
+            <target/></trans-unit>
+			<trans-unit id="form_new_wizard_title" xml:space="preserve">
+                <source>Form</source>
+            <target/></trans-unit>
+			<trans-unit id="validation.error.1221551320" xml:space="preserve" approved="no">
+                <source>Please enter letters or digits.</source>
+            <target state="needs-translation">Bitte geben Sie Buchstaben oder Ziffern ein</target></trans-unit>
+			<trans-unit id="validation.error.1221559976" xml:space="preserve" approved="no">
+                <source>Please enter a valid email address.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige E-Mail-Adresse ein</target></trans-unit>
+			<trans-unit id="validation.error.1221560288" xml:space="preserve" approved="no">
+                <source>Please enter a valid floating point number.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige Gleitkommazahl ein</target></trans-unit>
+			<trans-unit id="validation.error.1221560494" xml:space="preserve" approved="no">
+                <source>Please enter a valid number.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige Zahl ein</target></trans-unit>
+			<trans-unit id="validation.error.1221560718" xml:space="preserve" approved="no">
+                <source>This field is mandatory.</source>
+            <target state="needs-translation">Dieses Feld ist ein Pflichtfeld</target></trans-unit>
+			<trans-unit id="validation.error.1221560910" xml:space="preserve" approved="no">
+                <source>This field is mandatory.</source>
+            <target state="needs-translation">Dieses Feld ist ein Pflichtfeld</target></trans-unit>
+			<trans-unit id="validation.error.1221561046" xml:space="preserve" approved="no">
+                <source>Please enter a valid number between %s and %s.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige Zahl zwischen %s und %s ein</target></trans-unit>
+			<trans-unit id="validation.error.1221563685" xml:space="preserve" approved="no">
+                <source>Please enter a valid number.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige Zahl ein</target></trans-unit>
+			<trans-unit id="validation.error.1221565130" xml:space="preserve" approved="no">
+                <source>Please enter a valid value.</source>
+            <target state="needs-translation">Bitte geben Sie einen gültigen Wert ein</target></trans-unit>
+			<trans-unit id="validation.error.1221565786" xml:space="preserve" approved="no">
+                <source>Please enter a valid text (e.g. without XML tags).</source>
+            <target state="needs-translation">Bitte geben Sie einen gültigen Text ein (z.B. ohne XML-Tags)</target></trans-unit>
+			<trans-unit id="validation.error.1238087674" xml:space="preserve" approved="no">
+                <source>Please enter a valid Date.</source>
+            <target state="needs-translation">Bitte geben Sie ein gültiges Datum ein</target></trans-unit>
+			<trans-unit id="validation.error.1238108068" xml:space="preserve" approved="no">
+                <source>Please enter a text which is longer than %s characters.</source>
+            <target state="needs-translation">Bitte geben Sie einen Text ein, der länger ist als %s Zeichen</target></trans-unit>
+			<trans-unit id="validation.error.1238108069" xml:space="preserve" approved="no">
+                <source>Please enter a text which is not longer than %s characters.</source>
+            <target state="needs-translation">Bitte geben Sie einen Text ein, der nicht länger ist als %s Zeichen</target></trans-unit>
+			<trans-unit id="validation.error.1238110957" xml:space="preserve" approved="no">
+                <source>Please enter a valid text.</source>
+            <target state="needs-translation">Bitte geben Sie einen gültigen Text ein</target></trans-unit>
+			<trans-unit id="validation.error.1269883975" xml:space="preserve" approved="no">
+                <source>Please enter a valid text.</source>
+            <target state="needs-translation">Bitte geben Sie einen gültigen Text ein</target></trans-unit>
+			<trans-unit id="validation.error.1347992400" xml:space="preserve" approved="no">
+                <source>This field is mandatory.</source>
+            <target state="needs-translation">Dieses Feld ist ein Pflichtfeld</target></trans-unit>
+			<trans-unit id="validation.error.1347992453" xml:space="preserve" approved="no">
+                <source>This field is mandatory.</source>
+            <target state="needs-translation">Dieses Feld ist ein Pflichtfeld</target></trans-unit>
+			<trans-unit id="validation.error.1428504122" xml:space="preserve" approved="no">
+                <source>Please enter a text between %s and %s characters.</source>
+            <target state="needs-translation">Bitte geben Sie einen Text zwischen %s und %s Zeichen Länge ein</target></trans-unit>
+			<trans-unit id="validation.error.1471708997" xml:space="preserve" approved="yes">
+                <source>The given value was not an instance of \TYPO3\CMS\Extbase\Domain\Model\FileReference or \TYPO3\CMS\Core\Resource\File.</source>
+            <target state="translated">Der gegebene Wert war keine Instanz von \TYPO3\CMS\Extbase\Domain\Model\FileReference oder \TYPO3\CMS\Core\Resource\File.</target></trans-unit>
+			<trans-unit id="validation.error.1471708998" xml:space="preserve" approved="yes">
+                <source>The media type "%s" is not allowed for this file.</source>
+            <target state="translated">Der Medientyp %s ist für diese Datei nicht erlaubt.</target></trans-unit>
+			<trans-unit id="validation.error.1475002976" xml:space="preserve" approved="yes">
+                <source>The given subject is not countable.</source>
+            <target state="translated">Der gegebene Wert ist nicht zählbar.</target></trans-unit>
+			<trans-unit id="validation.error.1475002994" xml:space="preserve" approved="no">
+                <source>Please select %s to %s elements.</source>
+            <target state="needs-translation">Bitte geben Sie eine gültige Zahl zwischen %s und %s ein</target></trans-unit>
+			<trans-unit id="validation.error.1476396435" xml:space="preserve" approved="no">
+                <source>Do not fill this field.</source>
+            <target state="needs-translation">Füllen Sie dieses Feld nicht aus</target></trans-unit>
+		</body>
+	</file>
+</xliff>

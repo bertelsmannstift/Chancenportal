@@ -1,0 +1,15 @@
+/**
+ * Javascript Configuration
+ */
+/*
+page.includeJS {
+	100 = {$page.includePath.assets}vendor/picturefill/picturefill.min.js
+}
+*/
+
+page.includeJSFooter {
+	50 = https://www.gstatic.com/charts/loader.js
+    50.external = 1
+	100 = {$page.includePath.javascript}build.js
+	110 = {$page.includePath.javascript}components.js
+}

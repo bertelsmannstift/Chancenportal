@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default"/>
+<f:section name="Main">
+    <section data-animation="fadeIn" class="container my-account">
+        <div class="row info-nav__actions">
+            <div class="col-lg-12">
+                <f:render partial="Menus/Breadcrumb" arguments="{_all}" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-12 margin-sm">
+
+                <v:page.menu as="lvl1" pageUid="{settings.chancenportal.pageIds.myaccount}">
+                    <ul class="my-account-menu">
+                        <f:for each="{lvl1}" as="lvl1_item" iteration="iterator">
+                            <f:variable name="navigation_title" value="{lvl1_item.nav_title -> v:or(alternative: lvl1_item.title)}"/>
+                            <li>
+                                <f:link.page pageUid="{lvl1_item.uid}" class="{f:if(condition: '{lvl1_item.active} == 1', then: 'my-account-menu--active' )}"
+                                             additionalAttributes="{data-title: navigation_title}">
+                                    {navigation_title}
+                                </f:link.page>
+                            </li>
+
+                            <f:if condition="{iterator.isLast}">
+                                <li class="my-account-menu__spacer"></li>
+                                <li>
+                                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.userdata)}">
+                                        <f:translate key="myaccount.logout" default="Persönliche Daten"/>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{f:uri.action(action: 'logoutPage', pageUid: settings.chancenportal.pageIds.logout, controller: 'FrontendUser', extensionName: 'chancenportal', pluginName: 'chancenportal')}">
+                                        <f:translate key="myaccount.logout" default="Abmelden"/>
+                                    </a>
+                                </li>
+                            </f:if>
+
+                        </f:for>
+                    </ul>
+                </v:page.menu>
+            </div>
+            <div class="col-lg-8 col-sm-12 col-sm-offset-0 col-lg-offset-1">
+                <v:content.render column="0" slide=""/>
+            </div>
+        </div>
+    </section>
+</f:section>
+</html>

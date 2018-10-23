@@ -1,0 +1,89 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+
+	<v:variable.set name="objData" value="{v:content.info()}"/>
+	<v:variable.set name="pageData" value="{v:page.info()}"/>
+
+	<section class="section form section--dark" data-ajaxform>
+		<div class="form__loading__animation">
+			<div class="animations__bouncer">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+
+		<div class="section__inner">
+			<f:if condition="{form.renderingOptions.headline} || {form.renderingOptions.subheadline}">
+				<div class="row">
+					<div class="col-xs-12 col-md-8 col-md-offset-2">
+						<f:if condition="{form.renderingOptions.headline}">
+							<h1 class="form__heading">{form.renderingOptions.headline}</h1>
+						</f:if>
+
+						<f:if condition="{form.renderingOptions.subheadline}">
+							<h2 class="form__subheading">
+								<f:format.nl2br>{form.renderingOptions.subheadline}</f:format.nl2br>
+							</h2>
+						</f:if>
+					</div>
+				</div>
+			</f:if>
+
+			<div class="row">
+				<f:variable name="formColClass" value="col-xs-12 col-md-8 col-md-offset-2" />
+				<f:if condition="{form.renderingOptions.contact-element} > 0">
+					<f:variable name="formColClass" value="col-xs-12 col-md-7" />
+				</f:if>
+
+				<div class="{formColClass} {f:if(condition: '{form.renderingOptions.contact-element} > 0', then: 'form--has-contact')}">
+					<f:form.validationResults>
+						<div class="form__messages" style="{f:if(condition: '{validationResults.flattenedErrors}', then: 'display:block;', else: 'display:none;')}">
+							<f:if condition="{validationResults.flattenedErrors}">
+								<div class="form__message">
+									<span class="form__message__icon form__message__icon--error"></span>
+									<span class="form__message__text">
+										<f:translate id="form.validation.error.general" extensionName="UiForms" />
+
+										<f:comment>
+											<f:for each="{validationResults.flattenedErrors}" as="error" key="key">
+												<!-- Validation-Error: {error.0.code} -->
+												<f:translate id="validation.error.{error.0.code}" extensionName="UiForms" default="{error.0.message}" /><br/>
+											</f:for>
+										</f:comment>
+									</span>
+								</div>
+							</f:if>
+						</div>
+					</f:form.validationResults>
+
+					<formvh:renderRenderable renderable="{form}">
+						<formvh:form
+								object="{form}"
+								action="{form.renderingOptions.controllerAction}"
+								method="{form.renderingOptions.httpMethod}"
+								id="{form.identifier}"
+								section="{form.identifier}"
+								enctype="{form.renderingOptions.httpEnctype}"
+								addQueryString="{form.renderingOptions.addQueryString}"
+								argumentsToBeExcludedFromQueryString="{form.renderingOptions.argumentsToBeExcludedFromQueryString}"
+								additionalParams="{form.renderingOptions.additionalParams}"
+								additionalAttributes="{novalidate: 'novalidate', data-ajaxuri: '{t:uri.ajaxAction(contextRecord: \'tt_content:{objData.uid}\',pageUid: \'{pageData.uid}\')}'}"
+						>
+							<f:render partial="{form.currentPage.templateName}" arguments="{page: form.currentPage}" />
+							<div class="actions">
+								<f:render partial="Form/Navigation" arguments="{form: form}" />
+							</div>
+						</formvh:form>
+					</formvh:renderRenderable>
+
+				</div>
+
+				<f:if condition="{form.renderingOptions.contact-element} > 0">
+					<div class="col-xs-12 col-s-4">
+						<v:content.render contentUids="{0: form.renderingOptions.contact-element}"/>
+					</div>
+				</f:if>
+			</div>
+		</div>
+	</section>
+</html>

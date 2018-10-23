@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3locallangExt>
+  <data type="array">
+    <languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Sprechende URLs</label>
+			<label index="mlang_labels_tablabel">RealURL-Verwaltung</label>
+			<label index="mlang_labels_tabdescr">Verwaltung für sprechende URLs in TYPO3 CMS</label>
+			<label index="module.index">Überblick</label>
+			<label index="module.index.intro_functions">Das ist ein RealURL-Verwaltungsmodul. Es stellt Funktionen zur Verfügung, die Sie aus dem Auswahlfeld oben auswählen können. Hier ist die Übersicht der verfügbaren Funktionen.</label>
+			<label index="module.aliases">Aliasse</label>
+			<label index="module.aliases">Aliasse</label>
+			<label index="module.aliases.intro">Dieses Modul verwaltet Aliasse, die für Elemente wie Nachrichten oder Adressen oder andere, benutzerdefinierte Typen von Daten erstellt worden sind.</label>
+			<label index="module.aliases.not_available">Im Moment sind keine Aliasse verfügbar.</label>
+			<label index="module.aliases.not_found">Der ausgewählte Alias ist nicht mehr verfügbar.</label>
+			<label index="module.aliases.available">Verfügbare Aliasse</label>
+			<label index="module.aliases.available.select">Wählen Sie einen Typ von Alias:</label>
+			<label index="module.aliases.deleted">Der Alias wurde gelöscht.</label>
+			<label index="module.aliases.all_deleted">Die Aliasse wurden gelöscht.</label>
+			<label index="module.aliases.edit.submit">Speichern</label>
+			<label index="module.aliases.edit.back">Abbrechen</label>
+			<label index="module.aliases.edit.alias_value">Aliaswert:</label>
+			<label index="module.aliases.edit.alias_info.tablename">Tabellenname:</label>
+			<label index="module.aliases.edit.alias_info.uid">Datensatz-UID:</label>
+			<label index="module.aliases.edit.alias_info.field_value">Feldwert:</label>
+			<label index="module.aliases.edit.saved">Alias erfolgreich aktualisiert.</label>
+			<label index="module.aliases.edit.error.already_exists">Ein derartiger Alias existiert bereits für einen anderen Datensatz in dieser Sprache.</label>
+			<label index="module.aliases.edit.error.bad_alias_value">Der Aliaswert darf nur die folgenden Zeichen enthalten: %s</label>
+			<label index="module.aliases.search.for">Aliaswert suchen für:</label>
+			<label index="module.aliases.search.submit">Absenden</label>
+			<label index="module.aliases.search.reset">Zurücksetzen</label>
+			<label index="module.url_cache">URL-Daten</label>
+			<label index="module.url_cache.intro">Dieses Modul erlaubt es, URLs zu suchen und zu entfernen. Die URL-Daten enthalten vollständige URLs bestehend aus Seitenpfad und jeglichen kodierten Parametern. Beachten Sie, dass es &lt;strong&gt;sehr&lt;/strong&gt; gefährlich ist, diese Einträge manuell zu bearbeiten! Sie können dadurch Ihre Installation beschädigen.</label>
+			<label index="module.path_cache">Pfaddaten</label>
+			<label index="module.path_cache.intro">Dieses Modul erlaubt es, Pfaddaten für Seiten zu suchen und zu entfernen. Beachten Sie, dass es &lt;strong&gt;sehr&lt;/strong&gt; gefährlich ist, diese Einträge manuell zu bearbeiten! Sie können dadurch Ihre Installation beschädigen.</label>
+			<label index="module.configuration">Konfiguration</label>
+			<label index="module.configuration.intro">Dieses Modul zeigt die RealURL-Konfiguration, wie RealURL sie sieht (inklusive Standardwerten).&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Hinweis:&lt;/strong&gt; Ihr Anbieter von TYPO3-Lösungen benutzt möglicherweise eigene Wege, um RealURL während der Laufzeit zu konfigurieren. In diesem Fall mag dieses Modul die Konfiguration nicht akkurat anzeigen. Wenn Sie vermuten, dass dies der Fall ist, kontaktieren Sie Ihren Anbieter von TYPO3-Lösungen.</label>
+			<label index="module.dateTimeFormat">d.m.Y H:i</label>
+			<label index="module.tableHeader.alias">Alias</label>
+			<label index="module.tableHeader.id">ID</label>
+			<label index="module.tableHeader.language">Sprache</label>
+			<label index="module.tableHeader.expire">Läuft ab</label>
+			<label index="viewhelper.languageFromId.defaultLanguage">Standard</label>
+			<label index="module.deleteAliasesOfType">Alle Aliasse dieses Typs löschen</label>
+			<label index="module.js.deleteSingleAlias">Diesen Alias tatsächlich löschen?</label>
+			<label index="module.js.yes">Ja</label>
+			<label index="module.js.no">Nein</label>
+			<label index="module.js.confirmTitle">Bestätigen</label>
+			<label index="module.js.deleteAliases">Tatsächlich alle Aliasse dieses Typs löschen?</label>
+			<label index="module.tableHeader.speaking_url">Sprechende URL</label>
+			<label index="module.tableHeader.original_url">Original-URL</label>
+			<label index="module.tableHeader.rootpage_id">ID der Wurzelseite</label>
+			<label index="module.tableHeader.page_path">Seitenpfad</label>
+			<label index="module.tableHeader.mp_var">Freigabepunkt</label>
+			<label index="module.js.deleteSingleCacheEntry">Diesen Eintrag tatsächlich löschen? Dies kann Ihrer Installation schaden!</label>
+			<label index="module.js.deleteCacheEntries">Tatsächlich alle Einträge für diese Seite löschen? Dies kann Ihrer Installation schaden!</label>
+			<label index="module.deleteCacheEntriesForPage">Alle Einträge dieser Seite löschen (schädlich!)</label>
+			<label index="module.flushCache">Alle Einträge löschen (schädlich!)</label>
+			<label index="module.js.flushCache">Tatsächlich alle Einträge entfernen? Dies WIRD die Performance Ihrer Website negativ beeinflussen und kann Seiten unzugänglich machen!</label>
+			<label index="module.url_cache.entry_deleted">Eintrag wurde entfernt.</label>
+			<label index="module.url_cache.all_entries_deleted">Alle Einträge für diese Seite wurden entfernt.</label>
+			<label index="module.url_cache.flushed">Alle Cacheeinträge wurden entfernt.</label>
+			<label index="module.path_cache.entry_deleted">Eintrag wurde entfernt.</label>
+			<label index="module.url_cache.duplicate_url">URL-Konflikt festgestellt: '%s' wird ebenfalls auf der folgenden oder den folgenden Seiten benutzt: %s</label>
+			<label index="module.path_cache.duplicate_path">Pfad-Konflikt festgestellt: '%s' wird ebenfalls auf der folgenden oder den folgenden Seiten benutzt: %s</label>
+		</languageKey>
+  </data>
+</T3locallangExt>
