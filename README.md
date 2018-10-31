@@ -1,8 +1,7 @@
 # Basis-Plattform für Chancenportal
 
 Dieses Projekt stellt die Basisinstallation einer TYPO3-basierten Plattform zur Veröffentlichung kommunaler Angebote 
-für Bürger dar. Die Plattform wurde als Zusammenarbeit der Bertelsmann Stiftung, u+i interact, SYSPONS, sowie der 
-Stadt Rheda-Wiedenbrück entwickelt.  
+für Bürger dar. Die Plattform wird durch die Bertelsmann Stiftung herausgegeben und wurde durch u+i interact im Auftrag der Bertelsmann Stiftung erstellt. Am Konzept der Plattform haben zudem die Stadt Rheda-Wiedenbrück als Pilot-Kommune sowie die SYSPONS GmbH mitgewirkt.
 
 ## Funktionen
 
@@ -20,9 +19,7 @@ Das Chancenportal vereint somit eine Lösung für die unterschiedlichen Bedürfn
 
 ## Hintergrund und Technik
 
-Die Plattform wurde in einer Zusammenarbeit von Bertelsmann Stiftung, der Stadt Rheda-Wiedenbrück als Pilot-Kommune, 
-u+i interact sowie der SYSPONS GmbH entwickelt. Sie wird unter einer Open Source Lizenz veröffentlich, so dass die 
-technologische Basis auch von anderen Städten und Gemeinden eingesetzt werden kann.
+Die Plattform wird durch die Bertelsmann Stiftung herausgegeben und wurde durch u+i interact im Auftrag der Bertelsmann Stiftung erstellt. Am Konzept der Plattform haben zudem die Stadt Rheda-Wiedenbrück als Pilot-Kommune sowie die SYSPONS GmbH mitgewirkt. Sie wird unter einer Open Source Lizenz veröffentlich, so dass die technologische Basis auch von anderen Städten und Gemeinden eingesetzt werden kann.
 
 Das Chancenportal ist als Erweiterung für das TYPO3 CMS entwickelt worden, sodass die Inhalte und gespeicherten Daten
  durch eine Redaktion eingesehen und bearbeitet werden können. Eine Kommune, die sich dazu entscheidet, das Portal bei 
@@ -71,7 +68,6 @@ Die Basisplattform kann über Farbwerte und den Austausch von Logos an das jewei
 ## Bildmaterial
 
 Als Platzhalter wurden Bilder der folgenden Fotografen verwendet:
-  
 * Kai Pilger on Unsplash
 * Roman Kraft on Unsplash
 * Matthew Kane on Unsplash
