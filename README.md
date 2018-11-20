@@ -1,21 +1,15 @@
-# Basis-Plattform für Chancenportal
+# Chancenportal
+Datenbank und Landkarte der Angebote und Anbieter zur Unterstützung von Benachteiligten
 
-Dieses Projekt stellt die Basisinstallation einer TYPO3-basierten Plattform zur Veröffentlichung kommunaler Angebote 
-für Bürger dar. Die Plattform wird durch die Bertelsmann Stiftung herausgegeben und wurde durch u+i interact im Auftrag der Bertelsmann Stiftung erstellt. Am Konzept der Plattform haben zudem die Stadt Rheda-Wiedenbrück als Pilot-Kommune sowie die SYSPONS GmbH mitgewirkt.
+## Hintergrund und Zweck des Portals
+Das „Chancenportal“ wurde im Rahmen des Projekts „Synergien vor Ort“ der Bertelsmann Stiftung entwickelt. Das Projekt hatte zum Ziel, die Zusammenarbeit zwischen Zivilgesellschaft, Verwaltung und Bürgern in den Handlungsfeldern Kinder- und Jugendarbeit, Flüchtlingshilfe und Seniorenarbeit zu untersuchen und zu verbessern. Ein zentraler Befund des Projekts lag darin, dass es in vielen Kommunen in den genannten Bereichen an einem Überblick über Angebote und Anbieter fehlt, ohne den eine bessere Zusammenarbeit nur begrenzt realisierbar ist.
+Das „Chancenportal“ dient dem Zweck, einen umfassenden Überblick über Angebote und Anbieter für soziale Leistungen im lokalen Raum herzustellen (insbesondere in den Bereichen Kinder- und Jugendarbeit, Bildung, Seniorenarbeit und Flüchtlingshilfe). Konkret sollen im Portal unterstützende Angebote von nicht gewinnorientierten Anbietern eingestellt werden. Die Stiftung verfolgt damit ausschließlich und unmittelbar gemeinnützige Zwecke, darunter die in § 2 Abs. 2 b und f ihrer Satzung genannte Förderung zeitgemäßer und wirkungsvoller Strukturen sowie innovative Modelle von Führung und Organisationen zur Erbringung öffentlicher Leistungen. Das Portal hat dabei mehrere Nutzergruppen im Blick, die einen unterschiedlichen Mehrwert durch das Portal erhalten sollen.
+Für die Zielgruppe (Kinder, Eltern, Senioren, Menschen mit Behinderungen, Geflüchtete etc.) aber auch vermittelnde Akteure (Lehrer, Betreuer, Sozial- und Sonderpädagogen) soll das Portal vor allem das zielsichere Finden passender Angebote ermöglichen. Für Anbieter (öffentliche, freie Träger, Initiativen, Vereine) soll sie eine Möglichkeit bieten, Angebote an zentraler Stelle darzustellen und damit die jeweilige Zielgruppe besser zu erreichen. Für Planer auf Seiten der Träger und der Kommunalverwaltung soll sie einen Überblick über die Angebotslandschaft herstellen, der ein Auffinden von Überangeboten und Angebotslücken erleichtert, um neue Angebote darauf anzupassen, Kooperationspartner zu finden und die Angebotslandschaft beispielsweise im Rahmen der Jugendhilfeplanung besser auszubalancieren.
+Ergänzend zum Portal wurde eine praxisorientierte Handlungsanleitung für kommunale Vertreter/innen erstellt, die Empfehlungen gibt, wie der Einführungsprozess inhaltlich begleitet werden kann (Durchführung einer Bestandsaufnahme von Anbietern und Angeboten für ein Handlungsfeld, Überzeugung von relevanten Stakeholdern und Bewerbung des Portals bei den Zielgruppen). 
 
-## Funktionen
-
-Die Zielgruppen können durch einen einfachen Einstieg über eine Suche oder über das Stöbern durch die aktuellen Angebote die breite Vielfalt der lokalen Unterstützungs-, Beratungs- und Betreuungsangebote einsehen und Kontakt zu dem jeweiligen Anbieter aufnehmen. Von der Recherche nach einer geeigneten Schule, über die Suche nach Betreuungsmöglichkeiten in Ferienzeiten, bis hin zur Beratung von jungen Eltern ist eine große Vielfalt an Angeboten abgedeckt.
-
-Die Suche ist örtlich (Eingabe von Postleitzahl und Umkreis der Suche), zeitlich (Angabe eines Datums oder Zeitraums), über vordefinierte Kategorien, über klickbare Filterkriterien und eine freie Begriffssuche möglich. Angebote werden auf einer Karte und tabellarisch angezeigt. Es gibt zudem einen einzelnen Bereich für die Suche und Anzeige der diversen Anbieter.
-
-Angebote und Anbieter bekommen jeweils eine eigene Seite, auf der alle Informationen strukturiert dargestellt werden. Neben Texten und Bildern können auch Videos angezeigt werden. Zudem findet der Besucher hier die Kontaktdaten der Anbieter und Ansprechpartner. Über einen Kontaktbutton können die Anbieter direkt per Mail angeschrieben werden. Zudem erfahren die Nutzer, in welchen Institutionen und Organisationen sie möglicherweise mitwirken, an welchen regelmäßigen Stammtischen sie teilnehmen oder wo sie ggf. eine Spende abgeben können.
-
-Zusätzlich zur Zielgruppe der Eltern, Kinder und Multiplikatoren hat das Chancenportal auch einen hohen Wert für die einzelnen Anbieter. Jeder Anbieter hat die Chance, sich über ein Profil in dem Portal darzustellen und somit auf sich und seine Angebote aufmerksam zu machen. Der Anbieter kann seine Angebote verwalten und hat so einen immer aktuellen Überblick seines Portfolios. Die Oberfläche, auf der sich der Anbieter in seinem Nutzerkonto bewegt, ist nutzerfreundlich gestaltet, sodass sich die Anbieter hier gut und einfach zurechtfinden. Sie können sich über das Portal selbstständig registrieren und werden anschließend von einer zentralen Redaktionsstelle in der Kommunalverwaltung freigegeben.
-  
-Eine dritte Zielgruppe, die Nutzen aus dem Webportal ziehen kann, sind die Planer der jeweiligen Kommunen. Diese können über einen eigenen Zugang unterschiedliche Auswertungen in dem Portal vornehmen, um so die Bedürfnisse der Zielgruppe besser zu erkennen und die Angebotsvielfalt überblicken und auswerten zu können. Die Auswertungen beinhalten unter anderem die Identifikation von Unter- bzw. Überangeboten einzelner Aktivitäten oder für bestimmte Gruppen (beispielsweise Angebote für Kinder mit Rollstuhl) in bestimmten Stadtteilen. Außerdem kann ausgewertet werden, welche Angebote von den Nutzern oft gesucht und angeklickt werden oder welche Kategorie am meisten ausgewählt wird.
-
-Das Chancenportal vereint somit eine Lösung für die unterschiedlichen Bedürfnisse der oben genannten Zielgruppen: Einfachere Abstimmung zwischen den Akteuren, zielgerichtetes Auffinden von Angeboten und Mitwirkungsmöglichkeiten, einen aktuellen Überblick über das kommunale Angebot für die Jugendhilfeplaner und Kommunalverwaltungen.
+## Kernfunktionen des Portals
+Das Portal stellt im Kern eine Datenbank über Angebote und Anbieter dar, die durch den Nutzer  durchsucht und umfangreich gefiltert werden können. Der Nutzer kann über das Portal via mail-to Funktion einen Anbieter zu einem Angebot kontaktieren. 
+Die Eingabe der Daten zu Angeboten und Anbietern kann durch eine zentrale Redaktion sowie durch Nutzer erfolgen, die sich als Anbieter registriert haben und durch den Betreiber als solche qualifiziert und freigeschaltet wurden. Anbieter können zudem weitere Personen in ihrer Organisation freischalten, um Daten einzupflegen. Alle Anbieterbeschreibungen und Angebote müssen durch den Betreiber in Rolle der Redaktion freigeschaltet werden sowohl bei der Ersteinstellung als auch bei der Anpassung. Der Betreiber trägt damit Sorge dafür, dass nur solche Angebote und Darstellungen auf dem Portal ausgegeben werden, die dem Ziel des Portals entsprechen und den Nutzungsbedingungen nicht zuwiderlaufen. Hierfür kann er sich auch über die Nutzungsbedingungen das Recht einräumen, beispielsweise diskriminierende, kommerziell werbende oder dem Zweck nicht dienliche Inhalte nicht freizugeben, abzuändern oder auch nachträglich zu entfernen. 
 
 ## Hintergrund und Technik
 
@@ -64,6 +58,7 @@ Die Basisplattform kann über Farbwerte und den Austausch von Logos an das jewei
 * Anpassung der Hauptfarben im Portal
 * Anpassung der Kategoriefarben
 * Austausch des Favicons in `web/favicons/` (https://www.favicon-generator.org/)
+* Setzen der Absender-E-Mail-Adresse in `packages/ui_sitepackage/Configuration/TypoScript/Config/tx_extbase.typoscript`
 
 ## Bildmaterial
 
