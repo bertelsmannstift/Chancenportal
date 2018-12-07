@@ -40,8 +40,9 @@ Zur Installation sind folgende Schritte notwendig:
 1. Repository klonen: `git clone git@github.com:bertelsmannstift/Chancenportal.git`
 2. Abhängigkeiten über [composer](https://getcomposer.org/) installieren: `composer install`
 3. Datenbankdump `/database/chancenportal.sql` in eine MySQL oder MariaDB laden
-4. Konfiguration der Datenbank in der Datei `.env` vornehmen
-
+4. Setzen des Webroots auf den Ordner `web`
+5. Konfiguration der Datenbank in der Datei `.env` vornehmen
+ 
 ## TYPO3 Login
 
 Folgendes Standardpasswort ist gesetzt und muss nach der Installation geändert werden:
