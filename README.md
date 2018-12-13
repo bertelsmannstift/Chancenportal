@@ -32,6 +32,11 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 * `ssconvert` muss für die Konvertierung von CSV zu Excel installiert sein: https://linux.die.net/man/1/ssconvert
 * `composer` muss für die Installation der PHP-Abhängigkeiten installiert sein: https://getcomposer.org/
 * darüber hinaus gelten die Anforderungen von TYPO3: https://typo3.org/cms/requirements/
+* Symlinks erstellbar
+* Unix / Linux Betriebssystem
+* Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden
+ 
+Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
 
 ### Step-by-step
 
