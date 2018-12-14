@@ -36,7 +36,7 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 * Unix / Linux Betriebssystem
 * Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden
  
-Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
+Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting-Angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
 
 ### Step-by-step
 
