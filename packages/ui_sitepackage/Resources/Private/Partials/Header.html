@@ -6,16 +6,16 @@
                 <div class="row">
                     <div class="col-lg-5 col-sm-12">
                         <div class="header__logo">
-                            <f:if condition="{rootPageInfo.ui_sitepackage_site_logo}">
-                                <div class="header__logo__svg">
+                            <div class="header__logo__svg">
+                                <f:if condition="{rootPageInfo.ui_sitepackage_site_logo}">
                                     <a href="/">
                                         {v:resource.record.fal(uid: 1, field: 'ui_sitepackage_site_logo', table: 'pages') -> v:variable.set(name: 'pageMedia')}
                                         <f:if condition="{pageMedia}">
                                             <f:image class="img-responsive" src="{pageMedia.0.url}" maxHeight="69"></f:image>
                                         </f:if>
                                     </a>
-                                </div>
-                            </f:if>
+                                </f:if>
+                            </div>
                             <div class="header__logo__title">
                                 <div>{rootline.0.title}</div>
                             </div>

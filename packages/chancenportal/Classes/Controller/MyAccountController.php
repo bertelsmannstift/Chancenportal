@@ -29,6 +29,13 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  */
 class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+    private $typeToNames = [
+        'Ohne Termin',
+        'Konkrete Daten',
+        'Zeitraum',
+        'Täglich',
+        'Wöchentlich',
+    ];
     /**
      * providerRepository
      *
@@ -745,7 +752,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offerKw = [];
 
                 foreach ($offer->getDates() as $date) {
-                    if(!$date->getStartDate()) {
+                    if (!$date->getStartDate()) {
                         continue;
                     }
 
@@ -756,20 +763,24 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             $offerKw[$kw] = true;
                         }
 
-                    } else if ($offer->getDateType() === 3 && $date->getStartDate() && $date->getEndDate()) {
-                        $kws = $this->getKwFromDateRange($date->getStartDate(), $date->getEndDate());
-                        foreach ($kws as $k) {
-                            if (!isset($offerKw[$k])) {
-                                $offerKw[$k] = true;
+                    } else {
+                        if ($offer->getDateType() === 3 && $date->getStartDate() && $date->getEndDate()) {
+                            $kws = $this->getKwFromDateRange($date->getStartDate(), $date->getEndDate());
+                            foreach ($kws as $k) {
+                                if (!isset($offerKw[$k])) {
+                                    $offerKw[$k] = true;
+                                }
                             }
-                        }
 
-                    } else if ($offer->getDateType() === 4 && $date->getActive() && $date->getEndDate()) {
+                        } else {
+                            if ($offer->getDateType() === 4 && $date->getActive() && $date->getEndDate()) {
 
-                        $kws = $this->getKwFromDateRange($date->getStartDate(), $date->getEndDate());
-                        foreach ($kws as $k) {
-                            if (!isset($offerKw[$k])) {
-                                $offerKw[$k] = true;
+                                $kws = $this->getKwFromDateRange($date->getStartDate(), $date->getEndDate());
+                                foreach ($kws as $k) {
+                                    if (!isset($offerKw[$k])) {
+                                        $offerKw[$k] = true;
+                                    }
+                                }
                             }
                         }
                     }
@@ -786,10 +797,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         $dataKeys = array_keys($data);
         $max = 0;
-        foreach($dataKeys as $dataKey) {
+        foreach ($dataKeys as $dataKey) {
             $val = explode(' / ', $dataKey);
             $time = strtotime($val[1] . '-W' . $val[0] . '-1 UTC');
-            if($time > $max) {
+            if ($time > $max) {
                 $max = $time;
             }
         }
@@ -798,12 +809,12 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             if ($offer->getDateType() === 4) {
                 $offerKw = [];
                 foreach ($offer->getDates() as $date) {
-                    if(!$date->getStartDate()) {
+                    if (!$date->getStartDate()) {
                         continue;
                     }
-                    if($date->getActive() && !$date->getEndDate()) {
+                    if ($date->getActive() && !$date->getEndDate()) {
 
-                        if($max > 0) {
+                        if ($max > 0) {
                             $endDate = \DateTime::createFromFormat('U', $max);
                         } else {
                             $endDate = new \DateTime('midnight');
@@ -829,7 +840,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         }
 
         // Sort kw array
-        uksort($data, function($a, $b) {
+        uksort($data, function ($a, $b) {
             $aa = explode(' / ', $a);
             $bb = explode(' / ', $b);
             return intval($aa[1] . $aa[0]) > intval($bb[1] . $bb[0]) ? 1 : -1;
@@ -1002,7 +1013,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             'name' => $data[1],
                             'mainCategory' => $data[2],
                             'dates' => [],
-                            'dateType' => intval($data[3]) >= 0 && intval($data[3]) <= 4 ? intval($data[3]) : 0,
+                            'dateType' => $this->mapDateNameToType($data[3]),
                             'address' => $data[8],
                             'info' => $data[9],
                             'district' => $data[10],
@@ -1011,20 +1022,20 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             'longDescription' => $data[13],
                             'speaker' => $data[14],
                             'format' => $data[15],
-                            'youtube' => $data[18],
-                            'conditionsOfParticipation' => $data[19],
-                            'courseNumber' => $data[20],
-                            'allowedParticipants' => $data[21],
-                            'costs' => $data[22],
-                            'noCosts' => trim(strtolower($data[23])) === 'ja' ? true : false,
-                            'access' => trim(strtolower($data[24])) === 'offen' ? 2 : (trim(strtolower($data[24])) === 'mitgliedschaft erforderlich' ? 3 : 1),
-                            'accessibility' => trim(strtolower($data[25])) === 'ja' ? 2 : (trim(strtolower($data[25])) === 'nein' ? 3 : 1),
-                            'providerCooperation' => $data[26],
-                            'contactSalutation' => trim(strtolower($data[27])) === 'herr' ? '1' : '0',
-                            'contactName' => $data[28],
-                            'contactJurisdiction' => $data[29],
-                            'contactPhone' => $data[30],
-                            'contactEmail' => $data[31]
+                            'youtube' => $data[16],
+                            'conditionsOfParticipation' => $data[17],
+                            'courseNumber' => $data[18],
+                            'allowedParticipants' => $data[19],
+                            'costs' => $data[20],
+                            'noCosts' => trim(strtolower($data[21])) === 'ja' ? true : false,
+                            'access' => trim(strtolower($data[22])) === 'offen' ? 2 : (trim(strtolower($data[22])) === 'mitgliedschaft erforderlich' ? 3 : 1),
+                            'accessibility' => trim(strtolower($data[23])) === 'ja' ? 2 : (trim(strtolower($data[23])) === 'nein' ? 3 : 1),
+                            'providerCooperation' => $data[24],
+                            'contactSalutation' => trim(strtolower($data[25])) === 'herr' ? '1' : '0',
+                            'contactName' => $data[26],
+                            'contactJurisdiction' => $data[27],
+                            'contactPhone' => $data[28],
+                            'contactEmail' => $data[29]
                         ];
                     }
 
@@ -1226,6 +1237,25 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
+     * @param $type
+     * @return mixed
+     */
+    private function mapDateTypeToName($type)
+    {
+        return utf8_decode($this->typeToNames[$type]);
+    }
+
+    /**
+     * @param $name
+     * @return int|null|string
+     */
+    private function mapDateNameToType($name)
+    {
+        $keys = array_flip($this->typeToNames);
+        return $keys[$name];
+    }
+
+    /**
      * Export offers
      */
     public function exportOffersAction()
@@ -1255,8 +1285,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Langbeschreibung",
             "Referent/en, Berufsbezeichnung oder Qualifikation",
             "Format",
-            utf8_decode("Bühnen-Bild (max. 1 Bild mind. 1242px x 385px)"),
-            "Content-Bild (max. 1 Bild mind. 1242px)",
             "Video-URL (Youtube) einbinden",
             "Spezf. Teilnahmebedingungen (z.B. Anmeldung erforderlich max. 200 Zeichen)",
             "Kursnummer",
@@ -1272,14 +1300,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Telefon",
             "E-Mail",
             "URL Anbieter",
-            utf8_decode("Foto hinzufügen (max. 1)")
         ]);
 
         fputcsv($fp, [
             "Nummer fortlaufend",
             "Freitext",
             "Einfachauswahl",
-            utf8_decode("Einfachauswahl (0 = Ohne Termin, 1 = Konkrete Daten, 2 = Zeitraum, 3 = Täglich, 4 = Wöchentlich)"),
+            utf8_decode("Einfachauswahl (Ohne Termin, Konkrete Daten, Zeitraum, Täglich, Wöchentlich)"),
             "Datum",
             "Freitext (Uhrzeit)",
             "Datum",
@@ -1292,8 +1319,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Freitext",
             "Freitext",
             "Freitext",
-            "Freitext",
-            "Dateiname",
             "Freitext (URL)",
             "Freitext",
             "Freitext",
@@ -1309,8 +1334,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Freitext (Telefonnummer)",
             "Freitext (E-Mail)",
             "Freitext",
-
-            "Dateiname",
         ]);
 
         /**
@@ -1360,9 +1383,9 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->getUid(),
                 utf8_decode($offer->getName()),
                 $mainCat ? utf8_decode($mainCat->getName()) : '',
-                $offer->getDateType(),
-                $firstDate ? $firstDate->getStartDate()->format($this->settings['chancenportal']['xls_converter_date_format']) : '',
-                $firstDate ? $firstDate->getStartTime() : '',
+                $this->mapDateTypeToName($offer->getDateType()),
+                $firstDate && $firstDate->getStartDate() ? $firstDate->getStartDate()->format($this->settings['chancenportal']['xls_converter_date_format']) : '',
+                $firstDate && $firstDate->getStartDate() ? $firstDate->getStartTime() : '',
                 $firstDate && $firstDate->getEndDate() ? $firstDate->getEndDate()->format($this->settings['chancenportal']['xls_converter_date_format']) : '',
                 $firstDate ? $firstDate->getEndTime() : '',
                 utf8_decode($offer->getAddress()),
@@ -1373,8 +1396,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 utf8_decode(strip_tags($offer->getLongDescription())),
                 utf8_decode($offer->getSpeaker()),
                 utf8_decode($offer->getFormat()),
-                '',
-                '',
                 $offer->getYoutube(),
                 utf8_decode($offer->getConditionsOfParticipation()),
                 $offer->getCourseNumber(),
@@ -1389,7 +1410,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 utf8_decode($offer->getContactJurisdiction()),
                 $offer->getContactPhone(),
                 utf8_decode($offer->getContactEmail()),
-                '',
                 '',
             ];
 
@@ -1406,13 +1426,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             '',
                             '',
                             '',
-                            $date->getStartDate()->format($this->settings['chancenportal']['xls_converter_date_format']),
+                            $date->getStartDate() ? $date->getStartDate()->format($this->settings['chancenportal']['xls_converter_date_format']) : '',
                             $date->getStartTime(),
                             $date->getEndDate() ? $date->getEndDate()->format($this->settings['chancenportal']['xls_converter_date_format']) : '',
                             $date->getEndTime(),
-                            '',
-                            '',
-                            '',
                             '',
                             '',
                             '',
@@ -1445,7 +1462,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         fclose($fp);
 
-        shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $tmpfname . ' ' . $tmpfname . ".xls 2>&1");
+        $result = shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $tmpfname . ' ' . $tmpfname . ".xls 2>&1");
 
         $headers = array(
             'Content-Type' => 'application/xls; charset=utf-8',
@@ -1672,7 +1689,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 if ($offer->creatorChanged === false && $data['offer']['active'] === '1') {
                     $offer->setActive(true);
                 } else {
-
                     if ($isAdmin && $offer->getCreator() && $offer->activeChanged) {
                         MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
                             [$this->settings['chancenportal']['email']['sender']], [],
@@ -1738,9 +1754,16 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             }
 
             if (count($organisation['items'])) {
+                usort($organisation['items'], function($a, $b) {
+                    return strnatcasecmp($a['title'], $b['title']);
+                });
                 $organisations[] = $organisation;
             }
         }
+
+        usort($organisations, function($a, $b) {
+            return strnatcasecmp($a['title'], $b['title']);
+        });
 
         return json_encode($organisations);
     }

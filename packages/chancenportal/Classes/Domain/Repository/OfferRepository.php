@@ -372,7 +372,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $newResult = new ObjectStorage();
         foreach ($result as $key => $item) {
-            if ($item->getProvider()->getActive() && $item->getProvider()->getApproved()) {
+            if ($item->getProvider() && $item->getProvider()->getActive() && $item->getProvider()->getApproved()) {
                 $newResult->attach($item);
             }
         }
@@ -649,28 +649,5 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $selectedDays[] = 6;
         }
         return $selectedDays;
-    }
-
-    /**
-     * @param Date $date
-     * @return array
-     */
-    private function getWeekDays(Date $date)
-    {
-        $days = [];
-        $now = new \DateTime('midnight');
-        if ($date->getStartDate() && $date->getStartDate() >= $now) {
-            if ($date->getStartDate() && $date->getEndDate() && $date->getStartDate()->format('dmY') === $date->getEndDate()->format('dmY')) {
-                $days[] = intval($date->getStartDate()->format('w'));
-            } elseif ($date->getStartDate() && $date->getEndDate()) {
-                $startDate = clone $date->getStartDate();
-                $endDate = clone $date->getEndDate();
-                while ($startDate <= $endDate) {
-                    $days[] = intval($startDate->format('w'));
-                    $startDate->modify('+1 day');
-                }
-            }
-        }
-        return $days;
     }
 }

@@ -32,8 +32,14 @@ plugin.tx_chancenportal_chancenportal {
     settings {
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=PLZ-Filter aktivieren
         use_zip_filter = 1
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=E-Mail Sender
+        email_sender = chancenportal@example.org
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Importvorlage
+        import_template_path = /typo3conf/ext/chancenportal/Resources/Public/vorlage.xls
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=ssconvert Pfad
+        xls_converter = /usr/bin/ssconvert
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Google Maps API Key
-        google_maps_api_key =
+        google_maps_api_key = AIzaSyCbXWpD1t8G6omwRJ6yecXh1KLqvk3n2tE
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Angebotsfreigabeprozess aktivieren
         activate_offer_approval = 1
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Accountübernahme-Option aktivieren

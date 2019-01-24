@@ -40,14 +40,14 @@ config.tx_extbase {
                 provider_list = 36
             }
 
-            import_template = /typo3conf/ext/chancenportal/Resources/Public/vorlage.xls
-            xls_converter = /usr/local/bin/ssconvert
+            import_template = {$plugin.tx_chancenportal_chancenportal.settings.import_template_path}
+            xls_converter = {$plugin.tx_chancenportal_chancenportal.settings.xls_converter}
             xls_converter_date_format = Y/m/d
 
             use_zip_filter = {$plugin.tx_chancenportal_chancenportal.settings.use_zip_filter}
 
             email {
-                sender = dweber@uandi.com
+                sender = {$plugin.tx_chancenportal_chancenportal.settings.email_sender}
                 lost_password_subject = Passwort zurücksetzen
                 delete_offer_subject = Ihre Angebot wurde gelöscht
                 creator_changed_subject = Ihnen wurde ein Angebot zugeordnet

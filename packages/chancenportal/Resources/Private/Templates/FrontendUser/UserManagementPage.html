@@ -90,11 +90,15 @@
                                             <i class="icon-pencil"></i>
                                         </a>
                                         <f:if condition="{settings.chancenportal.activate_account_takeover}">
-                                            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-                                                <a title="Einloggen als" href="{f:uri.action(action: 'loginAs', arguments: '{user: user}', pageUid: settings.chancenportal.pageIds.useroverview)}">
-                                                    <i class="icon-user"></i>
-                                                </a>
-                                            </f:security.ifHasRole>
+                                            <f:if condition="{user.disable}">
+                                                <f:else>
+                                                    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                                                        <a title="Einloggen als" href="{f:uri.action(action: 'loginAs', arguments: '{user: user}', pageUid: settings.chancenportal.pageIds.useroverview)}">
+                                                            <i class="icon-user"></i>
+                                                        </a>
+                                                    </f:security.ifHasRole>
+                                                </f:else>
+                                            </f:if>
                                         </f:if>
                                     </td>
                                 </tr>

@@ -1,4 +1,4 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+﻿<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 <f:section name="main">
 
@@ -18,13 +18,10 @@
         <f:else>
             <f:security.ifHasRole role="{settings.chancenportal.permissions.provider_group}">
                 <f:then>
-                    <p class="margin-inner-lg">Nutzen Sie das Konto-Dashboard zur Pflege Ihrer Anbieter- und Angebotsdaten.</p>
-
+                    <p class="margin-inner-lg">Nutzen Sie das Konto-Dashboard zur Pflege Ihrer Anbieter- und Angebotsdaten. Starten Sie mit dem ausfüllen und der Einreichung des Anbieterprofils!</p>
                     <div class="info-box margin-inner-lg">
-                        Sie sind Administrator Ihrer Organisation und können das Anbieterprofil Ihrer Organisation
-                        verwalten. Unter dem Menüpunkt „Nutzerverwaltung“ können Sie weitere Nutzer anlegen und wahlweise
-                        zu Administratoren ernennen.
-                    </div>
+                        Sie sind Administrator Ihrer Organisation und können das Anbieterprofil Ihrer Organisation sowie ihre Angebote pflegen und neue Angebote einstellen. Unter dem Menüpunkt „Nutzerverwaltung“ können Sie zudem weitere Administratoren anlegen.
+ <b>Das Anbieterprofil muss ausgefüllt und freigeben sein, bevor Ihre Angaben öffentlich sichtbar werden!     </b>              </div>
                 </f:then>
                 <f:else>
                     <p class="margin-inner-lg">
@@ -86,7 +83,7 @@
                             <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.provider)}" class="border-box border-box--arrow">
                                 <div class="border-box__content">
                                     <h2 class="border-box__headline">Anbieterprofil Ihrer Organisation pflegen</h2>
-                                    <div class="border-box__text">Als Administrator Ihrer Organisation können Sie Ihr Anbieterprofil pflegen. Nutzen Sie die Nutzerverwaltung, um weitere Administrations-Rechte zu vergeben.</div>
+                                    <div class="border-box__text">Als Administrator Ihrer Organisation können Sie Ihr Anbieterprofil pflegen.</div>
                                 </div>
                                 <div class="border-box__arrow"></div>
                             </a>
@@ -95,7 +92,7 @@
                             <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.useroverview)}" class="border-box border-box--arrow">
                                 <div class="border-box__content">
                                     <h2 class="border-box__headline">Weitere Nutzer anlegen &amp; verwalten</h2>
-                                    <div class="border-box__text">Legen Sie weitere Nutzer für Ihre Organisation an und vergeben Sie wahlweise weitere Administrationsrechte.</div>
+                                    <div class="border-box__text">Legen Sie weitere Administratoren für Ihre Organisation an.</div>
                                 </div>
                                 <div class="border-box__arrow"></div>
                             </a>

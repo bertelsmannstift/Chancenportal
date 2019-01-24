@@ -80,6 +80,7 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @param null $latestDate
      * @param array $offerDates
      * @return string
+     * @throws \Exception
      */
     public function outputEveryDay($offer = null, $latestDate = null, $offerDates = []) {
         $explicitDate = $this->arguments['date'];
@@ -109,9 +110,11 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
     }
 
     /**
+     * @param null $offer
      * @param null $latestDate
      * @param array $activeWeekDates
      * @return string
+     * @throws \Exception
      */
     public function outputWeekly($offer = null, $latestDate = null, $activeWeekDates = []) {
         $explicitDate = $this->arguments['date'];
@@ -156,7 +159,8 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
     }
 
     /**
-     * @return string
+     * @return bool|string
+     * @throws \Exception
      */
     public function render()
     {

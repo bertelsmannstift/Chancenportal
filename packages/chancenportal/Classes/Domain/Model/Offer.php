@@ -561,7 +561,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     private function addTimeToNextDate($date, Date $dateItem) {
         $time = $dateItem->getStartTimeObj();
-        return $date->modify('+' . $time . ' seconds');
+        return $time ? $date->modify('+' . $time . ' seconds') : $date;
     }
 
     /**
@@ -631,7 +631,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         // Wöchentlich
         if ($this->getDateType() == 4) {
-            return $this->getNextDateFromWeekly();
+            $result = $this->getNextDateFromWeekly();
         }
 
         return $now->modify('+10 years');
@@ -639,6 +639,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @return \DateTime
+     * @throws \Exception
      */
     private function getNextDateFromWeekly()
     {
@@ -704,10 +705,18 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                 }
             }
 
-            return $now->modify('+' . $cDate->getStartTimeObj() . ' seconds');
+            if($cDate->getStartTimeObj()) {
+                $now->modify('+' . $cDate->getStartTimeObj() . ' seconds');
+            }
+
+            return $cDate;
         }
 
-        return $oldestDate->getStartDate()->modify('+' . $oldestDate->getStartTimeObj() . ' seconds');
+        if($oldestDate->getStartTimeObj()) {
+            $oldestDate->getStartDate()->modify('+' . $oldestDate->getStartTimeObj() . ' seconds');
+        }
+
+        return $oldestDate->getStartDate();
     }
 
     /**

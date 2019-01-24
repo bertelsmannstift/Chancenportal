@@ -39,3 +39,5 @@ $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['crdate']['con
     'type' => 'passthrough',
 ];
 
+$GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['dates']['config']['appearance']['collapseAll'] = 1;
+

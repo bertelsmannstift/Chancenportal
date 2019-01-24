@@ -60,8 +60,18 @@ class AdminUserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstrac
         $this->init();
 
         $objInstanceSaltedPw = SaltFactory::getSaltingInstance();
+        $newUsername = isset($this->piVars['new_username']) ? $this->piVars['new_username'] : '';
         $password = isset($this->piVars['password']) ? $this->piVars['password'] : '';
         $passwordRepeat = isset($this->piVars['password_repeat']) ? $this->piVars['password_repeat'] : '';
+
+        if($newUsername !== $user->getUsername()) {
+            if($this->frontendUserRepository->findOneByUsername($newUsername)) {
+                $this->addError('validationErrorUsernameExists', 'new_username');
+                return false;
+            } elseif(filter_var($newUsername, FILTER_VALIDATE_EMAIL) !== false) {
+                $user->setUsername($newUsername);
+            }
+        }
 
         if ($user->getUid()) {
             $newPassword = isset($this->piVars['new_password']) ? $this->piVars['new_password'] : null;

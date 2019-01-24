@@ -8,7 +8,7 @@ namespace UI\UiGrid\Xclass\Backend\View;
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
  *
- *  (c) 2018 Sebastian Swan <seswan@uandi.com>, www.uandi.com
+ *  (c) 2018 www.uandi.com
  *
  ***/
 
