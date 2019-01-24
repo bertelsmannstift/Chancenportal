@@ -39,7 +39,7 @@ plugin.tx_chancenportal_chancenportal {
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=ssconvert Pfad
         xls_converter = /usr/bin/ssconvert
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Google Maps API Key
-        google_maps_api_key = AIzaSyCbXWpD1t8G6omwRJ6yecXh1KLqvk3n2tE
+        google_maps_api_key =
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Angebotsfreigabeprozess aktivieren
         activate_offer_approval = 1
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Accountübernahme-Option aktivieren
