@@ -37,8 +37,9 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 * Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden
  
 Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting-Angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
+Eine Anleitung für die Installation auf einfachen Web-Hosting-Angeboten finden Sie unter "Step-by-step Web-Hosting".
 
-### Step-by-step
+### Step-by-step - Root-Server / vServer
 
 Zur Installation sind folgende Schritte notwendig:
 
@@ -48,6 +49,24 @@ Zur Installation sind folgende Schritte notwendig:
 4. Setzen des Webroots auf den Ordner `web`
 5. Konfiguration der Datenbank in der Datei `.env` vornehmen
  
+### Step-by-step - Web-Hosting
+
+1. Laden Sie [TYPO3 8.x](https://get.typo3.org/8/zip) herunter
+2. Extrahieren Sie den Inhalt und laden Sie die Dateien auf Ihren Server, z. B. per (S)FTP oder SCP
+3. Laden Sie die aktuelle Chancenportal-Anwendung herunter [Chancenportal](https://github
+.com/bertelsmannstift/Chancenportal/archive/master.zip)
+4. Extrahieren Sie das Zip-Archiv und laden Sie den Inhalt des Ordners `web` auf Ihren Server
+5. Laden Sie ebenfalls den Inhalt des Ordners `packages` auf Ihren Server in den Ordner `typo3conf/ext` hoch
+6. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
+Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
+7. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
+8. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
+9. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
+* [flux](https://extensions.typo3.org/extension/flux/) (Version 8.2.1)
+* [pagenotfoundhandling](https://extensions.typo3.org/extension/pagenotfoundhandling/) (Version 2.4.6)
+* [realurl](https://extensions.typo3.org/extension/realurl/) (Version 2.4.0)
+* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.1.0)
+
 ## TYPO3 Login
 
 Folgendes Standardpasswort ist gesetzt und muss nach der Installation geändert werden:
