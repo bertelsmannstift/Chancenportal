@@ -48,7 +48,11 @@ Zur Installation sind folgende Schritte notwendig:
 3. Datenbankdump `/database/chancenportal.sql` in eine MySQL oder MariaDB laden
 4. Setzen des Webroots auf den Ordner `web`
 5. Konfiguration der Datenbank in der Datei `.env` vornehmen
- 
+
+Je nach gesetzter `TYPO3_CONTEXT` Umgebungsvariable wird die entsprechende Konfigurationsdatei aus dem Ordner 
+`configuration` geladen. Sie überschreibt die Standard-Konfiguration aus der Datei `LocalConfiguration.php`.
+Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei überschrieben werden können.
+
 ### Step-by-step - Web-Hosting
 
 1. Laden Sie [TYPO3 8.x](https://get.typo3.org/8/zip) herunter
@@ -83,7 +87,6 @@ Die Basisplattform kann über Farbwerte und den Austausch von Logos an das jewei
 * Anpassung der Hauptfarben im Portal
 * Anpassung der Kategoriefarben
 * Austausch des Favicons in `web/favicons/` (https://www.favicon-generator.org/)
-* Setzen der Absender-E-Mail-Adresse in `packages/ui_sitepackage/Configuration/TypoScript/Config/tx_extbase.typoscript`
 
 ## Bildmaterial
 
