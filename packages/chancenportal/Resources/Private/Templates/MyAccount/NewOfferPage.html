@@ -64,7 +64,6 @@
                         <button type="submit" class="btn btn--full">Speichern</button>
                     </f:then>
                     <f:else>
-
                         <f:if condition="{settings.chancenportal.activate_offer_approval}">
                             <f:then>
                                 <f:if condition="{offer.approved} == 0">
@@ -97,10 +96,12 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12 end-lg">
                 <div>
-                    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-                        <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="approved"></c:formConfiguration>
-                        <custom-select style="margin-right: 15px" label="Angebot genehmigen" theme="light" name="tx_chancenportal_chancenportal[offer][approved]" value="1" id="tx_chancenportal_chancenportal[offer][approved]" is-checked="{f:if(condition: '{offer.approved}', then: 'true', else: 'false')}"></custom-select>
-                    </f:security.ifHasRole>
+                    <f:if condition="{settings.chancenportal.activate_offer_approval}">
+                        <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                            <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="approved"></c:formConfiguration>
+                            <custom-select style="margin-right: 15px" label="Angebot genehmigen" theme="light" name="tx_chancenportal_chancenportal[offer][approved]" value="1" id="tx_chancenportal_chancenportal[offer][approved]" is-checked="{f:if(condition: '{offer.approved}', then: 'true', else: 'false')}"></custom-select>
+                        </f:security.ifHasRole>
+                    </f:if>
 
                     <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                         <f:then>
