@@ -109,7 +109,7 @@
                             <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[offer][active]" value="1" id="tx_chancenportal_chancenportal[offer][active]" is-checked="{f:if(condition: '{offer.active}', then: 'true', else: 'false')}"></custom-select>
                         </f:then>
                         <f:else>
-                            <f:if condition="{offer.approved}">
+                            <f:if condition="{offer.approved} || {settings.chancenportal.activate_offer_approval} == 0">
                                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="active"></c:formConfiguration>
                                 <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[offer][active]" value="1" id="tx_chancenportal_chancenportal[offer][active]" is-checked="{f:if(condition: '{offer.active}', then: 'true', else: 'false')}"></custom-select>
                             </f:if>

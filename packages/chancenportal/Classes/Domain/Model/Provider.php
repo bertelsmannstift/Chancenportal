@@ -5,6 +5,7 @@ use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -264,6 +265,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * labels
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Label>
+     * @lazy
      * @cascade remove
      */
     protected $labels = null;
@@ -272,6 +274,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * offers
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
+     * @lazy
      * @cascade remove
      */
     protected $offers = null;
@@ -280,6 +283,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * ownerGroup
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
+     * @lazy
      * @cascade remove
      */
     protected $ownerGroup = null;
@@ -288,6 +292,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * carrier
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Carrier
+     * @lazy
      */
     protected $carrier = null;
 
@@ -295,6 +300,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
+     * @lazy
      */
     protected $categories = null;
 
@@ -302,6 +308,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
+     * @lazy
      */
     protected $creator = null;
 
@@ -309,6 +316,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * author
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
+     * @lazy
      */
     protected $author = null;
 
