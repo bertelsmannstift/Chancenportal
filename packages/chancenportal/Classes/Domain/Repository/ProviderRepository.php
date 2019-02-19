@@ -218,7 +218,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 foreach ($result as $provider) {
                     foreach ($provider->getOffers() as $item) {
                         if ($this->distance($zipLat, $ziplng, $item->getLat(), $item->getLng()) <= $distance) {
-                            $newResult->attach($item);
+                            $newResult->attach($provider);
                             continue 2;
                         }
                     }

@@ -87,12 +87,49 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <div class="info-box margin-inner-lg">
-                    Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
-                </div>
+			<f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                    <f:then>
+						<f:if condition="{settings.chancenportal.activate_offer_approval}">
+                            <f:then>
+                                <div class="info-box margin-inner-lg">
+									<strong>Hinweis: Ein Angebot wird nur veröffentlicht, wenn der Haken bei "Veröffentlichen" gesetzt wurde. Zur Genemigung muss "Angebot genehmigen" angehakt sein. </strong> Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
+								</div>
+                            </f:then>
+                            <f:else>
+                                <div class="info-box margin-inner-lg">
+									<strong>Hinweis: Ein Angebot wird nur veröffentlicht, wenn der Haken bei "Veröffentlichen" gesetzt wurde. </strong> Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
+								</div>
+                            </f:else>
+						</f:if>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{settings.chancenportal.activate_offer_approval}">
+                            <f:then>
+                                <f:if condition="{offer.approved} == 0">
+                                    <f:then>
+                                        <div class="info-box margin-inner-lg">
+										<strong>Hinweis:</strong> Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
+										</div>
+                                    </f:then>
+                                    <f:else>
+                                        <div class="info-box margin-inner-lg">
+											<strong>Hinweis: Ein Angebot ist öffentlich, wenn der Haken bei "Veröffentlichen" gesetzt wurde. </strong> Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
+										</div>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <div class="info-box margin-inner-lg">
+									<strong>Hinweis: Ein Angebot wird nur veröffentlicht, wenn der Haken bei "Veröffentlichen" gesetzt wurde. </strong> Wenn ein optionales Feld (alle Felder ohne *) nicht ausgefüllt wird, wird dieses nicht auf der Angebotsseite angezeigt.
+								</div>
+                            </f:else>
+                        </f:if>
+
+                    </f:else>
+                </f:security.ifHasRole>
+
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-12 col-sm-12 end-lg">
                 <div>
@@ -121,7 +158,7 @@
 
         <div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <h2>Rahmendaten</h2>
+                <h2>Kerndaten</h2>
             </div>
         </div>
 
@@ -202,11 +239,11 @@
                                                         <custom-datepicker id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" theme="light" required="true"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <label class="input__label">Uhrzeit von*</label>
+                                                        <label class="input__label">Uhrzeit von (HH:MM)*</label>
                                                         <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <label class="input__label">Uhrzeit bis*</label>
+                                                        <label class="input__label">Uhrzeit bis (HH:MM)*</label>
                                                         <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
                                                     </div>
                                                 </div>
@@ -223,11 +260,11 @@
                                                                 <custom-datepicker id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" theme="light" required="true"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <label class="input__label">Uhrzeit von*</label>
+                                                                <label class="input__label">Uhrzeit von (HH:MM)*</label>
                                                                 <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <label class="input__label">Uhrzeit bis*</label>
+                                                                <label class="input__label">Uhrzeit bis (HH:MM)*</label>
                                                                 <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
@@ -252,14 +289,14 @@
                                                         <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_0" required="true" class="from_data_0"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit-Beginn" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
+                                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
                                                     </div>
                                                     <div class="input">
                                                         <label class="input__label">End-Datum</label>
                                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit-Ende" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
+                                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -274,14 +311,14 @@
                                                                 <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_{iteration.index}" required="true" class="from_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit-Beginn" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                                <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input">
                                                                 <label class="input__label">End-Datum</label>
                                                                 <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_{iteration.index}" class="to_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit-Ende" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                                <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -308,10 +345,10 @@
                                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_3" class="to_data_3"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit von" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
+                                                        <custom-time-input label="Von (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit bis" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
+                                                        <custom-time-input label="Bis (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -331,10 +368,10 @@
                                                                 <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_{iteration.index}" class="to_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit von" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                                <custom-time-input label="Von(HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit bis" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                                <custom-time-input label="Bis(HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -370,11 +407,11 @@
                                             <custom-select label="Montag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][0][active]" is-checked="{f:if(condition: '{offer.dates.0.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" id="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{offer.dates.0.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" id="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{offer.dates.0.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -388,11 +425,11 @@
                                             <custom-select label="Dienstag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][1][active]" is-checked="{f:if(condition: '{offer.dates.1.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][1][startTime]" id="tx_chancenportal_chancenportal[offer][dates][1][startTime]" value="{offer.dates.1.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][1][endTime]" id="tx_chancenportal_chancenportal[offer][dates][1][endTime]" value="{offer.dates.1.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -406,11 +443,11 @@
                                             <custom-select label="Mittwoch" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][2][active]" is-checked="{f:if(condition: '{offer.dates.2.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][2][startTime]" id="tx_chancenportal_chancenportal[offer][dates][2][startTime]" value="{offer.dates.2.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][2][endTime]" id="tx_chancenportal_chancenportal[offer][dates][2][endTime]" value="{offer.dates.2.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -424,11 +461,11 @@
                                             <custom-select label="Donnerstag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][3][active]" is-checked="{f:if(condition: '{offer.dates.3.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][3][startTime]" id="tx_chancenportal_chancenportal[offer][dates][3][startTime]" value="{offer.dates.3.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][3][endTime]" id="tx_chancenportal_chancenportal[offer][dates][3][endTime]" value="{offer.dates.3.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -442,11 +479,11 @@
                                             <custom-select label="Freitag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][4][active]" is-checked="{f:if(condition: '{offer.dates.4.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][4][startTime]" id="tx_chancenportal_chancenportal[offer][dates][4][startTime]" value="{offer.dates.4.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][4][endTime]" id="tx_chancenportal_chancenportal[offer][dates][4][endTime]" value="{offer.dates.4.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -460,11 +497,11 @@
                                             <custom-select label="Samstag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][5][active]" is-checked="{f:if(condition: '{offer.dates.5.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][5][startTime]" id="tx_chancenportal_chancenportal[offer][dates][5][startTime]" value="{offer.dates.5.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis(HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][5][endTime]" id="tx_chancenportal_chancenportal[offer][dates][5][endTime]" value="{offer.dates.5.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -478,11 +515,11 @@
                                             <custom-select label="Sonntag" theme="light" value="1" id="tx_chancenportal_chancenportal[offer][dates][6][active]" is-checked="{f:if(condition: '{offer.dates.6.active}', then: 'true', else: 'false')}"></custom-select>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit von</label>
+                                            <label class="input__label">Uhrzeit von (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][6][startTime]" id="tx_chancenportal_chancenportal[offer][dates][6][startTime]" value="{offer.dates.6.startTime}"></custom-time-input>
                                         </div>
                                         <div class="input input--time">
-                                            <label class="input__label">Uhrzeit bis</label>
+                                            <label class="input__label">Uhrzeit bis (HH:MM)</label>
                                             <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][6][endTime]" id="tx_chancenportal_chancenportal[offer][dates][6][endTime]" value="{offer.dates.6.endTime}"></custom-time-input>
                                         </div>
                                     </div>
@@ -491,7 +528,7 @@
                         </div>
                     </custom-dropdown>
                     <div class="info-box margin-inner-lg">
-                        <strong>Hinweis!</strong> - Für einen monatlichen Termin Nutzen Sie bitte die Funktion &quot;Konkrete Daten&quot;
+                        <strong>Hinweis!</strong> - Uhrzeiten bitte im Format (HH:MM) eingeben. Für einen monatlichen Termin Nutzen Sie bitte die Funktion &quot;Konkrete Daten&quot;
                     </div>
                 </div>
             </div>
@@ -509,14 +546,14 @@
                                         <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" end-date=".to_data_0" class="from_data_0"></custom-datepicker>
                                     </div>
                                     <div class="input input--time">
-                                        <custom-time-input label="Uhrzeit" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
+                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
                                     </div>
                                     <div class="input">
                                         <label class="input__label">End-Datum</label>
                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                     </div>
                                     <div class="input input--time">
-                                        <custom-time-input label="Uhrzeit" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
+                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
                                     </div>
                                     <div class="input input--select">
                                         <label class="input__label">Typ</label>
@@ -536,14 +573,14 @@
                                                     <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_0" required="true" class="from_data_0"></custom-datepicker>
                                                 </div>
                                                 <div class="input input--time">
-                                                    <custom-time-input label="Uhrzeit" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                    <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                 </div>
                                                 <div class="input">
                                                     <label class="input__label">End-Datum</label>
                                                     <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                                 </div>
                                                 <div class="input input--time">
-                                                    <custom-time-input label="Uhrzeit" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                    <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                 </div>
                                                 <div class="input input--select">
                                                     <label class="input__label">Typ</label>
@@ -570,11 +607,12 @@
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="city"></c:formConfiguration>
 
                 <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'address\', className: \' input--error\'}')}">
-                    <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[offer][street]" name-city="tx_chancenportal_chancenportal[offer][city]" label="Adresse (Wo findet das Angebot statt?)*"{f:if(condition:'{settings.chancenportal.use_zip_filter}', then: ' zip-must-exists="true"')} required="true" value="{offer.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[offer][lng]" name-zip="tx_chancenportal_chancenportal[offer][zip]" name-lat="tx_chancenportal_chancenportal[offer][lat]" name="tx_chancenportal_chancenportal[offer][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
+                    <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[offer][street]" name-city="tx_chancenportal_chancenportal[offer][city]" label="Adresse (Wo findet das Angebot statt?) - Bitte zuerst Stadt oder Postleitzahl und dann die Straße eingeben.*"{f:if(condition:'{settings.chancenportal.use_zip_filter}', then: ' zip-must-exists="true"')} required="true" value="{offer.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[offer][lng]" name-zip="tx_chancenportal_chancenportal[offer][zip]" name-lat="tx_chancenportal_chancenportal[offer][lat]" name="tx_chancenportal_chancenportal[offer][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
                 </div>
             </div>
         </div>
-        <div class="row">
+
+		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
 
@@ -585,6 +623,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row margin-lg">
             <f:if condition="{settings.chancenportal.use_zip_filter}">
                 <f:else>
@@ -610,7 +649,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <h2>Über das Angebot</h2>
+                <h2>Beschreibung</h2>
             </div>
         </div>
         <div class="row">
@@ -619,7 +658,7 @@
                     <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'shortDescription\', className: \' input--error\'}')}">
                         <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="shortDescription"></c:formConfiguration>
 
-                        <label class="input__label">Kurzbeschreibung / Teaser-Text (max. 200 Zeichen)*</label>
+                        <label class="input__label">Teaser-Text (wird in der Listenansicht angezeigt, max. 200 Zeichen)*</label>
                         <textarea name="tx_chancenportal_chancenportal[offer][shortDescription]" cols="30" rows="10" maxlength="200" class="input__field" required="required" style="height:120px;min-height:120px;">{offer.shortDescription}</textarea>
                     </div>
                 </div>
@@ -628,10 +667,11 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="longDescription"></c:formConfiguration>
-                <custom-rte-input name="tx_chancenportal_chancenportal[offer][longDescription]" type="textarea" label="Langbeschreibung" min-height="400" max-height="800" value="{offer.longDescription}"></custom-rte-input>
+                <custom-rte-input name="tx_chancenportal_chancenportal[offer][longDescription]" type="textarea" label="Beschreibung (Angebotsansicht)" min-height="400" max-height="800" value="{offer.longDescription}"></custom-rte-input>
             </div>
         </div>
-        <div class="row">
+        <!--
+		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
                     <label class="input__label">Referent/en, Berufsbezeichnung oder Qualifikation</label>
@@ -639,7 +679,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+		-->
+        <!--
+		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
                     <label class="input__label">Format</label>
@@ -647,9 +689,16 @@
                 </div>
             </div>
         </div>
-        <div class="info-box margin-inner-lg">
-            Sie haben die Möglichkeit 2 Bilder je Angebot einzupflegen: Das Bühnenbild wird groß am Anfang der Seite angezeigt und benötigt eine Größe von mind. 1242px x 385px. Falls Sie dieses nicht einpflegen erscheint an der Stelle ein generisches Fallback-Bild,
-            passend zur Kategorie. Das Content-Bild wird unterhalb der Langbeschreibung des Angebots angezeigt und entfällt komplett, wenn Sie keines einfügen.
+		-->
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                <h2>Fotos und Videos</h2>
+            </div>
+        </div>
+		<div class="info-box margin-inner-lg">
+            Sie haben die Möglichkeit 2 Bilder je Angebot einzupflegen: Das Bühnenbild wird oben in der Seite in einem Panorama Format angezeigt und benötigt eine Größe von mind. 1242px x 385px. Falls Sie dieses nicht einpflegen, erscheint an der Stelle ein Standardbild,
+            passend zur Kategorie. Das Content-Bild wird unterhalb der Angebotsbeschreibung angezeigt. Nach dem Upload öffent sich ein Fenster mit einem jeweils voreingestellten Format, mit dem Sie ihr Bild beschneiden können.
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12">
@@ -674,10 +723,11 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <h2>Über das Angebot</h2>
+                <h2>Zusätzliche Informationen</h2>
             </div>
         </div>
-        <div class="row">
+
+		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
                     <label class="input__label">Spezf. Teilnahmebedingungen (z.B. Anmeldung erforderlich; max. 200 Zeichen)</label>
@@ -687,7 +737,9 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+
+        <!--
+		<div class="row">
             <div class="col-lg-6 col-sm-12 margin-inner-sm">
                 <div class="input">
                     <label class="input__label">Kursnummer</label>
@@ -701,6 +753,7 @@
                 </div>
             </div>
         </div>
+		-->
         <div class="row">
             <div class="col-lg-6 col-sm-12 margin-inner-sm">
                 <div class="input">
@@ -726,11 +779,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
-                    <label class="input__label">Barrierefrei</label>
-                    <div>
+                    <label class="input__label">Barrierefrei (Filterkriterium)</label>
+					<div>
                         <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="accessibility"></c:formConfiguration>
                         <custom-radio is-checked="{f:if(condition: '{offer.accessibility} == 1 || {offer.accessibility} == 0', then: 'true', else: 'false')}" id="accessible_1" name="tx_chancenportal_chancenportal[offer][accessibility]" value="1" theme="light" label="Keine Angabe"></custom-radio>
                         <custom-radio is-checked="{f:if(condition: '{offer.accessibility} == 2', then: 'true', else: 'false')}" id="accessible_2" name="tx_chancenportal_chancenportal[offer][accessibility]" value="2" theme="light" label="Ja"></custom-radio>
@@ -739,28 +792,26 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <h2>Anbieterinformation</h2>
-            </div>
-        </div>
+		<div class="info-box margin-inner-lg">
+			<strong>Hinweis:</strong> Wenn Sie "Keine Angabe" ausgewählt lassen, wird ihr Angebot bei der Suche von barrierefreien Angeboten nicht angezeit!
+		</div>
 
-        <div class="row margin-lg">
+		<div class="row margin-lg">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
-                    <label class="input__label">Name möglicher Kooperationspartner</label>
+                    <label class="input__label">Kooperationspartner für dieses Angebot</label>
                     <f:form.textfield property="providerCooperation" class="input__field" />
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-                <h2>Ansprechpartner/in</h2>
+                <h2>Ansprechpartner/in (falls abweichend vom Anbieter)</h2>
             </div>
         </div>
         <div class="info-box margin-inner-lg">
-            Die Angabe spezifischer Kontaktangaben für die/den Ansprechpartner/in sind freiwillig.
-            <br> Es wird in jedem Fall einen Kontakt-Button mit der allgemeinen Anbieter Email-Adresse geben.
+            Kontaktangaben für einzelne Angebote sind nur notwendig, wenn diese vom Anbieter abweichen.
+            <br> Wenn Sie hier keine Daten angeben, führt der Kontakt-Button zur Mailadresse des Anbieters.
         </div>
         <div class="row">
             <div class="col-lg-6 col-sm-12">
@@ -785,7 +836,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+		<div class="row">
             <div class="col-lg-6 col-sm-12">
                 <div class="input">
                     <label class="input__label">Telefon</label>
@@ -843,6 +894,76 @@
 
                     </f:else>
                 </f:security.ifHasRole>
+            </div>
+        </div>
+		<!--
+		<div class="row">
+            <div class="col-lg-12 col-sm-12 end-lg">
+                <div>
+                    <f:if condition="{settings.chancenportal.activate_offer_approval}">
+                        <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                            <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="approved"></c:formConfiguration>
+                            <custom-select style="margin-right: 15px" label="Angebot genehmigen" theme="light" name="tx_chancenportal_chancenportal[offer][approved]" value="1" id="tx_chancenportal_chancenportal[offer][approved]" is-checked="{f:if(condition: '{offer.approved}', then: 'true', else: 'false')}"></custom-select>
+                        </f:security.ifHasRole>
+                    </f:if>
+
+                    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                        <f:then>
+                            <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="active"></c:formConfiguration>
+                            <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[offer][active]" value="1" id="tx_chancenportal_chancenportal[offer][active]" is-checked="{f:if(condition: '{offer.active}', then: 'true', else: 'false')}"></custom-select>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{offer.approved} || {settings.chancenportal.activate_offer_approval} == 0">
+                                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="active"></c:formConfiguration>
+                                <custom-select label="Veröffentlichen" theme="light" name="tx_chancenportal_chancenportal[offer][active]" value="1" id="tx_chancenportal_chancenportal[offer][active]" is-checked="{f:if(condition: '{offer.active}', then: 'true', else: 'false')}"></custom-select>
+                            </f:if>
+                        </f:else>
+                    </f:security.ifHasRole>
+                </div>
+            </div>
+        </div>
+		-->
+		<div class="row">
+            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+			<f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                    <f:then>
+						<f:if condition="{settings.chancenportal.activate_offer_approval}">
+                            <f:then>
+                                <div class="info-box margin-inner-lg">
+									Hinweis: Ein Angebot wird nur veröffentlicht, wenn oben der Haken bei "Veröffentlichen" gesetzt wurde. Zur Genemigung muss "Angebot genehmigen" angehakt sein.
+								</div>
+                            </f:then>
+                            <f:else>
+                                <div class="info-box margin-inner-lg">
+									Hinweis: Ein Angebot wird nur veröffentlicht, wenn oben der Haken bei "Veröffentlichen" gesetzt wurde.
+								</div>
+                            </f:else>
+                        </f:if>
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{settings.chancenportal.activate_offer_approval}">
+                            <f:then>
+                                <f:if condition="{offer.approved} == 0">
+                                    <f:then>
+
+                                    </f:then>
+                                    <f:else>
+                                        <div class="info-box margin-inner-lg">
+											Hinweis: Ein Angebot ist öffentlich, wenn oben der Haken bei "Veröffentlichen" gesetzt wurde.
+										</div>
+                                    </f:else>
+                                </f:if>
+                            </f:then>
+                            <f:else>
+                                <div class="info-box margin-inner-lg">
+									Hinweis: Ein Angebot wird nur veröffentlicht, wenn oben der Haken bei "Veröffentlichen" gesetzt wurde.
+								</div>
+                            </f:else>
+                        </f:if>
+
+                    </f:else>
+                </f:security.ifHasRole>
+
             </div>
         </div>
     </f:form>

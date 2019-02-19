@@ -12,34 +12,34 @@
     </f:if>
 
 
-    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-        <f:then>
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 margin-inner-sm flex margin-inner">
-                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
+        <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+            <f:then>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex margin-inner">
+                        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
+                    </div>
                 </div>
-            </div>
-        </f:then>
-        <f:else>
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
-                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
+            </f:then>
+            <f:else>
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
+                        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
+                    </div>
+                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
+                        <form action="" method="post" enctype="multipart/form-data" style="display: block; width: 100%;">
+                            <custom-upload-button accept="application/xls" submit="true" name="import_file">
+                                Neue Angebote importieren (Excel)
+                            </custom-upload-button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
-                    <form action="" method="post" enctype="multipart/form-data" style="display: block; width: 100%;">
-                        <custom-upload-button accept="application/xls" submit="true" name="import_file">
-                            Neue Angebote importieren (Excel)
-                        </custom-upload-button>
-                    </form>
+                <div class="row margin-inner">
+                    <div class="col-lg-6 col-sm-12 margin-inner-sm col-lg-offset-6 text-right" style="margin-top: 10px">
+                        <a href="{settings.chancenportal.import_template}" class="my-account__download" ><span>Importvorlage herunterladen</span></a>
+                    </div>
                 </div>
-            </div>
-            <div class="row margin-inner">
-                <div class="col-lg-6 col-sm-12 margin-inner-sm col-lg-offset-6 text-right" style="margin-top: 10px">
-                    <a href="{settings.chancenportal.import_template}" class="my-account__download" ><span>Importvorlage herunterladen</span></a>
-                </div>
-            </div>
-        </f:else>
-    </f:security.ifHasRole>
+            </f:else>
+        </f:security.ifHasRole>
 
 
     <div class="row">
@@ -70,110 +70,110 @@
                             <custom-datatable search-input-selector="#filter_term" sorting="[{&quot;col&quot;: &quot;0&quot;}, {&quot;col&quot;: &quot;1&quot;}, {&quot;col&quot;: &quot;3&quot;}, {&quot;col&quot;: &quot;4&quot;}, {&quot;col&quot;: &quot;5&quot;}, {&quot;col&quot;: &quot;6&quot;}, {&quot;col&quot;: &quot;7&quot;}]">
                         </f:else>
                     </f:security.ifHasRole>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th style="width: 5%;">ID</th>
-                            <th>Name</th>
-                            <th>PLZ / ORT</th>
-                            <th>Autor</th>
-                            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-                                <th>Anbieter</th>
-                            </f:security.ifHasRole>
-                            <th>Ersteller</th>
-                            <th>Erstellt</th>
-                            <th>Geändert</th>
-                            <th>Status</th>
-                            <th style="width: 4%;"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <f:for each="{offers}" as="offer">
+                        <table>
+                            <thead>
                             <tr>
-                                <td>{offer.uid}</td>
-                                <td>
-                                    <a href="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}">{offer.name}</a>
-                                </td>
-                                <td>
-                                    <c:ExtractCity address="{offer.address}" />
-                                </td>
-                                <td>
-                                    <f:if condition="{offer.creator.name}">
-                                        <f:then>
-                                            {offer.creator.name}
-                                        </f:then>
-                                        <f:else>
-                                            Benutzer gelöscht
-                                        </f:else>
-                                    </f:if>
-                                </td>
+                                <th style="width: 5%;">ID</th>
+                                <th>Name</th>
+                                <th>PLZ / ORT</th>
+                                <th>Autor</th>
                                 <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-                                    <td>
-                                        {offer.provider.name}
-                                    </td>
+                                    <th>Anbieter</th>
                                 </f:security.ifHasRole>
-                                <td>
-                                    <f:if condition="{offer.lastEditor.name}">
-                                        <f:then>
-                                            {offer.lastEditor.name}
-                                        </f:then>
-                                        <f:else>
-                                            Benutzer gelöscht
-                                        </f:else>
-                                    </f:if>
-                                </td>
-                                <td>
-                                    <f:format.date format="d.m.Y">{offer.crdate}</f:format.date>
-                                </td>
-                                <td>
-                                    <f:format.date format="d.m.Y">{offer.tstamp}</f:format.date>
-                                </td>
-                                <td>
-                                    <f:if condition="{settings.chancenportal.activate_offer_approval}">
-                                        <f:then>
-                                            <f:if condition="{offer.approved}">
-                                                <f:then>
-                                                    <f:if condition="{offer.active}">
-                                                        <f:then>
-                                                            Aktiv
-                                                        </f:then>
-                                                        <f:else>
-                                                            Inaktiv
-                                                        </f:else>
-                                                    </f:if>
-                                                </f:then>
-                                                <f:else>
-                                                    <span style="color:#f9b000;">Warte auf Freigabe</span>
-                                                </f:else>
-                                            </f:if>
-                                        </f:then>
-                                        <f:else>
-                                            <f:if condition="{offer.active}">
-                                                <f:then>
-                                                    Aktiv
-                                                </f:then>
-                                                <f:else>
-                                                    Inaktiv
-                                                </f:else>
-                                            </f:if>
-                                        </f:else>
-                                    </f:if>
-                                </td>
-                                <td>
-                                    <div class="custom-confirm" text="Wollen Sie das Angebot wirklich löschen?">
-                                        <a href="{f:uri.action(action: 'deleteOffer', arguments: '{offer: offer}')}">
-                                            <i class="icon-times-circle"></i>
-                                        </a>
-                                    </div>
-
-                                    <a href="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}">
-                                        <i class="icon-pencil"></i>
-                                    </a>
-                                </td>
+                                <th>Zuletzt geändert</th>
+                                <th>Erstellt</th>
+                                <th>Geändert</th>
+                                <th>Status</th>
+                                <th style="width: 4%;"></th>
                             </tr>
-                        </f:for>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            <f:for each="{offers}" as="offer">
+                                <tr>
+                                    <td>{offer.uid}</td>
+                                    <td>
+                                        <a href="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}">{offer.name}</a>
+                                    </td>
+                                    <td>
+                                        <c:ExtractCity address="{offer.address}" />
+                                    </td>
+                                    <td>
+                                        <f:if condition="{offer.creator.name}">
+                                            <f:then>
+                                                {offer.creator.name}
+                                            </f:then>
+                                            <f:else>
+                                                Benutzer gelöscht
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                                        <td>
+                                            {offer.provider.name}
+                                        </td>
+                                    </f:security.ifHasRole>
+                                    <td>
+                                        <f:if condition="{offer.lastEditor.name}">
+                                            <f:then>
+                                                {offer.lastEditor.name}
+                                            </f:then>
+                                            <f:else>
+                                                Benutzer gelöscht
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <f:format.date format="d.m.Y">{offer.crdate}</f:format.date>
+                                    </td>
+                                    <td>
+                                        <f:format.date format="d.m.Y">{offer.tstamp}</f:format.date>
+                                    </td>
+                                    <td>
+                                        <f:if condition="{settings.chancenportal.activate_offer_approval}">
+                                            <f:then>
+                                                <f:if condition="{offer.approved}">
+                                                    <f:then>
+                                                        <f:if condition="{offer.active}">
+                                                            <f:then>
+                                                                Aktiv
+                                                            </f:then>
+                                                            <f:else>
+                                                                Inaktiv
+                                                            </f:else>
+                                                        </f:if>
+                                                    </f:then>
+                                                    <f:else>
+                                                        <span style="color:#f9b000;">Warte auf Freigabe</span>
+                                                    </f:else>
+                                                </f:if>
+                                            </f:then>
+                                            <f:else>
+                                                <f:if condition="{offer.active}">
+                                                    <f:then>
+                                                        Aktiv
+                                                    </f:then>
+                                                    <f:else>
+                                                        Inaktiv
+                                                    </f:else>
+                                                </f:if>
+                                            </f:else>
+                                        </f:if>
+                                    </td>
+                                    <td>
+                                        <div class="custom-confirm" text="Wollen Sie das Angebot wirklich löschen?">
+                                            <a href="{f:uri.action(action: 'deleteOffer', arguments: '{offer: offer}')}">
+                                                <i class="icon-times-circle"></i>
+                                            </a>
+                                        </div>
+
+                                        <a href="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}">
+                                            <i class="icon-pencil"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </f:for>
+                            </tbody>
+                        </table>
                     </custom-datatable>
                 </f:then>
                 <f:else>

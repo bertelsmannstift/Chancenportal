@@ -35,7 +35,7 @@ plugin.tx_chancenportal_chancenportal {
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=E-Mail Sender
         email_sender = chancenportal@example.org
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Importvorlage
-        import_template_path = /typo3conf/ext/chancenportal/Resources/Public/vorlage.xls
+        import_template_path = /fileadmin/vorlage.xlsx
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=ssconvert Pfad
         xls_converter = /usr/bin/ssconvert
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Google Maps API Key

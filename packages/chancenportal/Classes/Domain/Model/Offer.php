@@ -4,6 +4,7 @@ namespace Chancenportal\Chancenportal\Domain\Model;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -62,6 +63,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Provider
+     * @lazy
      */
     protected $provider = null;
 
@@ -363,6 +365,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
+     * @lazy
      * @cascade remove
      */
     protected $dates = null;
@@ -371,6 +374,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * targetGroups
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\TargetGroup>
+     * @lazy
      * @cascade remove
      */
     protected $targetGroups = null;
@@ -379,6 +383,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
+     * @lazy
      * @cascade remove
      */
     protected $categories = null;
@@ -387,6 +392,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * district
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\District
+     * @lazy
      */
     protected $district = null;
 
@@ -394,6 +400,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
+     * @lazy
      */
     protected $creator = null;
 
@@ -401,6 +408,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * lastEditor
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
+     * @lazy
      */
     protected $lastEditor = null;
 
@@ -915,7 +923,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         if ($this->getDateType() !== 4) {
             $offerDates = $this->dates->toArray();
             usort($offerDates, function ($a, $b) {    return $a > $b;
-                });
+            });
             $newStorage = new ObjectStorage();
             foreach ($offerDates as $offerDate) {
                 $newStorage->attach($offerDate);
@@ -2038,7 +2046,11 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getApproved()
     {
-        return $this->approved;
+        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $offerApproval = $extbaseFrameworkConfiguration['config.']['tx_extbase.']['settings.']['chancenportal.']['activate_offer_approval'];
+        // always approve offers if the typoscript function ist 0
+        return $offerApproval === '1' ? $this->approved : true;
     }
 
     /**
