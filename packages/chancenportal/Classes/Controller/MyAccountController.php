@@ -676,6 +676,9 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             }
         }
 
+        /** Sort terms by count */
+        array_multisort(array_column($terms, 'count'), SORT_DESC, $terms);
+
         $this->view->assign('categoriesDropdown', $this->selectUtility->getCategoriesForSelect(null, true, true, false, $category));
         $this->view->assign('categoriesForChart', $this->selectUtility->getCategoriesForSelect(null, false, true, false, $category));
 
@@ -964,7 +967,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     private function getUploadedImageJson($image = null)
     {
         $images = [];
-        if (get_class($image) === FileReference::class) {
+        if (is_object($image) && get_class($image) === FileReference::class) {
             $images[] = [
                 'uploaded' => true,
                 'dataUrl' => $image->getUid(),
@@ -972,7 +975,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 'name' => $image->getOriginalResource()->getOriginalFile()->getName(),
                 'id' => $image->getUid(),
             ];
-        } elseif (get_class($image) === ObjectStorage::class) {
+        } elseif (is_object($image) && get_class($image) === ObjectStorage::class) {
             foreach ($image as $img) {
                 $images[] = [
                     'uploaded' => true,

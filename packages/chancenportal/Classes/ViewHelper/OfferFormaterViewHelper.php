@@ -39,10 +39,9 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
 
             return 'Mehrere Termine, nächster ' . strftime("%a., %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
         } elseif($latestDate) {
-
             if($this->arguments['output'] === 'date') {
                 return strftime("%a., %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
-            } elseif($this->arguments['output'] === 'time' && count($offerDates) === 1) {
+            } elseif($this->arguments['output'] === 'time') {
                 return $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ' - ' . $latestDate->getEndTime());
             }
         }
