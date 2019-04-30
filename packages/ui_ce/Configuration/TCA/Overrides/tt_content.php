@@ -1,11 +1,42 @@
 <?php
 $tempColumns = array (
-  'tx_uice_kachel_teaser_cat' => 
+  'tx_uice_addtohomescreen_description_android' => 
+  array (
+    'config' => 
+    array (
+      'enableRichtext' => '1',
+      'richtextConfiguration' => 'default',
+      'type' => 'text',
+    ),
+    'exclude' => '1',
+    'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_addtohomescreen_description_android',
+  ),
+  'tx_uice_addtohomescreen_description_ios' => 
+  array (
+    'config' => 
+    array (
+      'enableRichtext' => '1',
+      'richtextConfiguration' => 'default',
+      'type' => 'text',
+    ),
+    'exclude' => '1',
+    'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_addtohomescreen_description_ios',
+  ),
+  'tx_uice_addtohomescreen_headline' => 
   array (
     'config' => 
     array (
       'type' => 'input',
+    ),
+    'exclude' => '1',
+    'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_addtohomescreen_headline',
+  ),
+  'tx_uice_kachel_teaser_cat' => 
+  array (
+    'config' => 
+    array (
       'max' => '100',
+      'type' => 'input',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_cat',
@@ -14,8 +45,8 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'input',
       'max' => '100',
+      'type' => 'input',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_headline',
@@ -111,8 +142,8 @@ $tempColumns = array (
       array (
         'localizeChildrenAtParentLocalization' => 'tx_uice_kachel_teaser_img',
       ),
-      'minitems' => '1',
       'maxitems' => '1',
+      'minitems' => '1',
     ),
     'exclude' => '1',
     'l10n_mode' => 'copy',
@@ -122,9 +153,6 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'input',
-      'renderType' => 'inputLink',
-      'softref' => 'typolink',
       'fieldControl' => 
       array (
         'linkPopup' => 
@@ -136,6 +164,9 @@ $tempColumns = array (
           ),
         ),
       ),
+      'renderType' => 'inputLink',
+      'softref' => 'typolink',
+      'type' => 'input',
       'wizards' => 
       array (
         'link' => 
@@ -151,8 +182,8 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'text',
       'max' => '200',
+      'type' => 'text',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_kachel_teaser_text',
@@ -170,9 +201,6 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'input',
-      'renderType' => 'inputLink',
-      'softref' => 'typolink',
       'fieldControl' => 
       array (
         'linkPopup' => 
@@ -184,6 +212,9 @@ $tempColumns = array (
           ),
         ),
       ),
+      'renderType' => 'inputLink',
+      'softref' => 'typolink',
+      'type' => 'input',
       'wizards' => 
       array (
         'link' => 
@@ -199,9 +230,9 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'text',
-      'richtextConfiguration' => 'default',
       'enableRichtext' => '1',
+      'richtextConfiguration' => 'default',
+      'type' => 'text',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_btn_texfield',
@@ -219,8 +250,6 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'select',
-      'renderType' => 'selectSingle',
       'items' => 
       array (
         0 => 
@@ -234,6 +263,8 @@ $tempColumns = array (
           1 => '1',
         ),
       ),
+      'renderType' => 'selectSingle',
+      'type' => 'select',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_image_align',
@@ -334,8 +365,8 @@ $tempColumns = array (
       array (
         'localizeChildrenAtParentLocalization' => 'tx_uice_text_image_image',
       ),
-      'minitems' => '1',
       'maxitems' => '1',
+      'minitems' => '1',
     ),
     'exclude' => '1',
     'l10n_mode' => 'exclude',
@@ -345,9 +376,9 @@ $tempColumns = array (
   array (
     'config' => 
     array (
-      'type' => 'text',
-      'richtextConfiguration' => 'default',
       'enableRichtext' => '1',
+      'richtextConfiguration' => 'default',
+      'type' => 'text',
     ),
     'exclude' => '1',
     'label' => 'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.tx_uice_text_image_text',
@@ -357,6 +388,11 @@ $tempColumns = array (
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.CType.div._uice_',
     '--div--',
+];
+$GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
+    'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.CType.uice_addtohomescreen',
+    'uice_addtohomescreen',
+    'tx_uice_addtohomescreen',
 ];
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:ui_ce/Resources/Private/Language/locallang_db.xlf:tt_content.CType.uice_kachel_teaser',
@@ -374,6 +410,21 @@ $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'tx_uice_text_image',
 ];
 $tempTypes = array (
+  'uice_addtohomescreen' => 
+  array (
+    'columnsOverrides' => 
+    array (
+      'bodytext' => 
+      array (
+        'config' => 
+        array (
+          'richtextConfiguration' => 'default',
+          'enableRichtext' => 1,
+        ),
+      ),
+    ),
+    'showitem' => '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,tx_uice_addtohomescreen_headline,tx_uice_addtohomescreen_description_ios,tx_uice_addtohomescreen_description_android,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,--palette--;;language,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,--palette--;;hidden,--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,--div--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_category.tabs.category,categories,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,rowDescription,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,--div--;LLL:EXT:flux/Resources/Private/Language/locallang.xlf:tt_content.tabs.relation,tx_flux_parent,tx_flux_column,tx_flux_children;LLL:EXT:flux/Resources/Private/Language/locallang.xlf:tt_content.tx_flux_children',
+  ),
   'uice_kachel_teaser' => 
   array (
     'columnsOverrides' => 

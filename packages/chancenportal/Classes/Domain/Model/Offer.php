@@ -4,7 +4,6 @@ namespace Chancenportal\Chancenportal\Domain\Model;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -362,6 +361,20 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reminderEmailSend = false;
 
     /**
+     * imagesCopyright
+     *
+     * @var string
+     */
+    protected $imagesCopyright = '';
+
+    /**
+     * contentImageCopyright
+     *
+     * @var string
+     */
+    protected $contentImageCopyright = '';
+
+    /**
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
@@ -565,9 +578,11 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param Date $date
+     * @param Date $dateItem
      * @return \DateTime
      */
-    private function addTimeToNextDate($date, Date $dateItem) {
+    private function addTimeToNextDate($date, Date $dateItem)
+    {
         $time = $dateItem->getStartTimeObj();
         return $time ? $date->modify('+' . $time . ' seconds') : $date;
     }
@@ -580,7 +595,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $now = new \DateTime('midnight');
         $latestDate = null;
         $latestDateObj = null;
-
         // täglich
         if ($this->getDateType() == 3) {
             foreach ($this->dates as $date) {
@@ -590,18 +604,15 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                     $latestDate = clone $newDate->getStartDate();
                     $latestDateObj = clone $newDate;
                     break;
-                } elseif (!$latestDate || ($date->getStartDate() > $now && $latestDate < $date->getStartDate())) {
+                } elseif (!$latestDate || $date->getStartDate() > $now && $latestDate < $date->getStartDate()) {
                     $latestDate = clone $date->getStartDate();
                     $latestDateObj = clone $date;
                 }
             }
-
             return $latestDate ? $this->addTimeToNextDate($latestDate, $latestDateObj) : $now;
         }
-
         // konkrete Daten / Zeitraum
         if ($this->getDateType() == 1) {
-
             foreach ($this->dates as $date) {
                 if ($date->getStartDate() >= $now) {
                     if (!$latestDate || $latestDate > $date->getStartDate()) {
@@ -610,120 +621,87 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                     }
                 }
             }
-
             return $latestDate ? $this->addTimeToNextDate($latestDate, $latestDateObj) : $now;
         }
-
         if ($this->getDateType() == 2) {
             foreach ($this->dates as $date) {
-                if (!$latestDate ||
-                    (
-                        $date->getStartDate() < $latestDate &&
-                        $date->getStartDate() >= $now
-                    ) ||
-                    (
-                        $date->getStartDate() > $latestDate &&
-                        $latestDate < $now
-                    ) ||
-                    (
-                        $date->getEndDate() > $latestDate &&
-                        $date->getEndDate() <= $now
-                    )
-                ) {
+                if (!$latestDate || $date->getStartDate() < $latestDate && $date->getStartDate() >= $now || $date->getStartDate() > $latestDate && $latestDate < $now || $date->getEndDate() > $latestDate && $date->getEndDate() <= $now) {
                     $latestDate = clone $date->getStartDate();
                     $latestDateObj = clone $date;
                 }
             }
             return $latestDate ? $this->addTimeToNextDate($latestDate, $latestDateObj) : $now;
         }
-
         // Wöchentlich
         if ($this->getDateType() == 4) {
             $result = $this->getNextDateFromWeekly();
         }
-
         return $now->modify('+10 years');
     }
 
     /**
-     * @return \DateTime
      * @throws \Exception
+     * @return \DateTime
      */
     private function getNextDateFromWeekly()
     {
         $now = new \DateTime('midnight');
         $firstDayThisWeek = (new \DateTime('midnight'))->modify('monday this week');
-
         $oldestDate = null;
         $weekdays = [];
-
         // get the oldest date and the supported weekdays
         foreach ($this->getDates() as $date) {
             if ($date->getActive() && $date->getStartDate()) {
                 $day = intval($date->getStartDate()->format('N'));
                 $weekdays[$day] = $date;
-
-                if(!$oldestDate || $oldestDate->getStartDate() > $date->getStartDate()) {
+                if (!$oldestDate || $oldestDate->getStartDate() > $date->getStartDate()) {
                     $oldestDate = $date;
                 }
             }
         }
-
         // sort weekdays
         ksort($weekdays);
-
-        if(!$oldestDate) {
+        if (!$oldestDate) {
             return $now;
         }
-
-        if($oldestDate->getStartDate() < $now) {
-
+        if ($oldestDate->getStartDate() < $now) {
             $nowWeekday = intval($now->format('N'));
             $cDate = null;
-
             // is the current weekday set the
-            if(isset($weekdays[$nowWeekday])) {
-                $firstDayThisWeek->modify('+' . ($nowWeekday-1) . 'days');
-
+            if (isset($weekdays[$nowWeekday])) {
+                $firstDayThisWeek->modify('+' . ($nowWeekday - 1) . 'days');
                 $now = $firstDayThisWeek;
                 $cDate = $weekdays[$nowWeekday];
-
             } else {
-
                 // check if there are weekdays that are greather than now
-                foreach($weekdays as $day => $date) {
+                foreach ($weekdays as $day => $date) {
                     $iterate = clone $firstDayThisWeek;
-                    $iterate->modify('+' . ($day-1) . 'days');
-                    if($iterate >= $now) {
+                    $iterate->modify('+' . ($day - 1) . 'days');
+                    if ($iterate >= $now) {
                         $now = $iterate;
                         $cDate = $date;
                         break;
                     }
                 }
-
-                if($cDate === null) {
+                if ($cDate === null) {
                     // set the first day of $weekdays to the next date
-                    foreach($weekdays as $day => $date) {
+                    foreach ($weekdays as $day => $date) {
                         $iterate = clone $firstDayThisWeek;
-                        $iterate->modify('+' . ($day-1) . 'days +1 week');
+                        $iterate->modify('+' . ($day - 1) . 'days +1 week');
                         $now = $iterate;
                         $cDate = $date;
                         break;
                     }
                 }
             }
-
-            if($cDate->getStartTimeObj()) {
+            if ($cDate->getStartTimeObj()) {
                 $now->modify('+' . $cDate->getStartTimeObj() . ' seconds');
             }
-
             return $cDate;
         }
-
-        if($oldestDate->getStartTimeObj()) {
+        if ($oldestDate->getStartTimeObj()) {
             $oldestDate->getStartDate()->modify('+' . $oldestDate->getStartTimeObj() . ' seconds');
         }
-
         return $oldestDate->getStartDate();
     }
 
@@ -923,7 +901,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         if ($this->getDateType() !== 4) {
             $offerDates = $this->dates->toArray();
             usort($offerDates, function ($a, $b) {    return $a > $b;
-            });
+                });
             $newStorage = new ObjectStorage();
             foreach ($offerDates as $offerDate) {
                 $newStorage->attach($offerDate);
@@ -2172,5 +2150,47 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isReminderEmailSend()
     {
         return $this->reminderEmailSend;
+    }
+
+    /**
+     * Returns the imagesCopyright
+     *
+     * @return string $imagesCopyright
+     */
+    public function getImagesCopyright()
+    {
+        return $this->imagesCopyright;
+    }
+
+    /**
+     * Sets the imagesCopyright
+     *
+     * @param string $imagesCopyright
+     * @return void
+     */
+    public function setImagesCopyright($imagesCopyright)
+    {
+        $this->imagesCopyright = $imagesCopyright;
+    }
+
+    /**
+     * Returns the contentImageCopyright
+     *
+     * @return string $contentImageCopyright
+     */
+    public function getContentImageCopyright()
+    {
+        return $this->contentImageCopyright;
+    }
+
+    /**
+     * Sets the contentImageCopyright
+     *
+     * @param string $contentImageCopyright
+     * @return void
+     */
+    public function setContentImageCopyright($contentImageCopyright)
+    {
+        $this->contentImageCopyright = $contentImageCopyright;
     }
 }

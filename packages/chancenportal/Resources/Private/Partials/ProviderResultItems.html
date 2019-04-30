@@ -9,6 +9,19 @@
                                 {provider.name}
                             </h3>
                             <p>{provider.shortDescription}</p>
+
+                            <div class="kachel__footer">
+                                <div class="kachel__location" style="width:100%;">
+                                    {provider.city}
+                                </div>
+                                <div class="kachel__offers" style="width:100%;">
+                                    {provider.offers -> f:count()}
+                                    <f:if condition="{provider.offers -> f:count()} === 1">
+                                        <f:then>Angebot</f:then>
+                                        <f:else>Angebote</f:else>
+                                    </f:if>
+                                </div>
+                            </div>
                         </div>
                         <f:if condition="{provider.logo}">
                             <div class="kachel__image-wrapper">

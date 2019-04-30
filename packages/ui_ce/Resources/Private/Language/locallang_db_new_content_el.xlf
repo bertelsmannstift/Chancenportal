@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2018-08-09T15:12:50+02:00" product-name="ui_ce">
+  <file source-language="en" datatype="plaintext" original="messages" date="2019-04-08T23:58:37-07:00" product-name="ui_ce">
     <header/>
     <body>
+      <trans-unit id="wizards.newContentElement.addtohomescreen_title" xml:space="preserve">
+        <source>Mobile App (Add to Homescreen)</source>
+      </trans-unit>
+      <trans-unit id="wizards.newContentElement.addtohomescreen_description" xml:space="preserve">
+        <source></source>
+      </trans-unit>
       <trans-unit id="wizards.newContentElement.kachel_teaser_title" xml:space="preserve">
         <source>Kachel Teaser</source>
       </trans-unit>

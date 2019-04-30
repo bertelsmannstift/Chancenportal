@@ -341,6 +341,17 @@
                             "propertyName": "reminderEmailSend",
                             "propertyType": "Boolean",
                             "uid": "1403843466730"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "contentImageCopyright",
+                            "propertyType": "String",
+                            "uid": "500595471931"
                         }
                     ]
                 },
@@ -889,6 +900,28 @@
                             "propertyName": "reminderEmailSend",
                             "propertyType": "Boolean",
                             "uid": "546949893793"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "imagesCopyright",
+                            "propertyType": "String",
+                            "uid": "96780113777"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "contentImageCopyright",
+                            "propertyType": "String",
+                            "uid": "1424474716394"
                         }
                     ]
                 },
@@ -1378,7 +1411,7 @@
         {
             "config": {
                 "position": [
-                    1474,
+                    1192,
                     324
                 ]
             },
@@ -1403,7 +1436,7 @@
                     "mapToTable": "",
                     "parentClass": "",
                     "skipTypeConfiguration": false,
-                    "sorting": false,
+                    "sorting": true,
                     "type": "Entity",
                     "uid": "877407315637"
                 },
@@ -1455,7 +1488,7 @@
                     "mapToTable": "",
                     "parentClass": "",
                     "skipTypeConfiguration": false,
-                    "sorting": false,
+                    "sorting": true,
                     "type": "Entity",
                     "uid": "1287784081704"
                 },
@@ -1807,8 +1840,8 @@
         }
     ],
     "log": {
-        "last_modified": "2018-10-11 10:46",
-        "extension_builder_version": "8.10.2",
+        "last_modified": "2019-04-26 09:42",
+        "extension_builder_version": "8.10.3",
         "be_user": " (2)"
     }
 }

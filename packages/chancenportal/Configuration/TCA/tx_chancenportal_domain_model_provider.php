@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,subline,short_description,long_description,number_of_employees,participation,content_image,logo,street,city,email,website,contact_salutation,contact_name,contact_jurisdiction,contact_phone,contact_email,contact_image,phone,phone2,opening_hours,active,zip,address,lat,lng,approved,reminder_email_send,labels,offers,owner_group,carrier,categories,creator,author',
+        'searchFields' => 'name,subline,short_description,long_description,number_of_employees,participation,content_image,logo,street,city,email,website,contact_salutation,contact_name,contact_jurisdiction,contact_phone,contact_email,contact_image,phone,phone2,opening_hours,active,zip,address,lat,lng,approved,reminder_email_send,content_image_copyright,labels,offers,owner_group,carrier,categories,creator,author',
         'iconfile' => 'EXT:chancenportal/Resources/Public/Icons/tx_chancenportal_domain_model_provider.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, subline, short_description, long_description, number_of_employees, participation, content_image, logo, street, city, email, website, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, phone, phone2, opening_hours, active, zip, address, lat, lng, approved, reminder_email_send, labels, offers, owner_group, carrier, categories, creator, author',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, subline, short_description, long_description, number_of_employees, participation, content_image, logo, street, city, email, website, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, phone, phone2, opening_hours, active, zip, address, lat, lng, approved, reminder_email_send, content_image_copyright, labels, offers, owner_group, carrier, categories, creator, author',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, subline, short_description, long_description, number_of_employees, participation, content_image, logo, street, city, email, website, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, phone, phone2, opening_hours, active, zip, address, lat, lng, approved, reminder_email_send, labels, offers, owner_group, carrier, categories, creator, author, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, subline, short_description, long_description, number_of_employees, participation, content_image, logo, street, city, email, website, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, phone, phone2, opening_hours, active, zip, address, lat, lng, approved, reminder_email_send, content_image_copyright, labels, offers, owner_group, carrier, categories, creator, author, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -519,6 +519,15 @@ return [
                 'default' => 0,
             ]
             
+        ],
+        'content_image_copyright' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_provider.content_image_copyright',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
         ],
         'labels' => [
             'exclude' => true,

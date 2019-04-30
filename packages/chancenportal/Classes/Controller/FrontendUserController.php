@@ -508,11 +508,13 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         }
 
         foreach ($providers as $provider) {
-            if($provider->getOwnerGroup() && !empty($provider->getName())) {
+            $providerOwnerGroup = $provider->getOwnerGroup();
+
+            if($providerOwnerGroup->getUid() && !empty($provider->getName())) {
                 $organisations[] = [
-                    'id' => $provider->getOwnerGroup()->getUid(),
+                    'id' => $providerOwnerGroup->getUid(),
                     'title' => $provider->getName(),
-                    'active' => $userOrganisation && $userOrganisation->getUid() === $provider->getOwnerGroup()->getUid(),
+                    'active' => $userOrganisation && $userOrganisation->getUid() === $providerOwnerGroup->getUid(),
                 ];
             }
         }
@@ -540,11 +542,15 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     {
         foreach ($providers as $provider) {
             if($provider->getOwnerGroup()) {
-                $organisations[] = [
-                    'id' => $provider->getOwnerGroup()->getUid(),
-                    'title' => empty($provider->getName()) ? $provider->getOwnerGroup()->getTitle() : $provider->getName(),
-                    'active' => false,
-                ];
+                $ownerGroup = $provider->getOwnerGroup();
+
+                if($ownerGroup->getUid()) {
+                    $organisations[] = [
+                        'id' => $ownerGroup->getUid(),
+                        'title' => empty($provider->getName()) ? $ownerGroup->getTitle() : $provider->getName(),
+                        'active' => false,
+                    ];
+                }
             }
         }
 

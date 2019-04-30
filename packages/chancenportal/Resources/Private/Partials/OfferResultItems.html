@@ -29,7 +29,14 @@
                                                 {offer.city}
                                             </f:then>
                                             <f:else>
-                                                {offer.district.name}
+                                                <f:if condition="{offer.district}">
+                                                    <f:then>
+                                                        {offer.district.name}
+                                                    </f:then>
+                                                    <f:else>
+                                                        Alle Ortsteile
+                                                    </f:else>
+                                                </f:if>
                                             </f:else>
                                         </f:if>
 

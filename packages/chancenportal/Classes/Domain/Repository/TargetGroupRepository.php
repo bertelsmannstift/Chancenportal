@@ -17,6 +17,14 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
  */
 class TargetGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = [
+        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+    ];
+
     public function initializeObject()
     {
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */

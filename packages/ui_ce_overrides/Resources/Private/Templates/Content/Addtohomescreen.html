@@ -1,0 +1,12 @@
+<custom-add-to-homescreen
+    headline="{data.tx_uice_addtohomescreen_headline}"
+    logo-app-store="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/app_store.svg"
+    logo-play-store="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/play_store.png"
+    >
+    <div vue-slot="ios">
+        <f:format.html>{data.tx_uice_addtohomescreen_description_ios}</f:format.html>
+    </div>
+    <div vue-slot="android">
+        <f:format.html>{data.tx_uice_addtohomescreen_description_android}</f:format.html>
+    </div>
+</custom-add-to-homescreen>

@@ -57,12 +57,22 @@
                 <f:if condition="{provider.preview}">
                     <f:then>
                         <f:if condition="{provider.contentImageString}">
-                            <div class="article-detail__content_image"><img src="{provider.contentImageString}"></div>
+                            <div class="article-detail__content_image">
+                                <img src="{provider.contentImageString}">
+                                <f:if condition="{provider.contentImageCopyright}">
+                                    <span class="image__copyright">{provider.contentImageCopyright}</span>
+                                </f:if>
+                            </div>
                         </f:if>
                     </f:then>
                     <f:else>
                         <f:if condition="{provider.contentImage}">
-                            <div class="article-detail__content_image"><f:image image="{provider.contentImage}" maxWidth="842"></f:image></div>
+                            <div class="article-detail__content_image">
+                                <f:image image="{provider.contentImage}" maxWidth="842"></f:image>
+                                <f:if condition="{provider.contentImageCopyright}">
+                                    <span class="image__copyright">{provider.contentImageCopyright}</span>
+                                </f:if>
+                            </div>
                         </f:if>
                     </f:else>
                 </f:if>

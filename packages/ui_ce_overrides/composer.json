@@ -6,7 +6,7 @@
     "require": {
         "typo3/cms-core": "^8.7",
         "ui/ui-ce": "@dev",
-        "uandi-typo3/ui_provider": "^3.0.0"
+        "ui/ui-provider": "@dev"
     },
     "autoload": {
         "psr-4": {

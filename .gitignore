@@ -2,7 +2,6 @@
 # TYPO3
 ###########
 #web/typo3conf/LocalConfiguration.php
-web/typo3conf/PackageStates.php
 web/typo3conf/FIRST_INSTALL
 web/typo3conf/ENABLE_INSTALL_TOOL
 web/typo3conf/*.log
@@ -10,6 +9,7 @@ web/typo3conf/realurl_autoconf.php
 web/typo3temp/*
 web/fileadmin/*
 !web/fileadmin/images
+!web/fileadmin/vorlage.xlsx
 web/typo3
 web/index.php
 web/uploads/

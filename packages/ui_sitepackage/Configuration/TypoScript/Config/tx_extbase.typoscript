@@ -42,7 +42,8 @@ config.tx_extbase {
 
             import_template = {$plugin.tx_chancenportal_chancenportal.settings.import_template_path}
             xls_converter = {$plugin.tx_chancenportal_chancenportal.settings.xls_converter}
-            xls_converter_date_format = Y/m/d
+            //xls_converter_date_format = Y/m/d
+            xls_converter_date_format = n/j/Y
 
             use_zip_filter = {$plugin.tx_chancenportal_chancenportal.settings.use_zip_filter}
 

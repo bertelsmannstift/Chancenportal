@@ -2,7 +2,7 @@
 return [
     'BE' => [
         'explicitADmode' => 'explicitAllow',
-        'installToolPassword' => '$pbkdf2-sha256$25000$fD7tEZuunKIbVCrU3c7EsA$dcXyMG/13WnF2sHzefiCHM6i4X9TOHoQKzQR22abhXg',
+        'installToolPassword' => '$pbkdf2-sha256$25000$QjyiDVFv1pa6r4kio1zvIA$svNa46NUWO7t38ZeEpoLKsvxBsagzcFx57uRSLy/fBU',
         'loginSecurityLevel' => 'rsa',
     ],
     'DB' => [
@@ -57,7 +57,7 @@ return [
         'displayErrors' => 1,
         'encryptionKey' => '2442f5bde9833f8f8a872191edff517a92d5261867a41e7d0d8a2da429220296d3031495fe932d5a88415adb490ee73c',
         'isInitialDatabaseImportDone' => true,
-        'isInitialInstallationInProgress' => true,
+        'isInitialInstallationInProgress' => false,
         'sitename' => 'Chancenportal',
     ],
 ];

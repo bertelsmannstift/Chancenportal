@@ -617,7 +617,7 @@
                 <div class="input">
 
                     <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'info\', className: \' input--error\'}')}">
-                        <label class="input__label">Zusatzinformationen Angebotsort (z.B.Raum)</label>
+                        <label class="input__label">Zusatzinformationen Angebotsort (z.B. Raum)</label>
                         <f:form.textfield property="info" class="input__field" />
                     </div>
                 </div>
@@ -705,12 +705,27 @@
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="imagesString"></c:formConfiguration>
                 <custom-upload name="tx_chancenportal_chancenportal[offer][imagesString]" input-files='{images}' label="Bühnen-Bild (max. 1 Bild)" editor="true" ratio="3.225974025974026" max-files-error="Es kann nur 1 Bild ausgewählt werden" max-files="1"></custom-upload>
             </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="input">
+                    <div class="input">
+                        <label class="input__label">Bühnen-Bild Copyright</label>
+                        <f:form.textfield property="imagesCopyright" class="input__field" required="0" />
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="contentImageString"></c:formConfiguration>
-
                 <custom-upload name="tx_chancenportal_chancenportal[offer][contentImageString]" input-files='{contentImage}' label="Content-Bild (max. 1 Bild)" editor="true" max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+            </div>
+            <div class="col-lg-12 col-sm-12">
+                <div class="input">
+                    <div class="input">
+                        <label class="input__label">Content-Bild Copyright</label>
+                        <f:form.textfield property="contentImageCopyright" class="input__field" required="0" />
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row margin-lg">
@@ -818,13 +833,27 @@
                 <div class="input">
                     <label class="input__label">Anrede</label>
                     <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="contactSalutation"></c:formConfiguration>
-                    <custom-dropdown id="tx_chancenportal_chancenportal[offer][contactSalutation]" show-selected-title="true" options="{salutations}"></custom-dropdown>
+                    <f:if condition="!{offer} && {currentProviderContactSalutation}">
+                        <f:then>
+                            <custom-dropdown id="tx_chancenportal_chancenportal[offer][contactSalutation]" show-selected-title="true" options="{currentProviderContactSalutation}"></custom-dropdown>
+                        </f:then>
+                        <f:else>
+                            <custom-dropdown id="tx_chancenportal_chancenportal[offer][contactSalutation]" show-selected-title="true" options="{salutations}"></custom-dropdown>
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="input">
                     <label class="input__label">Vorname und Name</label>
-                    <f:form.textfield property="contactName" class="input__field" />
+                    <f:if condition="!{offer} && {currentProvider.contactName}">
+                        <f:then>
+                            <f:form.textfield property="contactName" value="{currentProvider.contactName}" class="input__field" />
+                        </f:then>
+                        <f:else>
+                            <f:form.textfield property="contactName" class="input__field" />
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
         </div>
@@ -832,7 +861,14 @@
             <div class="col-lg-12 col-sm-12">
                 <div class="input">
                     <label class="input__label">Zuständigkeit</label>
-                    <f:form.textfield property="contactJurisdiction" class="input__field" />
+                    <f:if condition="!{offer} && {currentProvider.contactJurisdiction}">
+                        <f:then>
+                            <f:form.textfield property="contactJurisdiction" value="{currentProvider.contactJurisdiction}" class="input__field" />
+                        </f:then>
+                        <f:else>
+                            <f:form.textfield property="contactJurisdiction" class="input__field" />
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
         </div>
@@ -840,21 +876,41 @@
             <div class="col-lg-6 col-sm-12">
                 <div class="input">
                     <label class="input__label">Telefon</label>
-                    <f:form.textfield property="contactPhone" class="input__field" maxlength="200" />
+                    <f:if condition="!{offer} && {currentProvider.contactPhone}">
+                        <f:then>
+                            <f:form.textfield property="contactPhone" value="{currentProvider.contactPhone}" class="input__field" maxlength="200" />
+                        </f:then>
+                        <f:else>
+                            <f:form.textfield property="contactPhone" class="input__field" maxlength="200" />
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <div class="input">
                     <label class="input__label">E-Mail</label>
-                    <f:form.textfield property="contactEmail" class="input__field" type="email" />
+                    <f:if condition="!{offer} && {currentProvider.contactEmail}">
+                        <f:then>
+                            <f:form.textfield property="contactEmail" value="{currentProvider.contactEmail}" class="input__field" type="email" />
+                        </f:then>
+                        <f:else>
+                            <f:form.textfield property="contactEmail" class="input__field" type="email" />
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
         </div>
         <div class="row margin-lg">
             <div class="col-lg-12 col-sm-12">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="contactImageString"></c:formConfiguration>
-
-                <custom-upload name="tx_chancenportal_chancenportal[offer][contactImageString]" label="Profilfoto hinzufügen (max. 1)" input-files='{contactImage}' max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+                <f:if condition="!{offer} && {currentProviderContactImage}">
+                    <f:then>
+                        <custom-upload name="tx_chancenportal_chancenportal[offer][contactImageString]" label="Profilfoto hinzufügen (max. 1)" input-files='{currentProviderContactImage}' max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+                    </f:then>
+                    <f:else>
+                        <custom-upload name="tx_chancenportal_chancenportal[offer][contactImageString]" label="Profilfoto hinzufügen (max. 1)" input-files='{contactImage}' max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+                    </f:else>
+                </f:if>
             </div>
         </div>
         <div class="row">

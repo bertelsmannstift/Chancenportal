@@ -22,6 +22,7 @@ Das Chancenportal ist als Erweiterung für das TYPO3 CMS entwickelt worden, soda
 ## Installation
 
 Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu machen:
+
 * Anwendungscode
 * Definierte Abhängigkeiten
 * Datenbankdump (TYPO3, Extensions, Anwendungsdaten)
@@ -29,15 +30,15 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 ### Systemanforderungen
 
 * die Anwendung setzt PHP in Version 7.1 voraus
-* `ssconvert` muss für die Konvertierung von CSV zu Excel installiert sein: https://linux.die.net/man/1/ssconvert
-* `composer` muss für die Installation der PHP-Abhängigkeiten installiert sein: https://getcomposer.org/
+* Für den Import von Daten aus Excel-Dateien wird die Software [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet), für die die folgenden Systemanforderungen erfüllt werden müssen: [PhpSpreadsheet Systemanforderungen] (https://phpspreadsheet.readthedocs.io/en/latest/#software-requirements)
+* `composer` muss für die Installation der PHP-Abhängigkeiten installiert sein: [https://getcomposer.org/](https://getcomposer.org/). Eine alternative, aber nicht empfohlene Art der Installation für Shared Web-Hoster wird weiter unten unter dem Punkt "Step-by-step - Web-Hosting" beschrieben.
 * darüber hinaus gelten die Anforderungen von TYPO3: https://typo3.org/cms/requirements/
-* Symlinks erstellbar
+* Symlinks erstellbar (Composer Installation)
 * Unix / Linux Betriebssystem
-* Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden
+* Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden (Composer Installation)
  
 Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting-Angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
-Eine Anleitung für die Installation auf einfachen Web-Hosting-Angeboten finden Sie unter "Step-by-step Web-Hosting".
+Eine Anleitung für die Installation auf einfachen Web-Hosting-Angeboten finden Sie unter "Step-by-step - Web-Hosting".
 
 ### Step-by-step - Root-Server / vServer
 
@@ -56,27 +57,34 @@ Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei
 ### Step-by-step - Web-Hosting
 
 1. Laden Sie [TYPO3 8.x](https://get.typo3.org/8/zip) herunter
-2. Extrahieren Sie den Inhalt und laden Sie die Dateien auf Ihren Server, z. B. per (S)FTP oder SCP
+2. Extrahieren Sie den Inhalt und laden Sie die Dateien auf Ihren Server, z. B. per (S)FTP oder SCP. Beachten Sie ggf. auch die offiziellen TYPO3-Hinweise zur Installation: [Install TYPO3 Without Composer](https://docs.typo3.org/typo3cms/InstallationGuide/QuickInstall/GetAndUnpack/Index.html)
 3. Laden Sie die aktuelle Chancenportal-Anwendung herunter [Chancenportal](https://github
 .com/bertelsmannstift/Chancenportal/archive/master.zip)
 4. Extrahieren Sie das Zip-Archiv und laden Sie den Inhalt des Ordners `web` auf Ihren Server
 5. Laden Sie ebenfalls den Inhalt des Ordners `packages` auf Ihren Server in den Ordner `typo3conf/ext` hoch
+6. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.6.0.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
+7. Laden Sie das Paket [Simple Cache PSR](https://github.com/php-fig/simple-cache/archive/1.0.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/psr/simple-cache`
 6. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
 Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
 7. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
 8. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
 9. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
-* [flux](https://extensions.typo3.org/extension/flux/) (Version 8.2.1)
-* [pagenotfoundhandling](https://extensions.typo3.org/extension/pagenotfoundhandling/) (Version 2.4.6)
-* [realurl](https://extensions.typo3.org/extension/realurl/) (Version 2.4.0)
-* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.1.0)
+	* [flux](https://extensions.typo3.org/extension/flux/) (Version 8.2.1)
+	* [pagenotfoundhandling](https://extensions.typo3.org/extension/pagenotfoundhandling/) (Version 2.4.6)
+	* [realurl](https://extensions.typo3.org/extension/realurl/) (Version 2.4.0)
+	* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.1.0)
+ 	* [vhs](https://extensions.typo3.org/extension/vhs/) (Version 4.4.0)
 
 ## TYPO3 Login
 
-Folgendes Standardpasswort ist gesetzt und muss nach der Installation geändert werden:
+Folgende Standardpasswörter sind gesetzt und müssen nach der Installation geändert werden!
 
-Benutzer: admin
+### TYPO3 Backend
+Benutzer: admin<br>
 Password: @hGjMZRjktL7u&
+
+### TYPO3 Installtool
+Passwort: Kfisdfi39mf(!
 
 ## Anpassung
 

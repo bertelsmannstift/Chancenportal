@@ -10,7 +10,7 @@
                             <f:if condition="{i.isFirst}">
                                 <div>
 
-                                    <div data-date="{f:format.date(format: 'd.m.Y', date: offer.nextDate)}" class="kachel kachel--theme-{offer.theme}<f:if condition="{offer.images.0}"><f:then> kachel--with-image" style="background-image: url('{f:uri.image(image: offer.images.0)}');"</f:then><f:else>"</f:else></f:if>>
+                                    <div data-date="{f:format.date(format: 'd.m.Y', date: offer.nextDate)}" class="kachel kachel--theme-{offer.theme}">
                                         <a href="{f:uri.action(action: 'offerDetail', controller: 'Frontend', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_detail)}">
                                             <f:if condition="{offer.images.0}"><div class="kachel__gradient"></div></f:if>
                                             <div class="kachel__inner">

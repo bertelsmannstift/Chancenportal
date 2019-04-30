@@ -37,6 +37,7 @@
     "typo3/cms-viewpage": "^8.7",
     "typo3/cms-wizard-crpages": "^8.7",
     "typo3/cms-wizard-sortpages": "^8.7",
+    "typo3/cms-filemetadata": "^8.7",
 
     "helhum/typo3-console": "^5.2.0",
     "helhum/dotenv-connector": "^2.0.0",
@@ -48,6 +49,7 @@
     "dmitryd/typo3-realurl": "^2.3.0",
     "typo3-ter/pagenotfoundhandling": "^2.4",
     "chancenportal/chancenportal": "@dev",
+    "ui/ui-provider": "^3.0.7",
     "ui/ui-ce": "@dev",
     "ui/ui-ce-overrides": "@dev",
     "ui/ui-forms": "@dev",

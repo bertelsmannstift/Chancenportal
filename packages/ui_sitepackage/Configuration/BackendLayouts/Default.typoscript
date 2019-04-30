@@ -16,7 +16,7 @@ mod.web_layout.BackendLayouts {
                                 colspan = 1
                                 rowspan = 1
                                 colPos = 0
-                                allowed = flux_onecolumn, flux_twocolumn, flux_threecolumn, html, list
+                                allowed = flux_onecolumn, flux_twocolumn, flux_threecolumn, html, list, uice_addtohomescreen
                             }
                         }
                     }
@@ -27,4 +27,10 @@ mod.web_layout.BackendLayouts {
     }
 }
 
-TCEFORM.tt_content.CType.keepItems < mod.web_layout.BackendLayouts.Default.config.backend_layout.rows.1.columns.1.allowed
+/**
+* Configure allowed CTypes per colPos for this BackendLayout
+* Used in New Content Element Wizard
+*/
+[globalVar = GP:colPos == 0] && [UI\UiProvider\TypoScript\BeLayoutCondition Default]
+    TCEFORM.tt_content.CType.keepItems < mod.web_layout.BackendLayouts.Default.config.backend_layout.rows.1.columns.1.allowed
+[end]

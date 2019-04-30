@@ -1000,7 +1000,11 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $offers = [];
         $count = 0;
 
-        shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $file['tmp_name'] . ' ' . $file['tmp_name'] . ".csv 2>&1");
+        //shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $file['tmp_name'] . ' ' . $file['tmp_name'] . ".csv 2>&1");
+
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($file['tmp_name']);
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Csv($spreadsheet);
+        $writer->save($file['tmp_name'] . '.csv');
 
         if (($handle = fopen($file['tmp_name'] . '.csv', "r")) !== false) {
             while (($data = fgetcsv($handle, 99999, ",")) !== false) {
@@ -1804,10 +1808,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $this->view->assign('contentImage', $this->getUploadedImageJson($offer ? $offer->getContentImage() : null));
         $this->view->assign('contactImage', $this->getUploadedImageJson($offer ? $offer->getContactImage() : null));
         $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect($offer, false, false));
-        $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect($offer));
+        $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect($offer, false, true));
         $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect($offer));
         $this->view->assign('dateTypes', json_encode($dateTypes));
         $this->view->assign('saved', $saved);
         $this->view->assign('offer', $offer);
+        $this->view->assign('currentProvider', $currentProvider);
+        $this->view->assign('currentProviderContactImage', $this->getUploadedImageJson($currentProvider ? $currentProvider->getContactImage() : null));
+        $this->view->assign('currentProviderContactSalutation', $this->selectUtility->getSalutationsJson($currentProvider));
     }
 }

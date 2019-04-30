@@ -5,7 +5,6 @@ use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -319,6 +318,13 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $author = null;
+
+    /**
+     * contentImageCopyright
+     *
+     * @var string
+     */
+    protected $contentImageCopyright = '';
 
     /**
      * @return \DateTime
@@ -1490,5 +1496,26 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isReminderEmailSend()
     {
         return $this->reminderEmailSend;
+    }
+
+    /**
+     * Returns the contentImageCopyright
+     *
+     * @return string $contentImageCopyright
+     */
+    public function getContentImageCopyright()
+    {
+        return $this->contentImageCopyright;
+    }
+
+    /**
+     * Sets the contentImageCopyright
+     *
+     * @param string $contentImageCopyright
+     * @return void
+     */
+    public function setContentImageCopyright($contentImageCopyright)
+    {
+        $this->contentImageCopyright = $contentImageCopyright;
     }
 }

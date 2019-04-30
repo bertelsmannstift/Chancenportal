@@ -375,13 +375,15 @@ class SelectUtility
     /**
      * @param null $offer
      * @param bool $onlyWithAssignments
+     * @param bool $addItemForAllDistricts
      * @return string
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function getDistrictsForSelect($offer = null, $onlyWithAssignments = false)
+    public function getDistrictsForSelect($offer = null, $onlyWithAssignments = false, $addItemForAllDistricts = false)
     {
         $districtItems = [];
 
+        $hasActive = false;
         foreach ($this->districtRepository->findAll() as $item) {
 
             if($onlyWithAssignments && $this->districtHasActiveOffers($item) === false) {
@@ -390,10 +392,22 @@ class SelectUtility
 
             $isItemActive = $offer && $offer->getDistrict() && $offer->getDistrict()->getUid() === $item->getUid();
 
+            if($isItemActive) {
+                $hasActive = true;
+            }
+
             $districtItems[] = [
                 'id' => $item->getUid(),
                 'title' => $item->getName(),
                 'active' => $isItemActive,
+            ];
+        }
+
+        if($addItemForAllDistricts) {
+            $districtItems[] = [
+                'id' => 0,
+                'title' => 'Alle Ortsteile',
+                'active' => !$hasActive,
             ];
         }
 

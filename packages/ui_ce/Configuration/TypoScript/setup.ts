@@ -1,3 +1,13 @@
+tt_content.uice_addtohomescreen = FLUIDTEMPLATE
+tt_content.uice_addtohomescreen {
+    layoutRootPaths.0 = EXT:ui_ce/Resources/Private/Layouts/
+    layoutRootPaths.10 = {$plugin.tx_uice.view.layoutRootPath}
+    partialRootPaths.0 = EXT:ui_ce/Resources/Private/Partials/
+    partialRootPaths.10 = {$plugin.tx_uice.view.partialRootPath}
+    templateRootPaths.0 = EXT:ui_ce/Resources/Private/Templates/Content/
+    templateRootPaths.10 = {$plugin.tx_uice.view.templateRootPath}
+    templateName = Addtohomescreen
+}
 tt_content.uice_kachel_teaser = FLUIDTEMPLATE
 tt_content.uice_kachel_teaser {
     layoutRootPaths.0 = EXT:ui_ce/Resources/Private/Layouts/

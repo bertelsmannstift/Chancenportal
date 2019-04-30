@@ -2,6 +2,13 @@
 // Register content element icons
 $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 $iconRegistry->registerIcon(
+    'tx_uice_addtohomescreen',
+    \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
+    [
+        'name' => 'mobile-phone',
+    ]
+);
+$iconRegistry->registerIcon(
     'tx_uice_kachel_teaser',
     \TYPO3\CMS\Core\Imaging\IconProvider\FontawesomeIconProvider::class,
     [

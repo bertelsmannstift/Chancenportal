@@ -50,7 +50,11 @@
                             <div class="article-detail__teaser">
                                 <custom-image-shuffle>
                                     <f:for each="{offer.imagesPreview}" as="image">
-                                        <div class="article-detail__preview" style="background-image: url('{image.dataUrl}');"></div>
+                                        <div class="article-detail__preview" style="background-image: url('{image.dataUrl}');">
+                                            <f:if condition="{offer.imagesCopyright}">
+                                                <span class="image__copyright">{offer.imagesCopyright}</span>
+                                            </f:if>
+                                        </div>
                                     </f:for>
                                 </custom-image-shuffle>
                             </div>
@@ -60,9 +64,13 @@
                                 <custom-image-shuffle>
                                     <f:for each="{offer.categories}" as="cat">
                                         <f:if condition="{cat.images -> f:count()}">
-
                                             <f:for each="{cat.images}" as="image">
-                                                <f:image image="{image}" width="1242c" height="385c"/>
+                                                <div>
+                                                    <f:image image="{image}" width="1242c" height="385c"/>
+                                                    <f:if condition="{image.originalResource.properties.source} || {image.originalResource.properties.description}">
+                                                        <span class="image__copyright">{v:or(content: image.originalResource.properties.source, alternative: image.originalResource.properties.description)}</span>
+                                                    </f:if>
+                                                </div>
                                             </f:for>
                                         </f:if>
                                     </f:for>
@@ -77,7 +85,12 @@
                             <div class="article-detail__teaser">
                                 <custom-image-shuffle>
                                     <f:for each="{offer.images}" as="image">
-                                        <f:image image="{image}" width="1242c" height="385c"/>
+                                        <div>
+                                            <f:image image="{image}" width="1242c" height="385c"/>
+                                            <f:if condition="{offer.imagesCopyright}">
+                                                <span class="image__copyright">{offer.imagesCopyright}</span>
+                                            </f:if>
+                                        </div>
                                     </f:for>
                                 </custom-image-shuffle>
                             </div>
@@ -87,9 +100,13 @@
                                 <custom-image-shuffle>
                                     <f:for each="{offer.categories}" as="cat">
                                         <f:if condition="{cat.images -> f:count()}">
-
                                             <f:for each="{cat.images}" as="image">
-                                                <f:image image="{image}" width="1242c" height="385c"/>
+                                                <div>
+                                                    <f:image image="{image}" width="1242c" height="385c"/>
+                                                    <f:if condition="{image.originalResource.properties.source} || {image.originalResource.properties.description}">
+                                                        <span class="image__copyright">{v:or(content: image.originalResource.properties.source, alternative: image.originalResource.properties.description)}</span>
+                                                    </f:if>
+                                                </div>
                                             </f:for>
                                         </f:if>
                                     </f:for>
@@ -174,10 +191,17 @@
                                 <f:then>
                                     <div class="article-detail__content_image">
                                         <f:image src="{offer.contentImageString}" treatIdAsReference="1" maxWidth="842"></f:image>
+                                        <f:if condition="{offer.contentImageCopyright}">
+                                            <span class="image__copyright">{offer.contentImageCopyright}</span>
+                                        </f:if>
                                     </div>
                                 </f:then>
                                 <f:else>
-                                    <div class="article-detail__content_image"><img src="{offer.contentImageString}"></div>
+                                    <div class="article-detail__content_image">
+                                        <img src="{offer.contentImageString}">
+                                        <f:if condition="{offer.contentImageCopyright}">
+                                            <span class="image__copyright">{offer.contentImageCopyright}</span>
+                                        </f:if></div>
                                 </f:else>
                             </f:if>
                         </f:if>
@@ -186,6 +210,9 @@
                         <f:if condition="{offer.contentImage}">
                             <div class="article-detail__content_image">
                                 <f:image image="{offer.contentImage}" maxWidth="842"></f:image>
+                                <f:if condition="{offer.contentImageCopyright}">
+                                    <span class="image__copyright">{offer.contentImageCopyright}</span>
+                                </f:if>
                             </div>
                         </f:if>
                     </f:else>

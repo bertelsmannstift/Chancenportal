@@ -90,6 +90,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_provider.reminder_email_send">
 				<source>Reminder Email Send</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.content_image_copyright">
+				<source>Content Image Copyright</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_provider.labels">
 				<source>Labels</source>
 			</trans-unit>
@@ -230,6 +233,12 @@
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.reminder_email_send">
 				<source>Reminder Email Send</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.images_copyright">
+				<source>Images Copyright</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.content_image_copyright">
+				<source>Content Image Copyright</source>
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.dates">
 				<source>Dates</source>

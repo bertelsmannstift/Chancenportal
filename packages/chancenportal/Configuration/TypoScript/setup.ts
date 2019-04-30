@@ -1,7 +1,7 @@
 
 plugin.tx_chancenportal_chancenportal {
     view {
-        templateRootPaths.0 = EXT:chancenportal/Resources/Private/Templates/
+        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_chancenportal_chancenportal.view.templateRootPath}
         partialRootPaths.0 = EXT:chancenportal/Resources/Private/Partials/
         partialRootPaths.1 = {$plugin.tx_chancenportal_chancenportal.view.partialRootPath}

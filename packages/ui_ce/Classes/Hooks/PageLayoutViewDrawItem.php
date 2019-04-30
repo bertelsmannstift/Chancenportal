@@ -16,9 +16,10 @@ class PageLayoutViewDrawItem implements PageLayoutViewDrawItemHookInterface
      * @var array
      */
     protected $supportedContentTypes = array (
-  0 => 'uice_kachel_teaser',
-  1 => 'uice_text_btn',
-  2 => 'uice_text_image',
+  0 => 'uice_addtohomescreen',
+  1 => 'uice_kachel_teaser',
+  2 => 'uice_text_btn',
+  3 => 'uice_text_image',
 );
 
     /**

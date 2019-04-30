@@ -139,7 +139,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->logicalAnd([
                 $query->greaterThan('dateType', 0),
                 $query->logicalOr([
-                    $query->greaterThan('dates.endDate', $now->format('Y-m-d')),
+                    $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
                     $query->equals('dates.endDate', null),
                     $query->equals('dates.endDate', '0000-00-00')
                 ])
@@ -159,16 +159,12 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             'dates.startDate' => QueryInterface::ORDER_ASCENDING,
             'dates.startTime' => QueryInterface::ORDER_ASCENDING
         ]);
-
         $result = $query->matching($query->logicalAnd($constraints))->execute();
         $result = $this->filterByActiveProviders($result);
-
         $newResult = $this->sortOfferTypes($result->toArray());
-
         if ($limit) {
             $newResult = array_slice($newResult, 0, $limit);
         }
-
         return $newResult;
     }
 
@@ -193,7 +189,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->logicalAnd([
                 $query->greaterThan('dateType', 0),
                 $query->logicalOr([
-                    $query->greaterThan('dates.endDate', $now->format('Y-m-d')),
+                    $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
                     $query->equals('dates.endDate', null),
                     $query->equals('dates.endDate', '0000-00-00')
                 ])
@@ -202,8 +198,13 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $constraints[] = $query->logicalAnd([
             $query->equals('active', 1)
         ]);
-        foreach ($offer->getCategories() as $cat) {
-            $params[] = $query->equals('categories.uid', $cat->getUid());
+        $offerCategories = $offer->getCategories();
+        if (!empty($offerCategories)) {
+            $constraints_categories = [];
+            foreach ($offer->getCategories() as $cat) {
+                $constraints_categories[] = $query->equals('categories.uid', $cat->getUid());
+            }
+            $constraints[] = $query->logicalOr($constraints_categories);
         }
         if (count($params)) {
             $constraints[] = $query->logicalAnd($params);
@@ -298,7 +299,11 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $this->logCategory($fields['category']);
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
-                $params[] = $query->in('district.uid', $fields['districts']);
+                $params[] = $query->logicalOr([
+                    $query->in('district.uid', $fields['districts']),
+                    $query->equals('district', null),
+                    $query->equals('district', 0)
+                ]);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
                 $this->logTerm($fields['term']);
@@ -345,7 +350,6 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $result = $this->filterByDistance($result, $fields);
         }
         $newResult = $this->filterByActiveProviders($result);
-
         if (!isset($fields['sort_offers']) || $fields['sort_offers'] === '1') {
             $newResult = $this->sortOfferTypes($newResult->toArray());
         }
@@ -358,9 +362,8 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function sortOfferTypes($items)
     {
-        uasort($items, function ($a, $b) {
-            return $a->getNextDate() > $b->getNextDate();
-        });
+        uasort($items, function ($a, $b) {    return $a->getNextDate() > $b->getNextDate();
+            });
         return $items;
     }
 
@@ -532,11 +535,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             if ($item->getDateType() === 1) {
                 foreach ($item->getDates() as $date) {
                     $date->getStartDate()->modify('midnight');
-
-                    if($date->getEndDate()) {
+                    if ($date->getEndDate()) {
                         $date->getEndDate()->modify('midnight');
                     }
-
                     if ($date->getStartDate() >= $startDate && $date->getStartDate() <= $endDate) {
                         $newResult->attach($item);
                     }
@@ -544,8 +545,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             } elseif ($item->getDateType() === 2 || $item->getDateType() === 3) {
                 foreach ($item->getDates() as $date) {
                     $date->getStartDate()->modify('midnight');
-
-                    if($date->getEndDate()) {
+                    if ($date->getEndDate()) {
                         $date->getEndDate()->modify('midnight');
                     }
                     if ($date->getStartDate() >= $startDate && $date->getStartDate() <= $endDate || $date->getEndDate() >= $startDate && $date->getEndDate() <= $endDate || $date->getEndDate() >= $startDate && $date->getStartDate() <= $endDate) {
@@ -554,13 +554,10 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 }
             } elseif ($item->getDateType() === 4) {
                 foreach ($item->getDates() as $date) {
-
-                    if(!$date->getStartDate()) {
+                    if (!$date->getStartDate()) {
                         continue;
                     }
-
                     $date->getStartDate()->modify('midnight');
-
                     if ($date->getEndDate()) {
                         $itemEndDate = $date->getEndDate()->modify('midnight');
                     } else {

@@ -87,6 +87,9 @@
 			<trans-unit id="reminder_email_send.description">
 				<source>reminderEmailSend</source>
 			</trans-unit>
+			<trans-unit id="content_image_copyright.description">
+				<source>contentImageCopyright</source>
+			</trans-unit>
 			<trans-unit id="labels.description">
 				<source>labels</source>
 			</trans-unit>

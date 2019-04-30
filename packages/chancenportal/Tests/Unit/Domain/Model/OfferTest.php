@@ -1117,6 +1117,56 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getImagesCopyrightReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getImagesCopyright()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setImagesCopyrightForStringSetsImagesCopyright()
+    {
+        $this->subject->setImagesCopyright('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'imagesCopyright',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getContentImageCopyrightReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getContentImageCopyright()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setContentImageCopyrightForStringSetsContentImageCopyright()
+    {
+        $this->subject->setContentImageCopyright('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'contentImageCopyright',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getDatesReturnsInitialValueForDate()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "ui_ce".
  *
- * Auto generated 09-08-2018 15:12
+ * Auto generated 08-04-2019 23:58
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next

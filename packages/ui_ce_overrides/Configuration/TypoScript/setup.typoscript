@@ -28,4 +28,9 @@ tt_content {
         partialRootPaths.100 = {$plugin.tx_uiceoverrides.view.partialRootPath}
         templateRootPaths.100 = {$plugin.tx_uiceoverrides.view.templateRootPath}
     }
+    uice_addtohomescreen {
+        layoutRootPaths.100 = {$plugin.tx_uiceoverrides.view.layoutRootPath}
+        partialRootPaths.100 = {$plugin.tx_uiceoverrides.view.partialRootPath}
+        templateRootPaths.100 = {$plugin.tx_uiceoverrides.view.templateRootPath}
+    }
 }

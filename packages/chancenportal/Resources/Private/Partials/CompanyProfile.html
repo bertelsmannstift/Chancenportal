@@ -157,8 +157,8 @@
             <div class="input">
                 <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'type\', className: \' input--error\'}')}">
                     <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="categories"></c:formConfiguration>
-                    <label class="input__label">Kategorie/n*</label>
-                    <custom-dropdown id="tx_chancenportal_chancenportal[provider][categories]" allow-only-one-group-select="false" required="true" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" options="{categories}"></custom-dropdown>
+                    <label class="input__label">Kategorie/n{f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: '', else: ' *')}</label>
+                    <custom-dropdown id="tx_chancenportal_chancenportal[provider][categories]" allow-only-one-group-select="false" required="{f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: 'false', else: 'true')}" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" options="{categories}"></custom-dropdown>
                 </div>
             </div>
         </div>
@@ -169,8 +169,8 @@
             <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'shortDescription\', className: \' input--error\'}')}">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="shortDescription"></c:formConfiguration>
 
-                <label class="input__label">Kurzbeschreibung / Teaser-Text (max.200 Zeichen)*</label>
-                <textarea name="tx_chancenportal_chancenportal[provider][shortDescription]" cols="30" rows="10" maxlength="200" class="input__field" required="required" style="height:120px;min-height:120px;">{provider.shortDescription}</textarea>
+                <label class="input__label">Kurzbeschreibung / Teaser-Text (max.200 Zeichen){f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: '', else: '*')}</label>
+                <textarea name="tx_chancenportal_chancenportal[provider][shortDescription]" cols="30" rows="10" maxlength="200" class="input__field" {f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: '', else: 'required="required"')} style="height:120px;min-height:120px;">{provider.shortDescription}</textarea>
             </div>
         </div>
     </div>
@@ -181,10 +181,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 col-sm-12 margin-lg">
+        <div class="col-lg-12 col-sm-12">
             <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="contentImageString"></c:formConfiguration>
 
             <custom-upload name="tx_chancenportal_chancenportal[provider][contentImageString]" input-files='{contentImage}' label="Content-Bild hinzufügen (max. 1)" editor="true" max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+        </div>
+        <div class="col-lg-12 col-sm-12 margin-lg">
+            <div class="input">
+                <div class="input">
+                    <label class="input__label">Content-Bild Copyright</label>
+                    <f:form.textfield property="contentImageCopyright" class="input__field" required="0" />
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -309,15 +317,22 @@
             <c:formConfiguration property="tx_chancenportal_chancenportal[provider]" allowProperties="city"></c:formConfiguration>
 
             <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'address\', className: \' input--error\'}')}">
-                <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[provider][street]" name-city="tx_chancenportal_chancenportal[provider][city]" label="Adresse *" required="true" value="{provider.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[provider][lng]" name-zip="tx_chancenportal_chancenportal[provider][zip]" name-lat="tx_chancenportal_chancenportal[provider][lat]" name="tx_chancenportal_chancenportal[provider][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
+                <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[provider][street]" name-city="tx_chancenportal_chancenportal[provider][city]" label="Adresse{f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: '', else: ' *')}" required="{f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: 'false', else: 'true')}" value="{provider.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[provider][lng]" name-zip="tx_chancenportal_chancenportal[provider][zip]" name-lat="tx_chancenportal_chancenportal[provider][lat]" name="tx_chancenportal_chancenportal[provider][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-sm-12">
             <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'email\', className: \' input--error\'}')}">
-                <label class="input__label">E-Mail*</label>
-                <f:form.textfield property="email" class="input__field" required="1" type="email" />
+                <label class="input__label">E-Mail{f:security.ifHasRole(role: '{settings.chancenportal.permissions.admin_group}', then: '', else: '*')}</label>
+                <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                    <f:then>
+                        <f:form.textfield property="email" class="input__field" type="email" />
+                    </f:then>
+                    <f:else>
+                        <f:form.textfield property="email" class="input__field" required="required" type="email" />
+                    </f:else>
+                </f:security.ifHasRole>
             </div>
         </div>
     </div>

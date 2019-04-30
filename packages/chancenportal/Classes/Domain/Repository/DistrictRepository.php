@@ -18,6 +18,7 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
 class DistrictRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     protected $defaultOrderings = [
+        'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
         'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     ];
 
