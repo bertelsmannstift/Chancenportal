@@ -1017,32 +1017,32 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 if (!empty($data[0])) {
                     if (!isset($offers[$data[0]])) {
                         $offers[$data[0]] = [
-                            'name' => $data[1],
+                            'name' => $this->cleanExcelImport($data[1], true),
                             'mainCategory' => $data[2],
                             'dates' => [],
                             'dateType' => $this->mapDateNameToType($data[3]),
-                            'address' => $data[8],
-                            'info' => $data[9],
+                            'address' => $this->cleanExcelImport($data[8], true),
+                            'info' => $this->cleanExcelImport($data[9], true),
                             'district' => $data[10],
                             'targetGroups' => explode(',', $data[11]),
-                            'shortDescription' => $data[12],
-                            'longDescription' => $data[13],
+                            'shortDescription' => $this->cleanExcelImport($data[12]),
+                            'longDescription' => $this->cleanExcelImport($data[13]),
                             'speaker' => $data[14],
                             'format' => $data[15],
-                            'youtube' => $data[16],
-                            'conditionsOfParticipation' => $data[17],
+                            'youtube' => trim($data[16]),
+                            'conditionsOfParticipation' => $this->cleanExcelImport($data[17]),
                             'courseNumber' => $data[18],
                             'allowedParticipants' => $data[19],
-                            'costs' => $data[20],
+                            'costs' => $this->cleanExcelImport($data[20], true),
                             'noCosts' => trim(strtolower($data[21])) === 'ja' ? true : false,
                             'access' => trim(strtolower($data[22])) === 'offen' ? 2 : (trim(strtolower($data[22])) === 'mitgliedschaft erforderlich' ? 3 : 1),
                             'accessibility' => trim(strtolower($data[23])) === 'ja' ? 2 : (trim(strtolower($data[23])) === 'nein' ? 3 : 1),
-                            'providerCooperation' => $data[24],
+                            'providerCooperation' => $this->cleanExcelImport($data[24], true),
                             'contactSalutation' => trim(strtolower($data[25])) === 'herr' ? '1' : '0',
-                            'contactName' => $data[26],
-                            'contactJurisdiction' => $data[27],
-                            'contactPhone' => $data[28],
-                            'contactEmail' => $data[29]
+                            'contactName' => $this->cleanExcelImport($data[26], true),
+                            'contactJurisdiction' => $this->cleanExcelImport($data[27], true),
+                            'contactPhone' => $this->cleanExcelImport($data[28], true),
+                            'contactEmail' => $this->cleanExcelImport($data[29], true)
                         ];
                     }
 
@@ -1241,6 +1241,20 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $persistenceManager->persistAll();
 
         return count($offers);
+    }
+
+    private function cleanExcelImport($string, $removeLinebreaks = false)
+    {
+        if($removeLinebreaks) {
+            $string = str_replace('_x000D_', '', $string);
+        } else {
+            $string = str_replace('_x000D_', '<br/>', $string);
+        }
+
+        $string = str_replace('""', '"', $string);
+        $string = str_replace('  ', ' ', $string);
+
+        return trim($string);
     }
 
     /**

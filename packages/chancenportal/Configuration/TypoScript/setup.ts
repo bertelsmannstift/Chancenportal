@@ -68,3 +68,16 @@ plugin.tx_chancenportal_chancenportal {
         }
     }
 }
+
+page {
+    10 {
+        partialRootPaths {
+            20 = EXT:chancenportal/Resources/Private/Partials/
+        }
+
+        dataProcessing.100 = Chancenportal\Chancenportal\DataProcessing\ThemeColorsProcessor
+        dataProcessing.100 {
+            as = themeColors
+        }
+    }
+}

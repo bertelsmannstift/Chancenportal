@@ -121,49 +121,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @param $hex
-     * @param $percent
-     * @return string
-     */
-    function colorLuminance($hex, $percent)
-    {
-        $hex = preg_replace('/[^0-9a-f]/i', '', $hex);
-        $new_hex = '#';
-        if (strlen($hex) < 6) {
-            $hex = $hex[0] + $hex[0] + $hex[1] + $hex[1] + $hex[2] + $hex[2];
-        }
-        for ($i = 0; $i < 3; $i++) {
-            $dec = hexdec(substr($hex, $i * 2, 2));
-            $dec = min(max(0, $dec + $dec * $percent), 255);
-            $new_hex .= str_pad(dechex($dec), 2, 0, STR_PAD_LEFT);
-        }
-
-        return $new_hex;
-    }
-
-    /**
-     *
-     */
-    public function initThemeColors()
-    {
-        $query = $this->categoryRepository->createQuery();
-        $query->matching($query->logicalAnd($query->equals('parent', '')));
-        $categories = $query->execute();
-        $categorieColors = [];
-        foreach ($categories as $category) {
-            if (!empty($category->getColor())) {
-                $categorieColors[$category->getUid()] = [
-                    'uid' => $category->getUid(),
-                    'color' => $category->getColor(),
-                    'color2' => $this->colorLuminance($category->getColor(), -0.4),
-                    'color3' => $this->colorLuminance($category->getColor(), 0.2),
-                ];
-            }
-        }
-        $this->view->assign('themeColors', $categorieColors);
-    }
-
-    /**
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function teaserAction()
@@ -173,7 +130,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
         $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
-        $this->initThemeColors();
     }
 
     /**
@@ -193,7 +149,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->view->assign('similarOffers', $this->offerRepository->findSimilarOffers($offer, 8));
         $this->view->assign('offer', $offer);
-        $this->initThemeColors();
     }
 
     /**
@@ -205,7 +160,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->response->addAdditionalHeaderData('<title>' . htmlspecialchars($provider->getName() . ' - ' . $GLOBALS['TSFE']->rootLine[0]['title']) . '</title>');
         $this->response->addAdditionalHeaderData('<meta name="description" content="' . htmlspecialchars($provider->getShortDescription()) . '">');
         $this->view->assign('provider', $provider);
-        $this->initThemeColors();
     }
 
     /**
@@ -234,7 +188,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
         $this->view->assign('settings', $this->settings);
         $this->view->assign('offers', $this->offerRepository->findAllActive(7));
-        $this->initThemeColors();
     }
 
     /**
@@ -366,6 +319,5 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->view->assign('sortingOffers', json_encode($sortingOffers));
         $this->view->assign('sortingProviders', json_encode($sortingProviders));
         $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
-        $this->initThemeColors();
     }
 }
