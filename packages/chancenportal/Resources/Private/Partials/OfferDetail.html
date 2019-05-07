@@ -364,10 +364,7 @@
                             <div class="icon">
                                 <i class="icon-user"></i>
                                 <f:for each="{offer.targetGroups}" as="group" iteration="i">
-                                    {group.name}
-                                    <f:if condition="{i.isLast}">
-                                        <f:else>,</f:else>
-                                    </f:if>
+                                    {group.name}<f:if condition="{i.isLast}"><f:else>,</f:else></f:if>
                                 </f:for>
                             </div>
 

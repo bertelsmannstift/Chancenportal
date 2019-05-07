@@ -239,12 +239,12 @@
                                                         <custom-datepicker id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" theme="light" required="true"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <label class="input__label">Uhrzeit von (HH:MM)*</label>
-                                                        <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
+                                                        <label class="input__label">Uhrzeit von (HH:MM)</label>
+                                                        <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <label class="input__label">Uhrzeit bis (HH:MM)*</label>
-                                                        <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
+                                                        <label class="input__label">Uhrzeit bis (HH:MM)</label>
+                                                        <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,12 +260,12 @@
                                                                 <custom-datepicker id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" theme="light" required="true"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <label class="input__label">Uhrzeit von (HH:MM)*</label>
-                                                                <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                                <label class="input__label">Uhrzeit von (HH:MM)</label>
+                                                                <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <label class="input__label">Uhrzeit bis (HH:MM)*</label>
-                                                                <custom-time-input required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                                <label class="input__label">Uhrzeit bis (HH:MM)</label>
+                                                                <custom-time-input name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -289,14 +289,14 @@
                                                         <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_0" required="true" class="from_data_0"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
+                                                        <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
                                                     </div>
                                                     <div class="input">
                                                         <label class="input__label">End-Datum</label>
                                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
+                                                        <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -311,14 +311,14 @@
                                                                 <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_{iteration.index}" required="true" class="from_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                                <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input">
                                                                 <label class="input__label">End-Datum</label>
                                                                 <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_{iteration.index}" class="to_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                                <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -345,10 +345,10 @@
                                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_3" class="to_data_3"></custom-datepicker>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Von (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
+                                                        <custom-time-input label="Von (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]" value="{date.startTime}"></custom-time-input>
                                                     </div>
                                                     <div class="input input--time">
-                                                        <custom-time-input label="Bis (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
+                                                        <custom-time-input label="Bis (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]" value="{date.endTime}"></custom-time-input>
                                                     </div>
                                                 </div>
                                             </div>
@@ -368,10 +368,10 @@
                                                                 <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_{iteration.index}" class="to_data_{iteration.index}"></custom-datepicker>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Von(HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                                <custom-time-input label="Von(HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                             </div>
                                                             <div class="input input--time">
-                                                                <custom-time-input label="Bis(HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                                <custom-time-input label="Bis(HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -546,14 +546,14 @@
                                         <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][0][startDate]" end-date=".to_data_0" class="from_data_0"></custom-datepicker>
                                     </div>
                                     <div class="input input--time">
-                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
+                                        <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][startTime]"></custom-time-input>
                                     </div>
                                     <div class="input">
                                         <label class="input__label">End-Datum</label>
                                         <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][0][endDate]" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                     </div>
                                     <div class="input input--time">
-                                        <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
+                                        <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][0][endTime]"></custom-time-input>
                                     </div>
                                     <div class="input input--select">
                                         <label class="input__label">Typ</label>
@@ -573,14 +573,14 @@
                                                     <custom-datepicker required="true" theme="light" id="from_date" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startDate]" value="{f:format.date(date: date.startDate, format: 'Y-m-d')}" end-date=".to_data_0" required="true" class="from_data_0"></custom-datepicker>
                                                 </div>
                                                 <div class="input input--time">
-                                                    <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
+                                                    <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][startTime]" value="{date.startTime}"></custom-time-input>
                                                 </div>
                                                 <div class="input">
                                                     <label class="input__label">End-Datum</label>
                                                     <custom-datepicker required="true" theme="light" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endDate]" value="{f:format.date(date: date.endDate, format: 'Y-m-d')}" required="true" start-date=".from_data_0" class="to_data_0"></custom-datepicker>
                                                 </div>
                                                 <div class="input input--time">
-                                                    <custom-time-input label="Uhrzeit (HH:MM)" required="true" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
+                                                    <custom-time-input label="Uhrzeit (HH:MM)" name="tx_chancenportal_chancenportal[offer][dates][{iteration.index}][endTime]" value="{date.endTime}"></custom-time-input>
                                                 </div>
                                                 <div class="input input--select">
                                                     <label class="input__label">Typ</label>

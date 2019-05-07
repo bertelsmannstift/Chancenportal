@@ -34,13 +34,14 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
     public function outputConcreteData($latestDate = null, $offerDates = []) {
         $explicitDate = $this->arguments['date'];
 
+        $abbreviationDot = (substr(strftime("%a"), -1) === '.') ? '' : '.';
+
         // Konkrete Daten
         if($latestDate && count($offerDates) > 1 && $this->arguments['latest'] === false && !$explicitDate && $this->arguments['output'] === 'date') {
-
-            return 'Mehrere Termine, nächster ' . strftime("%a., %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
+            return 'Mehrere Termine, nächster ' . strftime("%a$abbreviationDot, %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
         } elseif($latestDate) {
             if($this->arguments['output'] === 'date') {
-                return strftime("%a., %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
+                return strftime("%a$abbreviationDot, %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
             } elseif($this->arguments['output'] === 'time') {
                 return $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ' - ' . $latestDate->getEndTime());
             }
