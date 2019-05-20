@@ -261,6 +261,13 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $reminderEmailSend = false;
 
     /**
+     * contentImageCopyright
+     *
+     * @var string
+     */
+    protected $contentImageCopyright = '';
+
+    /**
      * labels
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Label>
@@ -318,13 +325,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $author = null;
-
-    /**
-     * contentImageCopyright
-     *
-     * @var string
-     */
-    protected $contentImageCopyright = '';
 
     /**
      * @return \DateTime

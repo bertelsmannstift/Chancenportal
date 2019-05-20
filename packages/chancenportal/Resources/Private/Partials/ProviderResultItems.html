@@ -8,7 +8,10 @@
                             <h3 class="kachel__headline">
                                 {provider.name}
                             </h3>
-                            <p>{provider.shortDescription}</p>
+
+                            <f:if condition="{provider.shortDescription}">
+                                <p>{provider.shortDescription}</p>
+                            </f:if>
 
                             <div class="kachel__footer">
                                 <div class="kachel__location" style="width:100%;">

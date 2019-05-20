@@ -41,6 +41,14 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $categoryRepository = null;
 
     /**
+     * providerRepository
+     *
+     * @var \Chancenportal\Chancenportal\Domain\Repository\ProviderRepository
+     * @inject
+     */
+    protected $providerRepository = null;
+
+    /**
      * @var array
      */
     protected $settings = null;
@@ -255,7 +263,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByFields($fields)
+    public function findByFields($fields, $log = true)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -296,7 +304,10 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
-                $this->logCategory($fields['category']);
+
+                if($log) {
+                    $this->logCategory($fields['category']);
+                }
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
                 $params[] = $query->logicalOr([
@@ -306,13 +317,23 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ]);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
-                $this->logTerm($fields['term']);
-                $params[] = $query->logicalOr([
+                if($log) {
+                    $this->logTerm($fields['term']);
+                }
+
+                $constraintsTerm = [
                     $query->like('longDescription', '%' . $fields['term'] . '%'),
                     $query->like('shortDescription', '%' . $fields['term'] . '%'),
                     $query->like('name', '%' . $fields['term'] . '%'),
                     $query->like('address', '%' . $fields['term'] . '%')
-                ]);
+                ];
+
+                $providers = $this->providerRepository->findByFields(['term' => $fields['term']], false);
+                if($providers) {
+                    $constraintsTerm[] = $query->in('provider', $providers);
+                }
+
+                $params[] = $query->logicalOr($constraintsTerm);
             }
             if (count($params)) {
                 $constraints[] = $query->logicalAnd($params);

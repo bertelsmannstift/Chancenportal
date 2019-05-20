@@ -9,7 +9,9 @@
                     <a href="{f:uri.action(action: 'providerDetail', controller: 'Frontend', arguments: '{provider: provider}', pageUid: settings.chancenportal.pageIds.provider_detail)}" class="border-box">
                         <div class="border-box__content">
                             <h2 class="border-box__headline">{provider.name}</h2>
-                            <div class="border-box__text">{provider.shortDescription}</div>
+                            <f:if condition="{provider.shortDescription}">
+                                <div class="border-box__text">{provider.shortDescription}</div>
+                            </f:if>
                         </div>
                         <div class="border-box__arrow"></div>
                     </a>

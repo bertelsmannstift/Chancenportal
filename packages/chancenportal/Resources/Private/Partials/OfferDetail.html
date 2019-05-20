@@ -1,5 +1,8 @@
 <section itemscope itemtype="http://schema.org/Event" data-animation="fadeIn" class="container article-detail article-detail--cat-{offer.theme} article-detail--offer">
-    <meta itemprop="description" content="{offer.shortDescription}">
+    <f:if condition="{offer.shortDescription}">
+        <meta itemprop="description" content="{offer.shortDescription}">
+    </f:if>
+
     <f:if condition="{offer.images.0}">
         <meta itemprop="image" content="{f:uri.image(image: offer.images.0, absolute: 1, maxWidth: 1242)}">
     </f:if>

@@ -104,7 +104,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByFields($fields)
+    public function findByFields($fields, $log = true)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -126,7 +126,9 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
-                $this->logCategory($fields['category']);
+                if($log) {
+                    $this->logCategory($fields['category']);
+                }
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
                 $params[] = $query->in('offers.district.uid', $fields['districts']);
@@ -159,7 +161,9 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $params[] = $query->logicalAnd($dates);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
-                $this->logTerm($fields['term']);
+                if($log) {
+                    $this->logTerm($fields['term']);
+                }
                 $params[] = $query->logicalOr([
                     $query->like('name', '%' . $fields['term'] . '%'),
                     $query->like('subline', '%' . $fields['term'] . '%'),
