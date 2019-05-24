@@ -329,7 +329,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ];
 
                 $providers = $this->providerRepository->findByFields(['term' => $fields['term']], false);
-                if($providers) {
+                if(count($providers)) {
                     $constraintsTerm[] = $query->in('provider', $providers);
                 }
 
