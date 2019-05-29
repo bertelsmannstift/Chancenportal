@@ -100,6 +100,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @param $fields
+     * @param $log
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -126,7 +127,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
-                if($log) {
+                if ($log) {
                     $this->logCategory($fields['category']);
                 }
             }
@@ -161,7 +162,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $params[] = $query->logicalAnd($dates);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
-                if($log) {
+                if ($log) {
                     $this->logTerm($fields['term']);
                 }
                 $params[] = $query->logicalOr([

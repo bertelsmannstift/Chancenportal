@@ -259,6 +259,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @param $fields
+     * @param $log
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -304,8 +305,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
-
-                if($log) {
+                if ($log) {
                     $this->logCategory($fields['category']);
                 }
             }
@@ -317,22 +317,19 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ]);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
-                if($log) {
+                if ($log) {
                     $this->logTerm($fields['term']);
                 }
-
                 $constraintsTerm = [
                     $query->like('longDescription', '%' . $fields['term'] . '%'),
                     $query->like('shortDescription', '%' . $fields['term'] . '%'),
                     $query->like('name', '%' . $fields['term'] . '%'),
                     $query->like('address', '%' . $fields['term'] . '%')
                 ];
-
                 $providers = $this->providerRepository->findByFields(['term' => $fields['term']], false);
-                if(count($providers)) {
+                if (count($providers)) {
                     $constraintsTerm[] = $query->in('provider', $providers);
                 }
-
                 $params[] = $query->logicalOr($constraintsTerm);
             }
             if (count($params)) {
