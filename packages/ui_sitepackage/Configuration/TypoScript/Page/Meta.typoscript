@@ -33,4 +33,7 @@ page.meta {
 	x-ua-compatible = {$page.meta.compatible}
 	format-detection = telephone=no
     google = notranslate
+
+	apple-mobile-web-app-title = Chancenportal
+	apple-mobile-web-app-capable = yes
 }
