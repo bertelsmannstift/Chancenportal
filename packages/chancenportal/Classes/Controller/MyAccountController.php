@@ -1246,7 +1246,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     private function cleanExcelImport($string, $removeLinebreaks = false)
     {
         if($removeLinebreaks) {
-            $string = str_replace('_x000D_', '', $string);
+            $string = str_replace('_x000D_', ' ', $string);
         } else {
             $string = str_replace('_x000D_', '<br/>', $string);
         }
