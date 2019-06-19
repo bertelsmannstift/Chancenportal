@@ -169,7 +169,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
         $this->view->assign('settings', $this->settings);
         $this->view->assign('offers', $this->offerRepository->findByFields(GeneralUtility::_POST()));
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST()));
+        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
     }
 
     /**
@@ -178,7 +178,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function searchProviderResultAjaxAction()
     {
         $this->view->assign('settings', $this->settings);
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST()));
+        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
     }
 
     /**
@@ -227,7 +227,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
         $this->view->assign('settings', $this->settings);
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST()));
+        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
         $this->view->assign('categories', $this->selectUtility->getProviderCategoriesForSelect());
         $this->view->assign('sorting', json_encode($sorting));
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
@@ -311,7 +311,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $this->view->assign('settings', $this->settings);
         $this->view->assign('offers', $this->offerRepository->findAllActive());
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST()));
+        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
         $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
         $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));

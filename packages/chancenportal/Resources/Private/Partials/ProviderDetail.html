@@ -208,7 +208,11 @@
                         </f:if>
 
                         <div>
-                            <f:link.email email="{provider.email}" />
+                            <f:variable name="emailLabel" value="{v:format.replace(content: '{provider.email}', substring: '@', replacement: '&#8203;(at)&#8203;')}" />
+                            <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '-', replacement: '&#8203;-&#8203;')}" />
+                            <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '_', replacement: '&#8203;_&#8203;')}" />
+                            <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '.', replacement: '&#8203;.&#8203;')}" />
+                            <f:link.email email="{provider.email}">{emailLabel -> f:format.raw()}</f:link.email>
                         </div>
                         <f:if condition="{provider.website}">
                             <div>
@@ -281,7 +285,11 @@
                         </f:if>
                         <f:if condition="{provider.contactEmail}">
                             <div>
-                                <f:link.email email="{provider.contactEmail}" />
+                                <f:variable name="emailLabel" value="{v:format.replace(content: '{provider.contactEmail}', substring: '@', replacement: '&#8203;(at)&#8203;')}" />
+                                <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '-', replacement: '&#8203;-&#8203;')}" />
+                                <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '_', replacement: '&#8203;_&#8203;')}" />
+                                <f:variable name="emailLabel" value="{v:format.replace(content: '{emailLabel}', substring: '.', replacement: '&#8203;.&#8203;')}" />
+                                <f:link.email email="{provider.contactEmail}">{emailLabel -> f:format.raw()}</f:link.email>
                             </div>
                         </f:if>
 

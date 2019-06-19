@@ -40,6 +40,12 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $categoryRepository = null;
 
     /**
+     * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
+     * @inject
+     */
+    protected $offerRepository = null;
+
+    /**
      * @var array
      */
     protected $settings = null;
@@ -105,7 +111,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findByFields($fields, $log = true)
+    public function findByFields($fields, $log = true, $onlyActiveOffers = false)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -231,6 +237,23 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $result = $newResult;
             }
         }
+        //Get active offers
+        if($onlyActiveOffers) {
+            $newResult = new ObjectStorage();
+            foreach ($result as $provider) {
+                $offers = new ObjectStorage();
+                $_offers = $this->offerRepository->findAllActive(null, $provider);
+
+                foreach($_offers as $_offer) {
+                    $offers->attach($_offer);
+                }
+
+                $provider->setOffers($offers);
+                $newResult->attach($provider);
+            }
+            $result = $newResult;
+        }
+
         return $result;
     }
 

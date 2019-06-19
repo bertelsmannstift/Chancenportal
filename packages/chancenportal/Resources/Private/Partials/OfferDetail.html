@@ -481,7 +481,14 @@
             </div>
             <div class="col-lg-3 col-md-12 end-lg middle-lg flex start-md">
                 <div>
-                    <f:link.email email="{offer.provider.email}" class="btn btn--primary"><span>Anbieter kontaktieren</span></f:link.email>
+                    <f:if condition="{offer.contactEmail}">
+                        <f:then>
+                            <f:link.email email="{offer.contactEmail}" class="btn btn--primary"><span>Anbieter kontaktieren</span></f:link.email>
+                        </f:then>
+                        <f:else>
+                            <f:link.email email="{offer.provider.email}" class="btn btn--primary"><span>Anbieter kontaktieren</span></f:link.email>
+                        </f:else>
+                    </f:if>
                     <div>
                         <a href="{f:uri.action(action: 'providerDetail', controller: 'Frontend', arguments: '{provider: offer.provider}', pageUid: settings.chancenportal.pageIds.provider_detail)}"
                            class="article-detail__link">Zum Anbieter</a>

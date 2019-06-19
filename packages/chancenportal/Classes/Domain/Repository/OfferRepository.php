@@ -137,7 +137,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllActive($limit = null)
+    public function findAllActive($limit = null, $provider = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -153,6 +153,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ])
             ])
         ]);
+        if(!is_null($provider)) {
+            $constraints[] = $query->equals('provider', $provider);
+        }
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
             $constraints[] = $query->logicalAnd([
                 $query->equals('active', 1),
