@@ -216,7 +216,7 @@
                         </div>
                         <f:if condition="{provider.website}">
                             <div>
-                                <a href="{provider.website}" target="_blank" style="word-break: break-word;">{provider.website}</a>
+                                <f:link.external uri="{provider.website}" target="_blank" defaultScheme="http" style="word-break: break-word;">{provider.website}</f:link.external>
                             </div>
                         </f:if>
 
