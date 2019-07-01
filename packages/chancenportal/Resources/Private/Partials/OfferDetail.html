@@ -403,7 +403,7 @@
                         </div>
                         <f:if condition="{offer.provider.website}">
                             <div>
-                                <a href="{offer.provider.website}" target="_blank" style="word-break: break-word;">{offer.provider.website}</a>
+                                <f:link.external uri="{offer.provider.website}" target="_blank" defaultScheme="http" style="word-break: break-word;">{offer.provider.website}</f:link.external>
                             </div>
                         </f:if>
                     </div>
