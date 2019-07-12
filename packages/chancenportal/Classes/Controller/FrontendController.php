@@ -16,6 +16,7 @@ namespace Chancenportal\Chancenportal\Controller;
 use Chancenportal\Chancenportal\Domain\Model\Log;
 use Chancenportal\Chancenportal\Domain\Model\Offer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * FrontendUserController
@@ -138,8 +139,12 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function offerDetailAction(\Chancenportal\Chancenportal\Domain\Model\Offer $offer)
+    public function offerDetailAction(\Chancenportal\Chancenportal\Domain\Model\Offer $offer = null)
     {
+        if(!$offer || !$this->offerRepository->isActive($offer->getUid())) {
+            $GLOBALS['TSFE']->pageNotFoundAndExit('No offer selected or offer not active');
+        }
+
         $this->response->addAdditionalHeaderData('<title>' . htmlspecialchars($offer->getName() . ' - ' . $GLOBALS['TSFE']->rootLine[0]['title']) . '</title>');
         $this->response->addAdditionalHeaderData('<meta name="description" content="' . htmlspecialchars($offer->getShortDescription()) . '">');
 

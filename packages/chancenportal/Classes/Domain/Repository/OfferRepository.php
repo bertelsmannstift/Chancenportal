@@ -133,11 +133,13 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param int|null $limit
+     * @param null $limit
+     * @param null $provider
+     * @param null $uid
+     * @return array|mixed
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
-     * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllActive($limit = null, $provider = null)
+    public function findAllActive($limit = null, $provider = null, $uid = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -153,6 +155,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ])
             ])
         ]);
+        if(!is_null($uid)) {
+            $constraints[] = $query->equals('uid', $uid);
+        }
         if(!is_null($provider)) {
             $constraints[] = $query->equals('provider', $provider);
         }
@@ -177,6 +182,16 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $newResult = array_slice($newResult, 0, $limit);
         }
         return $newResult;
+    }
+
+    /**
+     * @param $uid
+     * @return bool
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function isActive($uid) {
+        $results = $this->findAllActive(null, null, $uid);
+        return count($results) > 0 ? true : false;
     }
 
     /**

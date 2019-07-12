@@ -21,6 +21,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
+     * @var \Chancenportal\Chancenportal\Domain\Repository\TargetGroupRepository
+     * @inject
+     */
+    protected $targetGroupRepository = null;
+
+    /**
      * @var bool
      */
     protected $preview = false;
@@ -1716,7 +1722,20 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getTargetGroups()
     {
-        return $this->targetGroups;
+        $uids = [];
+        $return = new ObjectStorage();
+
+        foreach($this->targetGroups as $targetGroup) {
+            $uids[] = $targetGroup->getUid();
+        }
+
+        $sortedTargetGroups = $this->targetGroupRepository->findByUids($uids);
+
+        foreach ($sortedTargetGroups as $targetGroup) {
+            $return->attach($targetGroup);
+        }
+
+        return $return;
     }
 
     /**

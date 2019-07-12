@@ -44,7 +44,7 @@ Eine Anleitung für die Installation auf einfachen Web-Hosting-Angeboten finden 
 
 Zur Installation sind folgende Schritte notwendig:
 
-1. Repository klonen: `git clone git@github.com:bertelsmannstift/Chancenportal.git`
+1. Repository klonen: `git clone https://github.com/bertelsmannstift/Chancenportal.git`
 2. Abhängigkeiten über [composer](https://getcomposer.org/) installieren: `composer install`
 3. Datenbankdump `/database/chancenportal.sql` in eine MySQL oder MariaDB laden
 4. Setzen des Webroots auf den Ordner `web`
@@ -58,8 +58,7 @@ Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei
 
 1. Laden Sie [TYPO3 8.x](https://get.typo3.org/8/zip) herunter
 2. Extrahieren Sie den Inhalt und laden Sie die Dateien auf Ihren Server, z. B. per (S)FTP oder SCP. Beachten Sie ggf. auch die offiziellen TYPO3-Hinweise zur Installation: [Install TYPO3 Without Composer](https://docs.typo3.org/typo3cms/InstallationGuide/QuickInstall/GetAndUnpack/Index.html)
-3. Laden Sie die aktuelle Chancenportal-Anwendung herunter [Chancenportal](https://github
-.com/bertelsmannstift/Chancenportal/archive/master.zip)
+3. Laden Sie die aktuelle Chancenportal-Anwendung herunter [Chancenportal](https://github.com/bertelsmannstift/Chancenportal/archive/master.zip)
 4. Extrahieren Sie das Zip-Archiv und laden Sie den Inhalt des Ordners `web` auf Ihren Server
 5. Laden Sie ebenfalls den Inhalt des Ordners `packages` auf Ihren Server in den Ordner `typo3conf/ext` hoch
 6. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.6.0.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
