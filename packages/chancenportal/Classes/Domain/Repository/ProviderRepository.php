@@ -90,18 +90,31 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
+     * @param null $uid
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findAllActive()
+    public function findAllActive($uid = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
+        if(!is_null($uid)) {
+            $constraints[] = $query->equals('uid', $uid);
+        }
         $constraints[] = $query->logicalAnd([
             $query->equals('active', 1),
             $query->equals('approved', 1)
         ]);
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         return $query->matching($query->logicalAnd($constraints))->execute();
+    }
+
+    /**
+     * @param $uid
+     * @return bool
+     */
+    public function isActive($uid) {
+        $results = $this->findAllActive($uid);
+        return count($results) > 0 ? true : false;
     }
 
     /**

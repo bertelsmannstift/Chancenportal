@@ -158,10 +158,15 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
     /**
      * @ignorevalidation $provider
-     * @param \Chancenportal\Chancenportal\Domain\Model\Provider $provider
+     * @param \Chancenportal\Chancenportal\Domain\Model\Provider|null $provider
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function providerDetailAction(\Chancenportal\Chancenportal\Domain\Model\Provider $provider)
+    public function providerDetailAction(\Chancenportal\Chancenportal\Domain\Model\Provider $provider = null)
     {
+        if(!$provider || !$this->providerRepository->isActive($provider->getUid())) {
+            $GLOBALS['TSFE']->pageNotFoundAndExit('No provider selected or provider not active');
+        }
+
         $this->response->addAdditionalHeaderData('<title>' . htmlspecialchars($provider->getName() . ' - ' . $GLOBALS['TSFE']->rootLine[0]['title']) . '</title>');
         $this->response->addAdditionalHeaderData('<meta name="description" content="' . htmlspecialchars($provider->getShortDescription()) . '">');
         $this->view->assign('provider', $provider);
