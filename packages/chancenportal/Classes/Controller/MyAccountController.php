@@ -676,6 +676,12 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             }
         }
 
+        /** Sort categories by count */
+        array_multisort(array_column($categories, 'count'), SORT_DESC, $categories);
+
+        /** Sort offers by count */
+        array_multisort(array_column($offers, 'count'), SORT_DESC, $offers);
+
         /** Sort terms by count */
         array_multisort(array_column($terms, 'count'), SORT_DESC, $terms);
 
