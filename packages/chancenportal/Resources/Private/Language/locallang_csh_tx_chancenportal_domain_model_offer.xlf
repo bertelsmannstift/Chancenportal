@@ -126,6 +126,9 @@
 			<trans-unit id="content_image_copyright.description">
 				<source>contentImageCopyright</source>
 			</trans-unit>
+			<trans-unit id="participation.description">
+				<source>participation</source>
+			</trans-unit>
 			<trans-unit id="dates.description">
 				<source>dates</source>
 			</trans-unit>

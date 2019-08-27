@@ -150,10 +150,10 @@ class ProviderTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getParticipationReturnsInitialValueForInt()
+     public function getParticipationReturnsInitialValueForBool()
     {
         self::assertSame(
-            0,
+            false,
             $this->subject->getParticipation()
         );
     }
@@ -161,12 +161,12 @@ class ProviderTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setParticipationForIntSetsParticipation()
+    public function setParticipationForBoolSetsParticipation()
     {
-        $this->subject->setParticipation(12);
+        $this->subject->setParticipation(true);
 
         self::assertAttributeEquals(
-            12,
+            true,
             'participation',
             $this->subject
         );

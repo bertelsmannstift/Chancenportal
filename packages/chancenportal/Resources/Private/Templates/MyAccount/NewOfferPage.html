@@ -770,15 +770,19 @@
         </div>
 		-->
         <div class="row">
-            <div class="col-lg-6 col-sm-12 margin-inner-sm">
+            <div class="col-lg-4 col-sm-12 margin-inner-sm">
                 <div class="input">
                     <label class="input__label">Kosten</label>
                     <f:form.textfield property="costs" class="input__field" maxlength="200" />
                 </div>
             </div>
-            <div class="col-lg-6 col-sm-12 flex middle-lg margin-inner-sm">
+            <div class="col-lg-4 col-sm-12 flex middle-lg margin-inner-sm">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="noCosts"></c:formConfiguration>
                 <custom-select label="kostenfrei" theme="light" id="tx_chancenportal_chancenportal[offer][noCosts]" name="tx_chancenportal_chancenportal[offer][noCosts]" is-checked="{f:if(condition: '{offer.noCosts}', then: 'true', else: 'false')}" value="1" id="noCosts"></custom-select>
+            </div>
+            <div class="col-lg-4 col-sm-12 flex middle-lg margin-inner-sm">
+                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="participation"></c:formConfiguration>
+                <custom-select label="Engagement möglich" theme="light" id="tx_chancenportal_chancenportal[offer][participation]" name="tx_chancenportal_chancenportal[offer][participation]" is-checked="{f:if(condition: '{offer.participation}', then: 'true', else: 'false')}" value="1" id="participation"></custom-select>
             </div>
         </div>
         <div class="row">

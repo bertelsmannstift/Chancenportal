@@ -97,7 +97,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-        if(!is_null($uid)) {
+        if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
         $constraints[] = $query->logicalAnd([
@@ -112,7 +112,8 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param $uid
      * @return bool
      */
-    public function isActive($uid) {
+    public function isActive($uid)
+    {
         $results = $this->findAllActive($uid);
         return count($results) > 0 ? true : false;
     }
@@ -120,6 +121,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * @param $fields
      * @param $log
+     * @param $onlyActiveOffers
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -149,6 +151,9 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 if ($log) {
                     $this->logCategory($fields['category']);
                 }
+            }
+            if (isset($fields['participation']) && $fields['participation'] === '1') {
+                $params[] = $query->equals('participation', 1);
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
                 $params[] = $query->in('offers.district.uid', $fields['districts']);
@@ -251,22 +256,19 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
         //Get active offers
-        if($onlyActiveOffers) {
+        if ($onlyActiveOffers) {
             $newResult = new ObjectStorage();
             foreach ($result as $provider) {
                 $offers = new ObjectStorage();
                 $_offers = $this->offerRepository->findAllActive(null, $provider);
-
-                foreach($_offers as $_offer) {
+                foreach ($_offers as $_offer) {
                     $offers->attach($_offer);
                 }
-
                 $provider->setOffers($offers);
                 $newResult->attach($provider);
             }
             $result = $newResult;
         }
-
         return $result;
     }
 

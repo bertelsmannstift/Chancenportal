@@ -254,7 +254,10 @@
                                 </f:if>
                             </f:else>
                         </f:if>
-
+                        <f:if condition="{offer.participation}">
+                            <dt>Engagement möglich</dt>
+                            <dd>Ja</dd>
+                        </f:if>
                         <f:if condition="{offer.access} == 2">
                             <dt>Zugang</dt>
                             <dd>Offen (ohne Mitgliedschaft)</dd>

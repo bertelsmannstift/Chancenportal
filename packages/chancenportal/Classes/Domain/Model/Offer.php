@@ -432,6 +432,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lastEditor = null;
 
     /**
+     * participation
+     *
+     * @var bool
+     */
+    protected $participation = false;
+
+    /**
      * @return \DateTime
      */
     public function getCrdate()
@@ -1724,17 +1731,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $uids = [];
         $return = new ObjectStorage();
-
-        foreach($this->targetGroups as $targetGroup) {
+        foreach ($this->targetGroups as $targetGroup) {
             $uids[] = $targetGroup->getUid();
         }
-
         $sortedTargetGroups = $this->targetGroupRepository->findByUids($uids);
-
         foreach ($sortedTargetGroups as $targetGroup) {
             $return->attach($targetGroup);
         }
-
         return $return;
     }
 
@@ -2211,5 +2214,36 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setContentImageCopyright($contentImageCopyright)
     {
         $this->contentImageCopyright = $contentImageCopyright;
+    }
+
+    /**
+     * Returns the participation
+     *
+     * @return bool $participation
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
+    }
+
+    /**
+     * Sets the participation
+     *
+     * @param bool $participation
+     * @return void
+     */
+    public function setParticipation($participation)
+    {
+        $this->participation = $participation;
+    }
+
+    /**
+     * Returns the boolean state of participation
+     *
+     * @return bool
+     */
+    public function isParticipation()
+    {
+        return $this->participation;
     }
 }

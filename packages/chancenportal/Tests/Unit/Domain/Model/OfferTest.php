@@ -1164,6 +1164,31 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
     }
 
+     /**
+     * @test
+     */
+    public function getParticipationReturnsInitialValueForBool()
+    {
+        self::assertSame(
+            false,
+            $this->subject->getParticipation()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setParticipationForBoolSetsParticipation()
+    {
+        $this->subject->setParticipation(true);
+
+        self::assertAttributeEquals(
+            true,
+            'participation',
+            $this->subject
+        );
+    }
+
     /**
      * @test
      */

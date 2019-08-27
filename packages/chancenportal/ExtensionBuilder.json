@@ -97,7 +97,7 @@
                             "propertyIsL10nModeExclude": false,
                             "propertyIsRequired": false,
                             "propertyName": "participation",
-                            "propertyType": "Select",
+                            "propertyType": "Boolean",
                             "uid": "472924496408"
                         },
                         {
@@ -922,6 +922,17 @@
                             "propertyName": "contentImageCopyright",
                             "propertyType": "String",
                             "uid": "1424474716394"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "participation",
+                            "propertyType": "Boolean",
+                            "uid": "979116733336"
                         }
                     ]
                 },
@@ -1840,7 +1851,7 @@
         }
     ],
     "log": {
-        "last_modified": "2019-05-27 09:08",
+        "last_modified": "2019-08-19 12:50",
         "extension_builder_version": "8.10.3",
         "be_user": " (2)"
     }

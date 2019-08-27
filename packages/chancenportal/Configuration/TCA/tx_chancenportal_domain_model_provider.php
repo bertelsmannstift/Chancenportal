@@ -174,15 +174,15 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_provider.participation',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
+                'type' => 'check',
                 'items' => [
-                    ['-- Label --', 0],
+                    '1' => [
+                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                    ]
                 ],
-                'size' => 1,
-                'maxitems' => 1,
-                'eval' => ''
-            ],
+                'default' => 0,
+            ]
+            
         ],
         'content_image' => [
             'exclude' => true,

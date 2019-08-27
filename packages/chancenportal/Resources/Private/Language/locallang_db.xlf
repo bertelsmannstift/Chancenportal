@@ -240,6 +240,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_offer.content_image_copyright">
 				<source>Content Image Copyright</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.participation">
+				<source>Participation</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.dates">
 				<source>Dates</source>
 			</trans-unit>

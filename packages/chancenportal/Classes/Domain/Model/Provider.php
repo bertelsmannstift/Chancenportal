@@ -96,7 +96,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * participation
      *
-     * @var int
+     * @var bool
      */
     protected $participation = 0;
 
@@ -524,27 +524,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNumberOfEmployees($numberOfEmployees)
     {
         $this->numberOfEmployees = $numberOfEmployees;
-    }
-
-    /**
-     * Returns the participation
-     *
-     * @return int $participation
-     */
-    public function getParticipation()
-    {
-        return $this->participation;
-    }
-
-    /**
-     * Sets the participation
-     *
-     * @param int $participation
-     * @return void
-     */
-    public function setParticipation($participation)
-    {
-        $this->participation = $participation;
     }
 
     /**
@@ -1517,5 +1496,26 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setContentImageCopyright($contentImageCopyright)
     {
         $this->contentImageCopyright = $contentImageCopyright;
+    }
+
+    /**
+     * Returns the participation
+     *
+     * @return bool participation
+     */
+    public function getParticipation()
+    {
+        return $this->participation;
+    }
+
+    /**
+     * Sets the participation
+     *
+     * @param int $participation
+     * @return void
+     */
+    public function setParticipation($participation)
+    {
+        $this->participation = $participation;
     }
 }

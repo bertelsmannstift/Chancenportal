@@ -136,8 +136,8 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param null $limit
      * @param null $provider
      * @param null $uid
-     * @return array|mixed
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return array|mixed
      */
     public function findAllActive($limit = null, $provider = null, $uid = null)
     {
@@ -155,10 +155,10 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ])
             ])
         ]);
-        if(!is_null($uid)) {
+        if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
-        if(!is_null($provider)) {
+        if (!is_null($provider)) {
             $constraints[] = $query->equals('provider', $provider);
         }
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
@@ -186,10 +186,11 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @param $uid
-     * @return bool
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return bool
      */
-    public function isActive($uid) {
+    public function isActive($uid)
+    {
         $results = $this->findAllActive(null, null, $uid);
         return count($results) > 0 ? true : false;
     }
@@ -314,6 +315,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['noCosts']) && $fields['noCosts'] === '1') {
                 $params[] = $query->equals('noCosts', 1);
+            }
+            if (isset($fields['participation']) && $fields['participation'] === '1') {
+                $params[] = $query->equals('participation', 1);
             }
             if (isset($fields['zip']) && !empty($fields['zip']) && empty($fields['distance']) && $fields['distance'] !== '0') {
                 $constraints[] = $query->logicalOr([
