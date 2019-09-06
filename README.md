@@ -63,11 +63,12 @@ Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei
 5. Laden Sie ebenfalls den Inhalt des Ordners `packages` auf Ihren Server in den Ordner `typo3conf/ext` hoch
 6. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.6.0.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
 7. Laden Sie das Paket [Simple Cache PSR](https://github.com/php-fig/simple-cache/archive/1.0.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/psr/simple-cache`
-6. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
+8. Kopieren Sie die Datei `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/_custom.css` nach `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css`.
+9. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
 Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
-7. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
-8. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
-9. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
+10. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
+11. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
+12. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
 	* [flux](https://extensions.typo3.org/extension/flux/) (Version 8.2.1)
 	* [pagenotfoundhandling](https://extensions.typo3.org/extension/pagenotfoundhandling/) (Version 2.4.6)
 	* [realurl](https://extensions.typo3.org/extension/realurl/) (Version 2.4.0)
@@ -94,6 +95,7 @@ Die Basisplattform kann über Farbwerte und den Austausch von Logos an das jewei
 * Anpassung der Hauptfarben im Portal
 * Anpassung der Kategoriefarben
 * Austausch des Favicons in `web/favicons/` (https://www.favicon-generator.org/)
+* Erweiterte CSS-Anpassung können in der Datei `web/typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css` vorgenommen werden. Änderungen niemals in `web/typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/main.min.*.css` vornehmen, da diese Datei ggf. durch Deployments aus dem Git heraus überschrieben wird!
 
 ## Bildmaterial
 
