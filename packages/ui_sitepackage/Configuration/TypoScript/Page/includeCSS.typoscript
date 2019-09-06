@@ -6,6 +6,10 @@ page.includeCSS {
 	10 {
 		media = all
 	}
+	11 = {$page.includePath.css}custom.css
+	11 {
+		media = all
+	}
 	100 = https://fonts.googleapis.com/css?family=Signika:400,600,700
 	100 {
 		media = all

@@ -19,6 +19,7 @@ typo3cms
 TYPO3_systemlog.log
 mbox.txt
 .env
+/packages/ui_sitepackage/Resources/Public/assets/css/custom.css
 
 ###########
 # TYPO3 Extensions

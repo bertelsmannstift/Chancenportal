@@ -64,10 +64,12 @@
   },
   "scripts":{
     "typo3-cms-scripts": [
-      "cp .env.example .env",
-      "typo3cms install:fixfolderstructure",
-      "typo3cms install:generatepackagestates",
-      "typo3cms install:extensionsetupifpossible"
+      "rm ./web/typo3conf/PackageStates.php & cp ./configuration/misc/PackageStatesInit.php ./web/typo3conf/PackageStates.php || true",
+      "cp .env.example .env || true",
+      "typo3cms install:fixfolderstructure || true",
+      "typo3cms install:generatepackagestates || true",
+      "typo3cms install:extensionsetupifpossible || true",
+      "cp packages/ui_sitepackage/Resources/Public/assets/css/_custom.css packages/ui_sitepackage/Resources/Public/assets/css/custom.css || true"
     ],
     "post-autoload-dump": [
       "@typo3-cms-scripts"
