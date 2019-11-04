@@ -178,8 +178,16 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function searchResultAjaxAction()
     {
         $this->view->assign('settings', $this->settings);
-        $this->view->assign('offers', $this->offerRepository->findByFields(GeneralUtility::_POST()));
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
+
+        $PostVars = GeneralUtility::_POST();
+        if(!empty($PostVars['term'])) {
+            $similarTerms = $this->offerRepository->getSimilarSearchTerms($PostVars['term'], $this->settings);
+            $this->view->assign('similarTerms', $similarTerms);
+            $PostVars['term'] = array_merge([$PostVars['term']], $similarTerms);
+        }
+
+        $this->view->assign('offers', $this->offerRepository->findByFields($PostVars));
+        $this->view->assign('providers', $this->providerRepository->findByFields($PostVars, true, true));
     }
 
     /**

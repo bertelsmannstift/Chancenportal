@@ -46,5 +46,9 @@ plugin.tx_chancenportal_chancenportal {
         activate_account_takeover = 0
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Google Translator aktivieren
         show_google_translator = 0
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=ähnliche Wörter als Suchvorschläge anzeigen
+        search_show_similiar = 1
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Email als User Header für Openthesaurus als Kontaktmöglichkeit (aktiviert 'Meinten Sie' Funktionilität)
+        search_user_header_openthesaurus = chancenportal@example.org
     }
 }

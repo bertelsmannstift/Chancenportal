@@ -22,3 +22,13 @@
 
     <custom-pagination items-per-page="10" js-pagination=".kachel-list__items--providers"></custom-pagination>
 </div>
+
+<f:if condition="{similarTerms} && {offers -> f:count()} == 0 && {providers -> f:count()} == 0">
+    <div class="search">
+        Es wurde auch nach folgenden, ähnlichen Begriffen gesucht:
+
+        <f:for each="{similarTerms}" as="similarTerm" iteration="iteration">
+            {similarTerm}<f:if condition="!{iteration.isLast}">,</f:if>
+        </f:for>
+    </div>
+</f:if>

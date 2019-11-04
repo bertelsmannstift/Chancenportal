@@ -342,16 +342,24 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 if ($log) {
                     $this->logTerm($fields['term']);
                 }
-                $constraintsTerm = [
-                    $query->like('longDescription', '%' . $fields['term'] . '%'),
-                    $query->like('shortDescription', '%' . $fields['term'] . '%'),
-                    $query->like('name', '%' . $fields['term'] . '%'),
-                    $query->like('address', '%' . $fields['term'] . '%')
-                ];
-                $providers = $this->providerRepository->findByFields(['term' => $fields['term']], false);
-                if (count($providers)) {
-                    $constraintsTerm[] = $query->in('provider', $providers);
+
+                if(is_string($fields['term'])) {
+                    $fields['term'] = [$fields['term']];
                 }
+
+                $constraintsTerm = [];
+                foreach($fields['term'] as $term) {
+                    $constraintsTerm[] = $query->like('longDescription', '%' . $term . '%');
+                    $constraintsTerm[] = $query->like('shortDescription', '%' . $term . '%');
+                    $constraintsTerm[] = $query->like('name', '%' . $term . '%');
+                    $constraintsTerm[] = $query->like('address', '%' . $term . '%');
+
+                    $providers = $this->providerRepository->findByFields(['term' => $term], false);
+                    if (count($providers)) {
+                        $constraintsTerm[] = $query->in('provider', $providers);
+                    }
+                }
+
                 $params[] = $query->logicalOr($constraintsTerm);
             }
             if (count($params)) {
@@ -686,5 +694,97 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $selectedDays[] = 6;
         }
         return $selectedDays;
+    }
+
+    public function getSimilarSearchTerms($term, $settings = null) {
+        $return = [];
+
+        if($settings && strlen($settings['chancenportal']['search_user_header_openthesaurus'])) {
+            $synsets = $this->getSynsets($term, $settings['chancenportal']['search_user_header_openthesaurus']);
+            $synsetsDec = json_decode($synsets, TRUE);
+
+            $altCount = 0;
+            $singSynCount = 0;
+            $synsetsArr = [];
+            $similarArr = [];
+            $baseformArr = [];
+            if(count($synsetsDec['baseforms'])) {
+                $baseform = $synsetsDec['baseforms'][0];
+                $baseformArr[] = $baseform;
+                $altCount += 1;
+                $singSynCount +=1;
+            }
+            if (count($synsetsDec['synsets'])) {
+                foreach($synsetsDec['synsets'][0]['terms'] as $key => $syn) {
+                    if(stripos($syn['term'], '(' )  === false && stripos($syn['term'], ' ' )  === false) {
+                        $synsetsArr[] = str_replace('...', '', $syn['term']) ;
+                    }
+                    $altCount += 1;
+                    $singSynCount +=1;
+                }
+            }
+            if(count($synsetsDec['similarterms']) && $settings['chancenportal']['search_show_similiar'] == 1) {
+                foreach($synsetsDec['similarterms'] as $key => $syn) {
+                    if(stripos($syn['term'], '(' )  === false && stripos($syn['term'], ' ' )  === false) {
+                        $term =  str_replace('...', '', $syn['term']);
+                        if($term !== $baseform && $syn['distance'] < 3) {
+                            $similarArr[] = $term;
+                            $altCount += 1;
+                        }
+                    }
+                }
+            }
+
+            $return = array_unique(array_merge($baseformArr, $synsetsArr, $similarArr));
+            asort($return);
+        }
+
+        return $return;
+    }
+
+    /*
+  * curl function to connect to RESt
+  * @param mixed $data the data to send
+  * @param string $userdata userdata to be send to openthesaurus
+  * @param string $httpheader the http headers to send
+  * @return json string
+  */
+    public function getSynsets($data = NULL, $userdata, $httpheader = array('Content-Type: application/json'))
+    {
+
+        $url = 'https://www.openthesaurus.de/synonyme/search?q=' . urlencode($data) . '&format=application/json&similar=true&substringFromResults&supersynsets=true&baseform=true';
+
+        $options = array(
+            CURLOPT_RETURNTRANSFER => true, // return web page
+            CURLOPT_HEADER => false, // don't return headers
+            CURLOPT_FOLLOWLOCATION => true, // follow redirects
+            CURLOPT_ENCODING => "", // handle all encodings
+            CURLOPT_USERAGENT => $userdata, // who am i
+            CURLOPT_AUTOREFERER => true, // set referer on redirect
+            CURLOPT_CONNECTTIMEOUT => 120, // timeout on connect
+            CURLOPT_TIMEOUT => 120, // timeout on response
+            CURLOPT_MAXREDIRS => 30, // stop after 10 redirects
+
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_SSL_VERIFYHOST => false,
+            CURLOPT_HTTPHEADER => $httpheader
+        );
+
+
+        $ch = curl_init($url);
+
+        curl_setopt_array($ch, $options);
+
+        $content = curl_exec($ch);
+        $err = curl_errno($ch);
+        $errmsg = curl_error($ch);
+        $header = curl_getinfo($ch);
+        curl_close($ch);
+
+        $header['errno'] = $err;
+        $header['errmsg'] = $errmsg;
+        $header['content'] = $content;
+
+        return $content;
     }
 }
