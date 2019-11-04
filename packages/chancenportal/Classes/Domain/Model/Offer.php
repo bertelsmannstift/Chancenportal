@@ -713,7 +713,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             return $cDate;
         }
         if ($oldestDate->getStartTimeObj()) {
-            $oldestDate->getStartDate()->modify('+' . $oldestDate->getStartTimeObj() . ' seconds');
+            $oldestDateStartDate = clone $oldestDate->getStartDate();
+            $oldestDateStartDate->modify('+' . $oldestDate->getStartTimeObj() . ' seconds');
+            return $oldestDateStartDate;
         }
         return $oldestDate->getStartDate();
     }
