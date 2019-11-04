@@ -186,7 +186,7 @@
                     <div class="article-detail__imgtext{f:if(condition: '{provider.logo} || {provider.logoString}', else: ' article-detail__imgtext--no-image')}">
                         <div><strong>{provider.name}</strong></div>
                         <div>{provider.street}</div>
-                        <div>{provider.city}</div>
+                        <div>{provider.zip} {provider.city}</div>
 
                         <a href="https://www.google.com/maps?q={provider.address -> f:format.urlencode()}" target="_blank">Auf Karte anzeigen</a>
                         <br><br>

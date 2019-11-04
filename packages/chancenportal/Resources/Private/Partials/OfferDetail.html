@@ -399,7 +399,7 @@
                     <div class="article-detail__imgtext{f:if(condition: '{offer.provider.logo}', else: ' article-detail__imgtext--no-image')}">
                         <div><strong>{offer.provider.name}</strong></div>
                         <div>{offer.provider.street}</div>
-                        <div>{offer.provider.city}</div>
+                        <div>{offer.provider.zip} {offer.provider.city}</div>
                         <br>
                         <div>
                             <f:link.email email="{offer.provider.email}"/>
