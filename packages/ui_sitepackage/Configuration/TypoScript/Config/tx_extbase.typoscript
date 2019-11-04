@@ -69,6 +69,9 @@ config.tx_extbase {
             activate_account_takeover = {$plugin.tx_chancenportal_chancenportal.settings.activate_account_takeover}
             show_google_translator = {$plugin.tx_chancenportal_chancenportal.settings.show_google_translator}
 
+            search_show_similiar = {$plugin.tx_chancenportal_chancenportal.settings.search_show_similiar}
+            search_user_header_openthesaurus = {$plugin.tx_chancenportal_chancenportal.settings.search_user_header_openthesaurus}
+
             permissions {
                 planner_group = 3
                 provider_group = 4
