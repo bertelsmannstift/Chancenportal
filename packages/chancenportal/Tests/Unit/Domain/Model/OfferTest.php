@@ -1164,7 +1164,7 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         );
     }
 
-     /**
+    /**
      * @test
      */
     public function getParticipationReturnsInitialValueForBool()

@@ -2,6 +2,14 @@
 
 ## Release 2019-11-04
 
+### BUGFIX: Handling der OpenThesaurus Suchbegriffe
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/915ea8b001c99dcec8e0e3938897d991d94964de]()
+
+## Release 2019-11-04
+
 ### FEATURE: Integration von OpenThesaurus
 Bei der Suche nach Angeboten, werden nun auch über OpenThesaurus gefundene Synonyme und Grundformen mit berücksichtigt.
 

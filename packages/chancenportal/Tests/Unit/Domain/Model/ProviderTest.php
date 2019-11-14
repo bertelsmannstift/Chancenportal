@@ -150,7 +150,7 @@ class ProviderTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-     public function getParticipationReturnsInitialValueForBool()
+    public function getParticipationReturnsInitialValueForBool()
     {
         self::assertSame(
             false,
