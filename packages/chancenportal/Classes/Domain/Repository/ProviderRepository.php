@@ -1,4 +1,5 @@
 <?php
+
 namespace Chancenportal\Chancenportal\Domain\Repository;
 
 use Chancenportal\Chancenportal\Domain\Model\Date;
@@ -11,6 +12,7 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -32,24 +34,24 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @inject
      */
     protected $logRepository = null;
-
+    
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
      * @inject
      */
     protected $categoryRepository = null;
-
+    
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
      * @inject
      */
     protected $offerRepository = null;
-
+    
     /**
      * @var array
      */
     protected $settings = null;
-
+    
     public function initializeObject()
     {
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
@@ -60,7 +62,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $configurationManager = $objectManager->get(ConfigurationManager::class);
         $this->settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
     }
-
+    
     /**
      * @param $catId
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
@@ -74,21 +76,21 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $this->logRepository->add($log);
         }
     }
-
+    
     /**
      * @param $term
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     private function logTerm($term)
     {
-        $term = strtolower(trim($term));
+        $term = strtolower(trim(implode(', ', $term)));
         if (!empty($term)) {
             $log = new Log();
             $log->setTerm($term);
             $this->logRepository->add($log);
         }
     }
-
+    
     /**
      * @param null $uid
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -102,12 +104,12 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         $constraints[] = $query->logicalAnd([
             $query->equals('active', 1),
-            $query->equals('approved', 1)
+            $query->equals('approved', 1),
         ]);
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         return $query->matching($query->logicalAnd($constraints))->execute();
     }
-
+    
     /**
      * @param $uid
      * @return bool
@@ -117,14 +119,14 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $results = $this->findAllActive($uid);
         return count($results) > 0 ? true : false;
     }
-
+    
     /**
      * @param $fields
      * @param $log
      * @param $onlyActiveOffers
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     public function findByFields($fields, $log = true, $onlyActiveOffers = false)
     {
@@ -132,8 +134,13 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query->getQuerySettings()->setRespectStoragePage(false);
         $constraints[] = $query->logicalAnd([
             $query->equals('active', 1),
-            $query->equals('approved', 1)
+            $query->equals('approved', 1),
         ]);
+        
+        if (!empty($fields['term'])) {
+            $fields['term'] = (array)$fields['term'];
+        }
+        
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         if (count($fields)) {
             $params = [];
@@ -143,7 +150,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             if (isset($fields['zip']) && !empty($fields['zip']) && empty($fields['distance']) && $fields['distance'] !== '0') {
                 $constraints[] = $query->logicalOr([
                     $query->like('city', "%{$fields['zip']}%"),
-                    $query->like('zip', "%{$fields['zip']}%")
+                    $query->like('zip', "%{$fields['zip']}%"),
                 ]);
             }
             if (isset($fields['category'])) {
@@ -176,7 +183,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $params[] = $query->logicalOr([
                         $query->logicalAnd($dates),
                         $query->logicalAnd($dates2),
-                        $query->logicalAnd($dates3)
+                        $query->logicalAnd($dates3),
                     ]);
                 }
             } elseif (isset($fields['dateType']) && $fields['dateType'] === '2' && !empty($fields['dates'][2])) {
@@ -185,16 +192,18 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $dates[] = $query->greaterThanOrEqual('offers.dates.endDate', \DateTime::createFromFormat('d.m.Y', $fields['dates'][2])->format('Y-m-d'));
                 $params[] = $query->logicalAnd($dates);
             }
-            if (isset($fields['term']) && !empty($fields['term'])) {
+            if (isset($fields['term']) && is_array($fields['term'])) {
                 if ($log) {
                     $this->logTerm($fields['term']);
                 }
-                $params[] = $query->logicalOr([
-                    $query->like('name', '%' . $fields['term'] . '%'),
-                    $query->like('subline', '%' . $fields['term'] . '%'),
-                    $query->like('shortDescription', '%' . $fields['term'] . '%'),
-                    $query->like('longDescription', '%' . $fields['term'] . '%')
-                ]);
+                $arr = [];
+                foreach ($fields['term'] as $tm) {
+                    $arr[] =$query->like('name', '%' . $tm . '%');
+                    $arr[] =$query->like('subline', '%' . $tm . '%');
+                    $arr[] =$query->like('shortDescription', '%' . $tm . '%');
+                    $arr[] =$query->like('longDescription', '%' . $tm . '%');
+                }
+                $params[] = $query->logicalOr($arr);
             }
             if (count($params)) {
                 $constraints[] = $query->logicalAnd($params);
@@ -202,14 +211,15 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         if (!isset($fields['sort_providers']) || $fields['sort_providers'] === '3') {
             $query->setOrderings([
-                'name' => QueryInterface::ORDER_ASCENDING
+                'name' => QueryInterface::ORDER_ASCENDING,
             ]);
         } else {
             $query->setOrderings([
-                'uid' => QueryInterface::ORDER_DESCENDING
+                'uid' => QueryInterface::ORDER_DESCENDING,
             ]);
         }
         $result = $query->matching($query->logicalAnd($constraints))->execute();
+
         if (isset($fields['dateType']) && $fields['dateType'] === '3') {
             $newResult = new ObjectStorage();
             $selectedDays = $this->getSelectedDays($fields);
@@ -269,9 +279,10 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             $result = $newResult;
         }
+        
         return $result;
     }
-
+    
     /**
      * @param $lat1
      * @param $lon1
@@ -288,7 +299,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $miles = $dist * 60 * 1.1515;
         return $miles * 1.609344;
     }
-
+    
     /**
      * @param $fields
      * @return array
@@ -319,7 +330,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         return $selectedDays;
     }
-
+    
     /**
      * @param Date $date
      * @return array
