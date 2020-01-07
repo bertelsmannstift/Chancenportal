@@ -1288,7 +1288,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function exportOffersAction()
     {
         setlocale(LC_ALL, 'de_DE');
-        $tmpfname = tempnam("/tmp", "export") . '.csv';
+        $tmpfname = tempnam(sys_get_temp_dir(), "export") . '.csv';
         $fp = fopen($tmpfname, 'w');
 
         $group = UserUtility::getOrganisationGroup(UserUtility::getCurrentUser());
