@@ -32,6 +32,11 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $preview = false;
 
     /**
+     * @var bool
+     */
+    protected $save = false;
+
+    /**
      * @var \DateTime
      */
     protected $tstamp = null;
@@ -843,6 +848,22 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPreview($preview)
     {
         $this->preview = $preview;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSave()
+    {
+        return $this->save;
+    }
+
+    /**
+     * @param bool $save
+     */
+    public function setSave($save)
+    {
+        $this->save = $save;
     }
 
     /**
@@ -1736,9 +1757,10 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         foreach ($this->targetGroups as $targetGroup) {
             $uids[] = $targetGroup->getUid();
         }
-        $sortedTargetGroups = $this->targetGroupRepository->findByUids($uids);
-        foreach ($sortedTargetGroups as $targetGroup) {
-            $return->attach($targetGroup);
+        if($sortedTargetGroups = $this->targetGroupRepository->findByUids($uids)) {
+            foreach ($sortedTargetGroups as $targetGroup) {
+                $return->attach($targetGroup);
+            }
         }
         return $return;
     }

@@ -51,17 +51,21 @@
             </div>
         </div>
         <div class="row margin-inner">
-            <div class="col-lg-offset-5 col-lg-3 col-sm-12 margin-inner-sm">
+            <div class="col-lg-4 col-sm-12 margin-inner-sm">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="preview"></c:formConfiguration>
                 <custom-preview>
                     <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][preview]" value="1">Vorschau</button>
                 </custom-preview>
             </div>
             <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
+                <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
+            </div>
+            <div class="col-lg-4 col-sm-12 margin-inner-sm">
 
                 <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                     <f:then>
-                        <button type="submit" class="btn btn--full">Speichern</button>
+                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
                     </f:then>
                     <f:else>
                         <f:if condition="{settings.chancenportal.activate_offer_approval}">
@@ -71,12 +75,12 @@
                                         <button type="submit" class="btn btn--full">Zur Freigabe einreichen</button>
                                     </f:then>
                                     <f:else>
-                                        <button type="submit" class="btn btn--full">Speichern</button>
+                                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
                                     </f:else>
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <button type="submit" class="btn btn--full">Speichern</button>
+                                <button type="submit" class="btn btn--full">Veröffentlichen</button>
                             </f:else>
                         </f:if>
 
@@ -917,22 +921,28 @@
                 </f:if>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-5 col-sm-12 margin-inner-sm flex middle-lg">
-                <custom-confirm redirect-url="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}" text="Angaben wirklich verwerfen?">
+        <div class="row margin-inner">
+            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                <custom-confirm redirect-url="{f:uri.action(action: 'newOfferPage', arguments: '{offer: offer}', pageUid: settings.chancenportal.pageIds.offer_edit)}" text="Nicht gespeicherte Angaben wirklich verwerfen?">
                     <a href="#" class="my-account__cancel-link">Angaben verwerfen</a>
                 </custom-confirm>
+                <br/>
+                <br/>
             </div>
-            <div class="col-lg-3 col-sm-12 margin-inner-sm">
+            <div class="col-lg-4 col-sm-12 margin-inner-sm">
                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="preview"></c:formConfiguration>
                 <custom-preview>
                     <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][preview]" value="1">Vorschau</button>
                 </custom-preview>
             </div>
             <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
+                <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
+            </div>
+            <div class="col-lg-4 col-sm-12 margin-inner-sm">
                 <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                     <f:then>
-                        <button type="submit" class="btn btn--full">Speichern</button>
+                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
                     </f:then>
                     <f:else>
 
@@ -943,12 +953,12 @@
                                         <button type="submit" class="btn btn--full">Zur Freigabe einreichen</button>
                                     </f:then>
                                     <f:else>
-                                        <button type="submit" class="btn btn--full">Speichern</button>
+                                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
                                     </f:else>
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <button type="submit" class="btn btn--full">Speichern</button>
+                                <button type="submit" class="btn btn--full">Veröffentlichen</button>
                             </f:else>
                         </f:if>
 
@@ -985,7 +995,7 @@
 		-->
 		<div class="row">
             <div class="col-lg-12 col-sm-12 margin-inner-sm">
-			<f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+			    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                     <f:then>
 						<f:if condition="{settings.chancenportal.activate_offer_approval}">
                             <f:then>
@@ -1020,10 +1030,8 @@
 								</div>
                             </f:else>
                         </f:if>
-
                     </f:else>
                 </f:security.ifHasRole>
-
             </div>
         </div>
     </f:form>

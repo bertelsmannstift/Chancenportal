@@ -183,6 +183,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         if(!empty($PostVars['term'])) {
             $similarTerms = $this->offerRepository->getSimilarSearchTerms($PostVars['term'], $this->settings);
             $this->view->assign('similarTerms', $similarTerms);
+            $PostVars['termOriginal'] = $PostVars['term'];
             $PostVars['term'] = array_merge([$PostVars['term']], $similarTerms);
         }
 

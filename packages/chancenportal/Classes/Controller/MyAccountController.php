@@ -1489,7 +1489,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         fclose($fp);
 
-        $result = shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $tmpfname . ' ' . $tmpfname . ".xls 2>&1");
+        //$result = shell_exec($this->settings['chancenportal']['xls_converter'] . ' ' . $tmpfname . ' ' . $tmpfname . ".xls 2>&1");
+
+        $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+        $reader->setInputEncoding('CP1252');
+        $spreadsheet = $reader->load($tmpfname);
+        $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+        $writer->save($tmpfname . '.xls');
 
         $headers = array(
             'Content-Type' => 'application/xls; charset=utf-8',
@@ -1669,7 +1675,18 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->setProvider($userProvider);
             }
 
-            if ($offer->isPreview()) {
+            if($offer->isSave()) {
+                if ($offer->getUid()) {
+                    $this->offerRepository->update($offer);
+                } else {
+                    $this->offerRepository->add($offer);
+                }
+
+                $persistenceManager->persistAll();
+
+                $this->redirect('newOfferPage', null, null, ['offer' => $offer, 'saved' => true],
+                    $this->settings['chancenportal']['pageIds']['offer_edit']);
+            } else if ($offer->isPreview()) {
                 /**
                  * We do not use redirect because of the base64 images the uri gets to long.
                  * We also do not use forward because we need another page template not the my account page template from the current page.

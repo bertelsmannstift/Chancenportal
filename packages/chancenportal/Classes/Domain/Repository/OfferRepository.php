@@ -340,7 +340,11 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
                 if ($log) {
-                    $this->logTerm($fields['term']);
+                    if(is_string($fields['term'])) {
+                        $this->logTerm($fields['term']);
+                    } else if(is_string($fields['termOriginal'])) {
+                        $this->logTerm($fields['termOriginal']);
+                    }
                 }
 
                 if(is_string($fields['term'])) {
