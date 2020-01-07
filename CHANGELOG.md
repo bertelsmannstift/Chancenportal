@@ -1,12 +1,20 @@
 # Changelog
 
-## Release 2019-11-04
+## Release 2020-01-07
 
-### BUGFIX: Handling der OpenThesaurus Suchbegriffe
+### BUGFIX: Excel Export von Angeboten
+Der Excel Export von Angeboten funktionierte auf Shared Hosting Systemen nicht 
 
 **Commits**
 
-* [https://github.com/bertelsmannstift/Chancenportal/commit/915ea8b001c99dcec8e0e3938897d991d94964de]()
+* [https://github.com/bertelsmannstift/Chancenportal/commit/495a285b40efa5f5755ca2bc055debd050cd6f38]()
+
+### FEATURE: Entwurf speichern
+Im Angebotsformular ist es nun auch möglich den aktuellen Stand als Entwurf zu speichern, ohne das Angebot direkt LIVE zu schalten, bzw. zur Freigabe einzureichen.  
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/495a285b40efa5f5755ca2bc055debd050cd6f38]()
 
 ## Release 2019-11-04
 
