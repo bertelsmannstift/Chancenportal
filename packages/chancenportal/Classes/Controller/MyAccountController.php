@@ -1792,7 +1792,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             foreach ($users as $user) {
                 $organisation['items'][] = [
                     'id' => $user->getUid(),
-                    'title' => (empty($user->getName()) ? $user->getOwnerGroup()->getTitle() : $user->getName()),
+                    'title' => (empty($user->getName()) ? $provider->getOwnerGroup()->getTitle() : $user->getName()),
                     'active' => $activeUser && $activeUser->getUid() === $user->getUid() ? true : false,
                 ];
             }
