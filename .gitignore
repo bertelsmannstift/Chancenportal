@@ -2,6 +2,7 @@
 # TYPO3
 ###########
 #web/typo3conf/LocalConfiguration.php
+web/typo3conf/PackageStates.php
 web/typo3conf/FIRST_INSTALL
 web/typo3conf/ENABLE_INSTALL_TOOL
 web/typo3conf/*.log
@@ -18,6 +19,7 @@ web/FIRST_INSTALL
 typo3cms
 TYPO3_systemlog.log
 mbox.txt
+var/
 .env
 /packages/ui_sitepackage/Resources/Public/assets/css/custom.css
 

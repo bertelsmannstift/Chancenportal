@@ -1,6 +1,7 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Repository;
 
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -11,10 +12,9 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
  *  (c) 2018
  *
  ***/
-
 /**
  * The repository for Labels
  */
 class LabelRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    }
+}

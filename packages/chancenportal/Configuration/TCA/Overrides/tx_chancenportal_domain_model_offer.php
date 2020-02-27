@@ -30,6 +30,23 @@ $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['date_type']['
     ['Wöchentlich', 4],
 ];
 
+$GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['slug'] = [
+    'exclude' => true,
+    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:pages.slug',
+    'config' => [
+        'type' => 'slug',
+        'size' => 50,
+        'generatorOptions' => [
+            'fields' => ['name'],
+            'fieldSeparator' => '/',
+            'prefixParentPageSlug' => true,
+        ],
+        'fallbackCharacter' => '-',
+        'eval' => 'uniqueInSite',
+        'default' => ''
+    ]
+];
+
 $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['categories']['config']['type'] = 'select';
 
 $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['tstamp']['config'] = [

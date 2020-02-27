@@ -1,10 +1,12 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Model;
 
+use Chancenportal\Chancenportal\Utility\AbstractUtility;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -15,12 +17,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  *  (c) 2018
  *
  ***/
-
 /**
  * Provider
  */
 class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * @var bool
      */
@@ -61,8 +63,16 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
+
+    /**
+     * slug
+     *
+     * @var string
+     */
+    protected $slug = '';
 
     /**
      * subline
@@ -121,6 +131,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $street = '';
 
@@ -129,6 +140,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $city = '';
 
@@ -137,6 +149,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $email = '';
 
@@ -271,7 +284,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * labels
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Label>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $labels = null;
@@ -280,7 +293,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * offers
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $offers = null;
@@ -289,7 +302,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * ownerGroup
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $ownerGroup = null;
@@ -298,7 +311,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * carrier
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Carrier
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $carrier = null;
 
@@ -306,7 +319,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $categories = null;
 
@@ -314,7 +327,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $creator = null;
 
@@ -322,7 +335,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * author
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $author = null;
 
@@ -393,6 +406,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setName($name)
     {
         $this->name = $name;
+        $this->setSlug(AbstractUtility::generateSlug($this->name, 'tx_chancenportal_domain_model_provider'));
     }
 
     /**
@@ -483,6 +497,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
         $setting = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
         $this->setPid($setting['chancenportal']['storagePids']['provider']);
+
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
@@ -919,10 +934,12 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     private function deleteImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
     {
-        try {    $resourceFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
+        try {
+            $resourceFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
             $fileReferenceObject = $resourceFactory->getFileReferenceObject($image->getUid());
             $fileReferenceObject->getOriginalFile()->delete();
-        } catch (\Exception $e) {    error_log($e->getMessage());
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
         }
     }
 
@@ -1159,7 +1176,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a Offer
      *
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param \Chancenportal\Chancenportal\Domain\Model\Offer $offer
      * @return void
      */
@@ -1192,7 +1209,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the offers
      *
-     * @ignorevalidation $offers
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offers")
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer> $offers
      * @return void
      */
@@ -1517,5 +1534,26 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setParticipation($participation)
     {
         $this->participation = $participation;
+    }
+
+    /**
+     * Returns the slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Sets the slug
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
     }
 }

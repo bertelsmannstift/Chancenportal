@@ -1,6 +1,7 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Model;
 
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -11,12 +12,12 @@ namespace Chancenportal\Chancenportal\Domain\Model;
  *  (c) 2018
  *
  ***/
-
 /**
  * Log
  */
 class Log extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * date
      *
@@ -107,7 +108,6 @@ class Log extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->category = $category;
     }
-
     public function __construct()
     {
         $this->date = new \DateTime();

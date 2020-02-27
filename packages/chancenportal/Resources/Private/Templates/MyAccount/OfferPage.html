@@ -11,36 +11,34 @@
         </div>
     </f:if>
 
-
-        <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-            <f:then>
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex margin-inner">
-                        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
-                    </div>
+    <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+        <f:then>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 margin-inner-sm flex margin-inner">
+                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
                 </div>
-            </f:then>
-            <f:else>
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
-                        <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
-                    </div>
-                    <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
-                        <form action="" method="post" enctype="multipart/form-data" style="display: block; width: 100%;">
-                            <custom-upload-button accept="application/xls" submit="true" name="import_file">
-                                Neue Angebote importieren (Excel)
-                            </custom-upload-button>
-                        </form>
-                    </div>
+            </div>
+        </f:then>
+        <f:else>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
+                    <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.offer_new)}" class="btn btn--full">+ neues Angebot anlegen</a>
                 </div>
-                <div class="row margin-inner">
-                    <div class="col-lg-6 col-sm-12 margin-inner-sm col-lg-offset-6 text-right" style="margin-top: 10px">
-                        <a href="{settings.chancenportal.import_template}" class="my-account__download" ><span>Importvorlage herunterladen</span></a>
-                    </div>
+                <div class="col-lg-6 col-sm-12 margin-inner-sm flex">
+                    <form action="" method="post" enctype="multipart/form-data" style="display: block; width: 100%;">
+                        <custom-upload-button accept="application/xls" submit="true" name="import_file">
+                            Neue Angebote importieren (Excel)
+                        </custom-upload-button>
+                    </form>
                 </div>
-            </f:else>
-        </f:security.ifHasRole>
-
+            </div>
+            <div class="row margin-inner">
+                <div class="col-lg-6 col-sm-12 margin-inner-sm col-lg-offset-6 text-right" style="margin-top: 10px">
+                    <a href="{settings.chancenportal.import_template}" class="my-account__download" ><span>Importvorlage herunterladen</span></a>
+                </div>
+            </div>
+        </f:else>
+    </f:security.ifHasRole>
 
     <div class="row">
         <div class="col-lg-12">
@@ -98,12 +96,12 @@
                                         <c:ExtractCity address="{offer.address}" />
                                     </td>
                                     <td>
-                                        <f:if condition="{offer.creator.name}">
+                                        <f:if condition="{offer.creator}">
                                             <f:then>
                                                 {offer.creator.name}
                                             </f:then>
                                             <f:else>
-                                                Benutzer gelöscht
+                                                Kein Benutzer zugewiesen
                                             </f:else>
                                         </f:if>
                                     </td>
@@ -118,7 +116,7 @@
                                                 {offer.lastEditor.name}
                                             </f:then>
                                             <f:else>
-                                                Benutzer gelöscht
+                                                Kein Benutzer zugewiesen
                                             </f:else>
                                         </f:if>
                                     </td>

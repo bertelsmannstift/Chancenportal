@@ -34,6 +34,8 @@ plugin.tx_chancenportal_chancenportal {
         use_zip_filter = 1
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=E-Mail Sender
         email_sender = chancenportal@example.org
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Id des Contentelements mit den Nutzungsbedingungen
+        terms_and_condition_element_id = 41
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Importvorlage
         import_template_path = /fileadmin/vorlage.xlsx
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=ssconvert Pfad
@@ -48,6 +50,8 @@ plugin.tx_chancenportal_chancenportal {
         show_google_translator = 0
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=ähnliche Wörter als Suchvorschläge anzeigen
         search_show_similiar = 1
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Filter standardmäßig ausgeklappt
+        filter_folded_out = 1
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Email als User Header für Openthesaurus als Kontaktmöglichkeit (aktiviert 'Meinten Sie' Funktionilität)
         search_user_header_openthesaurus = chancenportal@example.org
     }

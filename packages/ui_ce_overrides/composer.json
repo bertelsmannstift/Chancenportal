@@ -4,9 +4,8 @@
     "description": "",
     "authors": [],
     "require": {
-        "typo3/cms-core": "^8.7",
         "ui/ui-ce": "@dev",
-        "ui/ui-provider": "@dev"
+        "uandi-typo3/ui_provider": "^9.5"
     },
     "autoload": {
         "psr-4": {

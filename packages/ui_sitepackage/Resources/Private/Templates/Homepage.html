@@ -13,11 +13,11 @@
                 <v:page.menu as="lvl1" pageUid="{settings.chancenportal.pageIds.myaccount}">
                     <ul class="my-account-menu">
                         <f:for each="{lvl1}" as="lvl1_item" iteration="iterator">
-                            <f:variable name="navigation_title" value="{lvl1_item.nav_title -> v:or(alternative: lvl1_item.title)}"/>
                             <li>
+                                <f:variable name="navTitle">{f:if(condition: '{lvl1_item.nav_title}', then: '{lvl1_item.nav_title}', else: '{lvl1_item.title}')}</f:variable>
                                 <f:link.page pageUid="{lvl1_item.uid}" class="{f:if(condition: '{lvl1_item.active} == 1', then: 'my-account-menu--active' )}"
-                                             additionalAttributes="{data-title: navigation_title}">
-                                    {navigation_title}
+                                             additionalAttributes="{data-title: navTitle}">
+                                    {navTitle}
                                 </f:link.page>
                             </li>
 
@@ -40,7 +40,7 @@
                 </v:page.menu>
             </div>
             <div class="col-lg-8 col-sm-12 col-sm-offset-0 col-lg-offset-1">
-                <v:content.render column="0" slide=""/>
+                <f:format.raw><v:content.render column="0" slide=""/></f:format.raw>
             </div>
         </div>
     </section>

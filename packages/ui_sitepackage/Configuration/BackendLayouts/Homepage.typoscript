@@ -16,7 +16,7 @@ mod.web_layout.BackendLayouts {
                                 colspan = 1
                                 rowspan = 1
                                 colPos = 0
-                                allowed = flux_onecolumn, flux_twocolumn, flux_threecolumn, html, list, uice_kachel_teaser, uice_text_btn, text, uice_text_image, uice_addtohomescreen
+                                allowed = uigrid_onecolumn, uigrid_twocolumn, uigrid_threecolumn, html, list, uice_kachel_teaser, uice_text_btn, text, uice_text_image, uice_addtohomescreen
                             }
                         }
                     }

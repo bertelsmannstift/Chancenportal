@@ -1,6 +1,7 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Model;
 
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -11,12 +12,12 @@ namespace Chancenportal\Chancenportal\Domain\Model;
  *  (c) 2018
  *
  ***/
-
 /**
  * FrontendUserGroup
  */
 class FrontendUserGroup extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
 {
+
     /**
      * @var bool
      */

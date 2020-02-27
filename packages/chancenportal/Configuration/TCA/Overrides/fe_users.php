@@ -48,12 +48,23 @@ $tmp_chancenportal_columns = [
             'type' => 'check',
             'items' => [
                 '1' => [
-                    '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                    '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                 ]
             ],
             'default' => 0,
         ]
-        
+    ],
+    'terms_and_conditions_date' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_frontenduser.terms_and_conditions_date',
+        'config' => [
+            'dbType' => 'datetime',
+            'type' => 'input',
+            'renderType' => 'inputDateTime',
+            'size' => 12,
+            'eval' => 'datetime',
+            'default' => null,
+        ],
     ],
 
 ];
@@ -72,7 +83,7 @@ if (isset($GLOBALS['TCA']['fe_users']['types']['0']['showitem'])) {
     $GLOBALS['TCA']['fe_users']['types']['Tx_Chancenportal_FrontendUser']['showitem'] = '';
 }
 $GLOBALS['TCA']['fe_users']['types']['Tx_Chancenportal_FrontendUser']['showitem'] .= ',--div--;LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_frontenduser,';
-$GLOBALS['TCA']['fe_users']['types']['Tx_Chancenportal_FrontendUser']['showitem'] .= 'password_reset_hash, confirmation_send';
+$GLOBALS['TCA']['fe_users']['types']['Tx_Chancenportal_FrontendUser']['showitem'] .= 'password_reset_hash, confirmation_send, terms_and_conditions_date';
 
 $GLOBALS['TCA']['fe_users']['columns'][$GLOBALS['TCA']['fe_users']['ctrl']['type']]['config']['items'][] = ['LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:fe_users.tx_extbase_type.Tx_Chancenportal_FrontendUser','Tx_Chancenportal_FrontendUser'];
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

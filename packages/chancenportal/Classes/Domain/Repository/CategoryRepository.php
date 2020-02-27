@@ -1,6 +1,7 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Repository;
 
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -11,18 +12,15 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
  *  (c) 2018
  *
  ***/
-
 /**
  * The repository for Categories
  */
 class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    protected $defaultOrderings = [
-        'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-    ];
-
+    protected $defaultOrderings = ['name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING];
     public function initializeObject()
     {
+
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
         $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
         $querySettings->setRespectStoragePage(false);

@@ -1,0 +1,18 @@
+/**
+ * Ajax Rendering Configuration
+ */
+ajax = PAGE
+ajax {
+    typeNum = 1337
+    config {
+        disableAllHeaderCode = 1
+        debug = 0
+        no_cache = 1
+        additionalHeaders {
+            10 {
+                header = Content-Type: application/json
+                replace = 1
+            }
+        }
+    }
+}

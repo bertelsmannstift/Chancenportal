@@ -16,26 +16,26 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,address,lat,lng,info,short_description,long_description,speaker,images,youtube,conditions_of_participation,course_number,allowed_participants,costs,all_ages,access,accessibility,participate,donate,provider_cooperation,format,no_costs,contact_salutation,contact_name,contact_jurisdiction,contact_phone,contact_email,contact_image,active,content_image,active_date,zip,city,street,approved,date_type,start_date,end_date,reminder_email_send,images_copyright,content_image_copyright,participation,dates,target_groups,categories,district,creator,last_editor',
+        'searchFields' => 'name,slug,address,lat,lng,info,short_description,long_description,speaker,youtube,conditions_of_participation,course_number,allowed_participants,costs,participate,donate,provider_cooperation,format,contact_name,contact_jurisdiction,contact_phone,contact_email,zip,city,street,images_copyright,content_image_copyright,opening_hours',
         'iconfile' => 'EXT:chancenportal/Resources/Public/Icons/tx_chancenportal_domain_model_offer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, dates, target_groups, categories, district, creator, last_editor',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, dates, target_groups, categories, district, creator, last_editor, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'special' => 'languages',
                 'items' => [
                     [
-                        'LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',
+                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
                         -1,
                         'flags-multiple'
                     ]
@@ -46,7 +46,7 @@ return [
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -55,7 +55,7 @@ return [
                     ['', 0],
                 ],
                 'foreign_table' => 'tx_chancenportal_domain_model_offer',
-                'foreign_table_where' => 'AND tx_chancenportal_domain_model_offer.pid=###CURRENT_PID### AND tx_chancenportal_domain_model_offer.sys_language_uid IN (-1,0)',
+                'foreign_table_where' => 'AND {#tx_chancenportal_domain_model_offer}.{#pid}=###CURRENT_PID### AND {#tx_chancenportal_domain_model_offer}.{#sys_language_uid} IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -64,7 +64,7 @@ return [
             ],
         ],
         't3ver_label' => [
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.versionLabel',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -73,45 +73,46 @@ return [
         ],
         'hidden' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
                 'items' => [
-                    '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                    [
+                        0 => '',
+                        1 => '',
+                        'invertStateDisplay' => true
                     ]
                 ],
             ],
         ],
         'starttime' => [
             'exclude' => true,
-            'behaviour' => [
-                'allowLanguageSynchronization' => true
-            ],
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
             ],
         ],
         'endtime' => [
             'exclude' => true,
-            'behaviour' => [
-                'allowLanguageSynchronization' => true
-            ],
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
-                'size' => 13,
-                'eval' => 'datetime',
+                'eval' => 'datetime,int',
                 'default' => 0,
                 'range' => [
                     'upper' => mktime(0, 0, 0, 1, 1, 2038)
                 ],
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
             ],
         ],
 
@@ -122,6 +123,15 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
+            ],
+        ],
+        'slug' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_offer.slug',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ],
         ],
         'address' => [
@@ -298,12 +308,11 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
         ],
         'access' => [
             'exclude' => true,
@@ -376,12 +385,11 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
         ],
         'contact_salutation' => [
             'exclude' => true,
@@ -488,12 +496,11 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
         ],
         'content_image' => [
             'exclude' => true,
@@ -592,12 +599,11 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
         ],
         'date_type' => [
             'exclude' => true,
@@ -644,12 +650,11 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
         ],
         'images_copyright' => [
             'exclude' => true,
@@ -676,12 +681,21 @@ return [
                 'type' => 'check',
                 'items' => [
                     '1' => [
-                        '0' => 'LLL:EXT:lang/Resources/Private/Language/locallang_core.xlf:labels.enabled'
+                        '0' => 'LLL:EXT:lang/locallang_core.xlf:labels.enabled'
                     ]
                 ],
                 'default' => 0,
             ]
-            
+        ],
+        'opening_hours' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_offer.opening_hours',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim'
+            ]
         ],
         'dates' => [
             'exclude' => true,

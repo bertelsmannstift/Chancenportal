@@ -1,0 +1,32 @@
+/**
+ * General Configuration
+ * https://docs.typo3.org/m/typo3/reference-typoscript/9.5/en-us/Setup/Config/Index.html
+ */
+config {
+	absRefPrefix = /
+	no_cache = {$config.no_cache}
+	noPageTitle = 2
+	linkVars = L
+	metaCharset = utf-8
+	inlineStyle2TempFile = 1
+	debug = 0
+	admPanel = {$config.admPanel}
+	sendCacheHeaders = 0
+	typolinkEnableLinksAcrossDomains = 1
+	intTarget =
+	extTarget = _blank
+	disablePrefixComment = 1
+
+	headerComment (
+	    {$config.headerComment}
+	)
+
+	// Compression and Concatenation of CSS and JS Files
+	compressJs = {$config.compressJs}
+	compressCss = {$config.compressCss}
+	concatenateJs = {$config.concatenateJs}
+	concatenateCss = {$config.concatenateCss}
+
+	// ExceptionHandler
+	contentObjectExceptionHandler = {$config.contentObjectExceptionHandler}
+}

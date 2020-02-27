@@ -9,6 +9,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_provider.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_provider.slug">
+				<source>Slug</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_provider.subline">
 				<source>Subline</source>
 			</trans-unit>
@@ -119,6 +122,9 @@
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.name">
 				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.slug">
+				<source>Slug</source>
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.address">
 				<source>Address</source>
@@ -243,6 +249,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_offer.participation">
 				<source>Participation</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.opening_hours">
+				<source>Opening Hours</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.dates">
 				<source>Dates</source>
 			</trans-unit>
@@ -296,6 +305,9 @@
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_frontenduser.confirmation_send">
 				<source>Confirmation Send</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_frontenduser.terms_and_conditions_date">
+				<source>Terms And Conditions Date</source>
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_frontendusergroup">
 				<source>Frontend User Group</source>
@@ -351,6 +363,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_log.offer">
 				<source>Offer</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.provider">
+				<source>Provider</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_category.highlight_color">
 				<source>Highlight Color</source>
 			</trans-unit>
@@ -368,9 +383,6 @@
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_date.type">
 				<source>Type</source>
-			</trans-unit>
-			<trans-unit id="tx_chancenportal_domain_model_offer.provider">
-				<source>Provider</source>
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_provider.teaser_images">
 				<source>Teaser Images</source>

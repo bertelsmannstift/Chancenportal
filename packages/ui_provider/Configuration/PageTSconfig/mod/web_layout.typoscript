@@ -1,0 +1,13 @@
+/**
+ * Options for BE Web Layout
+ * https://docs.typo3.org/m/typo3/reference-tsconfig/9.5/en-us/PageTsconfig/Mod.html#web-layout
+ */
+mod.web_layout {
+	/**
+	 * Disable the "Translate" button when translating page content
+	 */
+	localization {
+		enableTranslate = 0
+		enableCopy = 1
+	}
+}

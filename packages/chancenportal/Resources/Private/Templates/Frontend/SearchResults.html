@@ -8,7 +8,7 @@
                 <div>
                     <custom-ajax-form ajax="true" result-count-selector='[".search__count--offers", ".search__count--providers"]' count-on-selector='[".kachel-list__items--offers > div", ".kachel-list__items--providers > div"]' url="{t:uri.ajaxAction( action: 'searchResultAjax', controller: 'Frontend', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}'  ) -> f:format.htmlentities()}" method="get" content-selector=".kachel-list__items-wrapper" class="search">
                         <v:variable.set name="search_box_headline" value="Was für Angebote suchen Sie?" />
-                        <v:variable.set name="auto_submit" value="1" />
+                        <v:variable.set name="auto_submit" value="0" />
                         <v:variable.set name="show_more" value="1" />
                         <f:render partial="SearchBox" arguments="{_all}" />
                     </custom-ajax-form>

@@ -2,6 +2,9 @@
 
 namespace Chancenportal\Chancenportal\ViewHelper;
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class FormConfigurationViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\AbstractFormFieldViewHelper
 {
     /** * Keep the parent from preparing the TagBuilder. * * @return void */
@@ -23,7 +26,7 @@ class FormConfigurationViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abst
     public function render()
     {
         $name = $this->arguments['property']; //$this->getName();
-        $allowedPropertyNames = \TYPO3\CMS\Extbase\Utility\ArrayUtility::trimExplode(',',
+        $allowedPropertyNames = GeneralUtility::trimExplode(',',
             $this->arguments['allowProperties']);
         foreach ($allowedPropertyNames as $allowedPropertyName) {
             for ($i = 0; $i <= $this->arguments['count']; $i++) {

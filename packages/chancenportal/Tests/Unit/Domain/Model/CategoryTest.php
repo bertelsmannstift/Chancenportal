@@ -4,7 +4,7 @@ namespace Chancenportal\Chancenportal\Tests\Unit\Domain\Model;
 /**
  * Test case.
  */
-class CategoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CategoryTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
 {
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Category

@@ -1,0 +1,56 @@
+/**
+ * Page Rendering Constants
+ */
+page {
+    meta {
+        copyright =
+        rating =
+        revisit = 7 days
+        robots = index,follow
+        robots.no_search = noindex,nofollow
+
+        viewport = width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no
+        apple-mobile-web-app-capable = no
+        compatible = IE=edge
+        google = notranslate
+    }
+
+    fluidtemplate {
+        layoutRootPath =
+        partialRootPath =
+        templateRootPath =
+    }
+}
+
+/**
+ * Configuration Defaults
+ */
+config {
+    no_cache = 0
+    compressJs = 0
+    compressCss = 0
+    concatenateJs = 0
+    concatenateCss = 0
+    admPanel = 0
+    contentObjectExceptionHandler = 1
+    headerComment (
+		u+i interact
+	    Kommunikationsagentur
+	    www.uandi.com
+    )
+}
+
+/**
+ * https://docs.typo3.org/m/typo3/reference-typoscript/master/en-us/Conditions/Index.html
+ */
+[applicationContext matches "/^Development/"]
+    config {
+        no_cache = 1
+        compressJs = 0
+        compressCss = 0
+        concatenateJs = 0
+        concatenateCss = 0
+        admPanel = 1
+        contentObjectExceptionHandler = 0
+    }
+[GLOBAL]

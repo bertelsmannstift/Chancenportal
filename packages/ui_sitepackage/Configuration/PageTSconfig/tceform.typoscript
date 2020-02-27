@@ -30,6 +30,9 @@ TCEFORM {
 		 * Remove some CTypes
 		 */
 		CType {
+            // Content Elements
+            removeItems := removeFromList(text)
+
 			// Content Elements
 			removeItems := addToList(bullets, table, uploads)
 

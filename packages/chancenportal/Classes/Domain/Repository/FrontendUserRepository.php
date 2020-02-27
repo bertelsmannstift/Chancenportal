@@ -1,9 +1,13 @@
 <?php
+
 namespace Chancenportal\Chancenportal\Domain\Repository;
 
 use Chancenportal\Chancenportal\Domain\Model\FrontendUser;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -22,6 +26,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     public function initializeObject()
     {
+
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
         $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
         $querySettings->setRespectStoragePage(false);
@@ -33,7 +38,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Overload Find by UID to also get hidden records
      *
      * @param int $uid fe_users UID
-     * @return FrontendUser
+     * @return User
      */
     public function findByUid($uid)
     {
@@ -41,6 +46,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->ignoreEnableFieldsAndStoragePage($query);
         $query->getQuerySettings()->setRespectSysLanguage(false);
         $and = [$query->equals('uid', $uid)];
+
         /** @var User $user */
         $user = $query->matching($query->logicalAnd($and))->execute()->getFirst();
         return $user;
@@ -58,6 +64,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $this->ignoreEnableFieldsAndStoragePage($query);
         $query->getQuerySettings()->setRespectSysLanguage(false);
         $and = [$query->equals('username', $username)];
+
         /** @var User $user */
         $user = $query->matching($query->logicalAnd($and))->execute()->getFirst();
         return $user;
@@ -77,12 +84,14 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param FrontendUser $user
      * @param $filterOut
      * @return object
+     * @throws InvalidQueryException
      */
     public function findAllByUserGroup(FrontendUser $user, $filterOut = [])
     {
         $query = $this->createQuery();
         $this->ignoreEnableFieldsAndStoragePage($query);
         $groups = [];
+
         /**
          * Filter out non provider groups
          */
@@ -104,15 +113,18 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findFirstByEmailAndPassword(string $mail, string $pass)
     {
-        $objInstanceSaltedPw = SaltFactory::getSaltingInstance();
+        $hashFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
         $query = $this->createQuery();
         $this->ignoreEnableFieldsAndStoragePage($query, false);
         $and[] = $query->equals('username', $mail);
         $query->matching($query->logicalAnd($and));
         $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
         $user = $query->execute()->getFirst();
-        if ($user && $objInstanceSaltedPw->checkPassword($pass, $user->getPassword())) {
-            return $user;
+        if ($user) {
+            $hashInstance = $hashFactory->get($user->getPassword(), 'FE');
+            if ($user && $hashInstance->checkPassword($pass, $user->getPassword())) {
+                return $user;
+            }
         }
         return null;
     }

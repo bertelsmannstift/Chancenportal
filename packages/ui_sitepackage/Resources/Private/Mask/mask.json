@@ -19,7 +19,7 @@
                     "Text"
                 ]
             },
-            "text_btn": {PageLayoutViewDrawItem
+            "text_btn": {
                 "label": "Text Button Element",
                 "key": "text_btn",
                 "shortLabel": "",

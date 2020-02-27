@@ -27,7 +27,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "159579131645"
@@ -44,6 +43,17 @@
                             "propertyName": "name",
                             "propertyType": "String",
                             "uid": "217378583702"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "slug",
+                            "propertyType": "String",
+                            "uid": "1391795594461"
                         },
                         {
                             "allowedFileTypes": "",
@@ -441,8 +451,8 @@
         {
             "config": {
                 "position": [
-                    1502,
-                    294
+                    1785,
+                    832
                 ]
             },
             "name": "New Model Object",
@@ -465,7 +475,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "150078503681"
@@ -482,6 +491,17 @@
                             "propertyName": "name",
                             "propertyType": "String",
                             "uid": "206114050133"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "slug",
+                            "propertyType": "String",
+                            "uid": "75017456028"
                         },
                         {
                             "allowedFileTypes": "",
@@ -933,6 +953,17 @@
                             "propertyName": "participation",
                             "propertyType": "Boolean",
                             "uid": "979116733336"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "openingHours",
+                            "propertyType": "Text",
+                            "uid": "1358387301971"
                         }
                     ]
                 },
@@ -1035,7 +1066,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "333430180433"
@@ -1098,7 +1128,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "1013478154098"
@@ -1194,7 +1223,6 @@
                     "description": "",
                     "mapToTable": "fe_users",
                     "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\FrontendUser",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "827755377219"
@@ -1222,6 +1250,17 @@
                             "propertyName": "confirmationSend",
                             "propertyType": "Boolean",
                             "uid": "1115997268507"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "termsAndConditionsDate",
+                            "propertyType": "NativeDateTime",
+                            "uid": "1406491705322"
                         }
                     ]
                 },
@@ -1233,8 +1272,8 @@
         {
             "config": {
                 "position": [
-                    179,
-                    17
+                    195,
+                    59
                 ]
             },
             "name": "New Model Object",
@@ -1257,7 +1296,6 @@
                     "description": "",
                     "mapToTable": "fe_groups",
                     "parentClass": "\\TYPO3\\CMS\\Extbase\\Domain\\Model\\FrontendUserGroup",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "710177027985"
@@ -1297,7 +1335,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "470778733654"
@@ -1325,8 +1362,8 @@
         {
             "config": {
                 "position": [
-                    791,
-                    477
+                    661,
+                    435
                 ]
             },
             "name": "New Model Object",
@@ -1349,7 +1386,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "745347220504"
@@ -1446,7 +1482,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": true,
                     "type": "Entity",
                     "uid": "877407315637"
@@ -1498,7 +1533,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": true,
                     "type": "Entity",
                     "uid": "1287784081704"
@@ -1526,8 +1560,8 @@
         {
             "config": {
                 "position": [
-                    345,
-                    773
+                    438,
+                    819
                 ]
             },
             "name": "New Model Object",
@@ -1550,7 +1584,6 @@
                     "description": "",
                     "mapToTable": "",
                     "parentClass": "",
-                    "skipTypeConfiguration": false,
                     "sorting": false,
                     "type": "Entity",
                     "uid": "436574309390"
@@ -1622,7 +1655,7 @@
             "skipGenerateDocumentationTemplate": true,
             "sourceLanguage": "de",
             "state": "stable",
-            "targetVersion": "8.7.0-8.7.99",
+            "targetVersion": "9.5.0-9.5.99",
             "version": "1.0.0"
         },
         "extensionKey": "chancenportal",
@@ -1851,8 +1884,8 @@
         }
     ],
     "log": {
-        "last_modified": "2019-08-19 12:50",
-        "extension_builder_version": "8.10.3",
+        "last_modified": "2020-01-15 02:02",
+        "extension_builder_version": "9.10.2",
         "be_user": " (2)"
     }
 }

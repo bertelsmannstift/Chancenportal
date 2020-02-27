@@ -7,7 +7,6 @@ use Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup;
 use Chancenportal\Chancenportal\Domain\Model\Provider;
 use Chancenportal\Chancenportal\Domain\Repository\FrontendUserRepository;
 use Chancenportal\Chancenportal\Domain\Repository\ProviderRepository;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
@@ -68,12 +67,13 @@ class UserUtility extends AbstractUtility
     /**
      * @return array
      */
-    static function getAdminEMails() {
+    static function getAdminEMails()
+    {
         $admins = [];
         $userRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(FrontendUserRepository::class);
         $users = $userRepository->findAll();
-        foreach($users as $user) {
-            if(UserUtility::isAdmin($user)) {
+        foreach ($users as $user) {
+            if (UserUtility::isAdmin($user)) {
                 $admins[$user->getUsername()] = $user->getUsername();
             }
         }
@@ -83,12 +83,13 @@ class UserUtility extends AbstractUtility
     /**
      * @return array
      */
-    static function getAdmins() {
+    static function getAdmins()
+    {
         $admins = [];
         $userRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(FrontendUserRepository::class);
         $users = $userRepository->findAll();
-        foreach($users as $user) {
-            if(UserUtility::isAdmin($user)) {
+        foreach ($users as $user) {
+            if (UserUtility::isAdmin($user)) {
                 $admins[$user->getUid()] = $user;
             }
         }
@@ -101,7 +102,7 @@ class UserUtility extends AbstractUtility
      */
     public static function getUsersByProvider(Provider $provider)
     {
-        if(!$provider->getOwnerGroup()) {
+        if (!$provider->getOwnerGroup()) {
             return [];
         }
         $userRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(FrontendUserRepository::class);
@@ -111,7 +112,7 @@ class UserUtility extends AbstractUtility
 
         $constraints[] = $query->equals('usergroup.uid', $provider->getOwnerGroup()->getUid());
         $query->matching($query->logicalAnd($constraints));
-        
+
         return $query->execute();
     }
 
@@ -135,37 +136,39 @@ class UserUtility extends AbstractUtility
     /**
      * Returns the organisation group from a user
      *
-     * @param FrontendUser $user
+     * @param mixed $user
      * @return FrontendUserGroup|null
      */
-    public static function getOrganisationGroup(FrontendUser $user)
+    public static function getOrganisationGroup($user)
     {
-        $permissions = self::getPermissions();
-        foreach ($user->getUsergroup() as $usergroup) {
-            // check all groups that are NOT a permission
-            if ($usergroup && !isset($permissions[$usergroup->getUid()])) {
-                return $usergroup;
+        if ($user) {
+            $permissions = self::getPermissions();
+            foreach ($user->getUsergroup() as $usergroup) {
+                // check all groups that are NOT a permission
+                if ($usergroup && !isset($permissions[$usergroup->getUid()])) {
+                    return $usergroup;
+                }
             }
         }
         return null;
     }
 
     /**
-     * @param FrontendUser $user
+     * @param $user
      * @param null $providers
      * @return null
      */
-    public static function getUserProvider(FrontendUser $user, $providers = null)
+    public static function getUserProvider($user, $providers = null)
     {
-        if($providers === null) {
+        if ($providers === null) {
             $providerRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(ProviderRepository::class);
             $providers = $providerRepository->findAll();
         }
 
         $group = self::getOrganisationGroup($user);
-        if($group) {
+        if ($group) {
             foreach ($providers as $provider) {
-                if($provider->getOwnerGroup() && $provider->getOwnerGroup()->getUid() === $group->getUid()) {
+                if ($provider->getOwnerGroup() && $provider->getOwnerGroup()->getUid() === $group->getUid()) {
                     return $provider;
                 }
             }
@@ -211,7 +214,8 @@ class UserUtility extends AbstractUtility
      * @param string $groupKey
      * @return bool
      */
-    public static function isGroupOfType(FrontendUserGroup $usergroup, $groupKey = 'admin_group') {
+    public static function isGroupOfType(FrontendUserGroup $usergroup, $groupKey = 'admin_group')
+    {
         $permissions = array_flip(self::getPermissions());
         return $usergroup->getUid() === $permissions[$groupKey];
     }

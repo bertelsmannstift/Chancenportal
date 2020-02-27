@@ -31,18 +31,19 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @param array $offerDates
      * @return string
      */
-    public function outputConcreteData($latestDate = null, $offerDates = []) {
+    public function outputConcreteData($latestDate = null, $offerDates = [])
+    {
         $explicitDate = $this->arguments['date'];
 
         $abbreviationDot = (substr(strftime("%a"), -1) === '.') ? '' : '.';
 
         // Konkrete Daten
-        if($latestDate && count($offerDates) > 1 && $this->arguments['latest'] === false && !$explicitDate && $this->arguments['output'] === 'date') {
+        if ($latestDate && count($offerDates) > 1 && $this->arguments['latest'] === false && !$explicitDate && $this->arguments['output'] === 'date') {
             return 'Mehrere Termine, nächster ' . strftime("%a$abbreviationDot, %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
-        } elseif($latestDate) {
-            if($this->arguments['output'] === 'date') {
+        } elseif ($latestDate) {
+            if ($this->arguments['output'] === 'date') {
                 return strftime("%a$abbreviationDot, %d.%m.%Y", $latestDate->getStartDate()->getTimestamp());
-            } elseif($this->arguments['output'] === 'time') {
+            } elseif ($this->arguments['output'] === 'time') {
                 return $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ' - ' . $latestDate->getEndTime());
             }
         }
@@ -53,22 +54,23 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @param array $offerDates
      * @return string
      */
-    public function outputPeriod($latestDate = null, $offerDates = []) {
+    public function outputPeriod($latestDate = null, $offerDates = [])
+    {
         $explicitDate = $this->arguments['date'];
 
-        if(!$explicitDate && count($offerDates) > 1 && $this->arguments['latest'] === false && $latestDate) {
+        if (!$explicitDate && count($offerDates) > 1 && $this->arguments['latest'] === false && $latestDate) {
 
-            if($this->arguments['output'] === 'date') {
+            if ($this->arguments['output'] === 'date') {
                 return 'Mehrere Termine, nächster ' . $latestDate->getStartDate()->format('d.m.Y') . ' - ' . $latestDate->getEndDate()->format('d.m.Y');
             }
-        } elseif($latestDate) {
-            if($this->arguments['output'] === 'date') {
-                if($this->arguments['long']) {
-                    return 'Vom ' . $latestDate->getStartDate()->format('d.m.Y') . "\nBeginn um: " . $latestDate->getStartTime() .  " Uhr\nBis " . $latestDate->getEndDate()->format('d.m.Y') . "\nEndet um: " . $latestDate->getEndTime() . ' Uhr';
+        } elseif ($latestDate) {
+            if ($this->arguments['output'] === 'date') {
+                if ($this->arguments['long']) {
+                    return 'Vom ' . $latestDate->getStartDate()->format('d.m.Y') . "\nBeginn um: " . $latestDate->getStartTime() . " Uhr\nBis " . $latestDate->getEndDate()->format('d.m.Y') . "\nEndet um: " . $latestDate->getEndTime() . ' Uhr';
                 } else {
                     return $latestDate->getStartDate()->format('d.m.Y') . ' - ' . $latestDate->getEndDate()->format('d.m.Y');
                 }
-            } elseif($this->arguments['output'] === 'time') {
+            } elseif ($this->arguments['output'] === 'time') {
                 return '';
             }
             return $latestDate->getStartDate()->format('d.m.Y') . ' - ' . $latestDate->getEndDate()->format('d.m.Y') . ' ' . $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ' - ' . $latestDate->getEndTime());
@@ -82,27 +84,28 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @return string
      * @throws \Exception
      */
-    public function outputEveryDay($offer = null, $latestDate = null, $offerDates = []) {
+    public function outputEveryDay($offer = null, $latestDate = null, $offerDates = [])
+    {
         $explicitDate = $this->arguments['date'];
         $now = new \DateTime('midnight');
 
-        if(!$explicitDate && count($offerDates) > 1 && $this->arguments['latest'] === false) {
-            if($this->arguments['output'] === 'date') {
+        if (!$explicitDate && count($offerDates) > 1 && $this->arguments['latest'] === false) {
+            if ($this->arguments['output'] === 'date') {
                 return 'Mehrere Termine, nächster ' . ($latestDate ? $latestDate->getStartDate()->format('d.m.Y') : $now->format('d.m.Y'));
-            } elseif($this->arguments['output'] === 'time') {
+            } elseif ($this->arguments['output'] === 'time') {
                 return $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ' - ' . $latestDate->getEndTime());
             }
-        } elseif($explicitDate && $offerDates->count() > 0) {
-            if($this->arguments['output'] === 'date') {
-                return $explicitDate->getStartDate()->format('d.m.Y') .  ' - ' . $explicitDate->getEndDate()->format('d.m.Y') . ' täglich';
-            } elseif($this->arguments['output'] === 'time') {
+        } elseif ($explicitDate && $offerDates->count() > 0) {
+            if ($this->arguments['output'] === 'date') {
+                return $explicitDate->getStartDate()->format('d.m.Y') . ' - ' . $explicitDate->getEndDate()->format('d.m.Y') . ' täglich';
+            } elseif ($this->arguments['output'] === 'time') {
                 return $explicitDate->getStartTime() . ($explicitDate->getStartTime() === $explicitDate->getEndTime() ? '' : ' - ' . $explicitDate->getEndTime());
             }
-        } elseif($offerDates->count() > 0) {
-            if($this->arguments['output'] === 'date') {
+        } elseif ($offerDates->count() > 0) {
+            if ($this->arguments['output'] === 'date') {
                 $firstDate = $offer->getDates()->toArray()[0];
-                return $firstDate->getStartDate()->format('d.m.Y') .  ' - ' . $firstDate->getEndDate()->format('d.m.Y') . ' täglich';
-            } elseif($this->arguments['output'] === 'time' && count($offerDates) === 1) {
+                return $firstDate->getStartDate()->format('d.m.Y') . ' - ' . $firstDate->getEndDate()->format('d.m.Y') . ' täglich';
+            } elseif ($this->arguments['output'] === 'time' && count($offerDates) === 1) {
                 $firstDate = $offer->getDates()->toArray()[0];
                 return $firstDate->getStartTime() . ($firstDate->getStartTime() === $firstDate->getEndTime() ? '' : ' - ' . $firstDate->getEndTime());
             }
@@ -116,43 +119,44 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @return string
      * @throws \Exception
      */
-    public function outputWeekly($offer = null, $latestDate = null, $activeWeekDates = []) {
+    public function outputWeekly($offer = null, $latestDate = null, $activeWeekDates = [])
+    {
         $explicitDate = $this->arguments['date'];
         $now = new \DateTime('midnight');
 
-        if($this->arguments['output'] === 'date' && !$explicitDate) {
+        if ($this->arguments['output'] === 'date' && !$explicitDate) {
 
-            if(count($activeWeekDates) > 1) {
+            if (count($activeWeekDates) > 1) {
                 $days = [];
 
-                foreach($activeWeekDates as $day) {
-                    if($day->getStartDate()) {
+                foreach ($activeWeekDates as $day) {
+                    if ($day->getStartDate()) {
                         $days[] = strftime("%A", $day->getStartDate()->getTimestamp());
                     }
                 }
 
-                if($offer->getStartDate() > $now) {
-                    return 'Ab ' . $offer->getStartDate()->format('d.m.Y') .  ' jeden ' . implode(', ', $days);
+                if ($offer->getStartDate() > $now) {
+                    return 'Ab ' . $offer->getStartDate()->format('d.m.Y') . ' jeden ' . implode(', ', $days);
                 }
                 return 'Jeden ' . implode(', ', $days);
             }
 
-            if(count($activeWeekDates) === 1 && $activeWeekDates[0]->getStartDate()) {
-                if($offer->getStartDate() > $now) {
-                    return 'Ab ' . $offer->getStartDate()->format('d.m.Y') .  ' jeden ' . strftime("%A", $activeWeekDates[0]->getStartDate()->getTimestamp());
+            if (count($activeWeekDates) === 1 && $activeWeekDates[0]->getStartDate()) {
+                if ($offer->getStartDate() > $now) {
+                    return 'Ab ' . $offer->getStartDate()->format('d.m.Y') . ' jeden ' . strftime("%A", $activeWeekDates[0]->getStartDate()->getTimestamp());
                 }
                 return 'Jeden ' . strftime("%A", $activeWeekDates[0]->getStartDate()->getTimestamp());
             }
 
-        } elseif($latestDate && $this->arguments['output'] === 'time' && count($activeWeekDates) === 1 && !$explicitDate) {
+        } elseif ($latestDate && $this->arguments['output'] === 'time' && count($activeWeekDates) === 1 && !$explicitDate) {
 
             return $latestDate->getStartTime() . ($latestDate->getStartTime() === $latestDate->getEndTime() ? '' : ($latestDate->getEndTime() ? ' - ' . $latestDate->getEndTime() : ''));
 
-        } elseif($explicitDate && $explicitDate->getActive()) {
+        } elseif ($explicitDate && $explicitDate->getActive()) {
 
-            if($this->arguments['output'] === 'date' && $explicitDate->getStartDate()) {
-                return 'Jeden ' .  strftime("%A", $explicitDate->getStartDate()->getTimestamp());
-            } elseif($explicitDate->getStartDate()) {
+            if ($this->arguments['output'] === 'date' && $explicitDate->getStartDate()) {
+                return 'Jeden ' . strftime("%A", $explicitDate->getStartDate()->getTimestamp());
+            } elseif ($explicitDate->getStartDate()) {
                 return $explicitDate->getStartTime() . ($explicitDate->getStartTime() === $explicitDate->getEndTime() ? '' : ($explicitDate->getEndTime() ? ' - ' . $explicitDate->getEndTime() : ''));
             }
         }
@@ -164,7 +168,9 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      */
     public function render()
     {
-        setlocale(LC_ALL, 'de_DE');
+        if (setlocale(LC_ALL, 'de_DE', 'de_DE.utf8') === false) {
+            throw new \Exception('Can not set locale de_DE. Please install it.');
+        };
 
         $now = new \DateTime('midnight');
         $offer = $this->arguments['offer'];
@@ -176,20 +182,20 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
         if ($offer) {
             $offerDates = clone $offer->getDates();
 
-            if($offer->getDateType() === 4) {
+            if ($offer->getDateType() === 4) {
 
                 foreach ($offerDates as $date) {
-                    if($date->getActive() && (!$date->getEndDate() || $date->getEndDate() >= $now)) {
+                    if ($date->getActive() && (!$date->getEndDate() || $date->getEndDate() >= $now)) {
                         $activeWeekDates[] = $date;
                     }
                 }
-                foreach($activeWeekDates as $activeDate) {
-                    if(!$latestDate || $activeDate->getStartDate() <= $latestDate->getStartDate()) {
+                foreach ($activeWeekDates as $activeDate) {
+                    if (!$latestDate || $activeDate->getStartDate() <= $latestDate->getStartDate()) {
                         $latestDate = $activeDate;
                     }
                 }
 
-            } else if($offer->getDateType() === 3) {
+            } else if ($offer->getDateType() === 3) {
 
                 foreach ($offerDates as $date) {
                     if ($date->getStartDate() <= $now && $date->getEndDate() >= $now) {
@@ -202,7 +208,7 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
                     }
                 }
 
-            } else if($offer->getDateType() === 2) {
+            } else if ($offer->getDateType() === 2) {
 
                 foreach ($offerDates as $date) {
                     if (!$latestDate ||
@@ -223,7 +229,7 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
                     }
                 }
 
-            } elseif($offer->getDateType() === 1) {
+            } elseif ($offer->getDateType() === 1) {
 
                 foreach ($offerDates as $date) {
                     if ($date->getStartDate() >= $now) {
@@ -235,25 +241,25 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
             }
         }
 
-        if($explicitDate) {
+        if ($explicitDate) {
             $latestDate = $explicitDate;
 
-            if($explicitDate->getOffer()) {
+            if ($explicitDate->getOffer()) {
                 $offer = $explicitDate->getOffer();
             }
         }
 
         try {
-            if($offer->getDateType() === 1) {
+            if ($offer->getDateType() === 1) {
                 // Konkrete Daten
                 return $this->outputConcreteData($latestDate, $offerDates);
-            } else if($offer->getDateType() === 2) {
+            } else if ($offer->getDateType() === 2) {
                 // Zeitraum
                 return $this->outputPeriod($latestDate, $offerDates);
-            } else if($offer->getDateType() === 3) {
+            } else if ($offer->getDateType() === 3) {
                 // Täglich
                 return $this->outputEveryDay($offer, $latestDate, $offerDates);
-            } else if($offer->getDateType() === 4) {
+            } else if ($offer->getDateType() === 4) {
                 // Wöchentlich
                 return $this->outputWeekly($offer, $latestDate, $activeWeekDates);
             }
@@ -268,7 +274,8 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
      * @param \DateTime $startDate
      * @return mixed
      */
-    function getDayCountInMonth(\DateTime $startDate) {
+    function getDayCountInMonth(\DateTime $startDate)
+    {
 
         $dayNr = intval($startDate->format('w'));
         $firstDayOfMonth = clone $startDate;
@@ -276,7 +283,7 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
         $count = 0;
 
         while ($firstDayOfMonth <= $startDate) {
-            if(intval($firstDayOfMonth->format('w')) === $dayNr) {
+            if (intval($firstDayOfMonth->format('w')) === $dayNr) {
                 $count++;
             }
             $firstDayOfMonth->modify('+1 day');

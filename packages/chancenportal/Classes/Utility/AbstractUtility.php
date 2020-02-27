@@ -5,6 +5,7 @@ namespace Chancenportal\Chancenportal\Utility;
 use Chancenportal\Chancenportal\Domain\Repository\UserGroupRepository;
 use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Database\DatabaseConnection;
+use TYPO3\CMS\Core\DataHandling\SlugHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -146,11 +147,16 @@ abstract class AbstractUtility
     }
 
     /**
-     * @return BackendUserAuthentication
-     * @SuppressWarnings(PHPMD.Superglobals)
+     * @param $title
+     * @param $table
+     * @return string
      */
-    protected static function getBackendUserAuthentication()
+    public static function generateSlug($title, $table)
     {
-        return $GLOBALS['BE_USER'];
+        $title = preg_replace('/\//is', '-', $title);
+        $fieldName = 'slug';
+        $fieldConfig = $GLOBALS['TCA'][$table]['columns'][$fieldName]['config'];
+        $slugHelper = GeneralUtility::makeInstance(SlugHelper::class, $table, $fieldName, $fieldConfig);
+        return $slugHelper->sanitize('/' . $title);
     }
 }

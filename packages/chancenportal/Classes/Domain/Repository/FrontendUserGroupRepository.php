@@ -3,6 +3,7 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
 
 use Chancenportal\Chancenportal\Utility\UserUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -13,7 +14,6 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  *  (c) 2018
  *
  ***/
-
 /**
  * The repository for FrontendUserGroups
  */
@@ -21,6 +21,7 @@ class FrontendUserGroupRepository extends \TYPO3\CMS\Extbase\Persistence\Reposit
 {
     public function initializeObject()
     {
+
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
         $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
         $querySettings->setRespectStoragePage(false);

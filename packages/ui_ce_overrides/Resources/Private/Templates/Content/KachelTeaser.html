@@ -1,13 +1,13 @@
 <div class="kachel-teaser">
     <div class="kachel kachel--with-image"<f:if condition="{data_tx_uice_kachel_teaser_img.0}"> style="background-image:url('{f:uri.image(image: '{data_tx_uice_kachel_teaser_img.0}', maxWidth: '900')}');"</f:if>>
-        <f:link.page pageUid="{data.tx_uice_kachel_teaser_link}">
+        <f:link.typolink parameter="{data.tx_uice_kachel_teaser_link}">
             <div class="kachel__inner kachel__inner--nocontent">
                 <f:if condition="{data.tx_uice_kachel_teaser_cat}">
                     <div class="kachel__category">{data.tx_uice_kachel_teaser_cat}</div>
                 </f:if>
             </div>
             <div class="kachel__arrow"></div>
-        </f:link.page>
+        </f:link.typolink>
     </div>
     <div class="kachel-teaser__content">
         <f:if condition="{data.tx_uice_kachel_teaser_headline}">

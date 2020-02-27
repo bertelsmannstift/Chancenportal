@@ -1,11 +1,11 @@
 
 plugin.tx_chancenportal_chancenportal {
     view {
-        templateRootPaths.0 = EXT:{extension.extensionKey}/Resources/Private/Templates/
+        templateRootPaths.0 = EXT:{extension.shortExtensionKey}/Resources/Private/Templates/
         templateRootPaths.1 = {$plugin.tx_chancenportal_chancenportal.view.templateRootPath}
         partialRootPaths.0 = EXT:chancenportal/Resources/Private/Partials/
         partialRootPaths.1 = {$plugin.tx_chancenportal_chancenportal.view.partialRootPath}
-        layoutRootPaths.0 = EXT:chancenportal/Resources/Private/Layouts/
+        layoutRootPaths.0 = EXT:tx_chancenportal/Resources/Private/Layouts/
         layoutRootPaths.1 = {$plugin.tx_chancenportal_chancenportal.view.layoutRootPath}
     }
     persistence {

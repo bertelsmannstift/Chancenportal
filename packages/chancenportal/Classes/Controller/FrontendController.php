@@ -86,6 +86,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function processRequest(\TYPO3\CMS\Extbase\Mvc\RequestInterface $request, \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response)
     {
         try {
+            date_default_timezone_set('UTC');
             parent::processRequest($request, $response);
         } catch (\Exception $exception) {
             if ($exception instanceof \TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException || $exception instanceof \TYPO3\CMS\Extbase\Property\Exception\InvalidSourceException) {
@@ -134,7 +135,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param Offer $offer
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
@@ -157,7 +158,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param \Chancenportal\Chancenportal\Domain\Model\Provider|null $provider
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
@@ -177,18 +178,24 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function searchResultAjaxAction()
     {
+        $postVars = $this->similiarSearch();
         $this->view->assign('settings', $this->settings);
+        $this->view->assign('offers', $this->offerRepository->findByFields($postVars));
+        $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+    }
 
-        $PostVars = GeneralUtility::_POST();
-        if(!empty($PostVars['term'])) {
-            $similarTerms = $this->offerRepository->getSimilarSearchTerms($PostVars['term'], $this->settings);
+    /**
+     * @return mixed
+     */
+    protected function similiarSearch() {
+        $postVars = GeneralUtility::_POST();
+        if(!empty($postVars['term'])) {
+            $similarTerms = $this->offerRepository->getSimilarSearchTerms($postVars['term'], $this->settings);
             $this->view->assign('similarTerms', $similarTerms);
-            $PostVars['termOriginal'] = $PostVars['term'];
-            $PostVars['term'] = array_merge([$PostVars['term']], $similarTerms);
+            $postVars['termOriginal'] = $postVars['term'];
+            $postVars['term'] = array_merge([$postVars['term']], $similarTerms);
         }
-
-        $this->view->assign('offers', $this->offerRepository->findByFields($PostVars));
-        $this->view->assign('providers', $this->providerRepository->findByFields($PostVars, true, true));
+        return $postVars;
     }
 
     /**
@@ -328,9 +335,11 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             ]
         ];
 
+        $postVars = $this->similiarSearch();
+
         $this->view->assign('settings', $this->settings);
-        $this->view->assign('offers', $this->offerRepository->findAllActive());
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
+        $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true));
+        $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
         $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
         $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));

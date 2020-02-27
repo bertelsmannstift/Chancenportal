@@ -173,7 +173,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @ignorevalidation $user
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("user")
      * @param FrontendUser $user
      * @throws \ReflectionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
@@ -235,6 +235,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
             $persistenceManager->persistAll();
         }
 
+        $user->setTermsAndConditionsDate(new \DateTime());
         // After registration disable the user first
         $user->setDisable(true);
 
@@ -268,7 +269,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @param bool $registerDone
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function userManagementPageAction()
     {
@@ -395,6 +396,8 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
             $user->addUsergroup($currentUserPermissionGroup);
         }
 
+        $user->setTermsAndConditionsDate(new \DateTime());
+
         if($isAdmin || $isProvider) {
             if ($user->getUid()) {
                 $this->frontendUserRepository->update($user);
@@ -430,7 +433,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @ignorevalidation $user
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("user")
      * @param FrontendUser $user
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -469,7 +472,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @ignorevalidation $user
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("user")
      * @param FrontendUser|null $user
      * @param bool $saved
      * @param bool $error

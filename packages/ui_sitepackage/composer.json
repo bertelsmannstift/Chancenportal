@@ -4,7 +4,6 @@
     "description": "",
     "authors": [],
     "require": {
-        "typo3/cms-core": "^8.7",
-        "uandi-typo3/ui_provider": "^3.0.0"
+        "uandi-typo3/ui_provider": "^9.5"
     }
 }

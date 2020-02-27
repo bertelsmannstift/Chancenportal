@@ -3,6 +3,7 @@ namespace Chancenportal\Chancenportal\Domain\Model;
 
 use Chancenportal\Chancenportal\Utility\UserUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -13,12 +14,12 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  *  (c) 2018
  *
  ***/
-
 /**
  * FrontendUser
  */
 class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 {
+
     /**
      * @var bool
      */
@@ -96,6 +97,13 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      * @var bool
      */
     protected $confirmationSend = false;
+
+    /**
+     * termsAndConditionsDate
+     *
+     * @var \DateTime
+     */
+    protected $termsAndConditionsDate = null;
 
     /**
      * @return \DateTime
@@ -341,5 +349,26 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
         $setting = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
         $this->setPid($setting['chancenportal']['storagePids']['frontend_user']);
+    }
+
+    /**
+     * Returns the termsAndConditionsDate
+     *
+     * @return \DateTime $termsAndConditionsDate
+     */
+    public function getTermsAndConditionsDate()
+    {
+        return $this->termsAndConditionsDate;
+    }
+
+    /**
+     * Sets the termsAndConditionsDate
+     *
+     * @param \DateTime $termsAndConditionsDate
+     * @return void
+     */
+    public function setTermsAndConditionsDate(\DateTime $termsAndConditionsDate)
+    {
+        $this->termsAndConditionsDate = $termsAndConditionsDate;
     }
 }

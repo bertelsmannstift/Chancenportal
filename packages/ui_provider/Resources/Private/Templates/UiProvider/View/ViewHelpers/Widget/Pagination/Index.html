@@ -1,0 +1,98 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:uandi="http://typo3.org/ns/UI/UiProvider/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:render section="Pagination" arguments="{_all}" />
+
+    <f:section name="Pagination">
+        <ul class="ui__pagination">
+            <f:if condition="{pagination.previousPage}">
+                <li class="ui__pagination__first">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: 0,
+                        label: 'First Page'
+                    }" />
+                </li>
+                <li class="ui__pagination__previous">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: '{pagination.previousPageOffset}',
+                        label: 'Previous Page'
+                    }" />
+                </li>
+            </f:if>
+
+            <f:if condition="{pagination.displayRangeStart} > 1">
+                <li>
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: 0,
+                        label: '1'
+                    }" />
+                </li>
+            </f:if>
+
+            <f:if condition="{pagination.hasLessPages}">
+                <li>...</li>
+            </f:if>
+
+            <f:for each="{pagination.pages}" as="page">
+                <f:if condition="{page.isCurrent}">
+                    <f:then>
+                        <li class="ui__pagination__current">
+                            {page.number}
+                        </li>
+                    </f:then>
+                    <f:else>
+                        <li>
+                            <f:render section="Link" arguments="{
+                                pagination: pagination,
+                                offset: '{page.offset}',
+                                label: '{page.number}'
+                            }" />
+                        </li>
+                    </f:else>
+                </f:if>
+            </f:for>
+
+            <f:if condition="{pagination.hasMorePages}">
+                <li>...</li>
+            </f:if>
+
+            <f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+                <li class="ui__pagination__last">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: '{pagination.lastPageOffset}',
+                        label: '{pagination.numberOfPages}'
+                    }" />
+                </li>
+            </f:if>
+
+            <f:if condition="{pagination.nextPage}">
+                <li class="ui__pagination__next">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: '{pagination.nextPageOffset}',
+                        label: 'Next Page'
+                    }" />
+                </li>
+                <li class="ui__pagination__last">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: '{pagination.lastPageOffset}',
+                        label: 'Last Page'
+                    }" />
+                </li>
+            </f:if>
+        </ul>
+    </f:section>
+
+    <f:section name="Link">
+        <f:link.action action="{pagination.linkConfiguration.action}" controller="{pagination.linkConfiguration.controller}" extensionName="{pagination.linkConfiguration.extensionName}" pluginName="{pagination.linkConfiguration.pluginName}" arguments="{
+            offset: '{offset}'
+        }">
+            {label}
+        </f:link.action>
+    </f:section>
+
+</html>

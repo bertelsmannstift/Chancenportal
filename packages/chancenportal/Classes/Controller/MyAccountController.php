@@ -19,6 +19,7 @@ use Chancenportal\Chancenportal\Domain\Model\Offer;
 use Chancenportal\Chancenportal\Domain\Model\Provider;
 use Chancenportal\Chancenportal\Utility\MailUtility;
 use Chancenportal\Chancenportal\Utility\UserUtility;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -123,8 +124,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     public function processRequest(
         \TYPO3\CMS\Extbase\Mvc\RequestInterface $request,
         \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response
-    ) {
+    )
+    {
         try {
+            date_default_timezone_set('UTC');
             parent::processRequest($request, $response);
         } catch (\Exception $exception) {
             if (($exception instanceof \TYPO3\CMS\Extbase\Property\Exception\TargetNotFoundException) ||
@@ -174,6 +177,22 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             $this->view->assign('providers', count($providers));
         }
 
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tt_content');
+        $queryBuilder->getRestrictions()->removeAll();
+        $ts = $queryBuilder->from('tt_content')->select('tstamp')
+            ->where(
+                $queryBuilder->expr()->eq('uid', $this->settings['chancenportal']['terms_and_condition_element_id'])
+            )
+            ->execute()
+            ->fetchColumn(0);
+        $termsDate = new \DateTime("@{$ts}");
+
+        if (GeneralUtility::_POST('accept') === '1') {
+            $currentUser->setTermsAndConditionsDate($termsDate);
+            $this->frontendUserRepository->update($currentUser);
+        }
+
+        $this->view->assign('showTerms', !$currentUser->getTermsAndConditionsDate() || $termsDate > $currentUser->getTermsAndConditionsDate());
         $this->view->assign('user', $currentUser);
     }
 
@@ -373,7 +392,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider $provider
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -444,7 +463,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider $provider
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -498,7 +517,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider|null $provider
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
@@ -525,7 +544,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider $provider
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -550,7 +569,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider|null $provider
      */
     public function providerPreviewAction(Provider $provider)
@@ -559,7 +578,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $provider
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("provider")
      * @param Provider|null $provider
      * @param bool $saved
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
@@ -998,11 +1017,12 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     /**
      * @param $file
      * @return int
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      */
     private function handleImport($file)
     {
-        setlocale(LC_ALL, 'de_DE');
+        setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'deu_deu', 'de_DE.utf8');
         $offers = [];
         $count = 0;
 
@@ -1031,8 +1051,8 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             'info' => $this->cleanExcelImport($data[9], true),
                             'district' => $data[10],
                             'targetGroups' => explode(',', $data[11]),
-                            'shortDescription' => $this->cleanExcelImport($data[12]),
-                            'longDescription' => $this->cleanExcelImport($data[13]),
+                            'shortDescription' => $this->cleanExcelImport(substr($data[12], 0, 200)),
+                            'longDescription' => $this->cleanExcelImport(nl2br($data[13])),
                             'speaker' => $data[14],
                             'format' => $data[15],
                             'youtube' => trim($data[16]),
@@ -1048,7 +1068,8 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             'contactName' => $this->cleanExcelImport($data[26], true),
                             'contactJurisdiction' => $this->cleanExcelImport($data[27], true),
                             'contactPhone' => $this->cleanExcelImport($data[28], true),
-                            'contactEmail' => $this->cleanExcelImport($data[29], true)
+                            'contactEmail' => $this->cleanExcelImport($data[29], true),
+                            'participation' => trim(strtolower($data[31])) === 'ja' ? true : false,
                         ];
                     }
 
@@ -1070,7 +1091,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
                             if (isset($data[4]) && !empty($data[4])) {
 
-                                $day = intval(\DateTime::createFromFormat($this->settings['chancenportal']['xls_converter_date_format'], $data[4])->format('N'));
+                                $day = intval((new \DateTime('@' . strtotime($data[4])))->format('N'));
 
                                 $offers[$data[0]]['dates'][$day - 1] = [
                                     'active' => true,
@@ -1103,13 +1124,12 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
                 foreach ($offer['dates'] as $date) {
                     if ($date['startDate']) {
-
-                        $dateObj = \DateTime::createFromFormat($this->settings['chancenportal']['xls_converter_date_format'], $date['startDate']);
+                        $dateObj = new \DateTime('@' . strtotime($date['startDate']));
 
                         if ($lastDate === null || ($dateObj && $dateObj < $lastDate)) {
                             $lastDate = $dateObj;
 
-                            $endDate = \DateTime::createFromFormat($this->settings['chancenportal']['xls_converter_date_format'], $date['endDate']);
+                            $endDate = new \DateTime('@' . strtotime($date['endDate']));
                         }
                     }
                 }
@@ -1140,9 +1160,9 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
                     if ($data['dateType'] === 4) {
 
-                        $offer->setStartDate($data['startDate']);
+                        $offer->setStartDate(new \DateTime('@' . strtotime($data['startDate'])));
 
-                        $offer->setEndDate($data['endDate']);
+                        $offer->setEndDate(new \DateTime('@' . strtotime($data['endDate'])));
 
                         $dates = new ObjectStorage();
 
@@ -1172,8 +1192,8 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             $endDate = empty($dateData['endDate']) ? $dateData['startDate'] : $dateData['endDate'];
                             $endTime = empty($dateData['endTime']) ? $dateData['startTime'] : $dateData['endTime'];
 
-                            $date->setStartDate(\DateTime::createFromFormat($this->settings['chancenportal']['xls_converter_date_format'], $dateData['startDate'], new \DateTimeZone('UTC')));
-                            $date->setEndDate(\DateTime::createFromFormat($this->settings['chancenportal']['xls_converter_date_format'], $endDate, new \DateTimeZone('UTC')));
+                            $date->setStartDate(new \DateTime('@' . strtotime($dateData['startDate'])));
+                            $date->setEndDate(new \DateTime('@' . strtotime($endDate)));
 
                             $date->setStartTime(substr($dateData['startTime'], 0, 5));
                             $date->setEndTime(substr($endTime, 0, 5));
@@ -1186,7 +1206,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 if ($latLng) {
                     $offer->setLat($latLng[0]);
                     $offer->setLng($latLng[1]);
-                    $offer->setAddress($data['address']);
+                    $offer->setAddress($latLng[2]);
                 }
 
                 $cat = $this->categoryRepository->findOneByName($data['mainCategory']);
@@ -1232,9 +1252,11 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->setAccessibility($data['accessibility']);
                 $offer->setProviderCooperation($data['providerCooperation']);
                 $offer->setContactName($data['contactName']);
+                $offer->setContactSalutation($data['contactSalutation']);
                 $offer->setContactJurisdiction($data['contactJurisdiction']);
                 $offer->setContactPhone($data['contactPhone']);
                 $offer->setContactEmail($data['contactEmail']);
+                $offer->setParticipation($data['participation']);
                 $offer->setActive(false);
 
                 $this->offerRepository->add($offer);
@@ -1251,7 +1273,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
     private function cleanExcelImport($string, $removeLinebreaks = false)
     {
-        if($removeLinebreaks) {
+        if ($removeLinebreaks) {
             $string = str_replace('_x000D_', ' ', $string);
         } else {
             $string = str_replace('_x000D_', '<br/>', $string);
@@ -1306,7 +1328,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Uhrzeit",
             "Adresse (Wo findet das Angebot statt?)*",
             "Zusatzinformationen Angebotsort (z.B.Raum)",
-            ($this->settings['chancenportal']['use_zip_filter'] === '1' ? "PLZ" : "Stadtteil*"),
+            ($this->settings['chancenportal']['use_zip_filter'] === '1' ? "PLZ/Stadtteil" : "Stadtteil*"),
             "Altersgruppe / Zielgruppe*",
             "Kurzbeschreibung / Teaser-Text (max. 200 Zeichen)*",
             "Langbeschreibung",
@@ -1327,6 +1349,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Telefon",
             "E-Mail",
             "URL Anbieter",
+            utf8_decode("Engagement möglich"),
         ]);
 
         fputcsv($fp, [
@@ -1361,6 +1384,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             "Freitext (Telefonnummer)",
             "Freitext (E-Mail)",
             "Freitext",
+            "Einfachauswahl",
         ]);
 
         /**
@@ -1438,6 +1462,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->getContactPhone(),
                 utf8_decode($offer->getContactEmail()),
                 '',
+                $offer->getParticipation() ? 'Ja' : 'Nein',
             ];
 
             fputcsv($fp, $row);
@@ -1481,6 +1506,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                             '',
                             '',
                         ];
+
                         fputcsv($fp, $row);
                     }
                 }
@@ -1493,6 +1519,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
         $reader->setInputEncoding('CP1252');
+
         $spreadsheet = $reader->load($tmpfname);
         $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
         $writer->save($tmpfname . '.xls');
@@ -1523,16 +1550,18 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     private function getLatLng($address)
     {
         $result = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . $this->settings['chancenportal']['google_maps_api_key']));
+
         if (isset($result->results[0])) {
-            return [$result->results[0]->geometry->location->lat, $result->results[0]->geometry->location->lng];
+            return [str_replace(',', '.', $result->results[0]->geometry->location->lat), str_replace(',', '.', $result->results[0]->geometry->location->lng), $result->results[0]->formatted_address];
         }
         return null;
     }
 
     /**
+     * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     public function offerPageAction()
     {
@@ -1575,16 +1604,26 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param \Chancenportal\Chancenportal\Domain\Model\Offer $offer
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
     public function offerPreviewAction(\Chancenportal\Chancenportal\Domain\Model\Offer $offer)
     {
         $currentUser = UserUtility::getCurrentUser();
         $isAdmin = UserUtility::isAdmin($currentUser);
+
         if ($isAdmin === true) {
-            $creator = $offer->getCreator();
-            $userProvider = UserUtility::getUserProvider($creator, $this->providerRepository->findAll());
+            $creatorData = explode(':', $this->request->getArgument('creator'));
+            if ($creatorData[0] === 'provider') {
+                $offer->setProvider($this->providerRepository->findByUid($creatorData[1]));
+                $offer->setCreator(null);
+            } else if ($creatorData[0] === 'user') {
+                $offer->setCreator($this->frontendUserRepository->findByUid($creatorData[1]));
+                $offer->setProvider($offer->getCreator()->getProvider());
+            }
+        } else {
+            $userProvider = UserUtility::getUserProvider($currentUser, $this->providerRepository->findAll());
             $offer->setProvider($userProvider);
         }
 
@@ -1592,7 +1631,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param \Chancenportal\Chancenportal\Domain\Model\Offer $offer
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -1611,7 +1650,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         }
 
         $this->offerRepository->remove($offer);
-        $this->redirect('offerPage', null, null, null, $this->settings['chancenportal']['pageIds']['offer_overview']);
+
+        $this->uriBuilder->reset()->setTargetPageUid($this->settings['chancenportal']['pageIds']['offer_overview'])->setCreateAbsoluteUri(true);
+        $this->response->setStatus(301);
+        $this->response->setHeader('Location', (string)$this->uriBuilder->build());
     }
 
     /**
@@ -1627,12 +1669,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param Offer|null $offer
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
     public function newOfferSaveAction(\Chancenportal\Chancenportal\Domain\Model\Offer $offer = null)
     {
@@ -1644,7 +1687,9 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $currentUser = UserUtility::getCurrentUser();
         $group = UserUtility::getOrganisationGroup($currentUser);
         $isAdmin = UserUtility::isAdmin($currentUser);
+        $creatorData = explode(':', $this->request->getArgument('creator'));
         $data = GeneralUtility::_GP('tx_chancenportal_chancenportal');
+
         $provider = null;
 
         if ($isAdmin === false) {
@@ -1657,6 +1702,8 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->setCreator($currentUser);
             }
 
+            // Fix TYPO3 Bug
+            $offer->setCosts($data['offer']['costs']);
             $offer->setLastEditor($currentUser);
 
             if (!isset($data['offer']['targetGroups'])) {
@@ -1670,12 +1717,20 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             if ($isAdmin === false) {
                 $offer->setProvider($provider);
             } else {
-                $creator = $offer->getCreator();
-                $userProvider = UserUtility::getUserProvider($creator, $this->providerRepository->findAll());
-                $offer->setProvider($userProvider);
+                if ($creatorData[0] === 'provider') {
+                    $offer->setProvider($this->providerRepository->findByUid($creatorData[1]));
+                    $offer->setCreator(null);
+                } else if ($creatorData[0] === 'user') {
+                    $offer->setCreator($this->frontendUserRepository->findByUid($creatorData[1]));
+                    $offer->setProvider($offer->getCreator()->getProvider());
+                } else {
+                    $creator = $offer->getCreator();
+                    $userProvider = UserUtility::getUserProvider($creator, $this->providerRepository->findAll());
+                    $offer->setProvider($userProvider);
+                }
             }
 
-            if($offer->isSave()) {
+            if ($offer->isSave()) {
                 if ($offer->getUid()) {
                     $this->offerRepository->update($offer);
                 } else {
@@ -1723,7 +1778,6 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                     }
 
                 } elseif ($this->settings['chancenportal']['activate_offer_approval'] === '1' && $offer->getCreator() && $offer->getApproved() && $offer->approvedChanged) {
-
                     MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
                         [$this->settings['chancenportal']['email']['sender']], [],
                         $this->settings['chancenportal']['email']['request_offer_approval_subject'], 'ApprovedOffer.html',
@@ -1733,17 +1787,21 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 if ($offer->creatorChanged === false && $data['offer']['active'] === '1') {
                     $offer->setActive(true);
                 } else {
-                    if ($isAdmin && $offer->getCreator() && $offer->activeChanged) {
-                        MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
-                            [$this->settings['chancenportal']['email']['sender']], [],
-                            $this->settings['chancenportal']['email']['delete_offer_subject'], 'DeactivateOffer.html',
-                            ['offer' => $offer, 'user' => $currentUser, 'settings' => $this->settings]);
+                    if ($isAdmin && ($offer->getCreator() || $offer->getProvider()) && $offer->activeChanged && $data['offer']['active'] === '0') {
+                        if ($offer->getCreator()) {
+                            MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
+                                [$this->settings['chancenportal']['email']['sender']], [],
+                                $this->settings['chancenportal']['email']['delete_offer_subject'], 'DeactivateOffer.html',
+                                ['offer' => $offer, 'user' => $currentUser, 'settings' => $this->settings]);
+                        }
                         $offer->setActive(false);
                     } elseif ($isAdmin === false && $offer->creatorChanged) {
-                        MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
-                            [$this->settings['chancenportal']['email']['sender']], [],
-                            $this->settings['chancenportal']['email']['creator_changed_subject'], 'CreatorChange.html',
-                            ['offer' => $offer, 'user' => $currentUser, 'settings' => $this->settings]);
+                        if ($offer->getCreator()) {
+                            MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
+                                [$this->settings['chancenportal']['email']['sender']], [],
+                                $this->settings['chancenportal']['email']['creator_changed_subject'], 'CreatorChange.html',
+                                ['offer' => $offer, 'user' => $currentUser, 'settings' => $this->settings]);
+                        }
                         $offer->setActive(false);
                     }
                 }
@@ -1767,45 +1825,50 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     }
 
     /**
-     * @param null $activeUser
-     * @param null $userProvider
+     * @param Offer $offer
+     * @param mixed $userProvider
      * @return string
      */
-    private function getProviderUserForSelect($activeUser = null, $currentUserProvider = null)
+    private function getProviderUserForSelect($offer, $currentUserProvider = null)
     {
         $organisations = [];
+        $currentUser = UserUtility::getCurrentUser();
         $providers = $this->providerRepository->findAll();
+        $activeUser = $offer && $offer->getCreator() ? $offer->getCreator() : $currentUser;
+        $userActive = null;
 
         foreach ($providers as $provider) {
+
             if ($currentUserProvider && $currentUserProvider->getUid() !== $provider->getUid()) {
                 continue;
             }
 
+            $users = UserUtility::getUsersByProvider($provider);
+
             $organisation = [
-                'id' => $provider->getUid(),
+                'id' => 'provider:' . $provider->getUid(),
                 'title' => empty($provider->getName()) ? $provider->getOwnerGroup()->getTitle() : $provider->getName(),
                 'items' => []
             ];
 
-            $users = UserUtility::getUsersByProvider($provider);
-
             foreach ($users as $user) {
+                $userActive = $activeUser && $activeUser->getUid() === $user->getUid() ? true : false;
                 $organisation['items'][] = [
-                    'id' => $user->getUid(),
+                    'id' => 'user:' . $user->getUid(),
                     'title' => (empty($user->getName()) ? $provider->getOwnerGroup()->getTitle() : $user->getName()),
-                    'active' => $activeUser && $activeUser->getUid() === $user->getUid() ? true : false,
+                    'active' => $userActive,
                 ];
             }
 
-            if (count($organisation['items'])) {
-                usort($organisation['items'], function($a, $b) {
-                    return strnatcasecmp($a['title'], $b['title']);
-                });
-                $organisations[] = $organisation;
-            }
+            $organisation['active'] = !$userActive && $offer && $offer->getProvider() && $provider && ($offer->getProvider()->getUid() === $provider->getUid() ? true : false);
+
+            usort($organisation['items'], function ($a, $b) {
+                return strnatcasecmp($a['title'], $b['title']);
+            });
+            $organisations[] = $organisation;
         }
 
-        usort($organisations, function($a, $b) {
+        usort($organisations, function ($a, $b) {
             return strnatcasecmp($a['title'], $b['title']);
         });
 
@@ -1814,7 +1877,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
 
     /**
-     * @ignorevalidation $offer
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("offer")
      * @param Offer|null $offer
      * @param bool $saved
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
@@ -1832,12 +1895,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             ["id" => 4, "title" => "Wöchentlich", "active" => $offer && $offer->getDateType() === 4],
         ];
 
-        $activeUser = $offer && $offer->getCreator() ? $offer->getCreator() : $currentUser;
-
         $currentProvider = $isAdmin ? null : UserUtility::getUserProvider($currentUser,
             $this->providerRepository->findAll());
 
-        $providers = $this->getProviderUserForSelect($activeUser, $currentProvider);
+        $providers = $this->getProviderUserForSelect($offer, $currentProvider);
 
         $this->view->assign('providers', $providers);
         $this->view->assign('salutations', $this->selectUtility->getSalutationsJson($offer));

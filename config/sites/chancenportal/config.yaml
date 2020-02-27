@@ -1,0 +1,71 @@
+base: 'https://chancenportal.ddev.site/'
+baseVariants:
+  -
+    base: 'https://chancenportal.ddev.site/'
+    condition: 'applicationContext == "Development"'
+  -
+    base: 'http://chancenportal-typo3.kundenpreview.de/'
+    condition: 'applicationContext == "Production/Stage"'
+errorHandling:
+  -
+    errorCode: '404'
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=25'
+  -
+    errorCode: '403'
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=25'
+languages:
+  -
+    title: Deutsch
+    enabled: true
+    base: /
+    typo3Language: de
+    locale: de_DE
+    iso-639-1: de
+    navigationTitle: Deutsch
+    hreflang: de-DE
+    direction: ''
+    flag: de
+    languageId: '0'
+rootPageId: 1
+routeEnhancers:
+  Offer:
+    limitToPages:
+      - 33
+    type: Extbase
+    extension: Chancenportal
+    plugin: Chancenportal
+    routes:
+      -
+        routePath: '/{offer}'
+        _controller: 'Frontend::offerDetail'
+        _arguments:
+          offer: offer
+    defaultController: 'Frontend::offerDetail'
+    aspects:
+      offer:
+        type: PersistedPatternMapper
+        tableName: tx_chancenportal_domain_model_offer
+        routeFieldPattern: '^(?P<slug>.+)$'
+        routeFieldResult: '{slug}'
+  Provider:
+    limitToPages:
+      - 34
+    type: Extbase
+    extension: Chancenportal
+    plugin: Chancenportal
+    routes:
+      -
+        routePath: '/{provider}'
+        _controller: 'Frontend::providerDetail'
+        _arguments:
+          provider: provider
+    defaultController: 'Frontend::providerDetail'
+    aspects:
+      provider:
+        type: PersistedPatternMapper
+        tableName: tx_chancenportal_domain_model_provider
+        routeFieldPattern: '^(?P<slug>.+)$'
+        routeFieldResult: '{slug}'
+routes: {  }

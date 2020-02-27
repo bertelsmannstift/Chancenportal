@@ -4,92 +4,89 @@ defined('TYPO3_MODE') || die('Access denied.');
 call_user_func(
     function()
     {
-        /**
-         * Restrict CTypes (Select) according to definition in BELayout definitions (allowed = xyz)
-         */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][\UI\UiProvider\Form\FormDataProvider\TcaCTypeItem::class] = [
-            'depends' => [
-                \TYPO3\CMS\Backend\Form\FormDataProvider\TcaSelectItems::class,
-            ],
-        ];
+        $versionNumberUtility = \TYPO3\CMS\Core\Utility\VersionNumberUtility::class;
 
         /**
-         * Add realurl configuration hook
+         * Default PageTsConfig
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['extensionConfiguration']['ui_provider'] = \UI\UiProvider\Hooks\RealurlConfigurationHook::class . '->configure';
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/realurl/class.tx_realurl_autoconfgen.php']['postProcessConfiguration']['ui_provider'] = \UI\UiProvider\Hooks\RealurlConfigurationHook::class . '->postProcessConfiguration';
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ui_provider/Configuration/PageTSconfig/" extensions="typoscript">');
 
         /**
-         * Add Scheduler Task that deletes the RealUrl Autoconf file on demand
+         * Register RTE preset config to use with CKEditor
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\UI\UiProvider\Task\DeleteRealurlAutoconfTask::class] = array(
-            'extension' => 'ui_provider',
-            'title' => 'Delete RealUrl Autoconf file. (Only use this when you know what you are doing!)',
-            'description' => 'Deletes RealUrl Autoconf so it can be automatically re-created.'
-        );
+        $GLOBALS['TYPO3_CONF_VARS']['RTE']['Presets']['UI'] = 'EXT:ui_provider/Configuration/RTE/UI.yaml';
 
         /**
-         * Add Scheduler Task that resets RealUrl on demand
+         * Add WizardItems Hook
+         *
+         * Sorts CE Wizard items by title (Default is by key)
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\UI\UiProvider\Task\ResetRealurlTask::class] = array(
-            'extension' => 'ui_provider',
-            'title' => 'Completely Reset RealUrl! (Only use this when you know what you are doing!)',
-            'description' => 'Deletes RealUrl Autoconf and truncates RealUrl tables in DB!'
-        );
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms']['db_new_content_el']['wizardItemsHook']['ui_provider'] = UI\UiProvider\Hooks\WizardItemsHook::class;
 
         /**
-         * Add custom Query Result/Data Mapper to ease language handling in Extbase
+         * Register ViewHelper Namespace globally. No need to register namespace in fluid templates
          */
-        $extbaseObjectContainer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\Container\\Container');
-        $extbaseObjectContainer->registerImplementation('TYPO3\CMS\Extbase\Persistence\QueryResultInterface', 'UI\UiProvider\Persistence\Storage\CustomQueryResult');
-        unset($extbaseObjectContainer);
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['uandi'] = ['UI\\UiProvider\\ViewHelpers'];
 
         /**
-         * Xclass to provide a Typo3 v.9.x feature that allows to enable/disable localization modes (translate/copy)
-         * https://docs.typo3.org/typo3cms/extensions/core/latest/Changelog/9.0/Feature-76910-PageLayoutViewAllowToDisableCopyTranslateButtons.html
+         * Disable Deprecation Logs in Production Context
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\View\\PageLayoutView'] = array(
-            'className' => 'UI\\UiProvider\\Xclass\\Backend\\View\\PageLayoutView'
-        );
+        if(!\TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext()->isDevelopment()) {
+            $GLOBALS['TYPO3_CONF_VARS']['LOG']['TYPO3']['CMS']['deprecations']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::NOTICE] = [];
+        }
 
         /**
-         * This Xclass is used to enable fieldControls for single selects.
+         * Register Ajax Class
+         * TODO: Still needed? Add further description
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\Form\\Element\\SelectSingleElement'] = array(
-            'className' => 'UI\\UiProvider\\Xclass\\Backend\\Form\\Element\\SelectSingleElement'
-        );
+        $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ui_provider_version'] = 'EXT:ui_provider/Classes/Ajax/Version.php';
 
         /**
          * Xclass to extend File Object
          * Adds: Getter for MetaDataProperties
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Resource\\File'] = array(
-            'className' => 'UI\\UiProvider\\Xclass\\Core\\Resource\\File'
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Resource\File::class] = array(
+            'className' => \UI\UiProvider\Xclass\TYPO3\CMS\Core\Resource\File::class
         );
 
         /**
          * Xclass to extend Page Renderer
          * Adds: Method to replace meta data items. Used in Canonical tag ViewHelper
+         *
+         * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\Page\\PageRenderer'] = array(
-            'className' => 'UI\\UiProvider\\Xclass\\Core\\Page\\PageRenderer'
+        if($versionNumberUtility::convertVersionNumberToInteger($versionNumberUtility::getNumericTypo3Version()) < $versionNumberUtility::convertVersionNumberToInteger('10')) {
+            $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Page\PageRenderer::class] = array(
+                'className' => \UI\UiProvider\Xclass\TYPO3\CMS\Core\Page\PageRenderer::class
+            );
+        }
+
+        /**
+         * Xclass to fix an issue with workspaces previews.
+         * See https://forge.typo3.org/issues/82462 for further details
+         */
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\DataHandling\DataHandler::class] = array(
+            'className' => \UI\UiProvider\Xclass\TYPO3\CMS\Core\DataHandling\DataHandler::class
         );
 
         /**
-         * Xclass to fix an issue with workspaces previews
+         * Xclasses to allow splitting of mask.json file
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Core\\DataHandling\\DataHandler'] = array(
-            'className' => 'UI\\UiProvider\\Xclass\\Core\\DataHandling\\DataHandler'
-        );
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\MASK\Mask\Domain\Repository\StorageRepository::class] = [
+            'className' => \UI\UiProvider\Xclass\MASK\Mask\Domain\Repository\StorageRepository::class
+        ];
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\IchHabRecht\MaskExport\Aggregate\ExtensionConfigurationAggregate::class] = [
+            'className' => \UI\UiProvider\Xclass\IchHabRecht\MaskExport\Aggregate\ExtensionConfigurationAggregate::class
+        ];
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\IchHabRecht\MaskExport\Aggregate\TcaAggregate::class] = [
+            'className' => \UI\UiProvider\Xclass\IchHabRecht\MaskExport\Aggregate\TcaAggregate::class
+        ];
 
         /**
-         * Register ViewHelper Namespace
+         * Xclass to adjust file paths for Layouts and Templates. These are "Namespaced" in the u+i Blueprint Naming scheme!
          */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['uandi'] = ['UI\\UiProvider\\ViewHelpers'];
-
-        /**
-         * Register Ajax Class
-         */
-        $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ui_provider_version'] = 'EXT:ui_provider/Classes/Ajax/Version.php';
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\EBT\ExtensionBuilder\Domain\Repository\ExtensionRepository::class] = [
+            'className' => \UI\UiProvider\Xclass\EBT\ExtensionBuilder\Domain\Repository\ExtensionRepository::class
+        ];
     }
 );

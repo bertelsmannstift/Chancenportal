@@ -1,0 +1,23 @@
+/**
+ * RTE Parser Configuration
+ */
+
+// Header HTML Elements Deny/Allow
+lib.stdheader.10.setCurrent.htmlSpecialChars = 0
+
+// Activate special parsing instead
+lib.stdheader.10.setCurrent.parseFunc {
+    allowTags = br
+    denyTags = *
+    constants = 1
+    nonTypoTagStdWrap.HTMLparser = 1
+    nonTypoTagStdWrap.HTMLparser {
+        keepNonMatchedTags = 1
+        htmlSpecialChars = 2
+        allowTags = br
+        removeTags = *
+    }
+}
+
+// Deactivate class="bodytext" in RTE
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >

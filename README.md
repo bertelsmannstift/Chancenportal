@@ -29,7 +29,7 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 
 ### Systemanforderungen
 
-* die Anwendung setzt PHP in Version 7.1 voraus
+* die Anwendung setzt PHP in Version 7.2 voraus
 * Für den Import von Daten aus Excel-Dateien wird die Software [PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet), für die die folgenden Systemanforderungen erfüllt werden müssen: [PhpSpreadsheet Systemanforderungen] (https://phpspreadsheet.readthedocs.io/en/latest/#software-requirements)
 * `composer` muss für die Installation der PHP-Abhängigkeiten installiert sein: [https://getcomposer.org/](https://getcomposer.org/). Eine alternative, aber nicht empfohlene Art der Installation für Shared Web-Hoster wird weiter unten unter dem Punkt "Step-by-step - Web-Hosting" beschrieben.
 * darüber hinaus gelten die Anforderungen von TYPO3: https://typo3.org/cms/requirements/
@@ -56,24 +56,23 @@ Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei
 
 ### Step-by-step - Web-Hosting
 
-1. Laden Sie [TYPO3 8.x](https://get.typo3.org/8/zip) herunter
+1. Laden Sie [TYPO3 9.x](https://get.typo3.org/9/zip) herunter
 2. Extrahieren Sie den Inhalt und laden Sie die Dateien auf Ihren Server, z. B. per (S)FTP oder SCP. Beachten Sie ggf. auch die offiziellen TYPO3-Hinweise zur Installation: [Install TYPO3 Without Composer](https://docs.typo3.org/typo3cms/InstallationGuide/QuickInstall/GetAndUnpack/Index.html)
 3. Laden Sie die aktuelle Chancenportal-Anwendung herunter [Chancenportal](https://github.com/bertelsmannstift/Chancenportal/archive/master.zip)
 4. Extrahieren Sie das Zip-Archiv und laden Sie den Inhalt des Ordners `web` auf Ihren Server
 5. Laden Sie ebenfalls den Inhalt des Ordners `packages` auf Ihren Server in den Ordner `typo3conf/ext` hoch
-6. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.6.0.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
-7. Laden Sie das Paket [Simple Cache PSR](https://github.com/php-fig/simple-cache/archive/1.0.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/psr/simple-cache`
-8. Kopieren Sie die Datei `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/_custom.css` nach `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css`.
-9. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
+6. Laden Sie das Paket [Flux 9.2.0](https://github.com/FluidTYPO3/flux/archive/9.2.0.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/flux`
+7. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.10.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
+8. Laden Sie das Paket [Simple Cache PSR](https://github.com/php-fig/simple-cache/archive/1.0.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/psr/simple-cache`
+9. Kopieren Sie die Datei `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/_custom.css` nach `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css`.
+10. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
 Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
-10. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
-11. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
-12. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
-	* [flux](https://extensions.typo3.org/extension/flux/) (Version 8.2.1)
-	* [pagenotfoundhandling](https://extensions.typo3.org/extension/pagenotfoundhandling/) (Version 2.4.6)
-	* [realurl](https://extensions.typo3.org/extension/realurl/) (Version 2.4.0)
-	* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.1.0)
- 	* [vhs](https://extensions.typo3.org/extension/vhs/) (Version 4.4.0)
+11. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
+12. Melden Sie sich im TYPO3 Install-Tool (http://www.example.org/typo3/install.php) an und wählen Sie hier den Punkt "Maintenance" aus. Klicken Sie hier den Button "Dump autoload" in der Kachel "Rebuild PHP Autoload Information".
+13. Melden Sie sich am TYPO3 Backend an `https://www.example.org/typo3`
+14. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
+	* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.2.2)
+ 	* [vhs](https://extensions.typo3.org/extension/vhs/) (Version 5.2.0)
 
 ## TYPO3 Login
 
@@ -84,7 +83,7 @@ Benutzer: admin<br>
 Password: @hGjMZRjktL7u&
 
 ### TYPO3 Installtool
-Passwort: Kfisdfi39mf(!
+Passwort: 760iniY9sTUUUF
 
 ## Anpassung
 

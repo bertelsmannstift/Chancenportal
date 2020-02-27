@@ -43,7 +43,7 @@ config.tx_extbase {
             import_template = {$plugin.tx_chancenportal_chancenportal.settings.import_template_path}
             xls_converter = {$plugin.tx_chancenportal_chancenportal.settings.xls_converter}
             //xls_converter_date_format = Y/m/d
-            xls_converter_date_format = n/j/Y
+            xls_converter_date_format = d.m.Y
 
             use_zip_filter = {$plugin.tx_chancenportal_chancenportal.settings.use_zip_filter}
 
@@ -69,6 +69,8 @@ config.tx_extbase {
             activate_account_takeover = {$plugin.tx_chancenportal_chancenportal.settings.activate_account_takeover}
             show_google_translator = {$plugin.tx_chancenportal_chancenportal.settings.show_google_translator}
 
+            filter_folded_out = {$plugin.tx_chancenportal_chancenportal.settings.filter_folded_out}
+            terms_and_condition_element_id = {$plugin.tx_chancenportal_chancenportal.settings.terms_and_condition_element_id}
             search_show_similiar = {$plugin.tx_chancenportal_chancenportal.settings.search_show_similiar}
             search_user_header_openthesaurus = {$plugin.tx_chancenportal_chancenportal.settings.search_user_header_openthesaurus}
 

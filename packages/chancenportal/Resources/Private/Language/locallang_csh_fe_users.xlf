@@ -9,6 +9,9 @@
 			<trans-unit id="confirmation_send.description">
 				<source>confirmationSend</source>
 			</trans-unit>
+			<trans-unit id="terms_and_conditions_date.description">
+				<source>termsAndConditionsDate</source>
+			</trans-unit>
 			<trans-unit id="permission.description">
 				<source>permission</source>
 			</trans-unit>

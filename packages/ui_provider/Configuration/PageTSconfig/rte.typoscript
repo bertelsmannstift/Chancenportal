@@ -1,0 +1,15 @@
+/**
+ * RTE Configuration
+ */
+RTE {
+    default {
+        /**
+         * Default RTE Configuration
+         *
+         * See:
+         * packages/ui_provider/Configuration/RTE/UI.yaml
+         * packages/ui_provider/ext_localconf.php
+         */
+        preset = UI
+    }
+}

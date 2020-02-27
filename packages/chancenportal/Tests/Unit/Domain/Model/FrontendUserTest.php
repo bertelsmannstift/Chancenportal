@@ -4,7 +4,7 @@ namespace Chancenportal\Chancenportal\Tests\Unit\Domain\Model;
 /**
  * Test case.
  */
-class FrontendUserTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class FrontendUserTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
 {
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
@@ -68,6 +68,32 @@ class FrontendUserTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         self::assertAttributeEquals(
             true,
             'confirmationSend',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getTermsAndConditionsDateReturnsInitialValueForDateTime()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getTermsAndConditionsDate()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTermsAndConditionsDateForDateTimeSetsTermsAndConditionsDate()
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setTermsAndConditionsDate($dateTimeFixture);
+
+        self::assertAttributeEquals(
+            $dateTimeFixture,
+            'termsAndConditionsDate',
             $this->subject
         );
     }

@@ -1,6 +1,17 @@
 <?php
 namespace UI\UiProvider\User;
 
+/***
+ *
+ * This file is part of the "u+i | Provider" Extension for TYPO3 CMS.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ *  (c) 2018 Sebastian Swan <seswan@uandi.com>, www.uandi.com
+ *
+ ***/
+
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -11,6 +22,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
  *
  * Collection of conditions for use in TCA displayCond
  *
+ * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10. Use UI\UiProvider\TCA\Conditions instead
  */
 class TcaConditions {
 
@@ -86,9 +98,7 @@ class TcaConditions {
     public function matchPageType(array $conditionParameters) {
         $pageLayout = \UI\UiProvider\Utility\GeneralUtility::getPageLayout($conditionParameters['record']['uid']);
 
-        if(!isset($conditionParameters['conditionParameters'][0]) && $conditionParameters['record']['is_siteroot'] === 1) {
-            return true;
-        } if(isset($conditionParameters['conditionParameters'][0]) && $pageLayout === $conditionParameters['conditionParameters'][0] || $pageLayout === 'pagets__' . $conditionParameters['conditionParameters'][0]) {
+        if($pageLayout === $conditionParameters['conditionParameters'][0] || $pageLayout === 'pagets__' . $conditionParameters['conditionParameters'][0]) {
             return true;
         }
 

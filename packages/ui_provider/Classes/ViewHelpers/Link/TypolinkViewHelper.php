@@ -3,7 +3,7 @@ namespace UI\UiProvider\ViewHelpers\Link;
 
 /***
  *
- * This file is part of the "u+i Provider" Extension for TYPO3 CMS.
+ * This file is part of the "u+i | Provider" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -15,6 +15,8 @@ namespace UI\UiProvider\ViewHelpers\Link;
 /**
  * Extension of the standard fluid typolink viewhelper to work with record links
  * The regular viewhelper doesn't output class or target definitions for record links.
+ *
+ * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10. Use the regular f:link.typolink ViewHelper
  */
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;

@@ -1,6 +1,7 @@
 <?php
 namespace Chancenportal\Chancenportal\Domain\Model;
 
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -11,12 +12,12 @@ namespace Chancenportal\Chancenportal\Domain\Model;
  *  (c) 2018
  *
  ***/
-
 /**
  * Category
  */
 class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
      * @cascade remove
@@ -77,6 +78,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function __construct()
     {
+
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }

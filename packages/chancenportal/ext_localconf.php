@@ -113,3 +113,9 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Chancenportal\C
     'title' => 'Update offer and provider locations',
     'description' => 'Adresse und Map-Koordinaten mittels Google Maps aktualisieren.'
 );
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Chancenportal\Chancenportal\Command\Slug::class] = array(
+    'extension' => $_EXTKEY,
+    'title' => 'Update offer and provider slugs',
+    'description' => ''
+);

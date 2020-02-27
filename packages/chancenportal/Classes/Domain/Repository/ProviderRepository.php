@@ -4,8 +4,6 @@ namespace Chancenportal\Chancenportal\Domain\Repository;
 
 use Chancenportal\Chancenportal\Domain\Model\Date;
 use Chancenportal\Chancenportal\Domain\Model\Log;
-use Chancenportal\Chancenportal\Domain\Model\Provider;
-use Chancenportal\Chancenportal\Utility\UserUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -29,31 +27,33 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  */
 class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\LogRepository
      * @inject
      */
     protected $logRepository = null;
-    
+
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
      * @inject
      */
     protected $categoryRepository = null;
-    
+
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
      * @inject
      */
     protected $offerRepository = null;
-    
+
     /**
      * @var array
      */
     protected $settings = null;
-    
+
     public function initializeObject()
     {
+
         /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
         $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
         $querySettings->setRespectStoragePage(false);
@@ -62,7 +62,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $configurationManager = $objectManager->get(ConfigurationManager::class);
         $this->settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
     }
-    
+
     /**
      * @param $catId
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
@@ -76,21 +76,22 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $this->logRepository->add($log);
         }
     }
-    
+
     /**
      * @param $term
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
     private function logTerm($term)
     {
-        $term = strtolower(trim(implode(', ', $term)));
+        $term = mb_strtolower(trim(implode(', ', $term)));
+
         if (!empty($term)) {
             $log = new Log();
             $log->setTerm($term);
             $this->logRepository->add($log);
         }
     }
-    
+
     /**
      * @param null $uid
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -102,14 +103,16 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
-        $constraints[] = $query->logicalAnd([
-            $query->equals('active', 1),
-            $query->equals('approved', 1),
-        ]);
+        $constraints[] = $query->logicalAnd(
+            [
+                $query->equals('active', 1),
+                $query->equals('approved', 1)
+            ]
+        );
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         return $query->matching($query->logicalAnd($constraints))->execute();
     }
-    
+
     /**
      * @param $uid
      * @return bool
@@ -119,28 +122,28 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $results = $this->findAllActive($uid);
         return count($results) > 0 ? true : false;
     }
-    
+
     /**
      * @param $fields
      * @param $log
      * @param $onlyActiveOffers
      * @return array|ObjectStorage|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findByFields($fields, $log = true, $onlyActiveOffers = false)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-        $constraints[] = $query->logicalAnd([
-            $query->equals('active', 1),
-            $query->equals('approved', 1),
-        ]);
-        
+        $constraints[] = $query->logicalAnd(
+            [
+                $query->equals('active', 1),
+                $query->equals('approved', 1)
+            ]
+        );
         if (!empty($fields['term'])) {
             $fields['term'] = (array)$fields['term'];
         }
-        
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         if (count($fields)) {
             $params = [];
@@ -148,10 +151,12 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $params[] = $query->in('offers.targetGroups.uid', $fields['targetGroups']);
             }
             if (isset($fields['zip']) && !empty($fields['zip']) && empty($fields['distance']) && $fields['distance'] !== '0') {
-                $constraints[] = $query->logicalOr([
-                    $query->like('city', "%{$fields['zip']}%"),
-                    $query->like('zip', "%{$fields['zip']}%"),
-                ]);
+                $constraints[] = $query->logicalOr(
+                    [
+                        $query->like('city', "%{$fields['zip']}%"),
+                        $query->like('zip', "%{$fields['zip']}%")
+                    ]
+                );
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
@@ -180,11 +185,13 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $dates3[] = $query->lessThanOrEqual('offers.dates.startDate', \DateTime::createFromFormat('d.m.Y', $fields['dates'][1])->format('Y-m-d'));
                 }
                 if (count($dates)) {
-                    $params[] = $query->logicalOr([
-                        $query->logicalAnd($dates),
-                        $query->logicalAnd($dates2),
-                        $query->logicalAnd($dates3),
-                    ]);
+                    $params[] = $query->logicalOr(
+                        [
+                            $query->logicalAnd($dates),
+                            $query->logicalAnd($dates2),
+                            $query->logicalAnd($dates3)
+                        ]
+                    );
                 }
             } elseif (isset($fields['dateType']) && $fields['dateType'] === '2' && !empty($fields['dates'][2])) {
                 $dates = [];
@@ -198,10 +205,10 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 }
                 $arr = [];
                 foreach ($fields['term'] as $tm) {
-                    $arr[] =$query->like('name', '%' . $tm . '%');
-                    $arr[] =$query->like('subline', '%' . $tm . '%');
-                    $arr[] =$query->like('shortDescription', '%' . $tm . '%');
-                    $arr[] =$query->like('longDescription', '%' . $tm . '%');
+                    $arr[] = $query->like('name', '%' . $tm . '%');
+                    $arr[] = $query->like('subline', '%' . $tm . '%');
+                    $arr[] = $query->like('shortDescription', '%' . $tm . '%');
+                    $arr[] = $query->like('longDescription', '%' . $tm . '%');
                 }
                 $params[] = $query->logicalOr($arr);
             }
@@ -210,16 +217,11 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
         if (!isset($fields['sort_providers']) || $fields['sort_providers'] === '3') {
-            $query->setOrderings([
-                'name' => QueryInterface::ORDER_ASCENDING,
-            ]);
+            $query->setOrderings(['name' => QueryInterface::ORDER_ASCENDING]);
         } else {
-            $query->setOrderings([
-                'uid' => QueryInterface::ORDER_DESCENDING,
-            ]);
+            $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
         }
         $result = $query->matching($query->logicalAnd($constraints))->execute();
-
         if (isset($fields['dateType']) && $fields['dateType'] === '3') {
             $newResult = new ObjectStorage();
             $selectedDays = $this->getSelectedDays($fields);
@@ -244,6 +246,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $result = $newResult;
             }
         }
+
         // Calc distance to zip
         if (isset($fields['zip']) && !empty($fields['zip']) && isset($fields['distance']) && intval($fields['distance']) >= 1) {
             $newResult = new ObjectStorage();
@@ -265,6 +268,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $result = $newResult;
             }
         }
+
         //Get active offers
         if ($onlyActiveOffers) {
             $newResult = new ObjectStorage();
@@ -279,10 +283,9 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             $result = $newResult;
         }
-        
         return $result;
     }
-    
+
     /**
      * @param $lat1
      * @param $lon1
@@ -299,7 +302,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $miles = $dist * 60 * 1.1515;
         return $miles * 1.609344;
     }
-    
+
     /**
      * @param $fields
      * @return array
@@ -330,10 +333,11 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         return $selectedDays;
     }
-    
+
     /**
      * @param Date $date
      * @return array
+     * @throws \Exception
      */
     private function getWeekDays(Date $date)
     {

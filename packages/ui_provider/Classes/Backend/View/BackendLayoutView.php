@@ -3,7 +3,7 @@ namespace UI\UiProvider\Backend\View;
 
 /***
  *
- * This file is part of the "u+i Provider" Extension for TYPO3 CMS.
+ * This file is part of the "u+i | Provider" Extension for TYPO3 CMS.
  *
  * For the full copyright and license information, please read the
  * LICENSE.txt file that was distributed with this source code.
@@ -17,7 +17,8 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * Backend layout for CMS
+ * Class BackendLayoutView
+ * @package UI\UiProvider\Backend\View
  *
  * This class extends the TYPO3 core class "BackendLayoutView" and replaces the function "addBackendLayoutItems" to
  * provide a functionality that respects the TSconfig TCEFORM.pages.backend_layout.keepItems for items that are added

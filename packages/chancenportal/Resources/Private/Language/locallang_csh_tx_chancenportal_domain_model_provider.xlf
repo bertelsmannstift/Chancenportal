@@ -6,6 +6,9 @@
 			<trans-unit id="name.description">
 				<source>name</source>
 			</trans-unit>
+			<trans-unit id="slug.description">
+				<source>slug</source>
+			</trans-unit>
 			<trans-unit id="subline.description">
 				<source>subline</source>
 			</trans-unit>

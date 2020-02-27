@@ -29,6 +29,22 @@ $GLOBALS['TCA']['tx_chancenportal_domain_model_provider']['columns']['tstamp']['
     'type' => 'passthrough',
 ];
 
+$GLOBALS['TCA']['tx_chancenportal_domain_model_provider']['columns']['slug'] = [
+    'exclude' => true,
+    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:pages.slug',
+    'config' => [
+        'type' => 'slug',
+        'size' => 50,
+        'generatorOptions' => [
+            'fields' => ['name'],
+            'fieldSeparator' => '/',
+            'prefixParentPageSlug' => true,
+        ],
+        'fallbackCharacter' => '-',
+        'eval' => 'uniqueInSite',
+        'default' => ''
+    ]
+];
 
 $GLOBALS['TCA']['tx_chancenportal_domain_model_provider']['columns']['tstamp']['config'] = [
     'type' => 'passthrough',

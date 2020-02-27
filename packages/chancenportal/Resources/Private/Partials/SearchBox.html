@@ -58,8 +58,7 @@
             </f:else>
         </f:if>
         <f:if condition="{show_more}">
-            <custom-trigger toggle-class="search__fields--showhide" selector="#hidden-box" more="+ Mehr anzeigen" less="- Weniger anzeigen"
-                            class="search__trigger"></custom-trigger>
+            <custom-trigger toggle-class="search__fields--showhide" selector="#hidden-box" more="+ Mehr anzeigen" less="- Weniger anzeigen" class="search__trigger" unfolded="{f:if(condition: settings.chancenportal.filter_folded_out, then: 'true', else: 'false')}"></custom-trigger>
         </f:if>
     </div>
 </div>

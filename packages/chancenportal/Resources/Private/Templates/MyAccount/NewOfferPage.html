@@ -57,15 +57,19 @@
                     <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][preview]" value="1">Vorschau</button>
                 </custom-preview>
             </div>
-            <div class="col-lg-4 col-sm-12 margin-inner-sm">
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
-                <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
-            </div>
+            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                <f:else>
+                    <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
+                        <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
+                    </div>
+                </f:else>
+            </f:security.ifHasRole>
             <div class="col-lg-4 col-sm-12 margin-inner-sm">
 
                 <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                     <f:then>
-                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                        <button type="submit" class="btn btn--full">Speichern</button>
                     </f:then>
                     <f:else>
                         <f:if condition="{settings.chancenportal.activate_offer_approval}">
@@ -75,12 +79,12 @@
                                         <button type="submit" class="btn btn--full">Zur Freigabe einreichen</button>
                                     </f:then>
                                     <f:else>
-                                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                                        <button type="submit" class="btn btn--full">Speichern</button>
                                     </f:else>
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                                <button type="submit" class="btn btn--full">Speichern</button>
                             </f:else>
                         </f:if>
 
@@ -173,8 +177,7 @@
                         <div class="input">
                             <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'creator\', className: \' input--error\'}')}">
                                 <label class="input__label">Organisation / Autor*</label>
-                                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="creator"></c:formConfiguration>
-                                <custom-dropdown allow-group-selection="false" id="tx_chancenportal_chancenportal[offer][creator]" show-selected-title="true" placeholder="Bitte wählen" options="{providers}" required="true"></custom-dropdown>
+                                <custom-dropdown allow-group-selection="true" id="tx_chancenportal_chancenportal[creator]" show-selected-title="true" placeholder="Bitte wählen" options="{providers}" required="true"></custom-dropdown>
                                 <f:render partial="FieldError" arguments="{object: object, fieldName: 'provider', errorMsg: 'Wählen Sie eine Organisation aus.'}"/>
                             </div>
                         </div>
@@ -188,7 +191,7 @@
                             <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'creator\', className: \' input--error\'}')}">
                                 <label class="input__label">Autor*</label>
                                 <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="creator"></c:formConfiguration>
-                                <custom-dropdown allow-group-selection="false" id="tx_chancenportal_chancenportal[offer][creator]" show-selected-title="true" placeholder="Bitte wählen" options="{providers}" required="true"></custom-dropdown>
+                                <custom-dropdown allow-group-selection="false" id="tx_chancenportal_chancenportal[creator]" show-selected-title="true" placeholder="Bitte wählen" options="{providers}" required="true"></custom-dropdown>
                                 <f:render partial="FieldError" arguments="{object: object, fieldName: 'provider', errorMsg: 'Wählen Sie eine Organisation aus.'}"/>
                             </div>
                         </div>
@@ -533,6 +536,18 @@
                     </custom-dropdown>
                     <div class="info-box margin-inner-lg">
                         <strong>Hinweis!</strong> - Uhrzeiten bitte im Format (HH:MM) eingeben. Für einen monatlichen Termin Nutzen Sie bitte die Funktion &quot;Konkrete Daten&quot;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div class="input">
+                    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'openingHours\', className: \' input--error\'}')}">
+                        <label class="input__label">Anmerkungen zu den angegebenen Zeiten</label>
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="openingHours"></c:formConfiguration>
+                        <textarea name="tx_chancenportal_chancenportal[offer][openingHours]" cols="30" rows="10" maxlength="200" class="input__field" style="height:120px;min-height:120px;">{offer.openingHours}</textarea>
                     </div>
                 </div>
             </div>
@@ -935,14 +950,18 @@
                     <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][preview]" value="1">Vorschau</button>
                 </custom-preview>
             </div>
-            <div class="col-lg-4 col-sm-12 margin-inner-sm">
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
-                <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
-            </div>
+            <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
+                <f:else>
+                    <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="save"></c:formConfiguration>
+                        <button type="submit" class="btn btn--full" name="tx_chancenportal_chancenportal[offer][save]" value="1">Entwurf speichern</button>
+                    </div>
+                </f:else>
+            </f:security.ifHasRole>
             <div class="col-lg-4 col-sm-12 margin-inner-sm">
                 <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                     <f:then>
-                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                        <button type="submit" class="btn btn--full">Speichern</button>
                     </f:then>
                     <f:else>
 
@@ -953,12 +972,12 @@
                                         <button type="submit" class="btn btn--full">Zur Freigabe einreichen</button>
                                     </f:then>
                                     <f:else>
-                                        <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                                        <button type="submit" class="btn btn--full">Speichern</button>
                                     </f:else>
                                 </f:if>
                             </f:then>
                             <f:else>
-                                <button type="submit" class="btn btn--full">Veröffentlichen</button>
+                                <button type="submit" class="btn btn--full">Speichern</button>
                             </f:else>
                         </f:if>
 

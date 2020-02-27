@@ -6,6 +6,9 @@
 			<trans-unit id="name.description">
 				<source>name</source>
 			</trans-unit>
+			<trans-unit id="slug.description">
+				<source>slug</source>
+			</trans-unit>
 			<trans-unit id="address.description">
 				<source>address</source>
 			</trans-unit>
@@ -129,6 +132,9 @@
 			<trans-unit id="participation.description">
 				<source>participation</source>
 			</trans-unit>
+			<trans-unit id="opening_hours.description">
+				<source>openingHours</source>
+			</trans-unit>
 			<trans-unit id="dates.description">
 				<source>dates</source>
 			</trans-unit>
@@ -147,6 +153,9 @@
 			<trans-unit id="last_editor.description">
 				<source>lastEditor</source>
 			</trans-unit>
+			<trans-unit id="provider.description">
+				<source>provider</source>
+			</trans-unit>
 			<trans-unit id="provider_name.description">
 				<source>providerName</source>
 			</trans-unit>
@@ -155,9 +164,6 @@
 			</trans-unit>
 			<trans-unit id="no_dates.description">
 				<source>noDates</source>
-			</trans-unit>
-			<trans-unit id="provider.description">
-				<source>provider</source>
 			</trans-unit>
 			<trans-unit id="target_group.description">
 				<source>targetGroup</source>

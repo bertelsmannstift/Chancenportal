@@ -1,101 +1,82 @@
 {
-  "name": "bertelsmann-stiftung/bst_chancenportal",
-  "description": "Chancelportal",
-  "license": ["GPL-2.0+"],
-  "version": "1.0.0",
-  "repositories": [
-    {
-      "type": "path",
-      "url": "packages/*"
-    },
-    {
-      "type": "composer",
-      "url": "https://composer.typo3.org/"
-    }
-  ],
-  "require": {
-    "typo3/cms-belog": "^8.7",
-    "typo3/cms-beuser": "^8.7",
-    "typo3/cms-context-help": "^8.7",
-    "typo3/cms-fluid-styled-content": "^8.7",
-    "typo3/cms-felogin": "^8.7",
-    "typo3/cms-filelist": "^8.7",
-    "typo3/cms-form": "^8.7",
-    "typo3/cms-func": "^8.7",
-    "typo3/cms-func-wizards": "^8.7",
-    "typo3/cms-impexp": "^8.7",
-    "typo3/cms-info": "^8.7",
-    "typo3/cms-info-pagetsconfig": "^8.7",
-    "typo3/cms-lowlevel": "^8.7",
-    "typo3/cms-reports": "^8.7",
-    "typo3/cms-rsaauth": "^8.7",
-    "typo3/cms-rte-ckeditor": "^8.7",
-    "typo3/cms-setup": "^8.7",
-    "typo3/cms-sys-action": "^8.7",
-    "typo3/cms-taskcenter": "^8.7",
-    "typo3/cms-tstemplate": "^8.7",
-    "typo3/cms-viewpage": "^8.7",
-    "typo3/cms-wizard-crpages": "^8.7",
-    "typo3/cms-wizard-sortpages": "^8.7",
-    "typo3/cms-filemetadata": "^8.7",
-
-    "helhum/typo3-console": "^5.2.0",
-    "helhum/dotenv-connector": "^2.0.0",
-    "vlucas/phpdotenv": "^2.4",
-
-    "fluidtypo3/vhs": "^4.4.0",
-    "fluidtypo3/flux": "^8.2.1",
-    "helhum/typoscript-rendering": "^2.0.2",
-    "dmitryd/typo3-realurl": "^2.3.0",
-    "typo3-ter/pagenotfoundhandling": "^2.4",
-    "chancenportal/chancenportal": "@dev",
-    "ui/ui-provider": "^3.0.7",
-    "ui/ui-ce": "@dev",
-    "ui/ui-ce-overrides": "@dev",
-    "ui/ui-forms": "@dev",
-    "ui/ui-grid": "@dev",
-    "ui/ui-sitepackage": "@dev"
-  },
-  "require-dev": {
-    "deployer/deployer": "*",
-    "mask/mask": "^3.1.0",
-    "ichhabrecht/mask-export":  "^1.0.0",
-    "friendsoftypo3/extension-builder": "^8.7"
-  },
-  "scripts":{
-    "typo3-cms-scripts": [
-      "rm ./web/typo3conf/PackageStates.php & cp ./configuration/misc/PackageStatesInit.php ./web/typo3conf/PackageStates.php || true",
-      "cp .env.example .env || true",
-      "typo3cms install:fixfolderstructure || true",
-      "typo3cms install:generatepackagestates || true",
-      "typo3cms install:extensionsetupifpossible || true",
-      "cp packages/ui_sitepackage/Resources/Public/assets/css/_custom.css packages/ui_sitepackage/Resources/Public/assets/css/custom.css || true"
+    "name": "bertelsmann-stiftung/bst_chancenportal",
+    "description": "Chancenportal",
+    "license": [
+        "GPL-2.0+"
     ],
-    "post-autoload-dump": [
-      "@typo3-cms-scripts"
-    ]
-  },
-  "extra": {
-    "typo3/cms": {
-      "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": "web"
+    "version": "1.0.0",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        },
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
+    "require": {
+        "typo3/cms-base-distribution": "^9.5",
+        "typo3/cms-lowlevel": "^9.5",
+        "typo3-ter/vhs": "*",
+
+        "helhum/dotenv-connector": "^2.0.0",
+        "vlucas/phpdotenv": "^2.4",
+        "fluidtypo3/vhs": "^5.2",
+        "fluidtypo3/flux": "9.2",
+        "helhum/typoscript-rendering": "^2.0.2",
+        "uandi-typo3/ui_provider": "^9.5",
+        "chancenportal/chancenportal": "@dev",
+
+        "ui/ui-ce": "@dev",
+        "ui/ui-ce-overrides": "@dev",
+        "ui/ui-forms": "@dev",
+        "ui/ui-grid": "@dev",
+        "ui/ui-sitepackage": "@dev",
+        "friendsoftypo3/typo3db-legacy": "^1.1.1"
     },
-    "helhum/typo3-console": {
-      "install-extension-dummy": false
+    "require-dev": {
+        "deployer/deployer": "*",
+        "mask/mask": "*",
+        "ichhabrecht/mask-export": "*",
+        "friendsoftypo3/extension-builder": "*"
     },
-    "helhum/dotenv-connector": {
-      "env-file": ".env",
-      "cache-dir": "var/cache"
+    "scripts": {
+        "typo3-cms-scripts": [
+            "rm ./web/typo3conf/PackageStates.php || true",
+            "cp ./configuration/misc/PackageStatesInit.php ./web/typo3conf/PackageStates.php || true",
+            "cp -n .env.example .env || true",
+            "typo3cms install:fixfolderstructure || true",
+            "typo3cms install:generatepackagestates || true",
+            "typo3cms install:extensionsetupifpossible || true",
+            "typo3cms language:update || true",
+            "cp packages/ui_sitepackage/Resources/Public/assets/css/_custom.css packages/ui_sitepackage/Resources/Public/assets/css/custom.css || true"
+        ],
+        "post-autoload-dump": [
+            "@typo3-cms-scripts"
+        ]
+    },
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": "web"
+        },
+        "helhum/typo3-console": {
+            "install-extension-dummy": false
+        },
+        "helhum/dotenv-connector": {
+            "env-file": ".env",
+            "cache-dir": "var/cache"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UI\\UiSitepackage\\": "web/typo3conf/ext/ui_sitepackage/Classes",
+            "Chancenportal\\Chancenportal\\": "web/typo3conf/ext/chancenportal/Classes",
+            "UI\\UiProvider\\": "web/typo3conf/ext/ui_provider/Classes",
+            "UI\\UiCeOverrides\\": "web/typo3conf/ext/ui_ce_overrides/Classes",
+            "UI\\UiForms\\": "web/typo3conf/ext/ui_forms/Classes",
+            "UI\\UiGrid\\": "web/typo3conf/ext/ui_grid/Classes"
+        }
     }
-  },
-  "autoload": {
-    "psr-4": {
-      "UI\\UiSitepackage\\": "web/typo3conf/ext/ui_sitepackage/Classes",
-      "Chancenportal\\Chancenportal\\": "web/typo3conf/ext/chancenportal/Classes",
-      "UI\\UiProvider\\": "web/typo3conf/ext/ui_provider/Classes",
-      "UI\\UiCeOverrides\\": "web/typo3conf/ext/ui_ce_overrides/Classes",
-      "UI\\UiForms\\": "web/typo3conf/ext/ui_forms/Classes",
-      "UI\\UiGrid\\": "web/typo3conf/ext/ui_grid/Classes"
-    }
-  }
 }

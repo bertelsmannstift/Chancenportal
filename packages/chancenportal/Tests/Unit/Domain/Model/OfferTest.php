@@ -4,7 +4,7 @@ namespace Chancenportal\Chancenportal\Tests\Unit\Domain\Model;
 /**
  * Test case.
  */
-class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class OfferTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
 {
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Offer
@@ -43,6 +43,31 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         self::assertAttributeEquals(
             'Conceived at T3CON10',
             'name',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getSlugReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getSlug()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setSlugForStringSetsSlug()
+    {
+        $this->subject->setSlug('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'slug',
             $this->subject
         );
     }
@@ -1185,6 +1210,31 @@ class OfferTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         self::assertAttributeEquals(
             true,
             'participation',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getOpeningHoursReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getOpeningHours()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setOpeningHoursForStringSetsOpeningHours()
+    {
+        $this->subject->setOpeningHours('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'openingHours',
             $this->subject
         );
     }

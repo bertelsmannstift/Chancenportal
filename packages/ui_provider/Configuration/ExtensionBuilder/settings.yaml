@@ -1,6 +1,6 @@
 #
 # Extension Builder settings for extension ui_provider
-# generated 2018-01-29T14:33:00Z
+# generated 2019-01-01T00:00:00Z
 #
 # See http://www.yaml.org/spec/1.2/spec.html
 #
@@ -73,7 +73,7 @@ overwriteSettings:
 
 
 ## use static date attribute in xliff files ##
-#staticDateInXliffFiles: 2018-01-29T14:33:00Z
+staticDateInXliffFiles: 2019-01-01T00:00:00Z
 
 ## skip docComment (license header) ##
 #skipDocComment
@@ -105,6 +105,6 @@ classBuilder:
       parentClass: \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 
   Repository:
-    parentClass: \TYPO3\CMS\Extbase\Persistence\Repository
+    parentClass: \UI\UiProvider\Persistence\Repository
 
   setDefaultValuesForClassProperties: true

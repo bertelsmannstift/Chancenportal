@@ -1,0 +1,51 @@
+/**
+ * Page Rendering Configuration
+ */
+page = PAGE
+page {
+    typeNum = 0
+
+    // Body Tag
+    bodyTag >
+    bodyTagCObject < lib.page.class
+    bodyTagCObject.wrap = <body class="|">
+
+    /**
+     * Fluid Page Template Configuration
+     */
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = TEXT
+        templateName.stdWrap {
+            cObject = TEXT
+            cObject {
+                data = pagelayout
+                split {
+                    token = pagets__
+                    1.current = 1
+                    1.wrap = |
+                }
+            }
+            ifEmpty = Default
+        }
+
+        layoutRootPaths {
+            10 = {$page.fluidtemplate.layoutRootPath}
+        }
+        partialRootPaths {
+            10 = {$page.fluidtemplate.partialRootPath}
+        }
+        templateRootPaths {
+            10 = {$page.fluidtemplate.templateRootPath}
+        }
+
+        extbase.controllerExtensionName = ui_provider
+
+        settings {
+            ui_provider < config.tx_extbase.settings.ui_provider
+        }
+
+        variables {
+        }
+    }
+}

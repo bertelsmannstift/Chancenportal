@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="de" datatype="plaintext" original="messages" date="2017-12-13T14:25:47Z" product-name="ui_provider">
+	<file source-language="en" datatype="plaintext" original="EXT:ui_provider/Resources/Private/Language/locallang_ImageManipulation" date="2017-12-13T14:25:47Z" product-name="ui_provider">
 		<header/>
 		<body>
 			<trans-unit id="cropVariants.default">
@@ -21,6 +21,18 @@
 			</trans-unit>
 			<trans-unit id="cropVariants.aspectRatios.4_3">
 				<source>4:3</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.3_2">
+				<source>3:2</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.2_3">
+				<source>2:3</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.3_4">
+				<source>3:4</source>
+			</trans-unit>
+			<trans-unit id="cropVariants.aspectRatios.1_1">
+				<source>1:1</source>
 			</trans-unit>
 			<trans-unit id="cropVariants.aspectRatios.NaN">
 				<source>Free</source>

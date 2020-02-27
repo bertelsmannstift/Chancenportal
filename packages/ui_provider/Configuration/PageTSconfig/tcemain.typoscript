@@ -1,0 +1,23 @@
+/**
+ * TCEMain Configuration
+ */
+TCEMAIN {
+	/**
+	 * Configure default user/group permissions
+	 */
+	permissions {
+		groupid = 1
+		group = show, editcontent, edit, delete, new
+		everybody =
+	}
+
+	/**
+	 * Table settings
+	 */
+	table {
+		tt_content {
+			// Do not append "(copy)" on content copy
+			disablePrependAtCopy = 1
+		}
+	}
+}

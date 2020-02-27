@@ -2,6 +2,7 @@
 namespace Chancenportal\Chancenportal\Domain\Model;
 
 use FluidTYPO3\Flux\Form\Field\DateTime;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -12,12 +13,12 @@ use FluidTYPO3\Flux\Form\Field\DateTime;
  *  (c) 2018
  *
  ***/
-
 /**
  * Date
  */
 class Date extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Offer
      */

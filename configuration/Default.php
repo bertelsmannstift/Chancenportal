@@ -3,11 +3,6 @@
  * Global TYPO3 configuration
  **/
 $globalConfiguration = [
-    'BE' => [
-        'debug' => false,
-        'explicitADmode' => 'explicitAllow',
-        'loginSecurityLevel' => 'rsa',
-    ],
     'DB' => [
         'Connections' => [
             'Default' => [
@@ -15,6 +10,9 @@ $globalConfiguration = [
                 'driver' => 'mysqli',
             ],
         ],
+    ],
+    'EXTENSIONS' => [
+        'mask_export' => [],
     ],
     'EXT' => [
         'extConf' => [
@@ -48,13 +46,6 @@ $globalConfiguration = [
                 'moduleIcon' => '0',
             ]),
         ],
-    ],
-    'FE' => [
-        'debug' => false,
-        'loginSecurityLevel' => 'rsa',
-        'disableNoCacheParameter' => TRUE,
-        'hidePagesIfNotTranslatedByDefault' => TRUE,
-        'pageNotFoundOnCHashError' => true,
     ],
     'GFX' => [
         'jpg_quality' => '80',

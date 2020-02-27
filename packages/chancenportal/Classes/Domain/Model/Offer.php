@@ -1,9 +1,12 @@
 <?php
+
 namespace Chancenportal\Chancenportal\Domain\Model;
 
+use Chancenportal\Chancenportal\Utility\AbstractUtility;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.
@@ -20,6 +23,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\TargetGroupRepository
      * @inject
@@ -72,12 +76,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public $creatorChanged = false;
 
     /**
-     * @var \Chancenportal\Chancenportal\Domain\Model\Provider
-     * @lazy
-     */
-    protected $provider = null;
-
-    /**
      * @var bool|null
      */
     public $activeBeforeUpdate = null;
@@ -97,14 +95,23 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
+
+    /**
+     * slug
+     *
+     * @var string
+     */
+    protected $slug = '';
 
     /**
      * address
      *
      * @var string
      * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $address = '';
 
@@ -301,6 +308,11 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $active = false;
 
     /**
+     * @var \Chancenportal\Chancenportal\Domain\Model\Provider
+     */
+    protected $provider = null;
+
+    /**
      * contentImage
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
@@ -386,10 +398,24 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $contentImageCopyright = '';
 
     /**
+     * participation
+     *
+     * @var bool
+     */
+    protected $participation = false;
+
+    /**
+     * openingHours
+     *
+     * @var string
+     */
+    protected $openingHours = '';
+
+    /**
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $dates = null;
@@ -398,7 +424,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * targetGroups
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\TargetGroup>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $targetGroups = null;
@@ -407,7 +433,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $categories = null;
@@ -416,7 +442,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * district
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\District
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $district = null;
 
@@ -424,7 +450,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $creator = null;
 
@@ -432,16 +458,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * lastEditor
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * @lazy
+     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $lastEditor = null;
-
-    /**
-     * participation
-     *
-     * @var bool
-     */
-    protected $participation = false;
 
     /**
      * @return \DateTime
@@ -489,22 +508,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCreatorChanged($creatorChanged)
     {
         $this->creatorChanged = $creatorChanged;
-    }
-
-    /**
-     * @return Provider
-     */
-    public function getProvider()
-    {
-        return $this->provider;
-    }
-
-    /**
-     * @param Provider $provider
-     */
-    public function setProvider($provider)
-    {
-        $this->provider = $provider;
     }
 
     public function getTheme()
@@ -613,6 +616,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $now = new \DateTime('midnight');
         $latestDate = null;
         $latestDateObj = null;
+
         // täglich
         if ($this->getDateType() == 3) {
             foreach ($this->dates as $date) {
@@ -629,6 +633,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             }
             return $latestDate ? $this->addTimeToNextDate($latestDate, $latestDateObj) : $now;
         }
+
         // konkrete Daten / Zeitraum
         if ($this->getDateType() == 1) {
             foreach ($this->dates as $date) {
@@ -650,6 +655,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             }
             return $latestDate ? $this->addTimeToNextDate($latestDate, $latestDateObj) : $now;
         }
+
         // Wöchentlich
         if ($this->getDateType() == 4) {
             $result = $this->getNextDateFromWeekly();
@@ -658,8 +664,8 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @throws \Exception
      * @return \DateTime
+     * @throws \Exception
      */
     private function getNextDateFromWeekly()
     {
@@ -667,6 +673,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $firstDayThisWeek = (new \DateTime('midnight'))->modify('monday this week');
         $oldestDate = null;
         $weekdays = [];
+
         // get the oldest date and the supported weekdays
         foreach ($this->getDates() as $date) {
             if ($date->getActive() && $date->getStartDate()) {
@@ -677,6 +684,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                 }
             }
         }
+
         // sort weekdays
         ksort($weekdays);
         if (!$oldestDate) {
@@ -685,12 +693,14 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         if ($oldestDate->getStartDate() < $now) {
             $nowWeekday = intval($now->format('N'));
             $cDate = null;
+
             // is the current weekday set the
             if (isset($weekdays[$nowWeekday])) {
                 $firstDayThisWeek->modify('+' . ($nowWeekday - 1) . 'days');
                 $now = $firstDayThisWeek;
                 $cDate = $weekdays[$nowWeekday];
             } else {
+
                 // check if there are weekdays that are greather than now
                 foreach ($weekdays as $day => $date) {
                     $iterate = clone $firstDayThisWeek;
@@ -702,6 +712,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                     }
                 }
                 if ($cDate === null) {
+
                     // set the first day of $weekdays to the next date
                     foreach ($weekdays as $day => $date) {
                         $iterate = clone $firstDayThisWeek;
@@ -805,10 +816,12 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     private function deleteImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image)
     {
-        try {    $resourceFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
+        try {
+            $resourceFactory = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\ResourceFactory');
             $fileReferenceObject = $resourceFactory->getFileReferenceObject($image->getUid());
             $fileReferenceObject->getOriginalFile()->delete();
-        } catch (\Exception $e) {    error_log($e->getMessage());
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
         }
     }
 
@@ -830,6 +843,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
         $setting = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
         $this->setPid($setting['chancenportal']['storagePids']['offer']);
+
         //Do not remove the next line: It would break the functionality
         $this->initStorageObjects();
     }
@@ -903,6 +917,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setName($name)
     {
         $this->name = $name;
+        $this->setSlug(AbstractUtility::generateSlug($this->name, 'tx_chancenportal_domain_model_offer'));
     }
 
     /**
@@ -936,8 +951,12 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         if ($this->getDateType() !== 4) {
             $offerDates = $this->dates->toArray();
-            usort($offerDates, function ($a, $b) {    return $a > $b;
-                });
+            usort(
+                $offerDates,
+                function ($a, $b) {
+                    return $a > $b;
+                }
+            );
             $newStorage = new ObjectStorage();
             foreach ($offerDates as $offerDate) {
                 $newStorage->attach($offerDate);
@@ -982,32 +1001,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @param null $date
-     * @return \DateTime|null
-     */
-    private function getStartOfWeekDate($date = null)
-    {
-        if ($date instanceof \DateTime) {
-            $date = clone $date;
-        } else {
-            if (!$date) {
-                $date = new \DateTime();
-            } else {
-                $date = new \DateTime($date);
-            }
-        }
-        $date->setTime(0, 0, 0);
-        if ($date->format('N') == 1) {
-            // If the date is already a Monday, return it as-is
-            return $date;
-        } else {
-            // Otherwise, return the date of the nearest Monday in the past
-            // This includes Sunday in the previous week instead of it being the start of a new week
-            return $date->modify('last monday');
-        }
-    }
-
-    /**
      * Sets the dates
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date> $dates
@@ -1028,9 +1021,11 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             if ($dateType === 4 && $this->getStartDate()) {
                 $startDate = clone $this->getStartDate();
                 $endDate = $this->getEndDate() ? clone $this->getEndDate() : null;
-                $firstOfNextWeek = $this->getStartOfWeekDate($startDate)->modify('+7 days');
+                $firstOfNextWeek = (clone $startDate)->modify('monday next week');
                 $daysNextWeek = [];
                 $count = 0;
+
+                // Iterate from the startDate weekday to the end of the week
                 foreach ($dates as $date) {
                     $weekday = intval($startDate->format('N'));
                     $count++;
@@ -1043,19 +1038,22 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                         }
                         $startDate->modify('+1 day');
                     } else {
+
                         $daysNextWeek[$count] = $date;
                     }
                 }
+
+                // Iterate over the new week until the startDate weekday
                 $count = 0;
                 foreach ($dates as $date) {
                     $weekday = intval($firstOfNextWeek->format('N'));
                     $count++;
                     if (isset($daysNextWeek[$count]) && $weekday === $count) {
-                        $firstOfNextWeek->modify('+1 day');
                         $date->setStartDate(clone $firstOfNextWeek);
                         if ($endDate) {
                             $date->setEndDate(clone $endDate);
                         }
+                        $firstOfNextWeek->modify('+1 day');
                     }
                 }
             } else {
@@ -1225,8 +1223,10 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getYoutube()
     {
         if ($this->youtube) {
-            preg_match('%(?:youtube(?:-nocookie)?\\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\\.be/)([^"&?/ ]{11})%i',
-                $this->youtube, $match
+            preg_match(
+                '%(?:youtube(?:-nocookie)?\\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\\.be/)([^"&?/ ]{11})%i',
+                $this->youtube,
+                $match
             );
             $youtubeId = isset($match[1]) ? $match[1] : false;
             return $youtubeId ? 'https://www.youtube-nocookie.com/embed/' . $youtubeId . '?rel=0' : null;
@@ -1431,6 +1431,22 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDonate($donate)
     {
         $this->donate = $donate;
+    }
+
+    /**
+     * @return Provider
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param Provider $provider
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
     }
 
     /**
@@ -1757,7 +1773,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         foreach ($this->targetGroups as $targetGroup) {
             $uids[] = $targetGroup->getUid();
         }
-        if($sortedTargetGroups = $this->targetGroupRepository->findByUids($uids)) {
+        if ($sortedTargetGroups = $this->targetGroupRepository->findByUids($uids)) {
             foreach ($sortedTargetGroups as $targetGroup) {
                 $return->attach($targetGroup);
             }
@@ -1928,9 +1944,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \Chancenportal\Chancenportal\Domain\Model\FrontendUser $creator
      * @return void
      */
-    public function setCreator(\Chancenportal\Chancenportal\Domain\Model\FrontendUser $creator)
+    public function setCreator(\Chancenportal\Chancenportal\Domain\Model\FrontendUser $creator = null)
     {
-        if ($this->creator && $this->creator->getUid() !== $creator->getUid()) {
+        if (!$creator || ($this->creator && $this->creator->getUid() !== $creator->getUid())) {
             $this->setActive(false);
             $this->creatorChanged = true;
         }
@@ -2073,6 +2089,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
         $extbaseFrameworkConfiguration = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $offerApproval = $extbaseFrameworkConfiguration['config.']['tx_extbase.']['settings.']['chancenportal.']['activate_offer_approval'];
+
         // always approve offers if the typoscript function ist 0
         return $offerApproval === '1' ? $this->approved : true;
     }
@@ -2269,5 +2286,47 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function isParticipation()
     {
         return $this->participation;
+    }
+
+    /**
+     * Returns the slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Sets the slug
+     *
+     * @param string $slug
+     * @return void
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Returns the openingHours
+     *
+     * @return string $openingHours
+     */
+    public function getOpeningHours()
+    {
+        return $this->openingHours;
+    }
+
+    /**
+     * Sets the openingHours
+     *
+     * @param string $openingHours
+     * @return void
+     */
+    public function setOpeningHours($openingHours)
+    {
+        $this->openingHours = $openingHours;
     }
 }

@@ -1,4 +1,4 @@
-﻿<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
+﻿<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 <f:section name="main">
 
@@ -70,7 +70,7 @@
                     <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.evaluations)}" class="border-box border-box--arrow">
                         <div class="border-box__content">
                             <h2 class="border-box__headline">Auswertungen</h2>
-                            <div class="border-box__text">Hier erhalten Sie zusammengefasste Daten zu den Angebote und der Nutzung dieser Plattform.</div>
+                            <div class="border-box__text">Hier erhalten Sie zusammengefasste Daten zu den Angeboten und der Nutzung dieser Plattform.</div>
                         </div>
                         <div class="border-box__arrow"></div>
                     </a>
@@ -127,7 +127,7 @@
                             <a href="{f:uri.page(pageUid: settings.chancenportal.pageIds.evaluations)}" class="border-box border-box--arrow">
                                 <div class="border-box__content">
                                     <h2 class="border-box__headline">Auswertungen</h2>
-                                    <div class="border-box__text">Hier erhalten Sie zusammengefasste Daten zu den Angebote und der Nutzung dieser Plattform.</div>
+                                    <div class="border-box__text">Hier erhalten Sie zusammengefasste Daten zu den Angeboten und der Nutzung dieser Plattform.</div>
                                 </div>
                                 <div class="border-box__arrow"></div>
                             </a>
@@ -137,8 +137,12 @@
             </f:else>
         </f:security.ifHasRole>
 
-
+        <f:if condition="{showTerms}">
+            <custom-terms-and-conditions url="{f:uri.page(pageUid: settings.chancenportal.pageIds.overview, absolute: 1, linkAccessRestrictedPages: 1)}">
+                <input type="hidden" name="accept" value="1">
+                <v:content.render contentUids="{0: settings.chancenportal.terms_and_condition_element_id}"/>
+            </custom-terms-and-conditions>
+        </f:if>
       </div>
-
 </f:section>
 </html>
