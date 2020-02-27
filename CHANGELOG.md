@@ -5,6 +5,10 @@
 ### Release für TYPO3 9.5
 Mit diesem Release wurde die zugrundeliegende TYPO3-Version von TYPO3 8.7 LTS auf TYPO3 9.5 LTS geändert. TYPO3 8.7 LTS wird mit diesem Release nicht mehr unterstützt.
 
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/0ed32946d906da996ba31c73ed574bf09478ca2b]()
+
 ## Release 2020-01-07
 
 ### BUGFIX: Excel Export von Angeboten
