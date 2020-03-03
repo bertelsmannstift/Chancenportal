@@ -387,6 +387,36 @@ CREATE TABLE `cf_cache_rootline_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
+# Export von Tabelle cf_chancenportal
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf_chancenportal`;
+
+CREATE TABLE `cf_chancenportal` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `expires` int(10) unsigned NOT NULL DEFAULT 0,
+  `content` longblob DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cache_id` (`identifier`(180),`expires`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+# Export von Tabelle cf_chancenportal_tags
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cf_chancenportal_tags`;
+
+CREATE TABLE `cf_chancenportal_tags` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `tag` varchar(250) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `cache_id` (`identifier`(191)),
+  KEY `cache_tag` (`tag`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 
 # Export von Tabelle cf_extbase_datamapfactory_datamap
 # ------------------------------------------------------------
