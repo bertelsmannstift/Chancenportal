@@ -46,6 +46,7 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      * Virtual field
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $group = null;
 
@@ -70,11 +71,13 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      * Virtual field
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $companyGroup = null;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $usergroup = null;
 

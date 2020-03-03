@@ -17,6 +17,7 @@ use Chancenportal\Chancenportal\Domain\Model\Log;
 use Chancenportal\Chancenportal\Domain\Model\Offer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use UI\UiProvider\Service\CacheService;
 
 /**
  * FrontendUserController
@@ -66,6 +67,12 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      * @inject
      */
     protected $selectUtility = null;
+
+    /**
+     * @var \UI\UiProvider\Service\CacheService
+     * @inject
+     */
+    protected $cacheService = null;
     /**
      * @var string
      */
@@ -123,15 +130,23 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @return mixed|\TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
     public function teaserAction()
     {
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
-        $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
-        $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
-        $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+        /** Cache rendered output */
+        $teaser = $this->cacheService->getFromCacheOrSet('chancenportal', 'teaserAction', function() {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
+            $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
+            $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
+            $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+
+            return $this->view->render();
+        }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['teaserAction']);
+
+        return $teaser;
     }
 
     /**
@@ -179,9 +194,18 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function searchResultAjaxAction()
     {
         $postVars = $this->similiarSearch();
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('offers', $this->offerRepository->findByFields($postVars));
-        $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+
+        /** Cache rendered output */
+        $cacheKey = 'searchResultAjaxAction_' . md5(serialize($postVars));
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars) {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('offers', $this->offerRepository->findByFields($postVars));
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+
+            return $this->view->render();
+        }, [$postVars], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultAjaxAction']);
+
+        return $renderedResults;
     }
 
     /**
@@ -203,31 +227,61 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function searchProviderResultAjaxAction()
     {
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
+        $postVars = GeneralUtility::_POST();
+
+        /** Cache rendered output */
+        $cacheKey = 'searchProviderResultAjaxAction_' . md5(serialize($postVars));
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars) {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+
+            return $this->view->render();
+        }, [$postVars], [], $this->settings['chancenportal']['caching']['lifetimes']['searchProviderResultAjaxAction']);
+
+        return $renderedResults;
     }
 
     /**
      * Aktuelle Angebote
+     *
+     * @return mixed|\TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
     public function offersTeaserAction()
     {
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('offers', $this->offerRepository->findAllActive(7));
+        /** Cache rendered output instead of serialized domain objects, which would be way too big */
+        $offers = $this->cacheService->getFromCacheOrSet('chancenportal', 'offersTeaserAction', function() {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('offers', $this->offerRepository->findAllActive(7));
+
+            return $this->view->render();
+        }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['searchProviderResultAjaxAction']);
+
+        return $offers;
     }
 
     /**
      * Auswahl einiger Anbieter
+     *
+     * @return mixed|\TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+     * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
      */
     public function providerTeaserAction()
     {
-        $providers = $this->providerRepository->findAllActive();
-        $providers = $providers->toArray();
-        shuffle($providers);
-        $providers = array_slice($providers, 0, 4);
+        /** Cache rendered output instead of serialized domain objects, which would be way too big */
+        $providers = $this->cacheService->getFromCacheOrSet('chancenportal', 'providerTeaserAction', function() {
+            $providers = $this->providerRepository->findAllActive();
+            $providers = $providers->toArray();
+            shuffle($providers);
+            $providers = array_slice($providers, 0, 4);
 
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('providers', $providers);
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('providers', $providers);
+
+            return $this->view->render();
+        }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['providerTeaserAction']);
+
+        return $providers;
     }
 
     /**
@@ -251,13 +305,23 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             ]
         ];
 
-        $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('providers', $this->providerRepository->findByFields(GeneralUtility::_POST(), true, true));
-        $this->view->assign('categories', $this->selectUtility->getProviderCategoriesForSelect());
-        $this->view->assign('sorting', json_encode($sorting));
-        $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
-        $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+        $postVars = GeneralUtility::_POST();
+
+        /** Cache rendered output */
+        $cacheKey = 'searchProviderResultsAction_' . md5(serialize($postVars));
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($sorting, $postVars) {
+            $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+            $this->view->assign('categories', $this->selectUtility->getProviderCategoriesForSelect());
+            $this->view->assign('sorting', json_encode($sorting));
+            $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
+            $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+
+            return $this->view->render();
+        }, [$sorting, $postVars], [], $this->settings['chancenportal']['caching']['lifetimes']['searchProviderResultsAction']);
+
+        return $renderedResults;
     }
 
     /**
@@ -337,15 +401,23 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $postVars = $this->similiarSearch();
 
-        $this->view->assign('settings', $this->settings);
-        $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true));
-        $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
-        $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
-        $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
-        $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
-        $this->view->assign('tabConfig', json_encode($tabConfig));
-        $this->view->assign('sortingOffers', json_encode($sortingOffers));
-        $this->view->assign('sortingProviders', json_encode($sortingProviders));
-        $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+        /** Cache rendered output */
+        $cacheKey = 'searchResultsAction_' . md5(serialize($postVars));
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars, $tabConfig, $sortingOffers, $sortingProviders) {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true));
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+            $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
+            $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
+            $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
+            $this->view->assign('tabConfig', json_encode($tabConfig));
+            $this->view->assign('sortingOffers', json_encode($sortingOffers));
+            $this->view->assign('sortingProviders', json_encode($sortingProviders));
+            $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+
+            return $this->view->render();
+        }, [$postVars, $tabConfig, $sortingOffers, $sortingProviders], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultsAction']);
+
+        return $renderedResults;
     }
 }

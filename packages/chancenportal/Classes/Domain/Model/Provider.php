@@ -3,9 +3,8 @@ namespace Chancenportal\Chancenportal\Domain\Model;
 
 use Chancenportal\Chancenportal\Utility\AbstractUtility;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
-use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /***
  *
@@ -284,7 +283,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * labels
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Label>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $labels = null;
@@ -293,7 +292,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * offers
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $offers = null;
@@ -302,7 +301,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * ownerGroup
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $ownerGroup = null;
@@ -311,7 +310,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * carrier
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Carrier
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $carrier = null;
 
@@ -319,7 +318,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $categories = null;
 
@@ -327,7 +326,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $creator = null;
 
@@ -335,7 +334,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * author
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $author = null;
 
@@ -764,6 +763,9 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCarrier()
     {
+        if ($this->carrier instanceof LazyLoadingProxy) {
+            $this->carrier = $this->carrier->_loadRealInstance();
+        }
         return $this->carrier;
     }
 
@@ -782,6 +784,9 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getOwnerGroup()
     {
+        if ($this->ownerGroup instanceof LazyLoadingProxy) {
+            $this->ownerGroup = $this->ownerGroup->_loadRealInstance();
+        }
         return $this->ownerGroup;
     }
 
@@ -1394,6 +1399,9 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCreator()
     {
+        if ($this->creator instanceof LazyLoadingProxy) {
+            $this->creator = $this->creator->_loadRealInstance();
+        }
         return $this->creator;
     }
 
@@ -1415,6 +1423,9 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getAuthor()
     {
+        if ($this->author instanceof LazyLoadingProxy) {
+            $this->author = $this->author->_loadRealInstance();
+        }
         return $this->author;
     }
 

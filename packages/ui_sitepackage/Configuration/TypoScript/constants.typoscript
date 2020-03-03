@@ -12,6 +12,23 @@ uandi {
 	}
 }
 
+chancenportal {
+	caching {
+		lifetimes {
+			teaserAction = 3600
+			offersTeaserAction = 3600
+			providerTeaserAction = 3600
+
+			searchResultsAction = 3600
+			searchResultAjaxAction = 3600
+
+			searchProviderResultsAction = 3600
+			searchProviderResultAjaxAction = 3600
+		}
+	}
+}
+
+
 
 /**
  * Page Rendering Constants
@@ -67,7 +84,7 @@ config {
     )
 }
 
-[applicationContext = Development*]
+[applicationContext == "Development*"]
 config {
 	no_cache = 1
 	compressJs = 0

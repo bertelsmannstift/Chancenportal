@@ -36,6 +36,7 @@ class Log extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * category
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Category
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $category = null;
 
@@ -43,6 +44,7 @@ class Log extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * offer
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Offer
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $offer = null;
 

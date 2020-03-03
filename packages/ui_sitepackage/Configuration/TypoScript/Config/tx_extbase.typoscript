@@ -64,6 +64,20 @@ config.tx_extbase {
                 request_offer_approval_subject = Neues Angebot auf dem Chancenportal
             }
 
+            caching {
+                lifetimes {
+                    teaserAction = {$chancenportal.caching.lifetimes.teaserAction}
+                    offersTeaserAction = {$chancenportal.caching.lifetimes.offersTeaserAction}
+                    providerTeaserAction = {$chancenportal.caching.lifetimes.providerTeaserAction}
+
+                    searchResultsAction = {$chancenportal.caching.lifetimes.searchResultsAction}
+                    searchResultAjaxAction = {$chancenportal.caching.lifetimes.searchResultAjaxAction}
+
+                    searchProviderResultsAction = {$chancenportal.caching.lifetimes.searchProviderResultsAction}
+                    searchProviderResultAjaxAction = {$chancenportal.caching.lifetimes.searchProviderResultAjaxAction}
+                }
+            }
+
             google_maps_api_key = {$plugin.tx_chancenportal_chancenportal.settings.google_maps_api_key}
             activate_offer_approval = {$plugin.tx_chancenportal_chancenportal.settings.activate_offer_approval}
             activate_account_takeover = {$plugin.tx_chancenportal_chancenportal.settings.activate_account_takeover}

@@ -119,3 +119,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\Chancenportal\C
     'title' => 'Update offer and provider slugs',
     'description' => ''
 );
+
+if (empty($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['chancenportal'])) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['chancenportal'] = [];
+}

@@ -20,6 +20,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $offers = null;
@@ -50,6 +51,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * children
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $children = null;
@@ -58,6 +60,7 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * parent
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\Category
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $parent = null;
 

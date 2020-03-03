@@ -5,6 +5,7 @@ namespace Chancenportal\Chancenportal\Domain\Model;
 use Chancenportal\Chancenportal\Utility\AbstractUtility;
 use Chancenportal\Chancenportal\Utility\ImageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***
@@ -309,6 +310,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Provider
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $provider = null;
 
@@ -415,7 +417,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $dates = null;
@@ -424,7 +426,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * targetGroups
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\TargetGroup>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $targetGroups = null;
@@ -433,7 +435,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * categories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @cascade remove
      */
     protected $categories = null;
@@ -442,7 +444,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * district
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\District
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $district = null;
 
@@ -450,7 +452,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * creator
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $creator = null;
 
@@ -458,7 +460,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * lastEditor
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUser
-     * TYPO3 Bug TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $lastEditor = null;
 
@@ -1438,6 +1440,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getProvider()
     {
+        if ($this->provider instanceof LazyLoadingProxy) {
+            $this->provider = $this->provider->_loadRealInstance();
+        }
         return $this->provider;
     }
 
@@ -1575,6 +1580,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getDistrict()
     {
+        if ($this->district instanceof LazyLoadingProxy) {
+            $this->district = $this->district->_loadRealInstance();
+        }
         return $this->district;
     }
 
@@ -1935,6 +1943,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCreator()
     {
+        if ($this->creator instanceof LazyLoadingProxy) {
+            $this->creator = $this->creator->_loadRealInstance();
+        }
         return $this->creator;
     }
 
@@ -1960,6 +1971,9 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getLastEditor()
     {
+        if ($this->lastEditor instanceof LazyLoadingProxy) {
+            $this->lastEditor = $this->lastEditor->_loadRealInstance();
+        }
         return $this->lastEditor;
     }
 

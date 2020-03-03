@@ -21,6 +21,7 @@ class Date extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Model\Offer
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $offer = null;
 
