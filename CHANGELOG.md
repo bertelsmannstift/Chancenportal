@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 2020-03-25
+
+### Minor Bugfixes
+Kleinere Bugfixes für den Freigabeprozess und die Auswertungsansicht.
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/af45fcfdb45785e593daeb35ba2bc82dafcaeda9](https://github.com/bertelsmannstift/Chancenportal/commit/af45fcfdb45785e593daeb35ba2bc82dafcaeda9)
+
 ## Release 2020-03-03
 
 ### Performance Updates
