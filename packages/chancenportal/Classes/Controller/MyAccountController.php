@@ -657,7 +657,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             $offerResults = $this->offerRepository->findByDatesAndCategory($data[0], $data[1], $category);
 
         } else {
-            $logs = $this->logRepository->findAll();
+            $logs = $this->logRepository->findAll(20000);
             $offerResults = $this->offerRepository->findAll();
         }
 
@@ -1697,6 +1697,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         }
 
         if ($isAdmin || $provider) {
+            $offerActiveState = $offer->getActive();
 
             if (!$offer->getCreator()) {
                 $offer->setCreator($currentUser);
@@ -1782,6 +1783,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                         [$this->settings['chancenportal']['email']['sender']], [],
                         $this->settings['chancenportal']['email']['request_offer_approval_subject'], 'ApprovedOffer.html',
                         ['offer' => $offer, 'user' => $offer->getCreator(), 'settings' => $this->settings]);
+                }
+
+                /**
+                 * Active state might have been changed by setCreator. If this is an admin, keep the submitted state.
+                 */
+                if($isAdmin) {
+                    $offer->setActive($offerActiveState);
                 }
 
                 if ($offer->creatorChanged === false && $data['offer']['active'] === '1') {

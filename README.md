@@ -49,6 +49,7 @@ Zur Installation sind folgende Schritte notwendig:
 3. Datenbankdump `/database/chancenportal.sql` in eine MySQL oder MariaDB laden
 4. Setzen des Webroots auf den Ordner `web`
 5. Konfiguration der Datenbank in der Datei `.env` vornehmen
+6. Im TYPO3 kann über den Menüpunkt "Sites bzw. Seiten" eine Konfiguration für das Chancenportal erzeugt werden. Dies hat z.B. Auswirkungen auf die Erzeugung sprechender URLs. Siehe dazu auch [Site Handling](https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/SiteHandling/Index.html) in der TYPO3 Dokumentation.
 
 Je nach gesetzter `TYPO3_CONTEXT` Umgebungsvariable wird die entsprechende Konfigurationsdatei aus dem Ordner 
 `configuration` geladen. Sie überschreibt die Standard-Konfiguration aus der Datei `LocalConfiguration.php`.
@@ -73,6 +74,7 @@ Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
 14. Installieren und aktivieren Sie folgende Extensions im TYPO3 Backend:
 	* [typoscript_rendering](https://extensions.typo3.org/extension/typoscript_rendering/) (Version 2.2.2)
  	* [vhs](https://extensions.typo3.org/extension/vhs/) (Version 5.2.0)
+15. Im TYPO3 kann über den Menüpunkt "Sites bzw. Seiten" eine Konfiguration für das Chancenportal erzeugt werden. Dies hat z.B. Auswirkungen auf die Erzeugung sprechender URLs. Siehe dazu auch [Site Handling](https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/SiteHandling/Index.html) in der TYPO3 Dokumentation.
 
 ## TYPO3 Login
 
