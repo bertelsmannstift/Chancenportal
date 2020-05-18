@@ -1,5 +1,15 @@
 # Changelog
 
+## Release 2020-05-18
+
+### BUGFIX / FEATURE
+- GeoCoding funktionierte im TYPO3 Backend aufgrund von Google API Einschränkungen nicht korrekt
+- Die Möglichkeit Angebote ohne Adresse hinzuzufügen wurde implementiert
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/f35f47e124e7650a783c8526e03b0c8dd843e82a](https://github.com/bertelsmannstift/Chancenportal/commit/f35f47e124e7650a783c8526e03b0c8dd843e82a)
+
 ## Release 2020-03-25
 
 ### Minor Bugfixes
