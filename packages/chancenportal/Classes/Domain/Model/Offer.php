@@ -92,6 +92,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public $activeChanged = false;
 
     /**
+     * addressType
+     * 
+     * @var int
+     */
+    protected $addressType = 1;
+
+    /**
      * name
      *
      * @var string
@@ -2154,6 +2161,26 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             $this->dates = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
         $this->dateType = $dateType;
+    }
+
+    /**
+     * Returns the addressType
+     * 
+     * @return int
+     */
+    public function getAddressType()
+    {
+        return $this->addressType;
+    }
+
+    /**
+     * Sets the addressType
+     * 
+     * @param int $addressType
+     */
+    public function setAddressType($addressType)
+    {
+        $this->addressType = $addressType;
     }
 
     /**

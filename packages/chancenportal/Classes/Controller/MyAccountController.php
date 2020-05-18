@@ -1549,7 +1549,8 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      */
     private function getLatLng($address)
     {
-        $result = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . $this->settings['chancenportal']['google_maps_api_key']));
+        $key = !empty($this->settings['chancenportal']['google_maps_api_key_no_restrictions']) ? $this->settings['chancenportal']['google_maps_api_key_no_restrictions'] : $this->settings['chancenportal']['google_maps_api_key'];
+        $result = json_decode(file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . $key));
 
         if (isset($result->results[0])) {
             return [str_replace(',', '.', $result->results[0]->geometry->location->lat), str_replace(',', '.', $result->results[0]->geometry->location->lng), $result->results[0]->formatted_address];
@@ -1903,6 +1904,11 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             ["id" => 4, "title" => "Wöchentlich", "active" => $offer && $offer->getDateType() === 4],
         ];
 
+        $addressTypes = [
+            ["id" => 1, "title" => "Angebot mit Adresse", "active" => !$offer || !$offer->getAddressType() || $offer->getAddressType() === 1],
+            ["id" => 2, "title" => "Angebot ohne Adresse (Z.B. Onlineangebot)", "active" => $offer && $offer->getAddressType() === 2]
+        ];
+
         $currentProvider = $isAdmin ? null : UserUtility::getUserProvider($currentUser,
             $this->providerRepository->findAll());
 
@@ -1917,6 +1923,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect($offer, false, true));
         $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect($offer));
         $this->view->assign('dateTypes', json_encode($dateTypes));
+        $this->view->assign('addressTypes', json_encode($addressTypes));
         $this->view->assign('saved', $saved);
         $this->view->assign('offer', $offer);
         $this->view->assign('currentProvider', $currentProvider);

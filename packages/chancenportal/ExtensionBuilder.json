@@ -505,6 +505,17 @@
                         },
                         {
                             "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "addressType",
+                            "propertyType": "Select",
+                            "uid": "997392349338"
+                        },
+                        {
+                            "allowedFileTypes": "",
                             "maxItems": "1",
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
@@ -1884,8 +1895,8 @@
         }
     ],
     "log": {
-        "last_modified": "2020-01-15 02:02",
+        "last_modified": "2020-05-11 12:43",
         "extension_builder_version": "9.10.2",
-        "be_user": " (2)"
+        "be_user": " (4)"
     }
 }

@@ -103,12 +103,10 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
-        $constraints[] = $query->logicalAnd(
-            [
-                $query->equals('active', 1),
-                $query->equals('approved', 1)
-            ]
-        );
+        $constraints[] = $query->logicalAnd([
+            $query->equals('active', 1),
+            $query->equals('approved', 1)
+        ]);
         $constraints[] = $query->logicalNot($query->equals('name', ''));
         return $query->matching($query->logicalAnd($constraints))->execute();
     }
@@ -135,12 +133,10 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
-        $constraints[] = $query->logicalAnd(
-            [
-                $query->equals('active', 1),
-                $query->equals('approved', 1)
-            ]
-        );
+        $constraints[] = $query->logicalAnd([
+            $query->equals('active', 1),
+            $query->equals('approved', 1)
+        ]);
         if (!empty($fields['term'])) {
             $fields['term'] = (array)$fields['term'];
         }
@@ -151,12 +147,10 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $params[] = $query->in('offers.targetGroups.uid', $fields['targetGroups']);
             }
             if (isset($fields['zip']) && !empty($fields['zip']) && empty($fields['distance']) && $fields['distance'] !== '0') {
-                $constraints[] = $query->logicalOr(
-                    [
-                        $query->like('city', "%{$fields['zip']}%"),
-                        $query->like('zip', "%{$fields['zip']}%")
-                    ]
-                );
+                $constraints[] = $query->logicalOr([
+                    $query->like('city', "%{$fields['zip']}%"),
+                    $query->like('zip', "%{$fields['zip']}%")
+                ]);
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
@@ -185,13 +179,11 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $dates3[] = $query->lessThanOrEqual('offers.dates.startDate', \DateTime::createFromFormat('d.m.Y', $fields['dates'][1])->format('Y-m-d'));
                 }
                 if (count($dates)) {
-                    $params[] = $query->logicalOr(
-                        [
-                            $query->logicalAnd($dates),
-                            $query->logicalAnd($dates2),
-                            $query->logicalAnd($dates3)
-                        ]
-                    );
+                    $params[] = $query->logicalOr([
+                        $query->logicalAnd($dates),
+                        $query->logicalAnd($dates2),
+                        $query->logicalAnd($dates3)
+                    ]);
                 }
             } elseif (isset($fields['dateType']) && $fields['dateType'] === '2' && !empty($fields['dates'][2])) {
                 $dates = [];
@@ -251,22 +243,20 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($fields['zip']) && !empty($fields['zip']) && isset($fields['distance']) && intval($fields['distance']) >= 1) {
             $newResult = new ObjectStorage();
             $distance = intval($fields['distance']);
-            $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($fields['zip']) . '&sensor=false&components=country:DE&key=' . $this->settings['settings']['chancenportal']['google_maps_api_key'];
+            $key = !empty($this->settings['settings']['chancenportal']['google_maps_api_key_no_restrictions']) ? $this->settings['settings']['chancenportal']['google_maps_api_key_no_restrictions'] : $this->settings['settings']['chancenportal']['google_maps_api_key'];
+            $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($fields['zip']) . '&sensor=false&components=country:DE&key=' . $key;
             $resultString = file_get_contents($url);
             $jsonResult = json_decode($resultString, true);
             if (!empty($jsonResult['results'])) {
                 $zipLat = $jsonResult['results'][0]['geometry']['location']['lat'];
                 $ziplng = $jsonResult['results'][0]['geometry']['location']['lng'];
-                foreach ($result as $provider) {
-                    foreach ($provider->getOffers() as $item) {
-                        if ($this->distance($zipLat, $ziplng, $item->getLat(), $item->getLng()) <= $distance) {
-                            $newResult->attach($provider);
-                            continue 2;
-                        }
+                foreach ($result as $item) {
+                    if ($this->distance($zipLat, $ziplng, $item->getLat(), $item->getLng()) <= $distance) {
+                        $newResult->attach($item);
                     }
                 }
-                $result = $newResult;
             }
+            $result = $newResult;
         }
 
         //Get active offers

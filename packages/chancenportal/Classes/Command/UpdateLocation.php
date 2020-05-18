@@ -78,7 +78,8 @@ class UpdateLocation extends \TYPO3\CMS\Scheduler\Task\AbstractTask
             return false;
         }
 
-        $url = "https://maps.google.com/maps/api/geocode/json?key=" . $this->settings['chancenportal']['google_maps_api_key'] . "&address=" . urlencode($address);
+        $key = !empty($this->settings['chancenportal']['google_maps_api_key_no_restrictions']) ? $this->settings['chancenportal']['google_maps_api_key_no_restrictions'] : $this->settings['chancenportal']['google_maps_api_key'];
+        $url = "https://maps.google.com/maps/api/geocode/json?key=" . $key . "&address=" . urlencode($address);
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);

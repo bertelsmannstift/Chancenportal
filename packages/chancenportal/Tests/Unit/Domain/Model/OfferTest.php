@@ -75,6 +75,31 @@ class OfferTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
+    public function getAddressTypeReturnsInitialValueForInt()
+    {
+        self::assertSame(
+            0,
+            $this->subject->getAddressType()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setAddressTypeForIntSetsAddressType()
+    {
+        $this->subject->setAddressType(12);
+
+        self::assertAttributeEquals(
+            12,
+            'addressType',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getAddressReturnsInitialValueForString()
     {
         self::assertSame(

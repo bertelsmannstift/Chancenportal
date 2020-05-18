@@ -46,6 +46,7 @@ config.tx_extbase {
             xls_converter_date_format = d.m.Y
 
             use_zip_filter = {$plugin.tx_chancenportal_chancenportal.settings.use_zip_filter}
+            allow_offers_without_address = {$plugin.tx_chancenportal_chancenportal.settings.allow_offers_without_address}
 
             email {
                 sender = {$plugin.tx_chancenportal_chancenportal.settings.email_sender}
@@ -79,6 +80,7 @@ config.tx_extbase {
             }
 
             google_maps_api_key = {$plugin.tx_chancenportal_chancenportal.settings.google_maps_api_key}
+            google_maps_api_key_no_restrictions = {$plugin.tx_chancenportal_chancenportal.settings.google_maps_api_key_no_restrictions}
             activate_offer_approval = {$plugin.tx_chancenportal_chancenportal.settings.activate_offer_approval}
             activate_account_takeover = {$plugin.tx_chancenportal_chancenportal.settings.activate_account_takeover}
             show_google_translator = {$plugin.tx_chancenportal_chancenportal.settings.show_google_translator}

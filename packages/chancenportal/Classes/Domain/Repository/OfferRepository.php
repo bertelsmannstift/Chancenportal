@@ -79,12 +79,10 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $constraints[] = $query->equals('provider', $provider);
             $query->matching($query->logicalAnd($constraints));
         }
-        $query->setOrderings(
-            [
-                'approved' => QueryInterface::ORDER_ASCENDING,
-                'active' => QueryInterface::ORDER_ASCENDING
-            ]
-        );
+        $query->setOrderings([
+            'approved' => QueryInterface::ORDER_ASCENDING,
+            'active' => QueryInterface::ORDER_ASCENDING
+        ]);
         return $query->execute();
     }
 
@@ -104,23 +102,21 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $defaultDateCondition[] = $query->equals('approved', 1);
         }
         $now = new \DateTime('midnight');
-        $defaultDateCondition[] = $query->logicalOr(
-            [
-                $query->equals('dateType', 0),
-                $query->logicalAnd(
-                    [
-                        $query->greaterThan('dateType', 0),
-                        $query->logicalOr(
-                            [
-                                $query->greaterThan('dates.endDate', $now->format('Y-m-d')),
-                                $query->equals('dates.endDate', null),
-                                $query->equals('dates.endDate', '0000-00-00')
-                            ]
-                        )
-                    ]
-                )
-            ]
-        );
+        $defaultDateCondition[] = $query->logicalOr([
+            $query->equals('dateType', 0),
+            $query->logicalAnd(
+                [
+                    $query->greaterThan('dateType', 0),
+                    $query->logicalOr(
+                        [
+                            $query->greaterThan('dates.endDate', $now->format('Y-m-d')),
+                            $query->equals('dates.endDate', null),
+                            $query->equals('dates.endDate', '0000-00-00')
+                        ]
+                    )
+                ]
+            )
+        ]);
         if (count($defaultDateCondition)) {
             $constraints[] = $query->logicalOr($defaultDateCondition);
         }
@@ -133,15 +129,12 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         $query = $query->matching($query->logicalAnd($constraints));
         $result = $query->execute();
-        $result = $this->filterByDateRange(
-            $result,
-            [
-                'dates' => [
-                    $startDate,
-                    $endDate
-                ]
+        $result = $this->filterByDateRange($result, [
+            'dates' => [
+                $startDate,
+                $endDate
             ]
-        );
+        ]);
         return $result;
     }
 
@@ -157,23 +150,21 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $now = new \DateTime('midnight');
-        $constraints[] = $query->logicalOr(
-            [
-                $query->equals('dateType', 0),
-                $query->logicalAnd(
-                    [
-                        $query->greaterThan('dateType', 0),
-                        $query->logicalOr(
-                            [
-                                $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
-                                $query->equals('dates.endDate', null),
-                                $query->equals('dates.endDate', '0000-00-00')
-                            ]
-                        )
-                    ]
-                )
-            ]
-        );
+        $constraints[] = $query->logicalOr([
+            $query->equals('dateType', 0),
+            $query->logicalAnd(
+                [
+                    $query->greaterThan('dateType', 0),
+                    $query->logicalOr(
+                        [
+                            $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
+                            $query->equals('dates.endDate', null),
+                            $query->equals('dates.endDate', '0000-00-00')
+                        ]
+                    )
+                ]
+            )
+        ]);
         if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
@@ -181,21 +172,17 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $constraints[] = $query->equals('provider', $provider);
         }
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
-            $constraints[] = $query->logicalAnd(
-                [
-                    $query->equals('active', 1),
-                    $query->equals('approved', 1)
-                ]
-            );
+            $constraints[] = $query->logicalAnd([
+                $query->equals('active', 1),
+                $query->equals('approved', 1)
+            ]);
         } else {
             $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
         }
-        $query->setOrderings(
-            [
-                'dates.startDate' => QueryInterface::ORDER_ASCENDING,
-                'dates.startTime' => QueryInterface::ORDER_ASCENDING
-            ]
-        );
+        $query->setOrderings([
+            'dates.startDate' => QueryInterface::ORDER_ASCENDING,
+            'dates.startTime' => QueryInterface::ORDER_ASCENDING
+        ]);
         $result = $query->matching($query->logicalAnd($constraints))->execute();
         $result = $this->filterByActiveProviders($result);
         $newResult = $this->sortOfferTypes($result->toArray());
@@ -232,23 +219,21 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
             $constraints[] = $query->equals('approved', 1);
         }
-        $constraints[] = $query->logicalOr(
-            [
-                $query->equals('dateType', 0),
-                $query->logicalAnd(
-                    [
-                        $query->greaterThan('dateType', 0),
-                        $query->logicalOr(
-                            [
-                                $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
-                                $query->equals('dates.endDate', null),
-                                $query->equals('dates.endDate', '0000-00-00')
-                            ]
-                        )
-                    ]
-                )
-            ]
-        );
+        $constraints[] = $query->logicalOr([
+            $query->equals('dateType', 0),
+            $query->logicalAnd(
+                [
+                    $query->greaterThan('dateType', 0),
+                    $query->logicalOr(
+                        [
+                            $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
+                            $query->equals('dates.endDate', null),
+                            $query->equals('dates.endDate', '0000-00-00')
+                        ]
+                    )
+                ]
+            )
+        ]);
         $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
         $offerCategories = $offer->getCategories();
         if (!empty($offerCategories)) {
@@ -261,12 +246,10 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (count($params)) {
             $constraints[] = $query->logicalAnd($params);
         }
-        $query->setOrderings(
-            [
-                'dates.startDate' => QueryInterface::ORDER_ASCENDING,
-                'dates.startTime' => QueryInterface::ORDER_ASCENDING
-            ]
-        );
+        $query->setOrderings([
+            'dates.startDate' => QueryInterface::ORDER_ASCENDING,
+            'dates.startTime' => QueryInterface::ORDER_ASCENDING
+        ]);
         if ($limit) {
             $query->setLimit($limit);
         }
@@ -316,23 +299,21 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query->getQuerySettings()->setRespectStoragePage(false);
         $now = new \DateTime('midnight');
         $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
-        $constraints[] = $query->logicalOr(
-            [
-                $query->equals('dateType', 0),
-                $query->logicalAnd(
-                    [
-                        $query->greaterThan('dateType', 0),
-                        $query->logicalOr(
-                            [
-                                $query->greaterThan('dates.endDate', $now->modify('-1 day')->format('Y-m-d')),
-                                $query->equals('dates.endDate', null),
-                                $query->equals('dates.endDate', '0000-00-00')
-                            ]
-                        )
-                    ]
-                )
-            ]
-        );
+        $constraints[] = $query->logicalOr([
+            $query->equals('dateType', 0),
+            $query->logicalAnd(
+                [
+                    $query->greaterThan('dateType', 0),
+                    $query->logicalOr(
+                        [
+                            $query->greaterThan('dates.endDate', $now->modify('-1 day')->format('Y-m-d')),
+                            $query->equals('dates.endDate', null),
+                            $query->equals('dates.endDate', '0000-00-00')
+                        ]
+                    )
+                ]
+            )
+        ]);
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
             $constraints[] = $query->equals('approved', 1);
         }
@@ -351,12 +332,11 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $params[] = $query->equals('participation', 1);
             }
             if (isset($fields['zip']) && !empty($fields['zip']) && empty($fields['distance']) && $fields['distance'] !== '0') {
-                $constraints[] = $query->logicalOr(
-                    [
-                        $query->like('city', "%{$fields['zip']}%"),
-                        $query->like('zip', "%{$fields['zip']}%")
-                    ]
-                );
+                $constraints[] = $query->logicalOr([
+                    $query->like('city', "%{$fields['zip']}%"),
+                    $query->like('zip', "%{$fields['zip']}%"),
+                    $query->equals('addressType', 2)
+                ]);
             }
             if (isset($fields['category'])) {
                 $params[] = $query->in('categories.uid', [$fields['category']]);
@@ -365,13 +345,12 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 }
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
-                $params[] = $query->logicalOr(
-                    [
-                        $query->in('district.uid', $fields['districts']),
-                        $query->equals('district', null),
-                        $query->equals('district', 0)
-                    ]
-                );
+                $params[] = $query->logicalOr([
+                    $query->in('district.uid', $fields['districts']),
+                    $query->equals('district', null),
+                    $query->equals('district', 0),
+                    $query->equals('addressType', 2)
+                ]);
             }
             if (isset($fields['term']) && !empty($fields['term'])) {
                 if ($log) {
@@ -404,19 +383,15 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
         if ($fields['sort_offers'] === '2') {
-            $query->setOrderings(
-                [
-                    'dates.uid' => QueryInterface::ORDER_DESCENDING,
-                    'dates.startTime' => QueryInterface::ORDER_ASCENDING
-                ]
-            );
+            $query->setOrderings([
+                'dates.uid' => QueryInterface::ORDER_DESCENDING,
+                'dates.startTime' => QueryInterface::ORDER_ASCENDING
+            ]);
         } else {
-            $query->setOrderings(
-                [
-                    'dates.startDate' => QueryInterface::ORDER_ASCENDING,
-                    'dates.startTime' => QueryInterface::ORDER_ASCENDING
-                ]
-            );
+            $query->setOrderings([
+                'dates.startDate' => QueryInterface::ORDER_ASCENDING,
+                'dates.startTime' => QueryInterface::ORDER_ASCENDING
+            ]);
         }
         $query = $query->matching($query->logicalAnd($constraints));
 
@@ -456,12 +431,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function sortOfferTypes($items)
     {
-        uasort(
-            $items,
-            function ($a, $b) {
-                return $a->getNextDate() > $b->getNextDate();
-            }
-        );
+        uasort($items, function ($a, $b) {
+            return $a->getNextDate() > $b->getNextDate();
+        });
         return $items;
     }
 
@@ -489,18 +461,21 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $newResult = new ObjectStorage();
         $distance = intval($fields['distance']);
-        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($fields['zip']) . '&sensor=false&components=country:DE&key=' . $this->settings['settings']['chancenportal']['google_maps_api_key'];
+        $key = !empty($this->settings['settings']['chancenportal']['google_maps_api_key_no_restrictions']) ? $this->settings['settings']['chancenportal']['google_maps_api_key_no_restrictions'] : $this->settings['settings']['chancenportal']['google_maps_api_key'];
+        $url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($fields['zip']) . '&sensor=false&components=country:DE&key=' . $key;
         $resultString = file_get_contents($url);
         $jsonResult = json_decode($resultString, true);
         if (!empty($jsonResult['results'])) {
             $zipLat = $jsonResult['results'][0]['geometry']['location']['lat'];
             $ziplng = $jsonResult['results'][0]['geometry']['location']['lng'];
             foreach ($result as $item) {
-                if ($this->distance($zipLat, $ziplng, $item->getLat(), $item->getLng()) <= $distance) {
+                if ($this->distance($zipLat, $ziplng, $item->getLat(), $item->getLng()) <= $distance || $item->getAddressType() === 2) {
                     $newResult->attach($item);
                 }
             }
             $result = $newResult;
+        } else {
+            return $newResult;
         }
         return $result;
     }
@@ -764,13 +739,13 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $synsetsArr = [];
             $similarArr = [];
             $baseformArr = [];
-            if (count($synsetsDec['baseforms'])) {
+            if (is_countable($synsetsDec['baseforms']) && count($synsetsDec['baseforms'])) {
                 $baseform = $synsetsDec['baseforms'][0];
                 $baseformArr[] = $baseform;
                 $altCount += 1;
                 $singSynCount += 1;
             }
-            if (count($synsetsDec['synsets'])) {
+            if (is_countable($synsetsDec['synsets']) && count($synsetsDec['synsets'])) {
                 foreach ($synsetsDec['synsets'][0]['terms'] as $key => $syn) {
                     if (stripos($syn['term'], '(') === false && stripos($syn['term'], ' ') === false) {
                         $synsetsArr[] = str_replace('...', '', $syn['term']);
@@ -779,7 +754,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $singSynCount += 1;
                 }
             }
-            if (count($synsetsDec['similarterms']) && $settings['chancenportal']['search_show_similiar'] == 1) {
+            if (is_countable($synsetsDec['similarterms']) && count($synsetsDec['similarterms']) && $settings['chancenportal']['search_show_similiar'] == 1) {
                 foreach ($synsetsDec['similarterms'] as $key => $syn) {
                     if (stripos($syn['term'], '(') === false && stripos($syn['term'], ' ') === false) {
                         $term = str_replace('...', '', $syn['term']);

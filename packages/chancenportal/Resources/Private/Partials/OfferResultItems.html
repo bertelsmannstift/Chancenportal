@@ -24,39 +24,40 @@
                                 </f:if>
 
                                 <div class="kachel__footer">
-                                    <div class="kachel__location">
+                                    <f:if condition="{offer.addressType} != 2">
+                                        <div class="kachel__location">
+                                            <f:if condition="{settings.chancenportal.use_zip_filter}">
+                                                <f:then>
+                                                    {offer.city}
+                                                </f:then>
+                                                <f:else>
+                                                    <f:if condition="{offer.district}">
+                                                        <f:then>
+                                                            {offer.district.name}
+                                                        </f:then>
+                                                        <f:else>
+                                                            Alle Ortsteile
+                                                        </f:else>
+                                                    </f:if>
+                                                </f:else>
+                                            </f:if>
+                                        </div>
+                                    </f:if>
 
-                                        <f:if condition="{settings.chancenportal.use_zip_filter}">
-                                            <f:then>
-                                                {offer.city}
-                                            </f:then>
-                                            <f:else>
-                                                <f:if condition="{offer.district}">
-                                                    <f:then>
-                                                        {offer.district.name}
-                                                    </f:then>
-                                                    <f:else>
-                                                        Alle Ortsteile
-                                                    </f:else>
-                                                </f:if>
-                                            </f:else>
-                                        </f:if>
-
-                                    </div>
                                     <f:if condition="{offer.targetGroups}">
-
                                         <div class="kachel__user">
                                             <f:for each="{offer.targetGroups}" as="group" iteration="i">
                                                 {group.name}<f:if condition="{i.isLast}"><f:else>, </f:else></f:if>
                                             </f:for>
                                         </div>
-
                                     </f:if>
+
                                     <f:if condition="{c:OfferFormater(offer: offer, output: 'date')}">
                                         <div class="kachel__calendar">
                                             <c:OfferFormater offer="{offer}" output="date" long="0" />
                                         </div>
                                     </f:if>
+
                                     <f:if condition="{c:OfferFormater(offer: '{offer}', output: 'time', long: true)}">
                                         <div class="kachel__time"><c:OfferFormater offer="{offer}" output="time" /> Uhr</div>
                                     </f:if>

@@ -9,6 +9,9 @@
 			<trans-unit id="slug.description">
 				<source>slug</source>
 			</trans-unit>
+			<trans-unit id="address_type.description">
+				<source>addressType</source>
+			</trans-unit>
 			<trans-unit id="address.description">
 				<source>address</source>
 			</trans-unit>

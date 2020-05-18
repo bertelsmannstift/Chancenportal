@@ -616,20 +616,33 @@
             </div>
         </f:comment>
 
-        <div class="row">
-            <div class="col-lg-12 col-sm-12">
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="address"></c:formConfiguration>
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="lng"></c:formConfiguration>
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="lat"></c:formConfiguration>
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="zip"></c:formConfiguration>
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="street"></c:formConfiguration>
-                <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="city"></c:formConfiguration>
+        <f:if condition="{settings.chancenportal.allow_offers_without_address}">
+            <f:then>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="input">
+                            <label class="input__label">Adresstyp</label>
 
-                <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'address\', className: \' input--error\'}')}">
-                    <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[offer][street]" name-city="tx_chancenportal_chancenportal[offer][city]" label="Adresse (Wo findet das Angebot statt?) - Bitte zuerst Stadt oder Postleitzahl und dann die Straße eingeben.*"{f:if(condition:'{settings.chancenportal.use_zip_filter}', then: ' zip-must-exists="true"')} required="true" value="{offer.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[offer][lng]" name-zip="tx_chancenportal_chancenportal[offer][zip]" name-lat="tx_chancenportal_chancenportal[offer][lat]" name="tx_chancenportal_chancenportal[offer][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
+                            <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="addressType"></c:formConfiguration>
+
+                            <custom-dropdown id="tx_chancenportal_chancenportal[offer][addressType]" theme="light" show-selected-title="true" options="{addressTypes}">
+                                <div vue-slot="1">
+                                    <f:render section="FieldAddress" arguments="{_all}"/>
+                                </div>
+                            </custom-dropdown>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </f:then>
+            <f:else>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <f:form.hidden property="addressType" value="1" />
+                        <f:render section="FieldAddress" arguments="{_all}"/>
+                    </div>
+                </div>
+            </f:else>
+        </f:if>
 
 		<div class="row">
             <div class="col-lg-12 col-sm-12">
@@ -1054,5 +1067,23 @@
             </div>
         </div>
     </f:form>
+</f:section>
+
+<f:section name="FieldAddress">
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="address"></c:formConfiguration>
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="lng"></c:formConfiguration>
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="lat"></c:formConfiguration>
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="zip"></c:formConfiguration>
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="street"></c:formConfiguration>
+    <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="city"></c:formConfiguration>
+
+    <f:variable name="addressLabel" value="Adresse (Wo findet das Angebot statt?) - Bitte zuerst Stadt oder Postleitzahl und dann die Straße eingeben**" />
+    <f:if condition="{settings.chancenportal.use_zip_filter}">
+        <f:variable name="addressLabel" value="Adresse (Wo findet das Angebot statt?) - Bitte zuerst Postleitzahl/Stadt und dann die Straße eingeben. Die Eingabe der Postleitzahl ist zwingend erforderlich.*" />
+    </f:if>
+
+    <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'address\', className: \' input--error\'}')}">
+        <custom-map-autocomplete name-street="tx_chancenportal_chancenportal[offer][street]" name-city="tx_chancenportal_chancenportal[offer][city]" label="{addressLabel}"{f:if(condition:'{settings.chancenportal.use_zip_filter}', then: ' zip-must-exists="true"')} required="true" value="{offer.address}" error-msg="Addresse nicht gefunden." name-lng="tx_chancenportal_chancenportal[offer][lng]" name-zip="tx_chancenportal_chancenportal[offer][zip]" name-lat="tx_chancenportal_chancenportal[offer][lat]" name="tx_chancenportal_chancenportal[offer][address]" value="" api-key="{settings.chancenportal.google_maps_api_key}"></custom-map-autocomplete>
+    </div>
 </f:section>
 </html>

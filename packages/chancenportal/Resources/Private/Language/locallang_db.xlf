@@ -126,6 +126,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_offer.slug">
 				<source>Slug</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.address_type">
+				<source>Address Type</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.address">
 				<source>Address</source>
 			</trans-unit>

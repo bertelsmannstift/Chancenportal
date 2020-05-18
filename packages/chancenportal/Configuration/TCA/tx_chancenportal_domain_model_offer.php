@@ -20,10 +20,10 @@ return [
         'iconfile' => 'EXT:chancenportal/Resources/Public/Icons/tx_chancenportal_domain_model_offer.gif'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address_type, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, slug, address_type, address, lat, lng, info, short_description, long_description, speaker, images, youtube, conditions_of_participation, course_number, allowed_participants, costs, all_ages, access, accessibility, participate, donate, provider_cooperation, format, no_costs, contact_salutation, contact_name, contact_jurisdiction, contact_phone, contact_email, contact_image, active, content_image, active_date, zip, city, street, approved, date_type, start_date, end_date, reminder_email_send, images_copyright, content_image_copyright, participation, opening_hours, dates, target_groups, categories, district, creator, last_editor, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -132,6 +132,20 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim'
+            ],
+        ],
+        'address_type' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_offer.address_type',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                    ['-- Label --', 0],
+                ],
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
             ],
         ],
         'address' => [
