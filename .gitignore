@@ -130,6 +130,5 @@ Temporary Items
 .apdisk
 
 .ddev
-*.sql
 !chancenportal.sql
 web/typo3cionf/LocalConfiguration.php
