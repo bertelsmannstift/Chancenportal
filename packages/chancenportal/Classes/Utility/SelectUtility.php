@@ -269,12 +269,17 @@ class SelectUtility
                 $allInactive = false;
             }
 
-            $categoryItems[] = [
+            $tempItem = [
                 'id' => $item->getUid(),
                 'title' => $item->getName(),
                 'active' => $isItemActive === true,
-                'items' => $subCategoryItems,
             ];
+
+            if(!empty($subCategoryItems)) {
+                $tempItem['items'] = $subCategoryItems;
+            }
+
+            $categoryItems[] = $tempItem;
         }
 
         if($allInactive && $showCategoryAll) {

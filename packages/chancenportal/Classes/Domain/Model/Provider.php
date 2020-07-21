@@ -1082,6 +1082,10 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             if ($offer->getApproved() && $offer->getActive()) {
                 if ($offer->getDateType() === 0) {
                     $offers[$offer->getUid()] = $offer;
+                } elseif($offer->getDateType() === 4) {
+                    if($offer->getEndDate() === null || $offer->getEndDate() >= $now) {
+                        $offers[$offer->getUid()] = $offer;
+                    }
                 } else {
                     foreach ($offer->getDates() as $date) {
                         if ($date->getEndDate() >= $now) {

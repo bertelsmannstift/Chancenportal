@@ -2,7 +2,7 @@
  * Stylesheet Configuration
  */
 page.includeCSS {
-	10 = {$page.includePath.css}main.min.33d9d7021bc8b36968c1c4fabc16daf8.css
+	10 = {$page.includePath.css}main.min.cf0b2996a3de52d88aab54c1455d4d72.css
 	10 {
 		media = all
 	}

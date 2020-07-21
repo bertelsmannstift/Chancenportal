@@ -557,7 +557,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             $this->frontendUserRepository->remove($user);
         }
         $this->providerRepository->remove($provider);
-        $this->redirect('providerPage', null, null, null, $this->settings['chancenportal']['pageIds']['provider_list']);
+
+        $this->uriBuilder->reset()->setTargetPageUid($this->settings['chancenportal']['pageIds']['provider_list'])->setCreateAbsoluteUri(true);
+        $this->response->setStatus(301);
+        $this->response->setHeader('Location', (string)$this->uriBuilder->build());
     }
 
     /**
@@ -1129,7 +1132,9 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                         if ($lastDate === null || ($dateObj && $dateObj < $lastDate)) {
                             $lastDate = $dateObj;
 
-                            $endDate = new \DateTime('@' . strtotime($date['endDate']));
+                            if(!empty($date['endDate']) && strtotime($date['endDate']) !== false) {
+                                $endDate = new \DateTime('@' . strtotime($date['endDate']));
+                            }
                         }
                     }
                 }
@@ -1159,10 +1164,17 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 if ($data['dateType'] > 0) {
 
                     if ($data['dateType'] === 4) {
+                        if ($data['startDate'] instanceof \DateTime) {
+                            $offer->setStartDate($data['startDate']);
+                        } elseif (is_string($data['startDate']) && !empty($data['startDate']) && strtotime($data['startDate']) !== false) {
+                            $offer->setStartDate(new \DateTime('@' . strtotime($data['startDate'])));
+                        }
 
-                        $offer->setStartDate(new \DateTime('@' . strtotime($data['startDate'])));
-
-                        $offer->setEndDate(new \DateTime('@' . strtotime($data['endDate'])));
+                        if ($data['endDate'] instanceof \DateTime) {
+                            $offer->setEndDate($data['endDate']);
+                        } elseif (is_string($data['endDate']) && !empty($data['endDate']) && strtotime($data['endDate']) !== false) {
+                            $offer->setEndDate(new \DateTime('@' . strtotime($data['endDate'])));
+                        }
 
                         $dates = new ObjectStorage();
 

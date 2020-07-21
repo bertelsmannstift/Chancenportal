@@ -48,6 +48,29 @@ if(getenv('TYPO3_DB_PASSWORD')) {
 }
 
 /**
+ * Mail SMTP Credentials
+ */
+if(getenv('TYPO3_MAIL_TRANSPORT') && getenv('TYPO3_MAIL_TRANSPORT') === 'smtp') {
+    $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = 'smtp';
+
+    if(getenv('TYPO3_MAIL_SMTP_SERVER')) {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_server'] = getenv('TYPO3_MAIL_SMTP_SERVER');
+    }
+
+    if(getenv('TYPO3_MAIL_SMTP_USERNAME')) {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_username'] = getenv('TYPO3_MAIL_SMTP_USERNAME');
+    }
+
+    if(getenv('TYPO3_MAIL_SMTP_PASSWORD')) {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_password'] = getenv('TYPO3_MAIL_SMTP_PASSWORD');
+    }
+
+    if(getenv('TYPO3_MAIL_SMTP_ENCRYPT')) {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_encrypt'] = getenv('TYPO3_MAIL_SMTP_ENCRYPT');
+    }
+}
+
+/**
  * TYPO3
  */
 if(getenv('TYPO3_BE_INSTALLTOOLPASSWORD')) {
