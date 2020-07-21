@@ -1,5 +1,19 @@
 # Changelog
 
+## Release 2020-07-21
+
+### BUGFIXES
+- Es wurden nicht alle aktiven Angebote auf der Anbieterseite aufgelistet 
+- Wenn es nur Hauptkategorien ohne Unterkategorien git, war es möglich mehr als eine Hauptkategorie auszuwählen
+- Weiterleitung nach Löschen eines Anbieters finktionierte nicht korrekt
+- Automatische Umbrüche (hyphens: auto;) für die Headlines in den Kacheln wurde aktiviert.
+- Textanpassungen 
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/e0b9256d00f0bdb590a51af1e4acfb9e3bc3b4ea](https://github.com/bertelsmannstift/Chancenportal/commit/e0b9256d00f0bdb590a51af1e4acfb9e3bc3b4ea)
+
+
 ## Release 2020-05-18
 
 ### BUGFIX / FEATURE
