@@ -2,10 +2,9 @@
 
 namespace Chancenportal\Chancenportal\Domain\Validator;
 
-use Chancenportal\Chancenportal\Utility\UserUtility;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
 
 
 class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator
@@ -52,16 +51,16 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
     protected $frontendUserRepository = null;
 
     /**
-     * @param $user
+     * @param mixed $user
      * @return bool
+     * @throws \TYPO3\CMS\Core\Crypto\PasswordHashing\InvalidPasswordHashException
      */
     public function isValid($user)
     {
         $this->init();
 
         if ($user) {
-
-            $objInstanceSaltedPw = SaltFactory::getSaltingInstance();
+            $hashInstance = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
 
             $newUsername = isset($this->piVars['new_username']) ? $this->piVars['new_username'] : '';
             $password = isset($this->piVars['password']) ? $this->piVars['password'] : '';
@@ -82,7 +81,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
             if ($user->getUid() && !empty($password)) {
                 // edit user
 
-                if ($objInstanceSaltedPw->checkPassword($password, $user->getPassword())) {
+                if ($hashInstance->checkPassword($password, $user->getPassword())) {
 
                     if (empty($newPassword) || strlen($newPassword) < 7) {
                         $this->addError('validationErrorPasswordRepeat', 'new_password');
@@ -98,7 +97,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
                     return false;
                 }
 
-                $user->setPassword($objInstanceSaltedPw->getHashedPassword($newPassword));
+                $user->setPassword($hashInstance->getHashedPassword($newPassword));
 
             } elseif (!$user->getUid()) {
 
@@ -113,7 +112,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
                     }
                 }
 
-                $user->setPassword($objInstanceSaltedPw->getHashedPassword($password));
+                $user->setPassword($hashInstance->getHashedPassword($password));
             }
         }
 

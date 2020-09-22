@@ -660,7 +660,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             $offerResults = $this->offerRepository->findByDatesAndCategory($data[0], $data[1], $category);
 
         } else {
-            $logs = $this->logRepository->findAll(20000);
+            $logs = $this->logRepository->findAll(10000);
             $offerResults = $this->offerRepository->findAll();
         }
 
