@@ -1,5 +1,15 @@
 # Changelog
 
+## Release 2020-09-22
+
+### BUGFIXES
+- Das Ändern von Userdaten führete zu Fehlern 
+- Die Anzahl der zugrunde liegenden Log-Einträge bei den Auswertungen wurde auf 10000 reduziert um Ladezeiten zu optimieren.
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/4f840efc5a9e84fe87b3cc8bfe8d8a91e7b750fc](https://github.com/bertelsmannstift/Chancenportal/commit/4f840efc5a9e84fe87b3cc8bfe8d8a91e7b750fc)
+
 ## Release 2020-07-21
 
 ### BUGFIXES
