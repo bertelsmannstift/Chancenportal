@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 2020-10-02
+
+### BUGFIXES
+- Mehrfachauswahl in manchen Dropdowns war nicht mehr möglich
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/29d8a680907ac0652a7294a30984c68977737269](https://github.com/bertelsmannstift/Chancenportal/commit/29d8a680907ac0652a7294a30984c68977737269)
+
 ## Release 2020-09-22
 
 ### BUGFIXES
