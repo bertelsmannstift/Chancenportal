@@ -10,6 +10,6 @@ page.includeJS {
 page.includeJSFooter {
 	50 = https://www.gstatic.com/charts/loader.js
     50.external = 1
-	100 = {$page.includePath.javascript}build.e0de719f48797ea37f51.js
+	100 = {$page.includePath.javascript}build.876d9296c920db8fbd83.js
 	110 = {$page.includePath.javascript}components.4a4417e4b6dda0d0ba63.js
 }

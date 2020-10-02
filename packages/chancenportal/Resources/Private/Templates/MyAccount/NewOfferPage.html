@@ -217,7 +217,7 @@
                     <div class="input{f:render(partial: 'ErrorClass', arguments:'{object: object, fieldName: \'type\', className: \' input--error\'}')}">
                         <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="categories"></c:formConfiguration>
                         <label class="input__label">Angebotskategorie/n* (Bitte wählen Sie eine Kategorie aus, zu der Ihr Angebot am besten passt.)</label>
-                        <custom-dropdown id="tx_chancenportal_chancenportal[offer][categories]" required="true" placeholder="Bitte wählen" theme="light" multiple-select="true" show-selected-title="true" options="{categories}"></custom-dropdown>
+                        <custom-dropdown id="tx_chancenportal_chancenportal[offer][categories]" required="true" placeholder="Bitte wählen" theme="light" multiple-select="{f:if(condition: '{hasSubCategories}', then: 'true', else: 'false')}" show-selected-title="true" options="{categories}"></custom-dropdown>
                     </div>
                 </div>
             </div>

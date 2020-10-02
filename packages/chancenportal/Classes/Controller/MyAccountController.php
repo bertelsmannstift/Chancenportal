@@ -1926,12 +1926,23 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
         $providers = $this->getProviderUserForSelect($offer, $currentProvider);
 
+        $categories = $this->selectUtility->getCategoriesForSelect($offer, false, false);
+        $hasSubCategories = false;
+
+        foreach (json_decode($categories, true) as $category) {
+            if(!empty($category['items'])) {
+                $hasSubCategories = true;
+                break;
+            }
+        }
+
         $this->view->assign('providers', $providers);
         $this->view->assign('salutations', $this->selectUtility->getSalutationsJson($offer));
         $this->view->assign('images', $this->getUploadedImageJson($offer ? $offer->getImages() : null));
         $this->view->assign('contentImage', $this->getUploadedImageJson($offer ? $offer->getContentImage() : null));
         $this->view->assign('contactImage', $this->getUploadedImageJson($offer ? $offer->getContactImage() : null));
-        $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect($offer, false, false));
+        $this->view->assign('categories', $categories);
+        $this->view->assign('hasSubCategories', $hasSubCategories);
         $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect($offer, false, true));
         $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect($offer));
         $this->view->assign('dateTypes', json_encode($dateTypes));
