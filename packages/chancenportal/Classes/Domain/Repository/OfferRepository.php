@@ -236,7 +236,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         ]);
         $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
         $offerCategories = $offer->getCategories();
-        if (!empty($offerCategories)) {
+        if (count($offerCategories) > 0) {
             $constraints_categories = [];
             foreach ($offer->getCategories() as $cat) {
                 $constraints_categories[] = $query->equals('categories.uid', $cat->getUid());
