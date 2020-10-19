@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 2020-10-19
+
+### BUGFIXES
+- Ausgewählte Kategorie wurde für nicht im Angebotsformular übernommen, wenn das Feld eine Einfachauswahl ist.
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/b62011a042229ea72930b05971f6c2a758666195](https://github.com/bertelsmannstift/Chancenportal/commit/b62011a042229ea72930b05971f6c2a758666195)
+
 ## Release 2020-10-02
 
 ### BUGFIXES
