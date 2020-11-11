@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <title>Anbieter Detailseite</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika:400,600,700" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div>
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-sm-12">
+              <div class="header__logo">
+                <div class="header__logo__svg">
+                  <a href="/startseite.html">
+                    <img src="/img/svg/Logo_StadtRW.svg" height="69" width="200">
+                  </a>
+                </div>
+                <div class="header__logo__title">
+                  <div>Chancenportal</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-sm-12 bottom-lg">
+              <custom-menu>
+                <nav class="nav">
+                  <ul class="nav__items">
+                    <li class="nav__item">
+                      <a href="/angebot-uebersicht.html">Angebote</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/anbieter-uebersicht.html">Anbieter</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/mein-konto/neuesangebot.html">Angebot einstellen</a>
+                    </li>
+                    <li class="nav__item nav__item--login">
+                      <a href="#">Anmelden</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="nav__item--logout-mobile" style="display:none;"></div>
+              </custom-menu>
+              <custom-login-overlay url="/index.php" toggle-selector=".nav__item--login">
+                <div class="login-overlay__content">
+                  <h3>Anmelden</h3>
+                  <p>Melden Sie sich mit Ihrem Anbieterkonto an, um Angebote einzustellen und zu verwalten. </p>
+                  <div>
+                    <div class="input">
+                      <label class="input__label">E-Mail</label>
+                      <input type="email" name="email" class="input__field">
+                    </div>
+                    <div class="input">
+                      <label class="input__label">Passwort</label>
+                      <input name="password" type="password" class="input__field">
+                    </div>
+                    <div class="flex-col bottom-lg">
+                      <button title="Lorem ipsum" type="submit" class="btn login-overlay__submit btn--primary">
+
+                        <!----><span>
+                                    Anmelden
+                                </span></button>
+                      <a href="" class="login-overlay__link">Passwort vergessen</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="login-overlay__footer">
+                  <div>Sie sind neu hier und haben noch kein Konto?</div>
+                  <a href="/login-registrierung.html" class="login-overlay__link">Jetzt registrieren</a>
+                </div>
+              </custom-login-overlay>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </header>
+      <main class="main">
+        <section data-animation="fadeIn" class="container article-detail article-detail--cat-1 article-detail--offer">
+          <div class="row info-nav__actions">
+            <div class="col-lg-6">
+              <a href="" class="info-nav__backlink">zurück</a>
+            </div>
+            <div class="col-lg-6 end-lg">
+              <custom-sharer><span class="info-nav__share">Teilen</span></custom-sharer>
+            </div>
+          </div>
+          <div class="row margin-inner">
+            <div class="col-lg-6 col-sm-12 margin-inner-sm center-lg flex-col">
+              <h2 class="article-detail__subheadline">Beratung &amp; Unterstützung</h2>
+              <h1 class="article-detail__headline">Elternstart-Café NRW</h1>
+            </div>
+            <div class="col-lg-6 col-sm-12 end-lg middle-lg start-sm flex">
+              <a href="mailto:kontakt@spielkiste-rheda.de" title="Lorem ipsum" type="" class="btn btn--primary">
+
+                <!----><span>Anbieter kontaktieren</span></a>
+            </div>
+          </div>
+          <div class="row end-lg margin-inner-sm">
+            <div class="col-lg-12 col-sm-12 start-lg">
+              <div class="article-detail__teaser">
+                <custom-image-shuffle>
+                  <div style="display:none;">
+                    <img src="/img/dummy/bg-detail.png" alt=""> <span class="image__copyright">Copyright 1</span></div>
+                  <div style="display:none;">
+                    <img src="/img/dummy/angebotdetail_01.jpg" alt=""> <span class="image__copyright">Copyright 2</span></div>
+                  <div style="display:none;">
+                    <img src="/img/dummy/angebotdetail_02.jpg" alt=""> <span class="image__copyright">Copyright 3</span></div>
+                </custom-image-shuffle>
+              </div>
+              <div class="article-detail__teaser-info">
+                <div class="row">
+                  <div class="col-lg-12 flex-row">
+                    <div class="icon">
+                      <i class="icon-calendar"></i> ab Montag, 29.01.2018
+                    </div>
+                    <div class="icon">
+                      <i class="icon-clock-o"></i> 09:15 - 10:45 Uhr
+                    </div>
+                    <div class="icon">
+                      <i class="icon-map-marker"></i> Nordstr. 37, 33378 Rheda-Wiedenbrück
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <nav class="nav nav--tab">
+                <ul class="nav__items">
+                  <li class="nav__item nav__item--active">
+                    <a href="#">Über das Angebot</a>
+                  </li>
+                  <li class="nav__item">
+                    <a href="#anbieter-kontakt">Über den Anbieter</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8 col-sm-12 margin-inner-sm">
+              <div class="article-detail__text margin-inner">
+                <div>
+                  Einmal in der Woche wollen wir die Zeit nutzen, um uns in gemütlicher Runde über die Kinder, ihre Entwicklung und alles was Eltern in dieser Zeit bewegt auszutauschen. Die Kinder haben hierbei die Möglichkeit, erste Kontakte zu Gleichaltrigen zu knüpfen,
+                  zusammen auf kleinen Bewegungsbaustellen aktiv zu werden oder gemeinsam mit Mama oder Papa kreativ zu sein. Wenn bei den Eltern Bedarf besteht, zu bestimmten Themen Beratung von außerhalb einzuladen, ist dies kein Problem. Für Getränke
+                  und den passenden Spielraum zum Bewegen und Spaß haben sorgen wir!
+                </div>
+                <div class="article-detail__media">
+                  <iframe width="100%" height="415" src="https://www.youtube.com/embed/7Cy1BP4-uzg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+                  <div class="article-detail__media-text">eu sunt consectetur sint qui</div>
+                </div>
+                <div class="article-detail__content_image">
+                  <img src="/img/dummy/bg-detail.png" alt=""> <span class="image__copyright">Copyright 3</span></div>
+              </div>
+              <div class="article-detail__list">
+                <h4 class="article-detail__list-headline">Weitere Informationen</h4>
+                <dl>
+                  <dt>Format</dt>
+                  <dd>Kurs</dd>
+                  <dt>Max. Teilnehmeranzahl</dt>
+                  <dd>10 Eltern-Kind Paare</dd>
+                  <dt>Kosten</dt>
+                  <dd>kostenfrei</dd>
+                  <dt>Zugang (Offen / mit Mitgliedschaft)</dt>
+                  <dd>Offen</dd>
+                </dl>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12 col-md-4 col-md-offset-0 col-lg-offset-1 col-sm-offset-0">
+              <div class="article-detail__infos">
+                <div class="article-detail__infos-block">
+                  <h3>Weitere Termine</h3>
+                  <div>
+                    <div class="icon">
+                      <i class="icon-calendar"></i>
+                      ab Montag, 29.01.2018 wöchentlich
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon">
+                      <i class="icon-clock-o"></i>
+                      09:15 - 10:45 Uhr
+                    </div>
+                  </div>
+                </div>
+                <div class="article-detail__infos-block">
+                  <h3>Ort</h3>
+                  <div>
+                    <div class="icon">
+                      <i class="icon-map-marker"></i>
+                      Nordstr. 37
+                      <br> 33378 Rheda-Wiedenbrück
+                      <br> Atelier
+                    </div>
+                  </div>
+                </div>
+                <div class="article-detail__infos-block">
+                  <h3>Alter / Zielgruppe</h3>
+                  <div>
+                    <div class="icon">
+                      <i class="icon-user"></i>
+                      Eltern / Kind, 0-3 Jahre
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!---->
+        </section>
+        <section class="container">
+          <div class="article-detail__offer-box">
+            <div class="row">
+              <div class="col-lg-5 col-md-6 col-sm-12 margin-inner-sm margin-inner-md">
+                <h3 id="anbieter-kontakt">Adresse und Kontakt</h3>
+                <div class="flex-row">
+                  <div class="article-detail__img__center">
+                    <div class="article-detail__img">
+                      <img src="/img/logos/die2logofinale3-1-750x410.jpg">
+                    </div>
+                  </div>
+                  <div class="article-detail__imgtext">
+                    <div><strong>Familienzentrum Die Zwei</strong></div>
+                    <div>Kita Spielkiste e.v.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12 margin-inner-md">
+                <h3>Ihre Ansprechpartnerin</h3>
+                <div class="flex-row">
+                  <div class="article-detail__img__center">
+                    <div class="article-detail__img article-detail__img--profile">
+                      <img src="/img/svg/ansprechpartner.svg">
+                    </div>
+                  </div>
+                  <div class="article-detail__imgtext">
+                    <div><strong>Melanie D’Ambrosio</strong></div>
+                    <div>Erzieherin/ Leitung</div>
+                    <div>Tel. 05242 – 49350</div>
+                    <div>E-Mail
+                      <a href="mailto:kontakt@spielkiste-rheda.de">kontakt@spielkiste-rheda.de</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-3 col-md-12 end-lg middle-lg flex start-md">
+                <div>
+                  <a href="mailto:info@uandi.com" title="Lorem ipsum" type="" class="btn btn--primary">
+
+                    <!----><span>Anbieter kontaktieren</span></a>
+                  <div>
+                    <a href="/anbieter-detailseite.html" class="article-detail__link">Zum Anbieter</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="article-detail__offer-box-bottom">
+            <div class="row">
+              <div class="col-lg-12 center-lg"><strong>In Kooperation mit: </strong> Familienzentrum Die Zwei
+              </div>
+            </div>
+          </div>
+
+          <!---->
+        </section>
+        <section id="angebote" data-animation="fadeIn" class="container">
+          <h1>Ähnliche Angebote</h1>
+          <div class="row margin-inner">
+            <div class="col-lg-3 col-sm-12 col-md-6 margin-inner-sm margin-inner-md">
+              <div class="kachel kachel--theme-4" style="background-image:none;">
+                <a href="">
+
+                  <!---->
+                  <div class="kachel__inner">
+                    <div class="kachel__category">Beratung &amp; Unterstützung</div>
+                    <div class="kachel__content">
+                      <h3 class="kachel__headline">
+                        Spielend in Bewegung bleiben
+                      </h3>
+                      <h4 class="kachel__subheadline">Lust auf eine Spiel- und Bewegungsbaustelle für Eltern mit Kindern im Alter von 1-2 Jahren?</h4>
+                      <p> </p>
+                      <div class="kachel__date">01.07.2018</div>
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="kachel__arrow"></div>
+                </a>
+                <div class="kachel__map-arrow"></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12 col-md-6 margin-inner-sm margin-inner-md">
+              <div class="kachel kachel--theme-3" style="background-image:none;">
+                <a href="">
+
+                  <!---->
+                  <div class="kachel__inner">
+                    <div class="kachel__category">Übergang Schule &amp; Beruf</div>
+                    <div class="kachel__content">
+                      <h3 class="kachel__headline">
+                        Offene Krabbelgruppe
+                      </h3>
+                      <h4 class="kachel__subheadline">Wöchentlicher Austausch in gemütlicher Runde</h4>
+                      <p> </p>
+                      <div class="kachel__date">20.07.2018</div>
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="kachel__arrow"></div>
+                </a>
+                <div class="kachel__map-arrow"></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12 col-md-6 margin-inner-sm">
+              <div class="kachel kachel--theme-2" style="background-image:none;">
+                <a href="">
+
+                  <!---->
+                  <div class="kachel__inner">
+                    <div class="kachel__category">Freizeit &amp; Kultur</div>
+                    <div class="kachel__content">
+                      <h3 class="kachel__headline">
+                        Spiel &amp; Spaß
+                      </h3>
+                      <h4 class="kachel__subheadline">Lust auf eine Spiel- und Bewegungsbaustelle für Eltern mit Kindern im Alter von 1-2 Jahren?</h4>
+                      <p> </p>
+                      <div class="kachel__date">01.07.2018</div>
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="kachel__arrow"></div>
+                </a>
+                <div class="kachel__map-arrow"></div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-12 col-md-6">
+              <div class="kachel kachel--theme-5" style="background-image:none;">
+                <a href="">
+
+                  <!---->
+                  <div class="kachel__inner">
+                    <div class="kachel__category">Vorsorge &amp; Gesundheit</div>
+                    <div class="kachel__content">
+                      <h3 class="kachel__headline">
+                        Krabbeltreff
+                      </h3>
+                      <h4 class="kachel__subheadline">Wöchentlicher Austausch in gemütlicher Runde</h4>
+                      <p> </p>
+                      <div class="kachel__date">20.07.2018</div>
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="kachel__arrow"></div>
+                </a>
+                <div class="kachel__map-arrow"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 center-lg">
+              <a href="/angebot-uebersicht.html" title="Lorem ipsum" type="" class="btn btn--primary">
+
+                <!----><span>Mehr Angebote anzeigen</span></a>
+            </div>
+          </div>
+
+          <!---->
+        </section>
+      </main>
+      <footer>
+        <div class="container footer">
+          <div class="row">
+            <div class="col-lg-3 col-md-12 margin-inner-sm">
+              <img src="/img/logo.png" alt="Bertelsmann Stiftung" width="200">
+            </div>
+            <div class="col-lg-3 col-md-12 middle-lg flex">
+              <div>© BERTELSMANN STIFTUNG 2007</div>
+            </div>
+            <div class="footer__nav-wrapper col-lg-6 col-md-12 flex-row end-lg middle-lg start-md">
+              <nav>
+                <ul class="flex-row">
+                  <li>
+                    <a href="">ÜBER UNS</a>
+                  </li>
+                  <li>
+                    <a href="">IMPRESSUM</a>
+                  </li>
+                  <li>
+                    <a href="">AGB</a>
+                  </li>
+                  <li>
+                    <a href="">DATENSCHUTZ</a>
+                  </li>
+                  <li>
+                    <a href="">KONTAKT</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </footer>
+
+      <!---->
+    </div>
+    <script type="text/javascript" src="/js/build.js" async="true"></script>
+  </body>
+</html>

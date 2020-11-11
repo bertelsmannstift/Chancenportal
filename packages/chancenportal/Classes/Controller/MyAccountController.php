@@ -490,7 +490,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             $currentUser = UserUtility::getCurrentUser();
             $isAdmin = UserUtility::isAdmin($currentUser);
 
-            if ($isAdmin && $provider->getApproved() === true && $provider->approvedChanged && $provider->getAuthor()) {
+            if ($isAdmin && $provider->getApproved() === true && $provider->approvedChanged && $provider->getAuthor() && $provider->getAuthor()->getDisable() === false) {
                 MailUtility::sendTemplateEmail([$provider->getAuthor()->getUsername()],
                     [$this->settings['chancenportal']['email']['sender']], [],
                     $this->settings['chancenportal']['email']['provider_approved_subject'], 'Approved.html',
@@ -1655,7 +1655,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
         $currentUser = UserUtility::getCurrentUser();
         $isAdmin = UserUtility::isAdmin($currentUser);
 
-        if ($isAdmin && $offer->getCreator()) {
+        if ($isAdmin && $offer->getCreator() && $offer->getCreator()->getDisable() === false) {
             MailUtility::sendTemplateEmail([$offer->getCreator()->getEmail()],
                 [$this->settings['chancenportal']['email']['sender']], [],
                 $this->settings['chancenportal']['email']['delete_offer_subject'], 'DeleteOffer.html',
@@ -1791,7 +1791,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                         }
                     }
 
-                } elseif ($this->settings['chancenportal']['activate_offer_approval'] === '1' && $offer->getCreator() && $offer->getApproved() && $offer->approvedChanged) {
+                } elseif ($this->settings['chancenportal']['activate_offer_approval'] === '1' && $offer->getCreator() && $offer->getApproved() && $offer->approvedChanged && $offer->getCreator()->getDisable() === false) {
                     MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
                         [$this->settings['chancenportal']['email']['sender']], [],
                         $this->settings['chancenportal']['email']['request_offer_approval_subject'], 'ApprovedOffer.html',
@@ -1809,7 +1809,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                     $offer->setActive(true);
                 } else {
                     if ($isAdmin && ($offer->getCreator() || $offer->getProvider()) && $offer->activeChanged && $data['offer']['active'] === '0') {
-                        if ($offer->getCreator()) {
+                        if ($offer->getCreator() && $offer->getCreator()->getDisable() === false) {
                             MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
                                 [$this->settings['chancenportal']['email']['sender']], [],
                                 $this->settings['chancenportal']['email']['delete_offer_subject'], 'DeactivateOffer.html',
@@ -1817,7 +1817,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                         }
                         $offer->setActive(false);
                     } elseif ($isAdmin === false && $offer->creatorChanged) {
-                        if ($offer->getCreator()) {
+                        if ($offer->getCreator() && $offer->getCreator()->getDisable() === false) {
                             MailUtility::sendTemplateEmail([$offer->getCreator()->getUsername()],
                                 [$this->settings['chancenportal']['email']['sender']], [],
                                 $this->settings['chancenportal']['email']['creator_changed_subject'], 'CreatorChange.html',

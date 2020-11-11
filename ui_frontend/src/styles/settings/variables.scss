@@ -1,0 +1,206 @@
+// general colors
+$color-black: #323232;
+$color-white: #ffffff;
+$color-red: #ff0000;
+$color-gray-dark: #7a7a7a;
+$color-gray-light: #eaeaea;//cacaca
+$color-input: #d4d4d4;//cacaca
+
+// project specific colors
+$color-main: #00519E;
+
+$color-body-background: $color-white;
+
+// font styles
+$icomoon-font-path: "fonts/icon-font/fonts" !default;
+
+$font-family: 'Arial';
+$font-family-bold: 'Arial';
+
+$font-family-headline: 'Signika', 'sans-serif';
+
+$font-weight: normal;
+$color-font: #333333;
+
+$font-size-lg: 18;
+$line-height-lg: 26;
+
+$font-size-sm: 16;
+$line-height-sm: 19;
+
+$font-size-base: 18;
+$line-height-base: 24;
+
+$font-size-base-small: 14;
+$line-height-base-small: 16;
+
+$color-yellow: #F9B000;
+$color-yellow-active: #f78c00;
+
+// bildung & betreung
+$color-category-1: #009ee3;
+$color-category-1-hover: #0077A0;
+$color-category-1-headline: #39b7e2;
+$color-category-1-headline-corner: #0077a0;
+
+// freizeit und kultur
+$color-category-2: #004e9e;
+$color-category-2-hover: #00386B;
+$color-category-2-headline: #2b6599;
+$color-category-2-headline-corner: #00386b;
+
+// übergang schule & beruf
+$color-category-3: #749bd1;
+$color-category-3-hover: #516D8E;
+$color-category-3-headline: #96aecc;
+$color-category-3-headline-corner: #295989;
+
+// beratung & unterstützung
+$color-category-4: #941680;
+$color-category-4-hover: #68115E;
+$color-category-4-headline: #913a87;
+$color-category-4-headline-corner: #68115e;
+
+// gesundheit
+$color-category-5: #41328b;
+$color-category-5-hover: #29225B;
+$color-category-5-headline: #585189;
+$color-category-5-headline-corner: #261982;
+
+// headline styles (headings)
+// h1
+$font-family-h1: $font-family-headline;
+
+$font-size-md-h1: 40;
+$line-height-md-h1: 46;
+$margin-bottom-md-h1: 40;
+
+$font-size-sm-h1: 30;
+$line-height-sm-h1: 36;
+$margin-bottom-sm-h1: 30;
+
+$font-size-xs-h1: 26;
+$line-height-xs-h1: 30;
+$margin-bottom-xs-h1: 25;
+
+// h2
+$font-family-h2: $font-family-headline;
+
+$font-size-md-h2: 24;
+$line-height-md-h2: 28;
+$margin-bottom-md-h2: 20;
+
+$font-size-sm-h2: 24;
+$line-height-sm-h2: 28;
+$margin-bottom-sm-h2: 20;
+
+$font-size-xs-h2: 20;
+$line-height-xs-h2: 24;
+$margin-bottom-xs-h2: 20;
+
+// h3
+$font-family-h3: $font-family-headline;
+
+$font-size-md-h3: 22;
+$line-height-md-h3: 26;
+$margin-bottom-md-h3: 35;
+
+$font-size-sm-h3: 22;
+$line-height-sm-h3: 26;
+$margin-bottom-sm-h3: 21;
+
+$font-size-xs-h3: 17;
+$line-height-xs-h3: 19;
+$margin-bottom-xs-h3: 15;
+
+// h4
+$font-family-h4: $font-family-headline;
+
+$font-size-md-h4: 18;
+$line-height-md-h4: 21;
+$margin-bottom-md-h4: 18;
+
+$font-size-sm-h4: 16;
+$line-height-sm-h4: 19;
+$margin-bottom-sm-h4: 16;
+
+$font-size-xs-h4: 16;
+$line-height-xs-h4: 19;
+$margin-bottom-xs-h4: 16;
+
+// h5
+$font-family-h5: $font-family-headline;
+
+$font-size-md-h5: 18;
+$line-height-md-h5: 21;
+$margin-bottom-md-h5: 18;
+
+$font-size-sm-h5: 16;
+$line-height-sm-h5: 19;
+$margin-bottom-sm-h5: 16;
+
+$font-size-xs-h5: 16;
+$line-height-xs-h5: 19;
+$margin-bottom-xs-h5: 16;
+
+// vertical padding concept
+$vertical-padding-lg-top: 50px;
+$vertical-padding-lg-bottom: 50px;
+
+$vertical-padding-md-top: 40px;
+$vertical-padding-md-bottom: 40px;
+
+$vertical-padding-sm-top: 30px;
+$vertical-padding-sm-bottom: 30px;
+
+$vertical-padding-xs-top: 20px;
+$vertical-padding-xs-bottom: 20px;
+
+// flexboxgrid config
+
+// grid
+$content-max-width: 1242px;
+$grid-columns: 12;
+
+// gutter
+$gutter-width-xs: 20px;
+$gutter-width-s: 20px;
+$gutter-width-sm: 30px;
+$gutter-width-md: 30px;
+$gutter-width-lg: 30px;
+
+// outer margins
+$outer-margin-xs: 12px;
+$outer-margin-s: 12px;
+$outer-margin-sm: 24px;
+$outer-margin-md: 24px;
+$outer-margin-lg: 24px;
+
+// outer margins
+$module-margin-xs: 50px;
+$module-margin-s: 50px;
+$module-margin-sm: 50px;
+$module-margin-md: 50px;
+$module-margin-lg: 70px;
+
+// inner module margins
+$module-margin-inner-xs: 30px;
+$module-margin-inner-s: 30px;
+$module-margin-inner-sm: 30px;
+$module-margin-inner-md: 30px;
+$module-margin-inner-lg: 30px;
+
+$module-margin-small: 10px;
+
+// breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-s: 525px;
+$breakpoint-sm: 769px;
+$breakpoint-md: 946px;
+$breakpoint-lm: 1200px;
+$breakpoint-lg: 1440px;
+
+@import "flexboxconfig";
+
+// override path to icomoon-fonts
+//$icomoon-font-path: "../../../static/fonts/cyoc-icon-font/fonts" !default;

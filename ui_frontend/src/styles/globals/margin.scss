@@ -1,0 +1,50 @@
+$name: lg;
+
+.margin-small {
+    margin-bottom: $module-margin-small;
+}
+
+.margin {
+    margin-bottom: $module-margin-lg;
+}
+
+.margin-#{$name} {
+    margin-bottom: $module-margin-lg;
+}
+
+.margin-inner {
+    margin-bottom: $module-margin-inner-lg;
+}
+
+.margin-inner-#{$name} {
+    margin-bottom: $module-margin-inner-lg;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+@each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+    $module-margin: nth($breakpoint, 6);
+    $module-margin-inner: nth($breakpoint, 7);
+
+    @media only screen and (max-width: $size - 1) {
+        .margin {
+            margin-bottom: $module-margin;
+        }
+
+        .margin-#{$name} {
+            margin-bottom: $module-margin;
+        }
+
+        .margin-inner {
+            margin-bottom: $module-margin-inner;
+        }
+
+        .margin-inner-#{$name} {
+            margin-bottom: $module-margin-inner;
+        }
+    }
+}

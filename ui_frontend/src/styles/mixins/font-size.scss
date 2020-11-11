@@ -1,0 +1,23 @@
+/*
+ * Name: font size mixin
+ * Author: Tjark Süßen
+ * Description:
+ */
+
+/*
+ Usage:
+ @include font-size(font-size, line-height);
+ */
+
+@mixin font-size($sizeValue: $font-size-base, $lineheight : $font-size-base) {
+  $pxFontSizeValue: $sizeValue;
+  $remFontSizeValue: $pxFontSizeValue / $font-size-base;
+
+  $pxLineHeightValue: $lineheight;
+  $remLineHeightValue: $pxLineHeightValue / $font-size-base;
+
+  font-size: #{$pxFontSizeValue}px;
+  font-size: #{$remFontSizeValue}rem;
+  line-height: #{$pxLineHeightValue}px;
+  line-height: #{$remLineHeightValue}rem;
+}

@@ -72,8 +72,9 @@ class UserUtility extends AbstractUtility
         $admins = [];
         $userRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(FrontendUserRepository::class);
         $users = $userRepository->findAll();
+        /** @var FrontendUser $user */
         foreach ($users as $user) {
-            if (UserUtility::isAdmin($user)) {
+            if (UserUtility::isAdmin($user) && $user->getDisable() === false) {
                 $admins[$user->getUsername()] = $user->getUsername();
             }
         }
@@ -88,8 +89,9 @@ class UserUtility extends AbstractUtility
         $admins = [];
         $userRepository = GeneralUtility::makeInstance(ObjectManager::class)->get(FrontendUserRepository::class);
         $users = $userRepository->findAll();
+        /** @var FrontendUser $user */
         foreach ($users as $user) {
-            if (UserUtility::isAdmin($user)) {
+            if (UserUtility::isAdmin($user) && $user->getDisable() === false) {
                 $admins[$user->getUid()] = $user;
             }
         }

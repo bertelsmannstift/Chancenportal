@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <title>Anbieterprofil</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika:400,600,700" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div>
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-sm-12">
+              <div class="header__logo">
+                <div class="header__logo__svg">
+                  <a href="/startseite.html">
+                    <img src="/img/svg/Logo_StadtRW.svg" height="69" width="200">
+                  </a>
+                </div>
+                <div class="header__logo__title">
+                  <div>Chancenportal</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-sm-12 bottom-lg">
+              <custom-menu>
+                <nav class="nav">
+                  <ul class="nav__items">
+                    <li class="nav__item">
+                      <a href="/angebot-uebersicht.html">Angebote</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/anbieter-uebersicht.html">Anbieter</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/mein-konto/neuesangebot.html">Angebot einstellen</a>
+                    </li>
+                    <li class="nav__item nav__item--login">
+                      <a href="#">Anmelden</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="nav__item--logout-mobile" style="display:none;"></div>
+              </custom-menu>
+              <custom-login-overlay url="/index.php" toggle-selector=".nav__item--login">
+                <div class="login-overlay__content">
+                  <h3>Anmelden</h3>
+                  <p>Melden Sie sich mit Ihrem Anbieterkonto an, um Angebote einzustellen und zu verwalten. </p>
+                  <div>
+                    <div class="input">
+                      <label class="input__label">E-Mail</label>
+                      <input type="email" name="email" class="input__field">
+                    </div>
+                    <div class="input">
+                      <label class="input__label">Passwort</label>
+                      <input name="password" type="password" class="input__field">
+                    </div>
+                    <div class="flex-col bottom-lg">
+                      <button title="Lorem ipsum" type="submit" class="btn login-overlay__submit btn--primary">
+
+                        <!----><span>
+                                    Anmelden
+                                </span></button>
+                      <a href="" class="login-overlay__link">Passwort vergessen</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="login-overlay__footer">
+                  <div>Sie sind neu hier und haben noch kein Konto?</div>
+                  <a href="/login-registrierung.html" class="login-overlay__link">Jetzt registrieren</a>
+                </div>
+              </custom-login-overlay>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </header>
+      <main class="main">
+        <section data-animation="fadeIn" class="container my-account">
+          <div class="row info-nav__actions">
+            <div class="col-lg-12">
+              <div class="breadcrumb">
+                <a href>Mein Konto</a>
+                <a href>Auswertungen</a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-sm-12 margin-sm">
+              <ul class="my-account-menu">
+                <li>
+                  <a href="/mein-konto/uebersicht.html">Übersicht</a>
+                </li>
+                <li>
+                  <a href="/mein-konto/anbieterprofil.html">Anbieterprofil</a>
+                </li>
+                <li>
+                  <a href="/mein-konto/nutzerverwaltung.html">Nutzerverwaltung</a>
+                </li>
+                <li>
+                  <a href="/mein-konto/angebote.html">Angebote</a>
+                </li>
+                <li>
+                  <a href="/mein-konto/neuesangebot.html">Neues Angebot</a>
+                </li>
+                <li>
+                  <a href="/mein-konto/auswertungen.html" class="my-account-menu--active">Auswertungen</a>
+                </li>
+                <li class="my-account-menu__spacer"></li>
+                <li>
+                  <a href="/mein-konto/persoenliche-daten.html">Persönliche Daten</a>
+                </li>
+                <li>
+                  <a href="#">Abmelden</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-lg-8 col-sm-12 col-sm-offset-0 col-lg-offset-1">
+              <form action="" method="post" enctype="multipart/form-data" autocomplete="off">
+                <div class="row margin-inner-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <h1 class="margin-small">
+                      Auswertungen
+                    </h1>
+                  </div>
+                </div>
+                <div class="row margin-inner-lg">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="my-account__dates">
+                      <div class="my-account__label">Zeitraum:</div>
+                      <custom-datepicker show-tag="true" id="from_date" name="dates[]" placeholder="Von" end-date="#to_date"></custom-datepicker>
+                      <div class="my-account__seperator">-</div>
+                      <custom-datepicker show-tag="true" start-date="#from_date" id="to_date" name="dates[]" placeholder="Bis"></custom-datepicker>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                      <div class="border-box__content">
+                        <div class="row margin-inner-lg">
+                          <div class="col-lg-8 col-sm-12 flex middle-lg margin-inner-sm">
+                            <h2 class="no-margin">
+                              Kartenansicht
+                            </h2>
+                          </div>
+                          <div class="col-lg-4 col-sm-12 margin-sm">
+                            <custom-dropdown show-tag="true" id="category" show-selected-title="true" options="[{&quot;id&quot;:&quot;&quot;,&quot;title&quot;:&quot;Alle Kategorien&quot;,&quot;active&quot;:true},{&quot;id&quot;:1,&quot;title&quot;:&quot;Bildung und Betreuung&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:2,&quot;title&quot;:&quot;Kitas und Kinder- /Ferienbetreuung&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;Schulen&quot;,&quot;active&quot;:false},{&quot;id&quot;:4,&quot;title&quot;:&quot;Sprachen&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:110,&quot;title&quot;:&quot;Beratung und Unterstützung&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:7,&quot;title&quot;:&quot;Vor und nach der Geburt&quot;,&quot;active&quot;:false},{&quot;id&quot;:8,&quot;title&quot;:&quot;Leben mit Kind&quot;,&quot;active&quot;:false},{&quot;id&quot;:9,&quot;title&quot;:&quot;Beratungsstellen&quot;,&quot;active&quot;:false},{&quot;id&quot;:10,&quot;title&quot;:&quot;Finanzielle Hilfen&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:11,&quot;title&quot;:&quot;Freizeit und Kultur&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:12,&quot;title&quot;:&quot;Kreativität, Medien und Musik&quot;,&quot;active&quot;:false},{&quot;id&quot;:13,&quot;title&quot;:&quot;Ferienangebote&quot;,&quot;active&quot;:false},{&quot;id&quot;:129,&quot;title&quot;:&quot;Sport&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:16,&quot;title&quot;:&quot;Gesund leben&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:17,&quot;title&quot;:&quot;Gesundes Aufwachsen&quot;,&quot;active&quot;:false},{&quot;id&quot;:18,&quot;title&quot;:&quot;Ärzte und Krankenhäuser&quot;,&quot;active&quot;:false},{&quot;id&quot;:19,&quot;title&quot;:&quot;Therapeuten und Förderstellen&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:20,&quot;title&quot;:&quot;Übergang Schule &amp; Beruf&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:21,&quot;title&quot;:&quot;Hilfe zur Berufswahl&quot;,&quot;active&quot;:false},{&quot;id&quot;:22,&quot;title&quot;:&quot;Berufsvorbereitung&quot;,&quot;active&quot;:false},{&quot;id&quot;:23,&quot;title&quot;:&quot;Ausbildungsförderung&quot;,&quot;active&quot;:false}]}]"></custom-dropdown>
+                          </div>
+                        </div>
+                        <custom-map height="400" show="true" api-key="AIzaSyCbXWpD1t8G6omwRJ6yecXh1KLqvk3n2tE">
+                          <div class="kachel-list__items">
+                            <div data-lat="52.8" data-lng="9.5" class="kachel kachel--theme-2 kachel--light" style="background-image:none;">
+                              <a href="/angebot-detailseite.html">
+
+                                <!---->
+                                <div class="kachel__inner">
+                                  <div class="kachel__category">Freizeit &amp; Kultur</div>
+                                  <div class="kachel__content">
+                                    <h3 class="kachel__headline">
+                                      aliqua cupidatat
+                                    </h3>
+                                    <h4 class="kachel__subheadline">eiusmod eiusmod</h4>
+                                    <p>nostrud laboris anim deserunt non sit</p>
+
+                                    <!---->
+                                    <div class="kachel__footer">
+                                      <div class="kachel__location">Alle Stadtteile</div>
+                                      <div class="kachel__user">für Mütter und Kinder</div>
+                                      <div class="kachel__calendar">Jeden Montag</div>
+                                      <div class="kachel__time">15:00 - 18:00 Uhr</div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="kachel__arrow"></div>
+                              </a>
+                              <div class="kachel__map-arrow"></div>
+                            </div>
+                          </div>
+                        </custom-map>
+                      </div>
+                      <div class="border-box__arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                      <div class="border-box__content">
+                        <h2>Suche nach Kategorien</h2>
+                        <custom-chart items="[{&quot;count&quot;:120,&quot;name&quot;:&quot;Bildung und Betreuung&quot;},{&quot;count&quot;:100,&quot;name&quot;:&quot;Beratung und Unterstützung&quot;},{&quot;count&quot;:90,&quot;name&quot;:&quot;Freizeit und Kultur&quot;},{&quot;count&quot;:50,&quot;name&quot;:&quot;Bildung und Betreuung&quot;},{&quot;count&quot;:20,&quot;name&quot;:&quot;Gesundheit und Vorsorge&quot;}]"></custom-chart>
+                      </div>
+                      <div class="border-box__arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                      <div class="border-box__content">
+                        <h2>Aufrufe der Angebote</h2>
+                        <div class="row">
+                          <div class="col-lg-12 margin-inner-lg">
+                            <custom-chart id="chart1" items="[{&quot;count&quot;:200,&quot;name&quot;:&quot;Ernährungsberatung&quot;},{&quot;count&quot;:50,&quot;name&quot;:&quot;Einführung in die Bibliotheksbenutzung&quot;},{&quot;count&quot;:20,&quot;name&quot;:&quot;Abenteuer Schnitzeljagd&quot;},{&quot;count&quot;:10,&quot;name&quot;:&quot;Ehrenamt-Stammtisch&quot;},{&quot;count&quot;:5,&quot;name&quot;:&quot;Kreativ-Workshop&quot;}]"
+                              limit="true"></custom-chart>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-12 col-sm-12 margin-sm flex end-lg">
+                            <custom-trigger class-name="btn btn--primary" selector="#chart1" toggle-attr="limit" more="+ Mehr anzeigen" less="- Weniger anzeigen"></custom-trigger>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="border-box__arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                      <div class="border-box__content">
+                        <h2>Liste der Suchbegriffe</h2>
+                        <dl>
+                          <dt><strong>Suchbegriff</strong></dt>
+                          <dd><strong>Anzahl</strong></dd>
+                          <dt>Kita</dt>
+                          <dd>12</dd>
+                          <dt>Anbieter</dt>
+                          <dd>234</dd>
+                          <dt>Familien</dt>
+                          <dd>54</dd>
+                          <dt>Bildung</dt>
+                          <dd>3</dd>
+                        </dl>
+                        <dl id="terms" class="hide">
+                          <dt>Kita</dt>
+                          <dd>12</dd>
+                          <dt>Anbieter</dt>
+                          <dd>234</dd>
+                          <dt>Familien</dt>
+                          <dd>54</dd>
+                          <dt>Bildung</dt>
+                          <dd>3</dd>
+                        </dl>
+                        <div class="row">
+                          <div class="col-lg-12 col-sm-12 margin-sm flex end-lg">
+                            <custom-trigger class-name="btn btn--primary" selector="#terms" toggle-class="hide" more="+ Mehr anzeigen" less="- Weniger anzeigen"></custom-trigger>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="border-box__arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12 margin-sm">
+                    <div class="border-box border-box--container">
+                      <div class="border-box__content">
+                        <h2>Aufrufe der Angebote</h2>
+                        <div class="row">
+                          <div class="col-lg-12 col-sm-12 margin-sm">
+                            <custom-google-chart labels="[&quot;PLZ&quot;, &quot;Anzahl der Angebote&quot;]" data="[[&quot;33602&quot;, &quot;10&quot;],[&quot;33613&quot;, &quot;20&quot;]]" loading="false" no-entries="Keine Einträge"></custom-google-chart>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="border-box__arrow"></div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!---->
+        </section>
+      </main>
+      <footer>
+        <div class="container footer">
+          <div class="row">
+            <div class="col-lg-3 col-md-12 margin-inner-sm">
+              <img src="/img/logo.png" alt="Bertelsmann Stiftung" width="200">
+            </div>
+            <div class="col-lg-3 col-md-12 middle-lg flex">
+              <div>© BERTELSMANN STIFTUNG 2007</div>
+            </div>
+            <div class="footer__nav-wrapper col-lg-6 col-md-12 flex-row end-lg middle-lg start-md">
+              <nav>
+                <ul class="flex-row">
+                  <li>
+                    <a href="">ÜBER UNS</a>
+                  </li>
+                  <li>
+                    <a href="">IMPRESSUM</a>
+                  </li>
+                  <li>
+                    <a href="">AGB</a>
+                  </li>
+                  <li>
+                    <a href="">DATENSCHUTZ</a>
+                  </li>
+                  <li>
+                    <a href="">KONTAKT</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </footer>
+
+      <!---->
+    </div>
+    <script type="text/javascript" src="/js/build.js" async="true"></script>
+  </body>
+</html>

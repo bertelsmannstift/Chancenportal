@@ -1,0 +1,23 @@
+{
+  "script": [
+  ],
+  "link": [
+    {
+      "rel": "stylesheet",
+      "href": "https://fonts.googleapis.com/css?family=Signika:400,600,700"
+    }
+  ],
+  "htmlAttrs": {
+    "lang": "de"
+  },
+  "title": "Default Title",
+  "meta": [
+    {
+      "name": "viewport",
+      "content": "width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no"
+    },
+    {
+    "charset": "utf-8"
+    }
+  ]
+}

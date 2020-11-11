@@ -1,0 +1,18 @@
+/**
+*   @include icon($icon-facebook);
+*   @include icon($icon-facebook, 'after') { color:red; }
+*/
+@mixin icon($icon-code, $position: before, $color: inherit) {
+  &:#{$position} {
+    font-family: 'icon-font';
+    content: unicode($icon-code);
+    display: inline-block;
+    line-height: 1;
+    color: $color;
+    @content;
+  }
+}
+
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}

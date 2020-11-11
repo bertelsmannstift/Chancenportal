@@ -1,0 +1,34 @@
+/*
+ * Name: breakpoint mixin
+ * Author:
+ * Description:
+ */
+
+/*
+ Usage:
+    @include mq('md') {
+        padding-top: 4rem;
+        font-size: 2.4rem;
+    }
+ */
+
+$breakpointMixin: (
+  "xs": $breakpoint-xs,
+  "s": $breakpoint-s,
+  "sm": $breakpoint-sm,
+  "md": $breakpoint-md,
+  "lm": $breakpoint-lm,
+  "lg": $breakpoint-lg
+);
+
+@mixin mq($width, $type: max) {
+  @if map_has_key($breakpointMixin, $width) {
+    $width: map_get($breakpointMixin, $width);
+  }
+  @if $type == max {
+    $width: $width - 1px;
+  }
+  @media only screen and (#{$type}-width: $width) {
+    @content;
+  }
+}

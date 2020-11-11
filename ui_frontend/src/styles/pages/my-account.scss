@@ -1,0 +1,186 @@
+.my-account {
+    position: relative;
+    h1 {
+        font-weight: 600;
+    }
+
+    .divider-top {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #999;
+    }
+    .my-account__download {
+        @include font-size(13);
+        color: $color-yellow;
+        font-weight: bold;
+        &:before {
+            content: "↓";
+            padding-right: 5px;
+        }
+    }
+    .rte-margin {
+        padding-top: 15px;
+    }
+    .my-account__individuell-info {
+        font-style: italic;
+        color: $color-gray-dark;
+    }
+
+    .my-account__cancel-link {
+        color: $color-yellow;
+        position: relative;
+        padding-left: 25px;
+        font-weight: bold;
+
+        @include icon($icon-times-circle, 'before', $color-yellow) {
+            position: absolute;
+            left: 0px;
+            top: 2px;
+            height: 18px;
+            width: 18px;
+            overflow: hidden;
+        };
+    }
+    .border-box {
+        .custom-map {
+            margin: 0 -25px -25px -25px;
+            width: calc(100% + 50px);
+        }
+    }
+    .my-account__add-link {
+        color: $color-yellow;
+        font-weight: bold;
+        display: inline-block;
+        position: relative;
+        padding-left: 15px;
+        &:before {
+            content: "+";
+            position: absolute;
+            left:0;
+            top:1px;
+        }
+    }
+    .my-account__timerow {
+        display: flex;
+        flex-direction: row;
+
+        @include mq('md') {
+            flex-wrap: wrap;
+        }
+
+        .input--time {
+            width: 110px;
+        }
+
+        .input--select {
+            width: 220px;
+        }
+
+        > div {
+            flex: 1 1 auto;
+            margin-right: 10px;
+            margin-bottom: 0;
+
+            @include mq('md') {
+                width: 50%;
+                &:nth-child(even) {
+                    margin-right: 0;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .my-account__status {
+        background-color: #008000;
+        text-align: center;
+        padding: 8px;
+        color: #fff;
+        position: absolute;
+        width: 100%;
+        top: -98px;
+        left:0;
+        @include font-size(14);
+
+        @include mq('sm') {
+            top:0;
+            position: relative;
+            margin-bottom: 30px;
+        }
+    }
+
+    .my-account__status--wait {
+        background-color: #f9b000;
+        color:#000;
+    }
+
+    .my-account__seperator {
+        margin: 0 8px;
+    }
+
+    .my-account__label {
+        margin-right: 15px;
+    }
+
+    .my-account__dates {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        > custom-datepicker {
+            width: 20%;
+            @include mq('sm') {
+                width: 100%;
+            }
+        }
+        @include mq('sm') {
+            flex-direction: column;
+        }
+        > :first-child {
+            flex: 0 1 auto;
+
+            @include mq('sm') {
+                margin-right: 0;
+            }
+        }
+    }
+
+    dl {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 0;
+
+        &.hide {
+            display: none;
+        }
+
+        dd {
+            margin: 0 0 15px;
+            flex: 1 1 auto;
+            width: 50%;
+            padding-bottom: 15px;
+            border-bottom: 1px solid $color-gray-light;
+            //@include font-size(14);
+
+            @include mq('sm') {
+                width: 100%;
+            }
+        }
+        dt {
+            margin: 0 0 15px;
+            flex: 1 1 auto;
+            width: 50%;
+            padding-bottom: 15px;
+            border-bottom: 1px solid $color-gray-light;
+            //@include font-size(14);
+
+            @include mq('sm') {
+                width: 100%;
+            }
+        }
+    }
+}

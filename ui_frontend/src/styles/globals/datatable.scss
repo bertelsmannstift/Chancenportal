@@ -1,0 +1,65 @@
+custom-datatable {
+    display: block;
+}
+
+.custom-datatable {
+    overflow: auto;
+
+    table {
+        width: 100%;
+        min-width: 821px;
+        table-layout: fixed;
+        border-spacing: 0;
+    }
+    th, td {
+        text-align: left;
+        vertical-align: center;
+
+        a {
+            text-decoration: none;
+            &:hover, &:focus, &:active {
+                text-decoration: none;
+            }
+        }
+    }
+    th {
+        font-weight: bold;
+        padding: 5px 0px;
+        border-bottom: 1px solid $color-gray-light;
+        @include font-size(14);
+    }
+    td {
+        padding: 20px 15px 20px 0px;
+        border-bottom: 1px solid $color-gray-light;
+        word-break: break-all;
+        word-break: break-word;
+        @include font-size(14);
+        &:last-child {
+            text-align: right;
+            padding: 20px 0px 20px 0px;
+            i {
+                margin-left: 10px;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .custom-datatable__sortable {
+        cursor: pointer;
+        position: relative;
+        @include icon($icon-sort, 'after') {
+            position: relative;
+            right: -10px;
+            top: 0;
+        }
+
+        &.custom-datatable__sortable--asc {
+            @include icon($icon-sort-asc, 'after');
+        }
+        &.custom-datatable__sortable--desc {
+            @include icon($icon-sort-desc, 'after');
+        }
+    }
+}

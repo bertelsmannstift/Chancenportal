@@ -2,6 +2,7 @@
 
 namespace Chancenportal\Chancenportal\Command;
 
+use Chancenportal\Chancenportal\Domain\Model\FrontendUser;
 use Chancenportal\Chancenportal\Domain\Model\Provider;
 use Chancenportal\Chancenportal\Domain\Repository\OfferRepository;
 use Chancenportal\Chancenportal\Domain\Repository\ProviderRepository;
@@ -114,11 +115,14 @@ class Checker extends \TYPO3\CMS\Scheduler\Task\AbstractTask
                 $this->providerRepository->update($provider);
                 $this->persistenceManager->persistAll();
 
+                /** @var FrontendUser $user */
                 foreach ($users as $user) {
-                    MailUtility::sendTemplateEmail([$user->getUsername()],
-                        [$this->settings['chancenportal']['email']['sender']], [],
-                        $this->settings['chancenportal']['email']['outdated_subject'], 'Outdated.html',
-                        ['host' => $host, 'user' => $user, 'settings' => $this->settings]);
+                    if ($user->getDisable() === false) {
+                        MailUtility::sendTemplateEmail([$user->getUsername()],
+                            [$this->settings['chancenportal']['email']['sender']], [],
+                            $this->settings['chancenportal']['email']['outdated_subject'], 'Outdated.html',
+                            ['host' => $host, 'user' => $user, 'settings' => $this->settings]);
+                    }
                 }
             }
         }
@@ -156,25 +160,27 @@ class Checker extends \TYPO3\CMS\Scheduler\Task\AbstractTask
                 $this->persistenceManager->persistAll();
 
                 foreach ($provider['users'] as $user) {
-                    $offerUrl = $this->uriBuilder->buildLink(
-                        $this->settings['chancenportal']['pageIds']['offer_detail'],
-                        [
-                            'tx_chancenportal_chancenportal[action]' => 'offerDetail',
-                            'tx_chancenportal_chancenportal[controller]' => 'Frontend',
-                            'tx_chancenportal_chancenportal[offer]' => $offer->getUid(),
-                        ]
-                    );
+                    if ($user->getDisable() === false) {
+                        $offerUrl = $this->uriBuilder->buildLink(
+                            $this->settings['chancenportal']['pageIds']['offer_detail'],
+                            [
+                                'tx_chancenportal_chancenportal[action]' => 'offerDetail',
+                                'tx_chancenportal_chancenportal[controller]' => 'Frontend',
+                                'tx_chancenportal_chancenportal[offer]' => $offer->getUid(),
+                            ]
+                        );
 
-                    MailUtility::sendTemplateEmail([$user->getUsername()],
-                        [$this->settings['chancenportal']['email']['sender']], [],
-                        $this->settings['chancenportal']['email']['old_offers_subject'], 'OldOffers.html',
-                        [
-                            'settings' => $this->settings,
-                            'host' => $host,
-                            'user' => $user,
-                            'offer' => $offer,
-                            'offerUrl' => $offerUrl
-                        ]);
+                        MailUtility::sendTemplateEmail([$user->getUsername()],
+                            [$this->settings['chancenportal']['email']['sender']], [],
+                            $this->settings['chancenportal']['email']['old_offers_subject'], 'OldOffers.html',
+                            [
+                                'settings' => $this->settings,
+                                'host' => $host,
+                                'user' => $user,
+                                'offer' => $offer,
+                                'offerUrl' => $offerUrl
+                            ]);
+                    }
                 }
             }
         }

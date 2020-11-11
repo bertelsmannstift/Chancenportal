@@ -1,0 +1,10 @@
+@mixin copytext() {
+
+  @include font-size($font-size-sm, $line-height-sm);
+
+  @include mq('sm') {
+    @include font-size($font-size-lg, $line-height-lg);
+  }
+
+  @content;
+}

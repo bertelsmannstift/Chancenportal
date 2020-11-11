@@ -1,0 +1,12 @@
+.bodyscroll--disabled {
+    &, & body,
+    & body > div {
+        overflow: hidden;
+    }
+    body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+}

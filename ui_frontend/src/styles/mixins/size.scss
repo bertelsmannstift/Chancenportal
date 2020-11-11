@@ -1,0 +1,9 @@
+/**
+  * Funky Size Mixin
+  * @include size(<width>, <height>);
+  * @include size(100px, 50px);
+ */
+@mixin size($width:50px, $height:$width) {
+  width: $width;
+  height: $height;
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <title>Login / Registrierung</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika:400,600,700" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div>
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-sm-12">
+              <div class="header__logo">
+                <div class="header__logo__svg">
+                  <a href="/startseite.html">
+                    <img src="/img/svg/Logo_StadtRW.svg" height="69" width="200">
+                  </a>
+                </div>
+                <div class="header__logo__title">
+                  <div>Chancenportal</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-sm-12 bottom-lg">
+              <custom-menu>
+                <nav class="nav">
+                  <ul class="nav__items">
+                    <li class="nav__item">
+                      <a href="/angebot-uebersicht.html">Angebote</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/anbieter-uebersicht.html">Anbieter</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/mein-konto/neuesangebot.html">Angebot einstellen</a>
+                    </li>
+                    <li class="nav__item nav__item--login">
+                      <a href="#">Anmelden</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="nav__item--logout-mobile" style="display:none;"></div>
+              </custom-menu>
+              <custom-login-overlay url="/index.php" toggle-selector=".nav__item--login">
+                <div class="login-overlay__content">
+                  <h3>Anmelden</h3>
+                  <p>Melden Sie sich mit Ihrem Anbieterkonto an, um Angebote einzustellen und zu verwalten. </p>
+                  <div>
+                    <div class="input">
+                      <label class="input__label">E-Mail</label>
+                      <input type="email" name="email" class="input__field">
+                    </div>
+                    <div class="input">
+                      <label class="input__label">Passwort</label>
+                      <input name="password" type="password" class="input__field">
+                    </div>
+                    <div class="flex-col bottom-lg">
+                      <button title="Lorem ipsum" type="submit" class="btn login-overlay__submit btn--primary">
+
+                        <!----><span>
+                                    Anmelden
+                                </span></button>
+                      <a href="" class="login-overlay__link">Passwort vergessen</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="login-overlay__footer">
+                  <div>Sie sind neu hier und haben noch kein Konto?</div>
+                  <a href="/login-registrierung.html" class="login-overlay__link">Jetzt registrieren</a>
+                </div>
+              </custom-login-overlay>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </header>
+      <main class="main">
+        <section data-animation="fadeIn" class="container login-register">
+          <div class="row">
+            <div class="col-lg-12 margin-inner">
+              <h1>Registrieren</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-sm-12 margin-sm">
+              <h4 class="login-register__headline">Als Anbieter registrieren</h4>
+              Sie sind in einer Organisation tätig, die noch nicht im Portal aufgeführt ist? Sie haben weitere Angebote für die Stadt Pirmasens, die Sie gerne veröffentlichen möchten? Dann melden Sie sich jetzt an profitieren Sie.
+              <div class="login-register__gray-box">
+                <h4>Ihre Vorteile</h4>
+                <ul class="check-list">
+                  <li>Anlegen und Verwalten des Anbieterprofils Ihrer Organisation</li>
+                  <li>Erstellung und Verwaltung Ihrer Angebote</li>
+                  <li>Anlegen weiterer Nutzer für Ihre Organisation</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-offset-1 col-lg-5 col-sm-12 col-sm-offset-0">
+              <custom-ajax-form method="post">
+                <div class="input">
+                  <label class="input__label">Name*</label>
+                  <input type="text" class="input__field">
+
+                  <!---->
+
+                  <!---->
+                </div>
+                <div class="input">
+                  <label class="input__label">Organisation*</label>
+                  <input type="text" class="input__field">
+
+                  <!---->
+
+                  <!---->
+                </div>
+                <div class="input">
+                  <label class="input__label">E-Mail*</label>
+                  <input type="email" class="input__field">
+
+                  <!---->
+
+                  <!---->
+                </div>
+                <div class="input">
+                  <label class="input__label">Passwort*</label>
+                  <input type="password" class="input__field">
+
+                  <!---->
+
+                  <!---->
+                </div>
+                <div class="input">
+                  <label class="input__label">Passwort wiederholen*</label>
+                  <input type="password" class="input__field">
+
+                  <!---->
+
+                  <!---->
+                </div>
+                <div class="flex end-lg">
+                  <button title="Lorem ipsum" type="submit" class="btn btn--primary">
+
+                    <!----><span>Jetzt registrieren</span></button>
+                </div>
+                <p class="login-register__noaccount">Sie haben bereits ein Konto?
+                  <a href="/login.html" class="login-register__link">Jetzt anmelden</a>
+                </p>
+                <div class="login-register__required">* Pflichtfelder</div>
+              </custom-ajax-form>
+            </div>
+          </div>
+
+          <!---->
+        </section>
+      </main>
+      <footer>
+        <div class="container footer">
+          <div class="row">
+            <div class="col-lg-3 col-md-12 margin-inner-sm">
+              <img src="/img/logo.png" alt="Bertelsmann Stiftung" width="200">
+            </div>
+            <div class="col-lg-3 col-md-12 middle-lg flex">
+              <div>© BERTELSMANN STIFTUNG 2007</div>
+            </div>
+            <div class="footer__nav-wrapper col-lg-6 col-md-12 flex-row end-lg middle-lg start-md">
+              <nav>
+                <ul class="flex-row">
+                  <li>
+                    <a href="">ÜBER UNS</a>
+                  </li>
+                  <li>
+                    <a href="">IMPRESSUM</a>
+                  </li>
+                  <li>
+                    <a href="">AGB</a>
+                  </li>
+                  <li>
+                    <a href="">DATENSCHUTZ</a>
+                  </li>
+                  <li>
+                    <a href="">KONTAKT</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </footer>
+
+      <!---->
+    </div>
+    <script type="text/javascript" src="/js/build.js" async="true"></script>
+  </body>
+</html>

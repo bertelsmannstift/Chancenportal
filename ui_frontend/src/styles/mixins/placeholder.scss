@@ -1,0 +1,29 @@
+// input placeholder styling
+@mixin placeholder($color, $fontsize: 14, $lineheight: 1) {
+  &::placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+  &::-webkit-input-placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+  &:-moz-placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+  &::-moz-placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+  &:-ms-input-placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+  &::-ms-input-placeholder {
+    @include placeholder-style($color, $fontsize, $lineheight);
+  }
+
+  @content;
+}
+
+@mixin placeholder-style($color, $fontsize, $lineheight) {
+  @include font-size($fontsize, $lineheight);
+  color: $color;
+  opacity: 1;
+}

@@ -1,0 +1,343 @@
+@import "~sass-flex-mixin/_flex";
+@import "flexboxconfig";
+
+//
+// -- Stop editing -- //
+//
+
+$gutter-compensation: $gutter-width-xs * .5 * -1;
+$half-gutter-width: $gutter-width-xs * .5;
+
+.wrapper {
+    box-sizing: border-box;
+    max-width: $flexboxgrid-max-width;
+    margin: 0 auto;
+}
+
+.row {
+    box-sizing: border-box;
+    @include flexbox();
+    @include flex(0, 1, auto);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+    margin-right: $gutter-compensation;
+    margin-left: $gutter-compensation;
+
+    @each $breakpoint in $breakpoints {
+        $_max-width: nth($breakpoint, 2);
+        $_gutter-compensation: nth($breakpoint, 5) * .5 * -1;
+
+        @media screen and (max-width: $_max-width) {
+            margin-right: $_gutter-compensation;
+            margin-left: $_gutter-compensation;
+        }
+    }
+}
+
+.row.reverse {
+    @include flex-direction(row-reverse);
+}
+
+.col.reverse {
+    @include flex-direction(column-reverse);
+}
+
+@mixin flexboxgrid-sass-col-common {
+    box-sizing: border-box;
+
+    // split @include flex(0, 0, auto) into individual props
+    @include flex-grow(0);
+    @include flex-shrink(0);
+
+    // we leave @include flex-basis(auto) out of common because
+    // in some spots we need it and some we dont
+    // more why here: https://github.com/kristoferjoseph/flexboxgrid/issues/126
+
+    padding-right: $half-gutter-width;
+    padding-left: $half-gutter-width;
+
+    @each $breakpoint in $breakpoints {
+        $_max-width: nth($breakpoint, 2);
+        $_half-gutter-width: nth($breakpoint, 5) * .5;
+
+        @media screen and (max-width: $_max-width) {
+            padding-right: $_half-gutter-width;
+            padding-left: $_half-gutter-width;
+        }
+    }
+}
+
+$name: lg;
+
+.col-#{$name} {
+    @include flexboxgrid-sass-col-common;
+    @include flex-basis(auto);
+}
+
+@for $i from 1 through $grid-columns {
+    .col-#{$name}-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        @include flex-basis(100% / $grid-columns * $i);
+        max-width: 100% / $grid-columns * $i;
+    }
+}
+
+@for $i from 1 through $grid-columns {
+    .col-#{$name}-offset-#{$i} {
+        @include flexboxgrid-sass-col-common;
+        margin-left: 100% / $grid-columns * $i;
+    }
+}
+
+.flex {
+    display: flex;
+    > div, > a, > li, > ul, > span, > article {
+        display: block;
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+    }
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    > div, > a, > li, > ul, > span, > article {
+        display: block;
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+    }
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: stretch;
+    align-items: flex-start;
+    > div, > a, > li, > ul, > span, > article {
+        display: block;
+        order: 0;
+        flex: 0 1 auto;
+        align-self: auto;
+    }
+}
+
+.col-#{$name} {
+    @include flex-grow(1);
+    @include flex-basis(0);
+    max-width: 100%;
+}
+
+.start-#{$name} {
+    @include justify-content(flex-start);
+    text-align: start;
+    text-align: left;
+}
+
+.center-#{$name} {
+    @include justify-content(center);
+    text-align: center;
+}
+
+.end-#{$name} {
+    @include justify-content(flex-end);
+    text-align: end;
+    text-align: right;
+}
+
+.top-#{$name} {
+    @include align-items(flex-start);
+}
+
+.middle-#{$name} {
+    @include align-items(center);
+}
+
+.bottom-#{$name} {
+    @include align-items(flex-end);
+}
+
+.around-#{$name} {
+    @include justify-content(space-around);
+}
+
+.between-#{$name} {
+    @include justify-content(space-between);
+}
+
+.first-#{$name} {
+    order: -1;
+}
+
+.last-#{$name} {
+    order: 1;
+}
+
+body {
+    div {
+        > header,
+        > main,
+        > footer {
+            padding: 0 15px;
+        }
+        > footer {
+            z-index: 0;
+        }
+    }
+}
+
+.grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 297px 295px 295px 295px;
+    display: -ms-grid;
+    -ms-grid-columns: 297px 295px 295px 295px;
+
+    > div {
+        &:first-child {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            -ms-grid-column: 1;
+            -ms-grid-row-span: 2;
+            -ms-grid-row: 1;
+        }
+    }
+    @include mq('md') {
+        display: flex;
+        flex-direction: column;
+        > div {
+            margin-bottom: 20px;
+        }
+    }
+
+    @include mq(1290) {
+        grid-template-columns: auto auto auto;
+        -ms-grid-columns: auto auto auto;
+        > div {
+            &:first-child {
+                grid-column: 3;
+                grid-row: 1;
+                -ms-grid-column: 3;
+                -ms-grid-row: 1;
+            }
+        }
+    }
+}
+
+@each $breakpoint in $breakpoints {
+    $name: nth($breakpoint, 1);
+    $size: nth($breakpoint, 2);
+    $container: nth($breakpoint, 3);
+    $module-margin: nth($breakpoint, 6);
+
+    @media only screen and (max-width: $size - 1) {
+
+        .margin-#{$name} {
+            margin-bottom: $module-margin;
+        }
+
+        .container {
+            max-width: $container;
+            margin: 0 auto;
+        }
+
+        .col-#{$name} {
+            @include flexboxgrid-sass-col-common;
+            @include flex-basis(auto);
+        }
+
+        @for $i from 1 through $grid-columns {
+            .col-#{$name}-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                @include flex-basis(100% / $grid-columns * $i);
+                max-width: 100% / $grid-columns * $i;
+            }
+        }
+        @for $i from 1 through $grid-columns {
+            .col-#{$name}-offset-#{$i} {
+                @include flexboxgrid-sass-col-common;
+                margin-left: 100% / $grid-columns * $i
+            }
+        }
+
+        .col-#{$name}-offset-0 {
+            @include flexboxgrid-sass-col-common;
+            margin-left: 0;
+        }
+
+        .col-#{$name} {
+            @include flex-grow(1);
+            @include flex-basis(0);
+            max-width: 100%;
+        }
+        .start-#{$name} {
+            @include justify-content(flex-start);
+            text-align: start;
+        }
+
+        .center-#{$name} {
+            @include justify-content(center);
+            text-align: center;
+        }
+
+        .end-#{$name} {
+            @include justify-content(flex-end);
+            text-align: end;
+        }
+
+        .top-#{$name} {
+            @include align-items(flex-start);
+        }
+
+        .middle-#{$name} {
+            @include align-items(center);
+        }
+
+        .bottom-#{$name} {
+            @include align-items(flex-end);
+        }
+
+        .around-#{$name} {
+            @include justify-content(space-around);
+        }
+
+        .between-#{$name} {
+            @include justify-content(space-between);
+        }
+
+        .first-#{$name} {
+            order: -1;
+        }
+
+        .last-#{$name} {
+            order: 1;
+        }
+
+    }
+    @media only screen and (max-width: $size - 1) {
+        .hidden-#{$name} {
+            display: none;
+        }
+    }
+}
+
+.column-reverse-sm {
+    @media screen and (max-width: $breakpoint-sm) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+.column-md {
+    @media screen and (max-width: $breakpoint-md) {
+        display: flex;
+        flex-direction: column;
+    }
+}

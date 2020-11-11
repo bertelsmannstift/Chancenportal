@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <title>Anbieterprofil</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Signika:400,600,700" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div>
+      <header class="header">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-sm-12">
+              <div class="header__logo">
+                <div class="header__logo__svg">
+                  <a href="/startseite.html">
+                    <img src="/img/svg/Logo_StadtRW.svg" height="69" width="200">
+                  </a>
+                </div>
+                <div class="header__logo__title">
+                  <div>Chancenportal</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7 col-sm-12 bottom-lg">
+              <custom-menu>
+                <nav class="nav">
+                  <ul class="nav__items">
+                    <li class="nav__item">
+                      <a href="/angebot-uebersicht.html">Angebote</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/anbieter-uebersicht.html">Anbieter</a>
+                    </li>
+                    <li class="nav__item">
+                      <a href="/mein-konto/neuesangebot.html">Angebot einstellen</a>
+                    </li>
+                    <li class="nav__item nav__item--login">
+                      <a href="#">Anmelden</a>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="nav__item--logout-mobile" style="display:none;"></div>
+              </custom-menu>
+              <custom-login-overlay url="/index.php" toggle-selector=".nav__item--login">
+                <div class="login-overlay__content">
+                  <h3>Anmelden</h3>
+                  <p>Melden Sie sich mit Ihrem Anbieterkonto an, um Angebote einzustellen und zu verwalten. </p>
+                  <div>
+                    <div class="input">
+                      <label class="input__label">E-Mail</label>
+                      <input type="email" name="email" class="input__field">
+                    </div>
+                    <div class="input">
+                      <label class="input__label">Passwort</label>
+                      <input name="password" type="password" class="input__field">
+                    </div>
+                    <div class="flex-col bottom-lg">
+                      <button title="Lorem ipsum" type="submit" class="btn login-overlay__submit btn--primary">
+
+                        <!----><span>
+                                    Anmelden
+                                </span></button>
+                      <a href="" class="login-overlay__link">Passwort vergessen</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="login-overlay__footer">
+                  <div>Sie sind neu hier und haben noch kein Konto?</div>
+                  <a href="/login-registrierung.html" class="login-overlay__link">Jetzt registrieren</a>
+                </div>
+              </custom-login-overlay>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </header>
+      <main class="main">
+        <section data-animation="fadeIn" class="container my-account">
+          <div class="row info-nav__actions">
+            <div class="col-lg-12">
+              <div class="breadcrumb">
+                <a href>Mein Konto</a>
+                <a href>Neues Angebot</a>
+              </div>
+            </div>
+          </div>
+          <form action="/" method="post" enctype="multipart/form-data" autocomplete="off" novalidate="novalidate" class="form-to-validate">
+            <div class="row">
+              <div class="col-lg-3 col-sm-12 margin-sm">
+                <ul class="my-account-menu">
+                  <li>
+                    <a href="/mein-konto/uebersicht.html">Übersicht</a>
+                  </li>
+                  <li>
+                    <a href="/mein-konto/anbieterprofil.html">Anbieterprofil</a>
+                  </li>
+                  <li>
+                    <a href="/mein-konto/nutzerverwaltung.html">Nutzerverwaltung</a>
+                  </li>
+                  <li>
+                    <a href="/mein-konto/angebote.html">Angebote</a>
+                  </li>
+                  <li>
+                    <a href="/mein-konto/neuesangebot.html" class="my-account-menu--active">Neues Angebot</a>
+                  </li>
+                  <li>
+                    <a href="/mein-konto/auswertungen.html">Auswertungen</a>
+                  </li>
+                  <li class="my-account-menu__spacer"></li>
+                  <li>
+                    <a href="/mein-konto/persoenliche-daten.html">Persönliche Daten</a>
+                  </li>
+                  <li>
+                    <a href="#">Abmelden</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-8 col-sm-12 col-sm-offset-0 col-lg-offset-1">
+                <div class="row margin-lg">
+                  <div class="col-lg-8 col-sm-12 margin-sm">
+                    <h1 class="margin-small">
+                      Neues Angebot erstellen
+                    </h1>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 margin-sm end-lg">
+                    <button title="Lorem ipsum" type="submit" class="btn btn--primary">
+
+                      <!----><span>Speichern
+                                </span></button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                    <h2>Rahmendaten</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Name des Angebots*</label>
+                      <input type="text" required="required" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Angebotskategorie/n*</label>
+                      <custom-dropdown id="categories" placeholder="Bitte wählen" name="categories" theme="light" show-selected-title="true" multiple-select="true" options="[{&quot;id&quot;:1,&quot;title&quot;:&quot;Bildung und Betreuung&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:2,&quot;title&quot;:&quot;Kitas und Kinder- /Ferienbetreuung&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;Schulen&quot;,&quot;active&quot;:false},{&quot;id&quot;:4,&quot;title&quot;:&quot;Sprachen&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:110,&quot;title&quot;:&quot;Beratung und Unterstützung&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:7,&quot;title&quot;:&quot;Vor und nach der Geburt&quot;,&quot;active&quot;:false},{&quot;id&quot;:8,&quot;title&quot;:&quot;Leben mit Kind&quot;,&quot;active&quot;:false},{&quot;id&quot;:9,&quot;title&quot;:&quot;Beratungsstellen&quot;,&quot;active&quot;:false},{&quot;id&quot;:10,&quot;title&quot;:&quot;Finanzielle Hilfen&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:11,&quot;title&quot;:&quot;Freizeit und Kultur&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:12,&quot;title&quot;:&quot;Kreativität, Medien und Musik&quot;,&quot;active&quot;:false},{&quot;id&quot;:13,&quot;title&quot;:&quot;Ferienangebote&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:16,&quot;title&quot;:&quot;Gesund leben&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:17,&quot;title&quot;:&quot;Gesundes Aufwachsen&quot;,&quot;active&quot;:false},{&quot;id&quot;:18,&quot;title&quot;:&quot;Ärzte und Krankenhäuser&quot;,&quot;active&quot;:false},{&quot;id&quot;:19,&quot;title&quot;:&quot;Therapeuten und Förderstellen&quot;,&quot;active&quot;:false},{&quot;id&quot;:129,&quot;title&quot;:&quot;Sport&quot;,&quot;active&quot;:false}]},{&quot;id&quot;:20,&quot;title&quot;:&quot;Übergang Schule &amp; Beruf&quot;,&quot;active&quot;:false,&quot;items&quot;:[{&quot;id&quot;:21,&quot;title&quot;:&quot;Hilfe zur Berufswahl&quot;,&quot;active&quot;:false},{&quot;id&quot;:22,&quot;title&quot;:&quot;Berufsvorbereitung&quot;,&quot;active&quot;:false},{&quot;id&quot;:23,&quot;title&quot;:&quot;Ausbildungsförderung&quot;,&quot;active&quot;:false}]}]"
+                        required="required"></custom-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Termin/e</label>
+                      <custom-dropdown name="date_type[]" theme="light" show-selected-title="true" options="[{&quot;id&quot;:0,&quot;title&quot;:&quot;Ohne Termin&quot;,&quot;active&quot;:true},{&quot;id&quot;:1,&quot;title&quot;:&quot;Konkrete Daten&quot;,&quot;active&quot;:false},{&quot;id&quot;:2,&quot;title&quot;:&quot;Zeitraum&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;Täglich&quot;,&quot;active&quot;:false},{&quot;id&quot;:4,&quot;title&quot;:&quot;Wöchentlich&quot;,&quot;active&quot;:false}]">
+                        <div vue-slot="1">
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-lg">
+                              <div class="custom-new-line-replace">
+                                <div class="row">
+                                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                                    <div class="my-account__timerow">
+                                      <div class="input">
+                                        <label class="input__label">Datum</label>
+                                        <custom-datepicker theme="light" name="dates[]" value="04.06.2018"></custom-datepicker>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit von</label>
+                                        <custom-time-input name="from_date_time"></custom-time-input>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit bis</label>
+                                        <custom-time-input name="to_date_time"></custom-time-input>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div vue-slot="2">
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-lg">
+                              <div class="custom-new-line-replace">
+                                <div class="row">
+                                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                                    <div class="my-account__timerow">
+                                      <div class="input">
+                                        <label class="input__label">Start-Datum</label>
+                                        <custom-datepicker theme="light" name="dates[]" value="04.06.2018"></custom-datepicker>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit-Beginn</label>
+                                        <custom-time-input name="from_date_time"></custom-time-input>
+                                      </div>
+                                      <div class="input">
+                                        <label class="input__label">End-Datum</label>
+                                        <custom-datepicker theme="light" name="dates[]" value="15.06.2018"></custom-datepicker>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit-Ende</label>
+                                        <custom-time-input name="to_date_time"></custom-time-input>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div vue-slot="3">
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-lg">
+                              <div limit="3" class="custom-new-line-replace">
+                                <div class="row">
+                                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                                    <div class="my-account__timerow">
+                                      <div class="input">
+                                        <label class="input__label">Start-Datum</label>
+                                        <custom-datepicker theme="light" name="dates[]" value="04.06.2018"></custom-datepicker>
+                                      </div>
+                                      <div class="input">
+                                        <label class="input__label">End-Datum</label>
+                                        <custom-datepicker theme="light" name="dates[]" value="15.06.2018"></custom-datepicker>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit von</label>
+                                        <custom-time-input name="from_date_time"></custom-time-input>
+                                      </div>
+                                      <div class="input input--time">
+                                        <label class="input__label">Uhrzeit bis</label>
+                                        <custom-time-input name="to_date_time"></custom-time-input>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div vue-slot="4">
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input">
+                                  <label class="input__label">Start-Datum</label>
+                                  <custom-datepicker theme="light" name="dates[]" value="04.06.2018"></custom-datepicker>
+                                </div>
+                                <div class="input">
+                                  <label class="input__label">End-Datum (optional)</label>
+                                  <custom-datepicker theme="light" name="dates[]" value="15.06.2018"></custom-datepicker>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input input--time">
+                                  <label class="input__label"> </label>
+                                  <custom-select label="Montag" theme="light" value="1" id="mo"></custom-select>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit von</label>
+                                  <custom-time-input name="from_date_time"></custom-time-input>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit bis</label>
+                                  <custom-time-input name="to_date_time"></custom-time-input>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input input--time">
+                                  <label class="input__label"> </label>
+                                  <custom-select label="Dienstag" theme="light" value="1" id="mo"></custom-select>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit von</label>
+                                  <custom-time-input name="from_date_time"></custom-time-input>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit bis</label>
+                                  <custom-time-input name="to_date_time"></custom-time-input>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input input--time">
+                                  <label class="input__label"> </label>
+                                  <custom-select label="Mittwoch" theme="light" value="1" id="mo"></custom-select>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit von</label>
+                                  <custom-time-input name="from_date_time"></custom-time-input>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit bis</label>
+                                  <custom-time-input name="to_date_time"></custom-time-input>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input input--time">
+                                  <label class="input__label"> </label>
+                                  <custom-select label="Donnerstag" theme="light" value="1" id="mo"></custom-select>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit von</label>
+                                  <custom-time-input name="from_date_time"></custom-time-input>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit bis</label>
+                                  <custom-time-input name="to_date_time"></custom-time-input>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                              <div class="my-account__timerow">
+                                <div class="input input--time">
+                                  <label class="input__label"> </label>
+                                  <custom-select label="Freitag" theme="light" value="1" id="mo"></custom-select>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit von</label>
+                                  <custom-time-input name="from_date_time"></custom-time-input>
+                                </div>
+                                <div class="input input--time">
+                                  <label class="input__label">Uhrzeit bis</label>
+                                  <custom-time-input name="to_date_time"></custom-time-input>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </custom-dropdown>
+                      <div class="info-box margin-inner-lg">
+                        Hinweis! - Für einen monatlichen Termin Nutzen Sie bitte die Funktion &quot;Konkrete Daten&quot;
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <custom-map-autocomplete label="Adresse (Wo findet das Angebot statt?)*" error-msg="Addresse nicht gefunden." name="address" value="" api-key="AIzaSyCbXWpD1t8G6omwRJ6yecXh1KLqvk3n2tE" required="required"></custom-map-autocomplete>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Zusatzinformationen Angebotsort (z.B.Raum)</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Stadtteil*</label>
+                      <custom-dropdown id="stadtteil" name="stadtteil" theme="light" placeholder="Stadtteil" show-selected-title="true" required="required" options="[{&quot;id&quot;:1,&quot;title&quot;:&quot;Rheda&quot;,&quot;active&quot;:false},{&quot;id&quot;:2,&quot;title&quot;:&quot;Wiedenbrück&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;St. Vit&quot;,&quot;active&quot;:false},{&quot;id&quot;:4,&quot;title&quot;:&quot;Lintel&quot;,&quot;active&quot;:false},{&quot;id&quot;:5,&quot;title&quot;:&quot;Batenhorst&quot;,&quot;active&quot;:false},{&quot;id&quot;:6,&quot;title&quot;:&quot;Umkreis&quot;,&quot;active&quot;:false}]"></custom-dropdown>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Zielgruppe*</label>
+                      <custom-dropdown id="age" show-tag="true" show-selected-title="true" required="required" placeholder="Alle Zielgruppen" multiple-select="true" options="[{&quot;id&quot;:1,&quot;title&quot;:&quot;Schwangere&quot;,&quot;active&quot;:false},{&quot;id&quot;:2,&quot;title&quot;:&quot;0-3 Jahre&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;4-6 Jahre&quot;,&quot;active&quot;:false},{&quot;id&quot;:3,&quot;title&quot;:&quot;7-13 Jahre&quot;,&quot;active&quot;:false},{&quot;id&quot;:4,&quot;title&quot;:&quot;14-18 Jahre&quot;,&quot;active&quot;:false},{&quot;id&quot;:5,&quot;title&quot;:&quot;19-27 Jahre&quot;,&quot;active&quot;:false},{&quot;id&quot;:6,&quot;title&quot;:&quot;Eltern&quot;,&quot;active&quot;:false},{&quot;id&quot;:7,&quot;title&quot;:&quot;Eltern / Kind&quot;,&quot;active&quot;:false},{&quot;id&quot;:8,&quot;title&quot;:&quot;Fachkräfte&quot;,&quot;active&quot;:false},{&quot;id&quot;:9,&quot;title&quot;:&quot;Zugewanderte Menschen&quot;,&quot;active&quot;:false},{&quot;id&quot;:10,&quot;title&quot;:&quot;Junge Menschen mit Förderbedarf&quot;,&quot;active&quot;:false}]"></custom-dropdown>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                    <h2>Über das Angebot</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Kurzbeschreibung / Teaser-Text (max. 200 Zeichen)*</label>
+
+                      <!---->
+                      <textarea cols="30" rows="10" maxlength="200" required="required" class="input__field" style="height:120px;min-height:120px;"></textarea>
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <custom-rte-input id="longdesc" name="longdesc" type="textarea" label="Langbeschreibung" max-height="200"></custom-rte-input>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Referent/en, Berufsbezeichnung oder Qualifikation</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Format</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="info-box margin-inner-lg">
+                  Sie haben die Möglichkeit 2 Bilder je Angebot einzupflegen: Das Bühnenbild wird groß am Anfang der Seite angezeigt und benötigt eine Größe von mind. 1242px x 385px. Falls Sie dieses nicht einpflegen erscheint an der Stelle ein generisches Fallback-Bild,
+                  passend zur Kategorie. Das Content-Bild wird unterhalb der Langbeschreibung des Angebots angezeigt und entfällt komplett, wenn Sie keines einfügen.
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <custom-upload label="Bühnen-Bild (max. 1 Bild, mind. 1242px x 385px)" name="tx_chancenportal_chancenportal[offer][contentImageContent]" file-name="tx_chancenportal_chancenportal[offer][contentImageName]" editor="true" max-files-error="Es kann nur ein Bild ausgewählt werden"
+                      max-files="1"></custom-upload>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <custom-upload label="Content-Bild (max. 1 Bild)" max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Video-URL (YouTube) einbinden</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                    <h2>Über das Angebot</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Spezf. Teilnahmebedingungen (z.B. Anmeldung erforderlich; max. 200 Zeichen)</label>
+
+                      <!---->
+                      <textarea cols="30" rows="10" maxlength="200" class="input__field" style="height:120px;min-height:120px;"></textarea>
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Kursnummer</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Max. Teilnehmeranzahl</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Kosten</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12 flex middle-lg margin-inner-sm">
+                    <custom-select label="kostenfrei" theme="light" name="all_coast_groups" value="1" id="all_coast_groups"></custom-select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Zugang (Offen / mit Mitgliedschaft)</label>
+                      <div>
+                        <custom-radio is-checked="true" id="member_1" name="member" value="1" theme="light" label="Keine Angabe"></custom-radio>
+                        <custom-radio id="member_2" name="member" value="2" theme="light" label="Offen (ohne Mitgliedschaft)"></custom-radio>
+                        <custom-radio id="member_3" name="member" value="3" theme="light" label="Mitgliedschaft erforderlich"></custom-radio>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Barrierefrei</label>
+                      <div>
+                        <custom-radio is-checked="true" id="accessible_1" name="accessible" value="1" theme="light" label="Keine Angabe"></custom-radio>
+                        <custom-radio id="accessible_2" name="accessible" value="2" theme="light" label="Ja"></custom-radio>
+                        <custom-radio id="accessible_3" name="accessible" value="3" theme="light" label="Nein"></custom-radio>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Mitmachen (max. 100 Zeichen)</label>
+                      <input type="text" maxlength="100" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Spenden (max. 100 Zeichen)</label>
+                      <input type="text" maxlength="100" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                    <h2>Anbieterinformation</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Anbieter *</label>
+                      <input type="text" required="required" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Zusatzinformation Anbieter (z.B. Bereich / Organisation)</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row margin-lg">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Name möglicher Kooperationspartner</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-inner-sm">
+                    <h2>Ansprechpartner/in</h2>
+                  </div>
+                </div>
+                <div class="info-box margin-inner-lg">
+                  Die Angabe spezifischer Kontaktangaben für die/den Ansprechpartner/in sind freiwillig.
+                  <br> Es wird in jedem Fall einen Kontakt-Button mit der allgemeinen Anbieter Email-Adresse geben.
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Vorname und Name</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">Zuständigkeit</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-sm-12 margin-inner-sm">
+                    <div class="input">
+                      <label class="input__label">Telefon</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-sm-12">
+                    <div class="input">
+                      <label class="input__label">E-Mail</label>
+                      <input type="text" class="input__field">
+
+                      <!---->
+
+                      <!---->
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-12 col-sm-12 margin-lg">
+                    <custom-upload label="Foto hinzufügen (max. 1)" max-files-error="Es kann nur ein Bild ausgewählt werden" max-files="1"></custom-upload>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-sm-12 margin-inner-sm flex middle-lg">
+                    <a href="#" class="my-account__cancel-link">Angaben verwerfen</a>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                    <a href="#" title="Lorem ipsum" type="" class="btn btn--full">
+
+                      <!----><span>Vorschau</span></a>
+                  </div>
+                  <div class="col-lg-4 col-sm-12 margin-inner-sm">
+                    <button title="Lorem ipsum" type="submit" class="btn btn--full">
+
+                      <!----><span>
+                                    Speichern
+                                </span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <!---->
+        </section>
+      </main>
+      <footer>
+        <div class="container footer">
+          <div class="row">
+            <div class="col-lg-3 col-md-12 margin-inner-sm">
+              <img src="/img/logo.png" alt="Bertelsmann Stiftung" width="200">
+            </div>
+            <div class="col-lg-3 col-md-12 middle-lg flex">
+              <div>© BERTELSMANN STIFTUNG 2007</div>
+            </div>
+            <div class="footer__nav-wrapper col-lg-6 col-md-12 flex-row end-lg middle-lg start-md">
+              <nav>
+                <ul class="flex-row">
+                  <li>
+                    <a href="">ÜBER UNS</a>
+                  </li>
+                  <li>
+                    <a href="">IMPRESSUM</a>
+                  </li>
+                  <li>
+                    <a href="">AGB</a>
+                  </li>
+                  <li>
+                    <a href="">DATENSCHUTZ</a>
+                  </li>
+                  <li>
+                    <a href="">KONTAKT</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <!---->
+        </div>
+      </footer>
+
+      <!---->
+    </div>
+    <script type="text/javascript" src="/js/build.js" async="true"></script>
+  </body>
+</html>
