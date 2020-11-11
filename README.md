@@ -98,6 +98,20 @@ Die Basisplattform kann über Farbwerte und den Austausch von Logos an das jewei
 * Austausch des Favicons in `web/favicons/` (https://www.favicon-generator.org/)
 * Erweiterte CSS-Anpassung können in der Datei `web/typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css` vorgenommen werden. Änderungen niemals in `web/typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/main.min.*.css` vornehmen, da diese Datei ggf. durch Deployments aus dem Git heraus überschrieben wird!
 
+### Individuelle Frontend-Entwicklung
+
+Für eine individuelle Frontend-Entwicklung werden die Source-Dateien im Verzeichnis `ui_frontend` bereitgestellt. Für eine lokale Entwicklung wird `npm` vorausgesetzt. Folgende Befehle müssen im Verzeichnis `ui_frontend` ausgeführt werden um die lokale Entwicklung zu starten:
+
+* `npm i`
+* `npm run dev`
+
+Das Frontend ist nach dem Start im Browser über [http://0.0.0.0:3000](http://0.0.0.0:3000) erreichbar. Die zugrunde liegenden Source-Dateien liegen unter `ui_frontend/src`.
+
+Um einen entwickelten Stand zu kompilieren und an den korrekten Stellen in der TYPO3 Verzeichnisstruktur abzulegen, muss folgender Befehl ausgeführt werden:
+
+* `npm run build`
+
+
 ## Bildmaterial
 
 Als Platzhalter wurden Bilder der folgenden Fotografen verwendet:
