@@ -1,4 +1,16 @@
-# Changelog
+# Changelog 
+
+## Release 2020-11-11
+
+### BUGFIXES
+- Es werden keine E-Mails mehr an deativierte User verschickt. 
+
+### FEATURES
+- Frontend-Paket zur individuellen Anpassung der Styles hinzugefügt
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/da8582c576f7b3f1a7a182d840bca3c4f94f2b3d](https://github.com/bertelsmannstift/Chancenportal/commit/da8582c576f7b3f1a7a182d840bca3c4f94f2b3d)
 
 ## Release 2020-10-19
 
