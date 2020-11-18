@@ -61,8 +61,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/chancenportal",
-                "reference": "9870d61ac53a137ff062fd9d87cfa62f441b084e",
-                "shasum": null
+                "reference": "9870d61ac53a137ff062fd9d87cfa62f441b084e"
             },
             "require": {
                 "phpoffice/phpspreadsheet": "^1.10.1"
@@ -5082,16 +5081,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.6.9",
+            "version": "2.6.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "ba05e165bb4fd1302edf3f0280a149992e8c79be"
+                "reference": "f20db4e74cf9803c6cffca2ed2f03e1b0b89d0dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/ba05e165bb4fd1302edf3f0280a149992e8c79be",
-                "reference": "ba05e165bb4fd1302edf3f0280a149992e8c79be",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/f20db4e74cf9803c6cffca2ed2f03e1b0b89d0dc",
+                "reference": "f20db4e74cf9803c6cffca2ed2f03e1b0b89d0dc",
                 "shasum": ""
             },
             "require": {
@@ -5117,7 +5116,7 @@
                 "LGPL-3.0-or-later"
             ],
             "description": "The TYPO3 Fluid template rendering engine",
-            "time": "2020-02-03T10:46:43+00:00"
+            "time": "2020-11-16T21:38:14+00:00"
         },
         {
             "name": "uandi-typo3/ui_provider",
@@ -5125,8 +5124,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_provider",
-                "reference": "f63777306e229c0855e277b2a2a593c17a7c62d4",
-                "shasum": null
+                "reference": "3b1f09a5c3e71648fa1c793ad1aeae86d97854c2"
             },
             "require": {
                 "typo3/cms-core": "^9.5"
@@ -5137,7 +5135,10 @@
                     "UI\\UiProvider\\": "Classes"
                 }
             },
-            "description": "u+i TYPO3 Provider Extension"
+            "description": "u+i TYPO3 Provider Extension",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "ui/ui-ce",
@@ -5145,8 +5146,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_ce",
-                "reference": "7d17d42056d80d676b8431cba01097c4e0d350af",
-                "shasum": null
+                "reference": "7d17d42056d80d676b8431cba01097c4e0d350af"
             },
             "type": "typo3-cms-extension",
             "autoload": {
@@ -5161,8 +5161,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_ce_overrides",
-                "reference": "e7c1337fef674fed74a0788819e485aec76d5819",
-                "shasum": null
+                "reference": "e7c1337fef674fed74a0788819e485aec76d5819"
             },
             "require": {
                 "uandi-typo3/ui_provider": "^9.5",
@@ -5181,8 +5180,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_forms",
-                "reference": "753b8cff296b5efbd31565b72008af2e80277e0c",
-                "shasum": null
+                "reference": "753b8cff296b5efbd31565b72008af2e80277e0c"
             },
             "require": {
                 "uandi-typo3/ui_provider": "^9.5"
@@ -5200,8 +5198,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_grid",
-                "reference": "3f3f4c2f94324bbdb5c9649eedc740e3e4b42e15",
-                "shasum": null
+                "reference": "3f3f4c2f94324bbdb5c9649eedc740e3e4b42e15"
             },
             "require": {
                 "uandi-typo3/ui_provider": "^9.5"
@@ -5219,8 +5216,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/ui_sitepackage",
-                "reference": "926ea5e288addcae5bec179c21a0df1e331a93b1",
-                "shasum": null
+                "reference": "926ea5e288addcae5bec179c21a0df1e331a93b1"
             },
             "require": {
                 "uandi-typo3/ui_provider": "^9.5"
@@ -5386,6 +5382,7 @@
                 "phar",
                 "update"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:45:57+00:00"
         },
         {
@@ -5635,5 +5632,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
