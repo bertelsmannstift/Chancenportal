@@ -1,5 +1,14 @@
 # Changelog 
 
+## Release 2020-12-02
+
+### BUGFIXES
+- Fehler im Zusammenhang mit der Anzeige abgelaufener Angebote
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/f6c67a820d56df28837adafdee8bb6289fce1cc6](https://github.com/bertelsmannstift/Chancenportal/commit/f6c67a820d56df28837adafdee8bb6289fce1cc6)
+
 ## Release 2020-11-11
 
 ### BUGFIXES
