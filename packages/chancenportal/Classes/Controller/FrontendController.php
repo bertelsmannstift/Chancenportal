@@ -157,10 +157,9 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function offerDetailAction(\Chancenportal\Chancenportal\Domain\Model\Offer $offer = null)
     {
-        if(!$offer || !$this->offerRepository->isActive($offer->getUid())) {
+        if(!$offer) {
             $GLOBALS['TSFE']->pageNotFoundAndExit('No offer selected or offer not active');
         }
-
         $this->response->addAdditionalHeaderData('<title>' . htmlspecialchars($offer->getName() . ' - ' . $GLOBALS['TSFE']->rootLine[0]['title']) . '</title>');
         $this->response->addAdditionalHeaderData('<meta name="description" content="' . htmlspecialchars($offer->getShortDescription()) . '">');
 
