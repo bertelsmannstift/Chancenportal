@@ -1,5 +1,14 @@
 # Changelog 
 
+## Release 2021-01-11
+
+### FEATURES
+- DoubleOptIn bei der Registrierung hinzugefügt
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/dcdefd7212e832341cdc9b400ca3946b38cfb544](https://github.com/bertelsmannstift/Chancenportal/commit/dcdefd7212e832341cdc9b400ca3946b38cfb544)
+
 ## Release 2020-12-02
 
 ### BUGFIXES
