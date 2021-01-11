@@ -206,15 +206,35 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      */
     public function createAction(\Chancenportal\Chancenportal\Domain\Model\FrontendUser $user)
     {
-        $persistenceManager = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class);
-
         $userCheck = $this->frontendUserRepository->findOneByUsername($user->getUsername());
-
-        if($userCheck) {
+        if ($userCheck) {
             $this->redirect('registerPage', null, null, ['registerDone' => false, 'error' => true]);
         }
 
         $data = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_chancenportal_chancenportal');
+
+        $registry = GeneralUtility::makeInstance(\Chancenportal\Chancenportal\Domain\Registry::class);
+
+        $optinKey = md5(uniqid(microtime()));
+        $registry->set('chancenportalUserOptin', $optinKey, [
+            'expires' => time() + 60*60*24,
+            'user' => $user,
+            'data' => $data
+        ]);
+
+        MailUtility::sendTemplateEmail([$user->getUsername()], [$this->settings['chancenportal']['email']['sender']],
+            [], $this->settings['chancenportal']['email']['new_user_subject'], 'Optin.html', ['settings' => $this->settings, 'optinKey' => $optinKey]);
+
+        $this->redirect('registerPage', null, null, ['optinSent' => true]);
+    }
+
+    /**
+     * @param $user
+     * @param $data
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     */
+    private function createUserAfterOptin($user, $data) {
+        $persistenceManager = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class);
 
         if (!isset($data['user']['companyGroup']) && !empty($data['user']['company'])) {
             $newGroup = new FrontendUserGroup();
@@ -251,20 +271,42 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
 
         MailUtility::sendTemplateEmail([$user->getUsername()], [$this->settings['chancenportal']['email']['sender']],
             [], $this->settings['chancenportal']['email']['new_user_subject'], 'Register.html', ['settings' => $this->settings]);
-
-        $this->redirect('registerPage', null, null, ['registerDone' => true]);
     }
 
     /**
      * @param bool $registerDone
      * @param bool $error
+     * @param bool $optinSent
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
-    public function registerPageAction($registerDone = false, $error = false)
+    public function registerPageAction($registerDone = false, $error = false, $optinSent = false)
     {
+        $arguments = $this->request->getArguments();
+        if(!empty($arguments['key'])) {
+            $registry = GeneralUtility::makeInstance(\Chancenportal\Chancenportal\Domain\Registry::class);
+
+            $this->view->assign('optinReceived', true);
+
+            $optinUser = $registry->get('chancenportalUserOptin', $arguments['key']);
+
+            if($optinUser && $optinUser['expires'] <= (time() + 60*60*24)) {
+                $this->createUserAfterOptin($optinUser['user'], $optinUser['data']);
+
+                $registry->remove('chancenportalUserOptin', $arguments['key']);
+
+                $this->redirect('registerPage', null, null, ['registerDone' => true]);
+            } else {
+                $this->view->assign('optinError', 'Der Link ist nicht mehr gültig.');
+            }
+        }
+
         $providers = $this->getProviderForSelect($this->providerRepository->findAll());
         $this->view->assign('providers', $providers);
         $this->view->assign('error', $error);
         $this->view->assign('registerDone', $registerDone);
+        $this->view->assign('optinSent', $optinSent);
         $this->view->assign('user', new FrontendUser());
     }
 

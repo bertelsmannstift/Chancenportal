@@ -34,6 +34,16 @@
                     <h4 class="login-register__headline">Danke für Ihre Anmeldung</h4>
                     <p>Wir werden Ihre Registrierung prüfen, nach der Freischaltung erhalten Sie eine Bestätigungs-E-Mail von uns.</p>
                 </f:then>
+                <f:else if="{optinReceived}">
+                    <f:if condition="{optinError}">
+                        <h4 class="login-register__headline">Leider ist ein Fehler aufgetreten</h4>
+                        <p>{optinError}</p>
+                    </f:if>
+                </f:else>
+                <f:else if="{optinSent}">
+                    <h4 class="login-register__headline">Danke für Ihre Anmeldung</h4>
+                    <p>Wir haben Ihnen eine E-Mail zur Bestätigung Ihrer Anmeldung geschickt. Bitte bestätigen Sie die Anmeldung über den Link in der E-Mail. Dieser Link ist für 24 Stunden gültig.</p>
+                </f:else>
                 <f:else>
 
                     <f:form.validationResults for="{object}">
