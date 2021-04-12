@@ -1,4 +1,14 @@
-# Changelog 
+# Changelog
+
+## Release 2021-04-12
+
+### FEATURES
+- Performance-Optimierungen
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/36531be9446c5536a7dea6b64f01b50df5ab07e1](https://github.com/bertelsmannstift/Chancenportal/commit/36531be9446c5536a7dea6b64f01b50df5ab07e1)
+* [https://github.com/bertelsmannstift/Chancenportal/commit/353ddef1b57e0503f9b591da8cc8b0d5f1c4fad5](https://github.com/bertelsmannstift/Chancenportal/commit/353ddef1b57e0503f9b591da8cc8b0d5f1c4fad5)
 
 ## Release 2021-01-11
 
@@ -21,7 +31,7 @@
 ## Release 2020-11-11
 
 ### BUGFIXES
-- Es werden keine E-Mails mehr an deativierte User verschickt. 
+- Es werden keine E-Mails mehr an deativierte User verschickt.
 
 ### FEATURES
 - Frontend-Paket zur individuellen Anpassung der Styles hinzugefügt
@@ -51,7 +61,7 @@
 ## Release 2020-09-22
 
 ### BUGFIXES
-- Das Ändern von Userdaten führete zu Fehlern 
+- Das Ändern von Userdaten führete zu Fehlern
 - Die Anzahl der zugrunde liegenden Log-Einträge bei den Auswertungen wurde auf 10000 reduziert um Ladezeiten zu optimieren.
 
 **Commits**
@@ -61,11 +71,11 @@
 ## Release 2020-07-21
 
 ### BUGFIXES
-- Es wurden nicht alle aktiven Angebote auf der Anbieterseite aufgelistet 
+- Es wurden nicht alle aktiven Angebote auf der Anbieterseite aufgelistet
 - Wenn es nur Hauptkategorien ohne Unterkategorien git, war es möglich mehr als eine Hauptkategorie auszuwählen
 - Weiterleitung nach Löschen eines Anbieters finktionierte nicht korrekt
 - Automatische Umbrüche (hyphens: auto;) für die Headlines in den Kacheln wurde aktiviert.
-- Textanpassungen 
+- Textanpassungen
 
 **Commits**
 
@@ -113,14 +123,14 @@ Mit diesem Release wurde die zugrundeliegende TYPO3-Version von TYPO3 8.7 LTS au
 ## Release 2020-01-07
 
 ### BUGFIX: Excel Export von Angeboten
-Der Excel Export von Angeboten funktionierte auf Shared Hosting Systemen nicht 
+Der Excel Export von Angeboten funktionierte auf Shared Hosting Systemen nicht
 
 **Commits**
 
 * [https://github.com/bertelsmannstift/Chancenportal/commit/495a285b40efa5f5755ca2bc055debd050cd6f38](https://github.com/bertelsmannstift/Chancenportal/commit/495a285b40efa5f5755ca2bc055debd050cd6f38)
 
 ### FEATURE: Entwurf speichern
-Im Angebotsformular ist es nun auch möglich den aktuellen Stand als Entwurf zu speichern, ohne das Angebot direkt LIVE zu schalten, bzw. zur Freigabe einzureichen.  
+Im Angebotsformular ist es nun auch möglich den aktuellen Stand als Entwurf zu speichern, ohne das Angebot direkt LIVE zu schalten, bzw. zur Freigabe einzureichen.
 
 **Commits**
 
