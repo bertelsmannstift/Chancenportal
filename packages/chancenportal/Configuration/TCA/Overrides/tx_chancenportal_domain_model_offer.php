@@ -72,3 +72,5 @@ $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['crdate']['con
 
 $GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['dates']['config']['appearance']['collapseAll'] = 1;
 
+$GLOBALS['TCA']['tx_chancenportal_domain_model_offer']['columns']['provider']['config']['foreign_table'] = 'tx_chancenportal_domain_model_provider';
+

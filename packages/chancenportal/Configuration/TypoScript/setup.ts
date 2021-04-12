@@ -61,6 +61,10 @@ plugin.tx_chancenportal._CSS_DEFAULT_STYLE (
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
 plugin.tx_chancenportal_chancenportal {
+    view {
+        widget.UI\UiProvider\ViewHelpers\Widget\PaginationViewHelper.templateRootPaths.100 = EXT:chancenportal/Resources/Private/Templates/Frontend/
+    }
+
     persistence {
         classes {
             Chancenportal\Chancenportal\Domain\Model\Label.newRecordStoragePid < config.tx_extbase.settings.chancenportal.storagePids.offer

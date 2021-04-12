@@ -63,6 +63,17 @@
         },
         mounted() {
             this.$el.onsubmit = this.submit;
+
+            this.handleAjaxPagination();
+
+            if(typeof window.initTabToggle === 'function') {
+                window.initTabToggle();
+            }
+
+            if(typeof window.initTogglShow === 'function') {
+                window.initTogglShow();
+            }
+
             if(((this.method.toLowerCase() === 'get' && window.location.hash.replace('#', '') !== '') || this.submitAfterLoad) && !this.queryString('nosubmit')) {
                 this.$nextTick(()=>{
                     setTimeout(() => {
@@ -78,6 +89,8 @@
                     }, 1500);
                 });
             }
+
+
         },
         created() {
             let loadFilter = this.queryString('load_filter');
@@ -87,7 +100,7 @@
             }
         },
         methods: {
-            submit(event) {
+            submit(event, offsets) {
                 let $submitBtn = $(this.$el).find('[type=submit]');
 
                 $submitBtn.attr('disabled', 'disabled').addClass(this.loadingSubmitButtonClass);
@@ -100,7 +113,18 @@
                     }
                     let loadFilter = this.queryString('load_filter');
                     let page = this.queryString('page');
-                    let getData = $(this.$el).serialize() + (page && !event ? '&page=' + page : '');
+                    let getData = $(this.$el).serialize();
+
+                    if (offsets !== undefined) {
+                        if (offsets.offer !== undefined) {
+                            getData += '&offset=' + offsets.offer;
+                        }
+                        if (offsets.provider !== undefined) {
+                            getData += '&offset-provider=' + offsets.provider;
+                        }
+                    } else {
+                        getData += (page && !event ? '&page=' + page : '');
+                    }
 
                     if(loadFilter !== '1' && this.method.toLowerCase() !== 'post') {
                         window.localStorage.removeItem('page');
@@ -126,11 +150,19 @@
                                 let resultCountSelector = JSON.parse(this.resultCountSelector);
                                 let countOnSelector = JSON.parse(this.countOnSelector);
                                 for(let i in resultCountSelector) {
-                                    $(resultCountSelector[i]).html($(countOnSelector[i]).length);
+                                    if ($(countOnSelector[i]).data('total') !== undefined) {
+                                        $(resultCountSelector[i]).html($(countOnSelector[i]).data('total'));
+                                    } else {
+                                        $(resultCountSelector[i]).html($(countOnSelector[i]).length);
+                                    }
                                 }
                             }
                             if(typeof window.initTabToggle === 'function') {
                                 window.initTabToggle();
+                            }
+
+                            if(typeof window.initTogglShow === 'function') {
+                                window.initTogglShow();
                             }
 
                             setTimeout(()=>{
@@ -143,6 +175,35 @@
                         }
                     });
                 }
+            },
+            handleAjaxPagination() {
+                const that = this;
+
+                $(this.$el).on('click', '.pagination a', function(e) {
+                    e.preventDefault();
+
+                    const $element = $(this);
+                    const $pagination = $element.closest('.pagination');
+
+                    let offsets = {
+                        offer: $pagination.data('offsetOffer') ? $pagination.data('offsetOffer') : 0,
+                        provider: $pagination.data('offsetProvider') ? $pagination.data('offsetProvider') : 0
+                    };
+
+                    if ($element.data('linktype') === 'offer') {
+                        offsets.offer = $element.data('offset') !== undefined ? $element.data('offset') : offsets.offer;
+                    }
+
+                    if ($element.data('linktype') === 'provider') {
+                        offsets.provider = $element.data('offset') !== undefined ? $element.data('offset') : offsets.provider;
+                    }
+
+                    $('html, body').stop().animate({
+                        'scrollTop': $(that.$el).offset().top - $('.header').height()
+                    }, 300);
+
+                    that.submit(null, offsets);
+                });
             }
         }
     }

@@ -3,75 +3,85 @@
 <f:section name="main">
     <section data-animation="fadeIn" class="container">
         <h1>Angebote durchsuchen</h1>
-        <div class="row">
-            <div class="col-lg-12">
-                <div>
-                    <custom-ajax-form ajax="true" result-count-selector='[".search__count--offers", ".search__count--providers"]' count-on-selector='[".kachel-list__items--offers > div", ".kachel-list__items--providers > div"]' url="{t:uri.ajaxAction( action: 'searchResultAjax', controller: 'Frontend', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}'  ) -> f:format.htmlentities()}" method="get" content-selector=".kachel-list__items-wrapper" class="search">
-                        <v:variable.set name="search_box_headline" value="Was für Angebote suchen Sie?" />
-                        <v:variable.set name="auto_submit" value="0" />
-                        <v:variable.set name="show_more" value="1" />
-                        <f:render partial="SearchBox" arguments="{_all}" />
-                    </custom-ajax-form>
-                    <div class="row search__tags">
-                        <div class="col-lg-5 col-sm-12 flex middle-lg bottom-lg">
-                            <div>
-                                <div class="search__tabs">
-                                    <div class="search__tab search__tab--active" data-toggle-class="search__tab--active" data-toggle-items=".kachel-list__sorting--offers,.kachel-list__sorting--providers,.kachel-list--offers,.kachel-list--providers" data-toggle-show=".kachel-list__sorting--offers,.search__offers,.kachel-list--offers">
-                                        <strong>Angebote (<span class="search__count search__count--offers">{offers -> f:count()}</span>)</strong>
-                                    </div>
-                                    <div class="search__tab" data-toggle-class="search__tab--active" data-toggle-items=".kachel-list__sorting--offers,.kachel-list__sorting--providers,.kachel-list--offers,.kachel-list--providers" data-toggle-show=".kachel-list__sorting--providers,.search__providers,.kachel-list--providers">
-                                        <strong>Anbieter (<span class="search__count search__count--providers">{providers -> f:count()}</span>)</strong>
+
+        <custom-ajax-form
+            ajax="true"
+            result-count-selector='[".search__count--offers", ".search__count--providers"]'
+            count-on-selector='[".kachel-list--offers", ".kachel-list--providers"]'
+            url="{t:uri.ajaxAction( action: 'searchResultAjax', controller: 'Frontend', extensionName: 'chancenportal', pluginName: 'chancenportal', contextRecord: 'tt_content:{v:content.info(field: \'uid\')}'  ) -> f:format.htmlentities()}"
+            method="get"
+            content-selector=".kachel-list__items-wrapper"
+        >
+            <div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <div class="search">
+                            <v:variable.set name="search_box_headline" value="Was für Angebote suchen Sie?" />
+                            <v:variable.set name="auto_submit" value="0" />
+                            <v:variable.set name="show_more" value="1" />
+                            <f:render partial="SearchBox" arguments="{_all}" />
+                        </div>
+                        <div class="row search__tags">
+                            <div class="col-lg-5 col-sm-12 flex middle-lg bottom-lg">
+                                <div>
+                                    <div class="search__tabs">
+                                        <div class="search__tab search__tab--active" data-toggle-class="search__tab--active" data-toggle-items=".kachel-list__sorting--offers,.kachel-list__sorting--providers,.kachel-list--offers,.kachel-list--providers" data-toggle-show=".kachel-list__sorting--offers,.search__offers,.kachel-list--offers">
+                                            <strong>Angebote (<span class="search__count search__count--offers">{offers-total}</span>)</strong>
+                                        </div>
+                                        <div class="search__tab" data-toggle-class="search__tab--active" data-toggle-items=".kachel-list__sorting--offers,.kachel-list__sorting--providers,.kachel-list--offers,.kachel-list--providers" data-toggle-show=".kachel-list__sorting--providers,.search__providers,.kachel-list--providers">
+                                            <strong>Anbieter (<span class="search__count search__count--providers">{providers-total}</span>)</strong>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-7 col-sm-12 flex middle-lg end-lg">
-                            <custom-active-filter hide-delete-all="true"></custom-active-filter>
+                            <div class="col-lg-7 col-sm-12 flex middle-lg end-lg">
+                                <custom-active-filter hide-delete-all="true"></custom-active-filter>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="kachel-list">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="kachel-list">
 
-                    <div class="row kachel-list__sorting kachel-list__sorting--offers">
-                        <div class="col-lg-6 margin-inner-md col-sm-12">
-                            <div class="flex middle-lg"><strong class="kachel-list__sort">Sortieren nach: </strong>
-                                <custom-dropdown form-selector=".search form" id="sort_offers" disable-toggle="true" show-selected-title="true" options="{sortingOffers}"></custom-dropdown>
+                        <div class="row kachel-list__sorting kachel-list__sorting--offers">
+                            <div class="col-lg-6 margin-inner-md col-sm-12">
+                                <div class="flex middle-lg"><strong class="kachel-list__sort">Sortieren nach: </strong>
+                                    <custom-dropdown submit-on-change="true" form-selector=".search form" id="sort_offers" disable-toggle="true" show-selected-title="true" options="{sortingOffers}"></custom-dropdown>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 end-lg col-sm-12 start-md start-sm">
-                            <a id="show_on_map" title="Auf Karte anzeigen" class="btn btn--primary btn--icon" data-toggle-class="btn--active" data-toggle-show-item=".kachel-list--offers custom-map">
-                                <i class="icon-map-marker"></i>
-                                Auf Karte anzeigen
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row kachel-list__sorting kachel-list__sorting--providers">
-                        <div class="col-lg-6 margin-inner-md col-sm-12">
-                            <div class="flex middle-lg"><strong class="kachel-list__sort">Sortieren nach: </strong>
-                                <custom-dropdown form-selector=".search form" id="sort_providers" disable-toggle="true" show-selected-title="true" options="{sortingProviders}"></custom-dropdown>
+                            <div class="col-lg-6 col-md-12 end-lg col-sm-12 start-md start-sm">
+                                <a id="show_on_map" title="Auf Karte anzeigen" class="btn btn--primary btn--icon" data-toggle-class="btn--active" data-toggle-show-item=".kachel-list--offers custom-map">
+                                    <i class="icon-map-marker"></i>
+                                    Auf Karte anzeigen
+                                </a>
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12 end-lg col-sm-12 start-md start-sm">
-                            <a id="show_on_map" title="Auf Karte anzeigen" class="btn btn--primary btn--icon" data-toggle-class="btn--active" data-toggle-show-item=".kachel-list--providers custom-map">
-                                <i class="icon-map-marker"></i>
-                                Auf Karte anzeigen
-                            </a>
-                        </div>
-                    </div>
+                        <div class="row kachel-list__sorting kachel-list__sorting--providers">
+                            <div class="col-lg-6 margin-inner-md col-sm-12">
+                                <div class="flex middle-lg"><strong class="kachel-list__sort">Sortieren nach: </strong>
+                                    <custom-dropdown submit-on-change="true" form-selector=".search form" id="sort_providers" disable-toggle="true" show-selected-title="true" options="{sortingProviders}"></custom-dropdown>
+                                </div>
+                            </div>
 
-                    <div class="kachel-list__items-wrapper">
-                        <f:render partial="SearchResultAjax" arguments="{_all}" />
+                            <div class="col-lg-6 col-md-12 end-lg col-sm-12 start-md start-sm">
+                                <a id="show_on_map" title="Auf Karte anzeigen" class="btn btn--primary btn--icon" data-toggle-class="btn--active" data-toggle-show-item=".kachel-list--providers custom-map">
+                                    <i class="icon-map-marker"></i>
+                                    Auf Karte anzeigen
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="kachel-list__items-wrapper">
+                            <f:render partial="SearchResultAjax" arguments="{_all}" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </custom-ajax-form>
     </section>
 </f:section>
 </html>

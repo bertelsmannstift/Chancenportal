@@ -16,6 +16,10 @@
                 default: '',
                 type: String
             },
+            value: {
+                default: '',
+                type: String
+            },
             cssClass: {
                 default: '',
                 type: String
@@ -70,14 +74,18 @@
             }
         },
         mounted() {
-            if (window.location.hash !== '') {
-                let initVal = this.queryString(this.id);
-                this.val = initVal;
-                setTimeout(()=>{
-                    if(initVal && initVal !== '') {
-                        this.changeTag();
-                    }
-                }, 1000);
+            if (this.value === '') {
+                if (window.location.hash !== '') {
+                    let initVal = this.queryString(this.id);
+                    this.val = initVal;
+                    setTimeout(()=>{
+                        if(initVal && initVal !== '') {
+                            this.changeTag();
+                        }
+                    }, 1000);
+                }
+            } else {
+                this.val = this.value;
             }
         },
         name: 'CustomInput'

@@ -93,7 +93,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * addressType
-     * 
+     *
      * @var int
      */
     protected $addressType = 1;
@@ -419,6 +419,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $openingHours = '';
+
+    /**
+     * nextCalculatedDate
+     *
+     * @var \DateTime
+     */
+    protected $nextCalculatedDate = null;
 
     /**
      * dates
@@ -2165,7 +2172,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Returns the addressType
-     * 
+     *
      * @return int
      */
     public function getAddressType()
@@ -2175,7 +2182,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * Sets the addressType
-     * 
+     *
      * @param int $addressType
      */
     public function setAddressType($addressType)
@@ -2369,5 +2376,26 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setOpeningHours($openingHours)
     {
         $this->openingHours = $openingHours;
+    }
+
+    /**
+     * Returns the nextCalculatedDate
+     *
+     * @return \DateTime nextCalculatedDate
+     */
+    public function getNextCalculatedDate()
+    {
+        return $this->nextCalculatedDate;
+    }
+
+    /**
+     * Sets the nextCalculatedDate
+     *
+     * @param \DateTime|null $nextCalculatedDate
+     * @return void
+     */
+    public function setNextCalculatedDate($nextCalculatedDate)
+    {
+        $this->nextCalculatedDate = $nextCalculatedDate;
     }
 }

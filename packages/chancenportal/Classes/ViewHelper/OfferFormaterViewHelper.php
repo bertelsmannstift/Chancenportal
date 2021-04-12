@@ -65,7 +65,7 @@ class OfferFormaterViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\Abstract
             }
         } elseif ($latestDate) {
             if ($this->arguments['output'] === 'date') {
-                if ($this->arguments['long']) {
+                if ($this->arguments['long'] && $latestDate->getStartTime() && $latestDate->getEndTime()) {
                     return 'Vom ' . $latestDate->getStartDate()->format('d.m.Y') . "\nBeginn um: " . $latestDate->getStartTime() . " Uhr\nBis " . $latestDate->getEndDate()->format('d.m.Y') . "\nEndet um: " . $latestDate->getEndTime() . ' Uhr';
                 } else {
                     return $latestDate->getStartDate()->format('d.m.Y') . ' - ' . $latestDate->getEndDate()->format('d.m.Y');

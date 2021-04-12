@@ -1,0 +1,105 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:uandi="http://typo3.org/ns/UI/UiProvider/ViewHelpers" xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers" xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers" data-namespace-typo3-fluid="true">
+
+    <f:render section="Pagination" arguments="{_all}" />
+
+    <f:section name="Pagination">
+        <f:if condition="{pagination.numberOfPages} > 1">
+            <div class="pagination" data-offset-offer="{pagination.linkConfiguration.offsetOffer}" data-offset-provider="{pagination.linkConfiguration.offsetProvider}">
+                <f:if condition="{pagination.previousPage}">
+                    <f:then>
+                        <f:render section="Link" contentAs="label" arguments="{
+                            pagination: pagination,
+                            offset: pagination.previousPageOffset,
+                            class: 'pagination__prev'
+                        }">
+                            <i class="icon-chevron-left"></i>
+                        </f:render>
+                    </f:then>
+                </f:if>
+
+                <f:if condition="{pagination.displayRangeStart} > 1">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: 0,
+                        label: '1',
+                        class: 'pagination__page'
+                    }"/>
+                </f:if>
+
+                <f:if condition="{pagination.hasLessPages}">
+                    <a class="pagination__disabled">...</a>
+                </f:if>
+
+                <f:for each="{pagination.pages}" as="page">
+                    <f:if condition="{page.isCurrent}">
+                        <f:then>
+                            <a class="pagination__page pagination__page--current">{page.number}</a>
+                        </f:then>
+                        <f:else>
+                            <f:render section="Link" arguments="{
+                                pagination: pagination,
+                                offset: page.offset,
+                                label: page.number,
+                                class: 'pagination__page'
+                            }"/>
+                        </f:else>
+                    </f:if>
+                </f:for>
+
+                <f:if condition="{pagination.hasMorePages}">
+                    <span class="pagination__disabled">...</span>
+                </f:if>
+
+                <f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
+                    <f:render section="Link" arguments="{
+                        pagination: pagination,
+                        offset: pagination.lastPageOffset,
+                        label: pagination.numberOfPages,
+                        class: 'pagination__page'
+                    }"/>
+                </f:if>
+
+                <f:if condition="{pagination.nextPage}">
+                    <f:then>
+                        <f:render section="Link" contentAs="label" arguments="{
+                            pagination: pagination,
+                            offset: pagination.nextPageOffset,
+                            label: '>',
+                            class: 'pagination__for'
+                        }">
+                            <i class="icon-chevron-right"></i>
+                        </f:render>
+                    </f:then>
+                </f:if>
+            </div>
+        </f:if>
+    </f:section>
+
+    <f:section name="Link">
+        <f:variable name="arguments" value="{v:iterator.merge(a: pagination.linkConfiguration.arguments, b: {offset: offset})}"/>
+        <f:variable name="contextRecord" value="{v:or(content: '{pagination.linkConfiguration.typoscriptRenderingContext.record}', alternative: 'tt_content:{v:content.info(field: \'uid\')}')}" />
+
+        <f:variable name="ajaxhref" value="{t:uri.ajaxAction(
+            pageUid: '{pagination.linkConfiguration.pageUid}',
+            action: '{pagination.linkConfiguration.action}',
+            controller: '{pagination.linkConfiguration.controller}',
+            extensionName: '{pagination.linkConfiguration.extensionName}',
+            pluginName: '{pagination.linkConfiguration.pluginName}',
+            contextRecord: contextRecord,
+            additionalParams: {type: 'json'},
+            arguments: arguments
+        )}"/>
+
+        <f:link.action
+            class="{class}" pageUid="{pagination.linkConfiguration.pageUid}" action="{pagination.linkConfiguration.action}" controller="{pagination.linkConfiguration.controller}" extensionName="{pagination.linkConfiguration.extensionName}" pluginName="{pagination.linkConfiguration.pluginName}" arguments="{arguments}"
+            additionalAttributes="{
+                data-offset: offset,
+                data-linktype: '{pagination.linkConfiguration.linktype}',
+                data-ajaxhref: ajaxhref,
+                aria-label: ariaLabel
+            }"
+        >
+            {label -> f:format.raw()}
+        </f:link.action>
+    </f:section>
+</html>

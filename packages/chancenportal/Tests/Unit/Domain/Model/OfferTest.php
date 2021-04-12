@@ -1267,6 +1267,32 @@ class OfferTest extends \TYPO3\TestingFramework\Core\Unit\UnitTestCase
     /**
      * @test
      */
+    public function getNextCalculatedDateReturnsInitialValueForDateTime()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getNextCalculatedDate()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setNextCalculatedDateForDateTimeSetsNextCalculatedDate()
+    {
+        $dateTimeFixture = new \DateTime();
+        $this->subject->setNextCalculatedDate($dateTimeFixture);
+
+        self::assertAttributeEquals(
+            $dateTimeFixture,
+            'nextCalculatedDate',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
     public function getDatesReturnsInitialValueForDate()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

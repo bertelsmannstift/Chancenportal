@@ -629,9 +629,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
     {
         $data = GeneralUtility::_GP('dates');
         $category = GeneralUtility::_GP('category');
-        $categories = [];
-        $offers = [];
-        $terms = [];
+        $logQueryConstraints = [];
 
         if ($data) {
             $query = $this->logRepository->createQuery();
@@ -640,15 +638,17 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
             if (isset($data[0]) && !empty($data[0])) {
                 $startDate = \DateTime::createFromFormat('d.m.Y', $data[0]);
                 if ($startDate) {
-                    $constraints[] = $query->greaterThanOrEqual('date',
-                        $startDate->modify('midnight')->format('Y-m-d'));
+                    $startDateFormatted =  $startDate->modify('midnight')->format('Y-m-d');
+                    $logQueryConstraints['date_start'] = $startDateFormatted;
+                    $constraints[] = $query->greaterThanOrEqual('date', $startDateFormatted);
                 }
             }
             if (isset($data[1]) && !empty($data[1])) {
                 $endDate = \DateTime::createFromFormat('d.m.Y', $data[1]);
                 if ($endDate) {
-                    $constraints[] = $query->lessThanOrEqual('date',
-                        $endDate->modify('midnight +1 day -1 second')->format('Y-m-d'));
+                    $endDateFormatted =  $endDate->modify('midnight +1 day -1 second')->format('Y-m-d');
+                    $logQueryConstraints['end_date'] = $endDateFormatted;
+                    $constraints[] = $query->lessThanOrEqual('date', $endDateFormatted);
                 }
             }
 
@@ -656,56 +656,14 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $query->matching($query->logicalAnd($constraints));
             }
 
-            $logs = $query->execute();
             $offerResults = $this->offerRepository->findByDatesAndCategory($data[0], $data[1], $category);
-
         } else {
-            $logs = $this->logRepository->findAll(10000);
             $offerResults = $this->offerRepository->findAll();
         }
 
-        foreach ($logs as $log) {
-            $cat = $log->getCategory();
-            $offer = $log->getOffer();
-            $term = $log->getTerm();
-
-            if ($cat) {
-                if (!isset($categories[$cat->getUid()])) {
-                    $categories[$cat->getUid()] = [
-                        'name' => $cat->getName(),
-                        'count' => 0
-                    ];
-                }
-                $categories[$cat->getUid()]['count']++;
-            }
-            if ($offer) {
-                if (!isset($offers[$offer->getUid()])) {
-                    $offers[$offer->getUid()] = [
-                        'name' => $offer->getName(),
-                        'count' => 0
-                    ];
-                }
-                $offers[$offer->getUid()]['count']++;
-            }
-            if (!empty($term)) {
-                if (!isset($terms[$term])) {
-                    $terms[$term] = [
-                        'name' => $term,
-                        'count' => 0
-                    ];
-                }
-                $terms[$term]['count']++;
-            }
-        }
-
-        /** Sort categories by count */
-        array_multisort(array_column($categories, 'count'), SORT_DESC, $categories);
-
-        /** Sort offers by count */
-        array_multisort(array_column($offers, 'count'), SORT_DESC, $offers);
-
-        /** Sort terms by count */
-        array_multisort(array_column($terms, 'count'), SORT_DESC, $terms);
+        $offers = $this->logRepository->getOfferLogs($logQueryConstraints);
+        $categories = $this->logRepository->getCategoryLogs($logQueryConstraints);
+        $terms = $this->logRepository->getTermLogs($logQueryConstraints);
 
         $this->view->assign('categoriesDropdown', $this->selectUtility->getCategoriesForSelect(null, true, true, false, $category));
         $this->view->assign('categoriesForChart', $this->selectUtility->getCategoriesForSelect(null, false, true, false, $category));

@@ -47,6 +47,12 @@ class SelectUtility
     protected $providerRepository = null;
 
     /**
+     * @var \UI\UiProvider\Service\CacheService
+     * @inject
+     */
+    protected $cacheService = null;
+
+    /**
      * @param null $provider
      * @param bool $onlyAssignedItems
      * @return string
@@ -228,63 +234,69 @@ class SelectUtility
      */
     public function getCategoriesForSelect($offerOrProvider = null, $showCategoryAll = true, $onlyWithAssignments = false, $useProviderCategories = false, $activeCategory = null)
     {
-        $categoryItems = [];
+        /** Cache rendered output */
+        $cacheKey = 'getCategoriesForSelect_' . md5(serialize(func_get_args()));
+        $categoryItems = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($offerOrProvider, $showCategoryAll, $onlyWithAssignments, $useProviderCategories, $activeCategory) {
+            $categoryItems = [];
 
-        if ($showCategoryAll) {
-            $categoryItems[] = [
-                'id' => '',
-                'title' => 'Alle Kategorien',
-                'active' => false,
-            ];
-        }
-
-        $allInactive = true;
-
-        foreach ($this->categoryRepository->findRootCategories() as $item) {
-
-            if($onlyWithAssignments && $this->categoryHasActiveOffers($item) === false && ($useProviderCategories === false || $this->categoryHasActiveProviders($item) === false)) {
-                continue;
-            }
-
-            $isItemActive = $activeCategory ? $activeCategory === $item->getUid() : $offerOrProvider && $offerOrProvider->getCategories() && $offerOrProvider->getCategories()->contains($item);
-            $isSubItemActive = false;
-            $subCategoryItems = [];
-
-            foreach ($item->getChildren() as $child) {
-
-                if($onlyWithAssignments && $this->categoryHasActiveOffers($child) === false && ($useProviderCategories === false || $this->categoryHasActiveProviders($child) === false)) {
-                    continue;
-                }
-
-                $isSubItemActive = $activeCategory ? $activeCategory === $child->getUid() : $offerOrProvider && $offerOrProvider->getCategories() && $offerOrProvider->getCategories()->contains($child);
-
-                $subCategoryItems[] = [
-                    'id' => $child->getUid(),
-                    'title' => $child->getName(),
-                    'active' => $isSubItemActive,
+            if ($showCategoryAll) {
+                $categoryItems[] = [
+                    'id' => '',
+                    'title' => 'Alle Kategorien',
+                    'active' => false,
                 ];
             }
 
-            if ($isItemActive || $isSubItemActive) {
-                $allInactive = false;
+            $allInactive = true;
+
+            foreach ($this->categoryRepository->findRootCategories() as $item) {
+
+                if($onlyWithAssignments && $this->categoryHasActiveOffers($item) === false && ($useProviderCategories === false || $this->categoryHasActiveProviders($item) === false)) {
+                    continue;
+                }
+
+                $isItemActive = $activeCategory ? $activeCategory === $item->getUid() : $offerOrProvider && $offerOrProvider->getCategories() && $offerOrProvider->getCategories()->contains($item);
+                $isSubItemActive = false;
+                $subCategoryItems = [];
+
+                foreach ($item->getChildren() as $child) {
+
+                    if($onlyWithAssignments && $this->categoryHasActiveOffers($child) === false && ($useProviderCategories === false || $this->categoryHasActiveProviders($child) === false)) {
+                        continue;
+                    }
+
+                    $isSubItemActive = $activeCategory ? $activeCategory === $child->getUid() : $offerOrProvider && $offerOrProvider->getCategories() && $offerOrProvider->getCategories()->contains($child);
+
+                    $subCategoryItems[] = [
+                        'id' => $child->getUid(),
+                        'title' => $child->getName(),
+                        'active' => $isSubItemActive,
+                    ];
+                }
+
+                if ($isItemActive || $isSubItemActive) {
+                    $allInactive = false;
+                }
+
+                $tempItem = [
+                    'id' => $item->getUid(),
+                    'title' => $item->getName(),
+                    'active' => $isItemActive === true,
+                ];
+
+                if(!empty($subCategoryItems)) {
+                    $tempItem['items'] = $subCategoryItems;
+                }
+
+                $categoryItems[] = $tempItem;
             }
 
-            $tempItem = [
-                'id' => $item->getUid(),
-                'title' => $item->getName(),
-                'active' => $isItemActive === true,
-            ];
-
-            if(!empty($subCategoryItems)) {
-                $tempItem['items'] = $subCategoryItems;
+            if($allInactive && $showCategoryAll) {
+                $categoryItems[0]['active'] = true;
             }
 
-            $categoryItems[] = $tempItem;
-        }
-
-        if($allInactive && $showCategoryAll) {
-            $categoryItems[0]['active'] = true;
-        }
+            return $categoryItems;
+        }, [$offerOrProvider, $showCategoryAll, $onlyWithAssignments, $useProviderCategories, $activeCategory], [], 86400);
 
         return json_encode($categoryItems);
     }
@@ -357,22 +369,32 @@ class SelectUtility
      */
     public function getTargetGroupsForSelect(Offer $offer = null, $onlyWithAssignments = false)
     {
-        $categoryItems = [];
+        /** Cache rendered output */
+        $cacheKeyValues = [
+            'offer' => $offer ? $offer->getUid() : null,
+            'onlyWithAssignments' => $onlyWithAssignments
+        ];
+        $cacheKey = 'getTargetGroupsForSelect_' . md5(serialize($cacheKeyValues));
+        $categoryItems = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($offer, $onlyWithAssignments) {
+            $categoryItems = [];
 
-        foreach ($this->targetGroupRepository->findAll() as $item) {
+            foreach ($this->targetGroupRepository->findAll() as $item) {
 
-            if($onlyWithAssignments && $this->targetGroupHasActiveOffers($item) === false) {
-                continue;
+                if($onlyWithAssignments && $this->targetGroupHasActiveOffers($item) === false) {
+                    continue;
+                }
+
+                $isItemActive = $offer && $offer->getTargetGroups() && $offer->getTargetGroups()->contains($item);
+
+                $categoryItems[] = [
+                    'id' => $item->getUid(),
+                    'title' => $item->getName(),
+                    'active' => $isItemActive,
+                ];
             }
 
-            $isItemActive = $offer && $offer->getTargetGroups() && $offer->getTargetGroups()->contains($item);
-
-            $categoryItems[] = [
-                'id' => $item->getUid(),
-                'title' => $item->getName(),
-                'active' => $isItemActive,
-            ];
-        }
+            return $categoryItems;
+        }, [$offer, $onlyWithAssignments], [], 86400);
 
         return json_encode($categoryItems);
     }
@@ -384,36 +406,53 @@ class SelectUtility
      * @return string
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function getDistrictsForSelect($offer = null, $onlyWithAssignments = false, $addItemForAllDistricts = false)
+    public function getDistrictsForSelect($offer = null, $onlyWithAssignments = false, $addItemForAllDistricts = false, $activeDistricts = [])
     {
-        $districtItems = [];
+        /** Cache rendered output */
+        $cacheKeyValues = [
+            'offer' => $offer ? $offer->getUid() : null,
+            'onlyWithAssignments' => $onlyWithAssignments,
+            'addItemForAllDistricts' => $addItemForAllDistricts
+        ];
+        $cacheKey = 'getDistrictsForSelect_' . md5(serialize($cacheKeyValues));
+        $districtItems = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($offer, $onlyWithAssignments, $addItemForAllDistricts) {
+            $districtItems = [];
 
-        $hasActive = false;
-        foreach ($this->districtRepository->findAll() as $item) {
+            $hasActive = false;
+            foreach ($this->districtRepository->findAll() as $item) {
 
-            if($onlyWithAssignments && $this->districtHasActiveOffers($item) === false) {
-                continue;
+                if($onlyWithAssignments && $this->districtHasActiveOffers($item) === false) {
+                    continue;
+                }
+
+                $isItemActive = $offer && $offer->getDistrict() && $offer->getDistrict()->getUid() === $item->getUid();
+
+                if($isItemActive) {
+                    $hasActive = true;
+                }
+
+                $districtItems[] = [
+                    'id' => $item->getUid(),
+                    'title' => $item->getName(),
+                    'active' => $isItemActive,
+                ];
             }
 
-            $isItemActive = $offer && $offer->getDistrict() && $offer->getDistrict()->getUid() === $item->getUid();
-
-            if($isItemActive) {
-                $hasActive = true;
+            if($addItemForAllDistricts) {
+                $districtItems[] = [
+                    'id' => 0,
+                    'title' => 'Alle Ortsteile',
+                    'active' => !$hasActive,
+                ];
             }
 
-            $districtItems[] = [
-                'id' => $item->getUid(),
-                'title' => $item->getName(),
-                'active' => $isItemActive,
-            ];
-        }
+            return $districtItems;
+        }, [$offer, $onlyWithAssignments, $addItemForAllDistricts], [], 86400);
 
-        if($addItemForAllDistricts) {
-            $districtItems[] = [
-                'id' => 0,
-                'title' => 'Alle Ortsteile',
-                'active' => !$hasActive,
-            ];
+        foreach ($districtItems as &$districtItem) {
+            if (in_array((string)$districtItem['id'], $activeDistricts)) {
+                $districtItem['active'] = true;
+            }
         }
 
         return json_encode($districtItems);

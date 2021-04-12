@@ -138,6 +138,9 @@
 			<trans-unit id="opening_hours.description">
 				<source>openingHours</source>
 			</trans-unit>
+			<trans-unit id="next_calculated_date.description">
+				<source>nextCalculatedDate</source>
+			</trans-unit>
 			<trans-unit id="dates.description">
 				<source>dates</source>
 			</trans-unit>
@@ -155,6 +158,9 @@
 			</trans-unit>
 			<trans-unit id="last_editor.description">
 				<source>lastEditor</source>
+			</trans-unit>
+			<trans-unit id="next_date.description">
+				<source>nextDate</source>
 			</trans-unit>
 			<trans-unit id="provider.description">
 				<source>provider</source>

@@ -14,7 +14,7 @@
                 </row-component>
 
                 <row-component>
-                    <col-component lg-6 sm-12 margin-sm>
+                    <col-component lg-6 sm-12 margin-sm login-register-teasercol>
                         <h4 class="login-register__headline">Als Anbieter registrieren</h4>
 
                         Sie sind in einer Organisation tätig, die noch nicht im Portal aufgeführt ist? Sie haben weitere Angebote für die Stadt Pirmasens, die Sie gerne veröffentlichen möchten? Dann melden Sie sich jetzt an profitieren Sie.
@@ -28,7 +28,7 @@
                             </ul>
                         </div>
                     </col-component>
-                    <col-component lg-offset-1 lg-5 sm-12 sm-offset-0>
+                    <col-component lg-offset-1 lg-5 sm-12 sm-offset-0 login-register-formcol>
                         <custom-ajax-form :ajax="false" method="post">
                             <input-component label="Name*"></input-component>
                             <input-component label="Organisation*"></input-component>
@@ -133,6 +133,19 @@
         .login-register__headline {
             font-weight: bold;
             font-family: $font-family;
+        }
+
+        .login-register-teasercol {
+            @include mq('sm') {
+                order: 2;
+            }
+        }
+
+        .login-register-formcol {
+            @include mq('sm') {
+                order: 1;
+                margin-bottom: 50px;
+            }
         }
     }
 </style>

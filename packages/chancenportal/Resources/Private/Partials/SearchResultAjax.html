@@ -1,4 +1,12 @@
-<div class="kachel-list--offers">
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+    xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers"
+    xmlns:uiProvider="http://typo3.org/ns/UI/UiProvider/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<div class="kachel-list--offers" data-total="{offers-total}">
     <custom-map icon="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/svg/Icon_Ort.svg" api-key="{settings.chancenportal.google_maps_api_key}">
         <f:render partial="OfferResultItems" arguments="{_all}" />
     </custom-map>
@@ -7,11 +15,19 @@
         <f:render partial="OfferResultItems" arguments="{_all}" />
     </div>
 
-    <custom-pagination items-per-page="10" js-pagination=".kachel-list__items--offers"></custom-pagination>
+    <uiProvider:widget.pagination totalItems="{offers-total}" itemsOffset="{offers-offset}" itemsPerPage="{offers-limit}" maxPaginationLinks="3" linkConfiguration="{
+        linktype: 'offer',
+        offsetOffer: '{offers-offset}',
+        offsetProvider: '{providers-offset}',
+        action: 'searchResults',
+        controller: 'Frontend',
+        extensionName: 'Chancenportal',
+        pluginName: 'Chancenportal',
+        arguments: '{postVars}'
+    }" />
 </div>
 
-<div class="kachel-list--providers">
-
+<div class="kachel-list--providers" data-total="{providers-total}">
     <custom-map icon="/typo3conf/ext/ui_sitepackage/Resources/Public/assets/images/svg/Icon_Ort.svg" api-key="{settings.chancenportal.google_maps_api_key}">
         <f:render partial="ProviderResultItems" arguments="{_all}" />
     </custom-map>
@@ -20,10 +36,19 @@
         <f:render partial="ProviderResultItems" arguments="{_all}" />
     </div>
 
-    <custom-pagination items-per-page="10" js-pagination=".kachel-list__items--providers"></custom-pagination>
+    <uiProvider:widget.pagination totalItems="{providers-total}" itemsOffset="{providers-offset}" itemsPerPage="{providers-limit}" maxPaginationLinks="3" linkConfiguration="{
+        linktype: 'provider',
+        offsetOffer: '{offers-offset}',
+        offsetProvider: '{providers-offset}',
+        action: 'searchResults',
+        controller: 'Frontend',
+        extensionName: 'Chancenportal',
+        pluginName: 'Chancenportal',
+        arguments: '{postVars}'
+    }" />
 </div>
 
-<f:if condition="{similarTerms} && {offers -> f:count()} == 0 && {providers -> f:count()} == 0">
+<f:if condition="{similarTerms} && {offers-total} == 0 && {providers-total} == 0">
     <div class="search">
         Es wurde auch nach folgenden, ähnlichen Begriffen gesucht:
 
@@ -32,3 +57,5 @@
         </f:for>
     </div>
 </f:if>
+
+</html>

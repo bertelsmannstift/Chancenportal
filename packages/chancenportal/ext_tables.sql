@@ -95,6 +95,7 @@ CREATE TABLE tx_chancenportal_domain_model_offer (
 	content_image_copyright varchar(255) DEFAULT '' NOT NULL,
 	participation smallint(5) unsigned DEFAULT '0' NOT NULL,
 	opening_hours text,
+	next_calculated_date datetime DEFAULT NULL,
 	dates int(11) unsigned DEFAULT '0' NOT NULL,
 	target_groups int(11) unsigned DEFAULT '0' NOT NULL,
 	categories int(11) unsigned DEFAULT '0' NOT NULL,

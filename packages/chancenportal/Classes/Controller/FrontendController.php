@@ -15,9 +15,8 @@ namespace Chancenportal\Chancenportal\Controller;
 
 use Chancenportal\Chancenportal\Domain\Model\Log;
 use Chancenportal\Chancenportal\Domain\Model\Offer;
+use Chancenportal\Chancenportal\Utility\OfferUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-use UI\UiProvider\Service\CacheService;
 
 /**
  * FrontendUserController
@@ -84,6 +83,16 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     protected $unknownErrorMessage = 'An unknown error occurred.';
 
     /**
+     * @var array
+     */
+    protected $requestArguments;
+
+    /**
+     * @var array
+     */
+    protected $getParameters;
+
+    /**
      * @param \TYPO3\CMS\Extbase\Mvc\RequestInterface $request
      * @param \TYPO3\CMS\Extbase\Mvc\ResponseInterface $response
      * @return void
@@ -126,6 +135,20 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
                 $this->response->setStatus(500);
             }
             $this->response->appendContent($exception->getMessage());
+        }
+    }
+
+    /**
+     * Initialize Action
+     */
+    public function initializeAction()
+    {
+        $this->requestArguments = $this->request->getArguments();
+        $this->getParameters = GeneralUtility::_GET();
+        $registry = GeneralUtility::makeInstance(\Chancenportal\Chancenportal\Domain\Registry::class);
+
+        if ((time() - (int)$registry->get('chancenportal', 'updateNextOfferDate_LastRun')) >= 86400) {
+            OfferUtility::updateNextDate();
         }
     }
 
@@ -188,40 +211,6 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * Ajax offer and provider search call
-     */
-    public function searchResultAjaxAction()
-    {
-        $postVars = $this->similiarSearch();
-
-        /** Cache rendered output */
-        $cacheKey = 'searchResultAjaxAction_' . md5(serialize($postVars));
-        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars) {
-            $this->view->assign('settings', $this->settings);
-            $this->view->assign('offers', $this->offerRepository->findByFields($postVars));
-            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
-
-            return $this->view->render();
-        }, [$postVars], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultAjaxAction']);
-
-        return $renderedResults;
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function similiarSearch() {
-        $postVars = GeneralUtility::_POST();
-        if(!empty($postVars['term'])) {
-            $similarTerms = $this->offerRepository->getSimilarSearchTerms($postVars['term'], $this->settings);
-            $this->view->assign('similarTerms', $similarTerms);
-            $postVars['termOriginal'] = $postVars['term'];
-            $postVars['term'] = array_merge([$postVars['term']], $similarTerms);
-        }
-        return $postVars;
-    }
-
-    /**
      * Ajax provider search call
      */
     public function searchProviderResultAjaxAction()
@@ -254,7 +243,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
             $this->view->assign('offers', $this->offerRepository->findAllActive(7));
 
             return $this->view->render();
-        }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['searchProviderResultAjaxAction']);
+        }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['offersTeaserAction']);
 
         return $offers;
     }
@@ -400,23 +389,99 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
         $postVars = $this->similiarSearch();
 
+        $offset = !empty($postVars['offset']) ? (int)$postVars['offset'] : 0;
+        $offset = !empty($this->requestArguments['offset']) ? (int)$this->requestArguments['offset'] : $offset;
+        $limit = !empty($this->requestArguments['limit']) ? (int)$this->requestArguments['limit'] : 10;
+
+        $offsetProvider = !empty($postVars['offset-provider']) ? (int)$postVars['offset-provider'] : 0;
+        $offsetProvider = !empty($this->requestArguments['offset-provider']) ? (int)$this->requestArguments['offset-provider'] : $offsetProvider;
+        $limitProvider = !empty($this->requestArguments['limit-provider']) ? (int)$this->requestArguments['limit-provider'] : 10;
+
         /** Cache rendered output */
-        $cacheKey = 'searchResultsAction_' . md5(serialize($postVars));
-        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars, $tabConfig, $sortingOffers, $sortingProviders) {
+        $cacheKey = 'searchResultsAction_' . md5(serialize($postVars).'_offset-'.$offset.'_limit-'.$limit);
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars, $offset, $limit, $offsetProvider, $limitProvider, $tabConfig, $sortingOffers, $sortingProviders) {
             $this->view->assign('settings', $this->settings);
-            $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true));
-            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true));
+            $this->view->assign('postVars', $postVars);
+
+            $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true, $offset, $limit));
+            $this->view->assign('offers-total', $this->offerRepository->findByFields($postVars, true)->count());
+            $this->view->assign('offers-offset', $offset);
+            $this->view->assign('offers-limit', $limit);
+
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true, $offsetProvider, $limitProvider));
+            $this->view->assign('providers-total', $this->providerRepository->findByFields($postVars, true, false)->count());
+            $this->view->assign('providers-offset', $offsetProvider);
+            $this->view->assign('providers-limit', $limitProvider);
+
             $this->view->assign('perimeters', $this->selectUtility->getPerimeters());
-            $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true));
-            $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true));
+            $this->view->assign('categories', $this->selectUtility->getCategoriesForSelect(null, true, true, true, (int)$postVars['category']));
+            $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
+            $this->view->assign('districts', $this->selectUtility->getDistrictsForSelect(null, true, false, (array)$postVars['districts']));
             $this->view->assign('tabConfig', json_encode($tabConfig));
             $this->view->assign('sortingOffers', json_encode($sortingOffers));
             $this->view->assign('sortingProviders', json_encode($sortingProviders));
-            $this->view->assign('targetGroups', $this->selectUtility->getTargetGroupsForSelect(null, true));
 
             return $this->view->render();
-        }, [$postVars, $tabConfig, $sortingOffers, $sortingProviders], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultsAction']);
+        }, [$postVars, $offset, $limit, $offsetProvider, $limitProvider, $tabConfig, $sortingOffers, $sortingProviders], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultsAction']);
 
         return $renderedResults;
+    }
+
+    /**
+     * Ajax offer and provider search call
+     */
+    public function searchResultAjaxAction()
+    {
+        $postVars = $this->similiarSearch();
+
+        $offset = !empty($postVars['offset']) ? (int)$postVars['offset'] : 0;
+        $offset = !empty($this->requestArguments['offset']) ? (int)$this->requestArguments['offset'] : $offset;
+        $limit = !empty($this->requestArguments['limit']) ? (int)$this->requestArguments['limit'] : 10;
+
+        $offsetProvider = !empty($postVars['offset-provider']) ? (int)$postVars['offset-provider'] : 0;
+        $offsetProvider = !empty($this->requestArguments['offset-provider']) ? (int)$this->requestArguments['offset-provider'] : $offsetProvider;
+        $limitProvider = !empty($this->requestArguments['limit-provider']) ? (int)$this->requestArguments['limit-provider'] : 10;
+
+        /** Cache rendered output */
+        $cacheKey = 'searchResultAjaxAction_' . md5(serialize($postVars).'_offset-'.$offset.'_limit-'.$limit);
+        $renderedResults = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($postVars, $offset, $limit, $offsetProvider, $limitProvider) {
+            $this->view->assign('settings', $this->settings);
+            $this->view->assign('postVars', $postVars);
+
+            $this->view->assign('offers', $this->offerRepository->findByFields($postVars, true, $offset, $limit));
+            $this->view->assign('offers-total', $this->offerRepository->findByFields($postVars, true)->count());
+            $this->view->assign('offers-offset', $offset);
+            $this->view->assign('offers-limit', $limit);
+
+            $this->view->assign('providers', $this->providerRepository->findByFields($postVars, true, true, $offsetProvider, $limitProvider));
+            $this->view->assign('providers-total', $this->providerRepository->findByFields($postVars, true, false)->count());
+            $this->view->assign('providers-offset', $offsetProvider);
+            $this->view->assign('providers-limit', $limitProvider);
+
+            return $this->view->render();
+        }, [$postVars, $offset, $limit, $offsetProvider, $limitProvider], [], $this->settings['chancenportal']['caching']['lifetimes']['searchResultAjaxAction']);
+
+        return $renderedResults;
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function similiarSearch() {
+        $postVars = GeneralUtility::_POST();
+        $postVars = array_merge_recursive($postVars, $this->requestArguments);
+
+        if (!empty($postVars['termOriginal'])) {
+            $postVars['term'] = $postVars['termOriginal'];
+        }
+
+        if(!empty($postVars['term'])) {
+            $similarTerms = $this->offerRepository->getSimilarSearchTerms($postVars['term'], $this->settings);
+            $this->view->assign('similarTerms', $similarTerms);
+            $postVars['termOriginal'] = $postVars['term'];
+            $postVars['term'] = array_merge([$postVars['term']], $similarTerms);
+        }
+
+        return $postVars;
     }
 }

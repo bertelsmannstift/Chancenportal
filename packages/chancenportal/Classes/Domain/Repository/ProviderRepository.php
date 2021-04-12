@@ -129,7 +129,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findByFields($fields, $log = true, $onlyActiveOffers = false)
+    public function findByFields($fields, $log = true, $onlyActiveOffers = false, $offset = 0, $limit = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -141,6 +141,12 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $fields['term'] = (array)$fields['term'];
         }
         $constraints[] = $query->logicalNot($query->equals('name', ''));
+
+        $query->setOffset((int)$offset);
+        if (!empty($limit)) {
+            $query->setLimit((int)$limit);
+        }
+
         if (count($fields)) {
             $params = [];
             if (isset($fields['targetGroups']) && count($fields['targetGroups'])) {
@@ -208,12 +214,15 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $constraints[] = $query->logicalAnd($params);
             }
         }
+
         if (!isset($fields['sort_providers']) || $fields['sort_providers'] === '3') {
             $query->setOrderings(['name' => QueryInterface::ORDER_ASCENDING]);
         } else {
             $query->setOrderings(['uid' => QueryInterface::ORDER_DESCENDING]);
         }
+
         $result = $query->matching($query->logicalAnd($constraints))->execute();
+
         if (isset($fields['dateType']) && $fields['dateType'] === '3') {
             $newResult = new ObjectStorage();
             $selectedDays = $this->getSelectedDays($fields);
@@ -273,6 +282,7 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             $result = $newResult;
         }
+
         return $result;
     }
 

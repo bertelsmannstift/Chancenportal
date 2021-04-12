@@ -975,6 +975,17 @@
                             "propertyName": "openingHours",
                             "propertyType": "Text",
                             "uid": "1358387301971"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "nextCalculatedDate",
+                            "propertyType": "NativeDateTime",
+                            "uid": "1355844113864"
                         }
                     ]
                 },
@@ -1895,8 +1906,8 @@
         }
     ],
     "log": {
-        "last_modified": "2020-05-11 12:43",
+        "last_modified": "2021-02-10 01:07",
         "extension_builder_version": "9.10.2",
-        "be_user": " (4)"
+        "be_user": " (2)"
     }
 }

@@ -142,6 +142,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param null $limit
      * @param null $provider
      * @param null $uid
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @return array|mixed
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
@@ -150,46 +151,38 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $now = new \DateTime('midnight');
-        $constraints[] = $query->logicalOr([
-            $query->equals('dateType', 0),
-            $query->logicalAnd(
-                [
-                    $query->greaterThan('dateType', 0),
-                    $query->logicalOr(
-                        [
-                            $query->greaterThanOrEqual('dates.endDate', $now->format('Y-m-d')),
-                            $query->equals('dates.endDate', null),
-                            $query->equals('dates.endDate', '0000-00-00')
-                        ]
-                    )
-                ]
-            )
+
+        $constraints[] = $query->equals('active', 1);
+        if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
+            $constraints[] = $query->equals('approved', 1);
+        }
+
+        $constraints[] = $query->logicalAnd([
+            $query->equals('provider.active', 1),
+            $query->equals('provider.approved', 1)
         ]);
+
+        $constraints[] = $query->logicalNot(
+            $query->equals('nextCalculatedDate', null)
+        );
+
         if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
         }
         if (!is_null($provider)) {
             $constraints[] = $query->equals('provider', $provider);
         }
-        if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
-            $constraints[] = $query->logicalAnd([
-                $query->equals('active', 1),
-                $query->equals('approved', 1)
-            ]);
-        } else {
-            $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
+        if (!is_null($limit)) {
+            $query->setLimit((int)$limit);
         }
+
         $query->setOrderings([
-            'dates.startDate' => QueryInterface::ORDER_ASCENDING,
-            'dates.startTime' => QueryInterface::ORDER_ASCENDING
+            'nextCalculatedDate' => QueryInterface::ORDER_ASCENDING
         ]);
-        $result = $query->matching($query->logicalAnd($constraints))->execute();
-        $result = $this->filterByActiveProviders($result);
-        $newResult = $this->sortOfferTypes($result->toArray());
-        if ($limit) {
-            $newResult = array_slice($newResult, 0, $limit);
-        }
-        return $newResult;
+
+        $results = $query->matching($query->logicalAnd($constraints))->execute();
+
+        return $results;
     }
 
     /**
@@ -293,30 +286,31 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
-    public function findByFields($fields, $log = true)
+    public function findByFields($fields, $log = true, $offset = 0, $limit = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $now = new \DateTime('midnight');
-        $constraints[] = $query->logicalAnd([$query->equals('active', 1)]);
-        $constraints[] = $query->logicalOr([
-            $query->equals('dateType', 0),
-            $query->logicalAnd(
-                [
-                    $query->greaterThan('dateType', 0),
-                    $query->logicalOr(
-                        [
-                            $query->greaterThan('dates.endDate', $now->modify('-1 day')->format('Y-m-d')),
-                            $query->equals('dates.endDate', null),
-                            $query->equals('dates.endDate', '0000-00-00')
-                        ]
-                    )
-                ]
-            )
-        ]);
+
+        $constraints[] = $query->equals('active', 1);
         if ($this->settings['settings']['chancenportal']['activate_offer_approval'] === '1') {
             $constraints[] = $query->equals('approved', 1);
         }
+
+        $constraints[] = $query->logicalAnd([
+            $query->equals('provider.active', 1),
+            $query->equals('provider.approved', 1)
+        ]);
+
+        $constraints[] = $query->logicalNot(
+            $query->equals('nextCalculatedDate', null)
+        );
+
+        $query->setOffset((int)$offset);
+        if (!empty($limit)) {
+            $query->setLimit((int)$limit);
+        }
+
         if (count($fields)) {
             $params = [];
             if (isset($fields['targetGroups']) && count($fields['targetGroups'])) {
@@ -382,22 +376,19 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $constraints[] = $query->logicalAnd($params);
             }
         }
+
         if ($fields['sort_offers'] === '2') {
             $query->setOrderings([
-                'dates.uid' => QueryInterface::ORDER_DESCENDING,
-                'dates.startTime' => QueryInterface::ORDER_ASCENDING
+                'crdate' => QueryInterface::ORDER_DESCENDING,
+                'nextCalculatedDate' => QueryInterface::ORDER_ASCENDING
             ]);
         } else {
             $query->setOrderings([
-                'dates.startDate' => QueryInterface::ORDER_ASCENDING,
-                'dates.startTime' => QueryInterface::ORDER_ASCENDING
+                'nextCalculatedDate' => QueryInterface::ORDER_ASCENDING
             ]);
         }
-        $query = $query->matching($query->logicalAnd($constraints));
 
-        //$queryParser = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Storage\Typo3DbQueryParser::class);
-        //var_dump($queryParser->convertQueryToDoctrineQueryBuilder($query)->getSQL());
-        $result = $query->execute();
+        $result = $query->matching($query->logicalAnd($constraints))->execute();
 
         // Date Range
         if (isset($fields['dateType']) && $fields['dateType'] === '1' && count($fields['dates']) > 1) {
@@ -418,11 +409,8 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (isset($fields['zip']) && !empty($fields['zip']) && isset($fields['distance']) && intval($fields['distance']) >= 1) {
             $result = $this->filterByDistance($result, $fields);
         }
-        $newResult = $this->filterByActiveProviders($result);
-        if (!isset($fields['sort_offers']) || $fields['sort_offers'] === '1') {
-            $newResult = $this->sortOfferTypes($newResult->toArray());
-        }
-        return $newResult;
+
+        return $result;
     }
 
     /**

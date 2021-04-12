@@ -523,7 +523,7 @@
                     if (this.multipleSelect && initVal && initVal.length) {
                         initVal.forEach((itemId) => {
                             let itemToActivate = this.items.find((it) => it.id.toString() === itemId);
-                            this.toggleActive(itemToActivate);
+                            itemToActivate.active = true; //this.toggleActive(itemToActivate);
                         });
                     } else {
 
@@ -539,7 +539,7 @@
                                     }
                                 });
                             }
-                            this.toggleActive(itemToActivate);
+                            itemToActivate.active = true; //this.toggleActive(itemToActivate);
                         }
                     }
 

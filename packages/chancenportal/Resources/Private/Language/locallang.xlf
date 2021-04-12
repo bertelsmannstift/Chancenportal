@@ -255,6 +255,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_offer.opening_hours">
 				<source>Opening Hours</source>
 			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.next_calculated_date">
+				<source>Next Calculated Date</source>
+			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.dates">
 				<source>Dates</source>
 			</trans-unit>
@@ -365,6 +368,9 @@
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_log.offer">
 				<source>Offer</source>
+			</trans-unit>
+			<trans-unit id="tx_chancenportal_domain_model_offer.next_date">
+				<source>Next Date</source>
 			</trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.provider">
 				<source>Provider</source>
