@@ -1229,6 +1229,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->setParticipation($data['participation']);
                 $offer->setActive(false);
 
+                $offer->setModdate(new \DateTime());
                 $this->offerRepository->add($offer);
             } catch (\Exception $e) {
                 error_log('Import Error: ' . $e->getMessage());
@@ -1704,8 +1705,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
             if ($offer->isSave()) {
                 if ($offer->getUid()) {
+                    $offer->setModdate(new \DateTime());
                     $this->offerRepository->update($offer);
                 } else {
+                    $offer->setModdate(new \DateTime());
                     $this->offerRepository->add($offer);
                 }
 
@@ -1788,8 +1791,10 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
                 $offer->setReminderEmailSend(false);
 
                 if ($offer->getUid()) {
+                    $offer->setModdate(new \DateTime());
                     $this->offerRepository->update($offer);
                 } else {
+                    $offer->setModdate(new \DateTime());
                     $this->offerRepository->add($offer);
                 }
 

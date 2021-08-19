@@ -124,7 +124,14 @@
                                         <f:format.date format="d.m.Y">{offer.crdate}</f:format.date>
                                     </td>
                                     <td>
-                                        <f:format.date format="d.m.Y">{offer.tstamp}</f:format.date>
+                                        <f:if condition="{offer.moddate}">
+                                            <f:then>
+                                                <f:format.date format="d.m.Y">{offer.moddate}</f:format.date>
+                                            </f:then>
+                                            <f:else>
+                                                <f:format.date format="d.m.Y">{offer.tstamp}</f:format.date>
+                                            </f:else>
+                                        </f:if>
                                     </td>
                                     <td>
                                         <f:if condition="{settings.chancenportal.activate_offer_approval}">

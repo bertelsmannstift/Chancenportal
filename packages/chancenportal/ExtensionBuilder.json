@@ -986,6 +986,17 @@
                             "propertyName": "nextCalculatedDate",
                             "propertyType": "NativeDateTime",
                             "uid": "1355844113864"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "2",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "moddate",
+                            "propertyType": "NativeDateTime",
+                            "uid": "450947225364"
                         }
                     ]
                 },

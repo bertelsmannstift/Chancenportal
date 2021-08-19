@@ -428,6 +428,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $nextCalculatedDate = null;
 
     /**
+     * moddate
+     *
+     * @var \DateTime
+     */
+    protected $moddate = null;
+
+    /**
      * dates
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
@@ -2397,5 +2404,21 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNextCalculatedDate($nextCalculatedDate)
     {
         $this->nextCalculatedDate = $nextCalculatedDate;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getModdate(): ?\DateTime
+    {
+        return $this->moddate;
+    }
+
+    /**
+     * @param \DateTime $moddate
+     */
+    public function setModdate(?\DateTime $moddate): void
+    {
+        $this->moddate = $moddate;
     }
 }

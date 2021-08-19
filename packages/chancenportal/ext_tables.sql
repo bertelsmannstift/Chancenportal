@@ -96,6 +96,7 @@ CREATE TABLE tx_chancenportal_domain_model_offer (
 	participation smallint(5) unsigned DEFAULT '0' NOT NULL,
 	opening_hours text,
 	next_calculated_date datetime DEFAULT NULL,
+	moddate datetime DEFAULT NULL,
 	dates int(11) unsigned DEFAULT '0' NOT NULL,
 	target_groups int(11) unsigned DEFAULT '0' NOT NULL,
 	categories int(11) unsigned DEFAULT '0' NOT NULL,
