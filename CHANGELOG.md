@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 2021-08-19
+
+### BUGFIXES
+- Neues Feld in dem das Änderungsdatum von Angeboten gespeichert wird, da es zuvor zu Konflikten und falschen Änderungsdaten kam.
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/b3060287a4cfb0abc561720327eaf1855a9c16d7](https://github.com/bertelsmannstift/Chancenportal/commit/b3060287a4cfb0abc561720327eaf1855a9c16d7)
+
 ## Release 2021-04-12
 
 ### FEATURES
