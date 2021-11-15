@@ -1,5 +1,14 @@
 # Changelog
 
+## Release 2021-11-15
+
+### FEATURES
+- TYPO3 Upgrade auf 10.4
+
+**Commits**
+
+* [https://github.com/bertelsmannstift/Chancenportal/commit/8b0ce7a6e304ff92c68385de7a9217cdbada0ce8](https://github.com/bertelsmannstift/Chancenportal/commit/8b0ce7a6e304ff92c68385de7a9217cdbada0ce8)
+
 ## Release 2021-08-19
 
 ### BUGFIXES
