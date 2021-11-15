@@ -27,7 +27,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\TargetGroupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $targetGroupRepository = null;
 
@@ -102,7 +102,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
@@ -118,7 +117,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * address
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $address = '';
@@ -148,7 +146,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * shortDescription
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $shortDescription = '';
 
@@ -170,7 +168,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * images
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $images = null;
 
@@ -266,6 +264,13 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $noCosts = false;
 
     /**
+     * parentSchool
+     *
+     * @var bool
+     */
+    protected $parentSchool = false;
+
+    /**
      * contactSalutation
      *
      * @var int
@@ -304,7 +309,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactImage
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $contactImage = null;
 
@@ -325,7 +330,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contentImage
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $contentImage = null;
 
@@ -439,7 +444,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Date>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $dates = null;
 
@@ -448,7 +453,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\TargetGroup>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $targetGroups = null;
 
@@ -457,7 +462,7 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Category>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $categories = null;
 
@@ -1461,9 +1466,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getProvider()
     {
-        if ($this->provider instanceof LazyLoadingProxy) {
-            $this->provider = $this->provider->_loadRealInstance();
-        }
         return $this->provider;
     }
 
@@ -1532,10 +1534,15 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $mainCat = null;
         foreach ($this->categories as $cat) {
-            if (!$mainCat && !$cat->getParent()) {
+            $parent = $cat->getParent();
+            if ($parent instanceof LazyLoadingProxy) {
+                $parent = $parent->_loadRealInstance();
+            }
+
+            if (!$mainCat && !$parent) {
                 $mainCat = $cat;
             } elseif (!$mainCat) {
-                $mainCat = $cat->getParent();
+                $mainCat = $parent;
             }
         }
         return $mainCat;
@@ -1601,9 +1608,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getDistrict()
     {
-        if ($this->district instanceof LazyLoadingProxy) {
-            $this->district = $this->district->_loadRealInstance();
-        }
         return $this->district;
     }
 
@@ -1661,6 +1665,22 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             $this->costs = null;
         }
         $this->noCosts = $noCosts;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isParentSchool(): bool
+    {
+        return $this->parentSchool;
+    }
+
+    /**
+     * @param bool $parentSchool
+     */
+    public function setParentSchool(bool $parentSchool): void
+    {
+        $this->parentSchool = $parentSchool;
     }
 
     /**
@@ -1964,9 +1984,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCreator()
     {
-        if ($this->creator instanceof LazyLoadingProxy) {
-            $this->creator = $this->creator->_loadRealInstance();
-        }
         return $this->creator;
     }
 
@@ -1992,9 +2009,6 @@ class Offer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getLastEditor()
     {
-        if ($this->lastEditor instanceof LazyLoadingProxy) {
-            $this->lastEditor = $this->lastEditor->_loadRealInstance();
-        }
         return $this->lastEditor;
     }
 

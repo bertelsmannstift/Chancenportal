@@ -74,6 +74,7 @@ CREATE TABLE tx_chancenportal_domain_model_offer (
 	provider_cooperation varchar(255) DEFAULT '' NOT NULL,
 	format varchar(255) DEFAULT '' NOT NULL,
 	no_costs smallint(5) unsigned DEFAULT '0' NOT NULL,
+	parent_school smallint(5) unsigned DEFAULT '0' NOT NULL,
 	contact_salutation int(11) DEFAULT '0' NOT NULL,
 	contact_name varchar(255) DEFAULT '' NOT NULL,
 	contact_jurisdiction varchar(255) DEFAULT '' NOT NULL,

@@ -6,4 +6,4 @@ if (!defined('TYPO3_MODE')) {
 /**
  * Default PageTsConfig
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="DIR:EXT:'.$_EXTKEY.'/Configuration/PageTSconfig/" extensions="typoscript">');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="DIR:EXT:ui_ce_overrides/Configuration/PageTSconfig/" extensions="typoscript">');

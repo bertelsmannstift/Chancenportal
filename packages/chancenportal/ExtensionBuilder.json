@@ -747,6 +747,17 @@
                         },
                         {
                             "allowedFileTypes": "",
+                            "maxItems": "3",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsL10nModeExclude": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "parentSchool",
+                            "propertyType": "Boolean",
+                            "uid": "1240445092284"
+                        },
+                        {
+                            "allowedFileTypes": "",
                             "maxItems": "2",
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,

@@ -103,6 +103,9 @@
                 <custom-select label="Barrierefrei" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="accessibility"></custom-select>
                 <custom-select label="Kostenfrei" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="noCosts"></custom-select>
                 <custom-select label="Engagement möglich" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="participation"></custom-select>
+                <f:if condition="{settings.chancenportal.filter_show_parent_school}">
+                    <custom-select label="Elternschule" submit-on-change="{f:if(condition: '{auto_submit}', then: 'true', else: 'false')}" show-tag="true" value="1" id="parentSchool"></custom-select>
+                </f:if>
             </div>
         </div>
     </div>

@@ -41,7 +41,7 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\FrontendUserRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserRepository = null;
 
@@ -49,43 +49,43 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\ProviderRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $providerRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CarrierRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $carrierRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $categoryRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\DistrictRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $districtRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\TargetGroupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $targetGroupRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $offerRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Utility\SelectUtility
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $selectUtility = null;
 
@@ -96,13 +96,13 @@ class MyAccountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\LogRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $logRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\FrontendUserGroupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserGroupRepository = null;
 

@@ -2,6 +2,7 @@
 namespace Chancenportal\Chancenportal\Domain\Model;
 
 use Chancenportal\Chancenportal\Utility\UserUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***
@@ -31,8 +32,8 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
     protected $company = '';
 
     /**
-     * @validate NotEmpty
-     * @validate EmailAddress
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("EmailAddress")
      * @var string
      */
     protected $username = '';
@@ -46,7 +47,6 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      * Virtual field
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $group = null;
 
@@ -71,7 +71,6 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
      * Virtual field
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $companyGroup = null;
 
@@ -82,7 +81,7 @@ class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
     protected $usergroup = null;
 
     /**
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      * @var string
      */
     protected $name = '';

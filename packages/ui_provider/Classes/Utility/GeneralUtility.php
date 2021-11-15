@@ -51,10 +51,14 @@ class GeneralUtility extends \TYPO3\CMS\Core\Utility\GeneralUtility
      *      ],
      * ]);
      */
-    public static function getImageFieldTCAConfig($fieldName = '', $fileExtensions = '', $minItems = 0, $maxItems = 9999, $cropVariants = null, $addButtonLabel = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference')
+    public static function getImageFieldTCAConfig($fieldName = '', $fileExtensions = '', $minItems = 0, $maxItems = 9999, $cropVariants = null, $addButtonLabel = null, $additionalConfig = [])
     {
         if(empty($fileExtensions)) {
             $fileExtensions = $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'];
+        }
+
+        if(empty($addButtonLabel)) {
+            $addButtonLabel = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference';
         }
 
         /**
@@ -107,9 +111,12 @@ class GeneralUtility extends \TYPO3\CMS\Core\Utility\GeneralUtility
         $config = array_replace_recursive($config, [
             'appearance' => [
                 'collapseAll' => '1',
-                'expandSingle' => '1'
+                'expandSingle' => '1',
+                'fileUploadAllowed' => false
             ]
         ]);
+
+        $config = array_replace_recursive($config, $additionalConfig);
 
         /**
          * Define custom CropVariants or disable ImageManipulation
@@ -125,7 +132,11 @@ class GeneralUtility extends \TYPO3\CMS\Core\Utility\GeneralUtility
              * Create CropVariants
              */
             foreach($cropVariants as $cropVariantKey => $cropVariant) {
-                $title = LocalizationUtility::translate('LLL:EXT:ui_provider/Resources/Private/Language/locallang_ImageManipulation.xlf:cropVariants.' . $cropVariantKey);
+                $title = null;
+                if($GLOBALS['BE_USER'] || $GLOBALS['LANG']) {
+                    $title = LocalizationUtility::translate('LLL:EXT:ui_provider/Resources/Private/Language/locallang_ImageManipulation.xlf:cropVariants.' . $cropVariantKey);
+                }
+
                 if(!$title) {
                     $title = ucfirst(strtolower($cropVariantKey));
                 }
@@ -145,7 +156,11 @@ class GeneralUtility extends \TYPO3\CMS\Core\Utility\GeneralUtility
                  * Add AspectRatios to CropVariant
                  */
                 foreach($cropVariant as $aspectRatioKey => $aspectRatio) {
-                    $title = LocalizationUtility::translate('LLL:EXT:ui_provider/Resources/Private/Language/locallang_ImageManipulation.xlf:cropVariants.aspectRatios.' . $aspectRatioKey);
+                    $title = null;
+                    if($GLOBALS['BE_USER'] || $GLOBALS['LANG']) {
+                        $title = LocalizationUtility::translate('LLL:EXT:ui_provider/Resources/Private/Language/locallang_ImageManipulation.xlf:cropVariants.aspectRatios.' . $aspectRatioKey);
+                    }
+
                     if(!$title) {
                         $title = str_replace('_', ':', $aspectRatioKey);
                     }

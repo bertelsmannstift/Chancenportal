@@ -15,6 +15,7 @@ namespace UI\UiProvider\TCA;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\RootlineUtility;
 
 /**
  * Class Conditions
@@ -44,6 +45,14 @@ class Conditions {
      * default: Other
      */
     public function matchFileType(array $conditionParameters) {
+
+        /** This case is true for sys_file_references */
+        if($conditionParameters['record']['table_local'] === 'sys_file') {
+            if((int) $conditionParameters['record']['uid_local'][0]['row']['type'] === (int)$conditionParameters['conditionParameters'][0]) {
+                return true;
+            }
+        }
+
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('sys_file');
 
         $queryBuilder->select('type')
@@ -100,9 +109,31 @@ class Conditions {
      * 'displayCond' => 'USER:UI\\UiProvider\\TCA\\Conditions->matchPageType:Homepage'
      */
     public function matchPageType(array $conditionParameters) {
-        $pageLayout = \UI\UiProvider\Utility\GeneralUtility::getPageLayout($conditionParameters['record']['uid']);
+        $field = isset($conditionParameters['record']['doktype']) ? 'uid' : 'pid';
+        $pageLayout = \UI\UiProvider\Utility\GeneralUtility::getPageLayout($conditionParameters['record'][$field]);
 
         if($pageLayout === $conditionParameters['conditionParameters'][0] || $pageLayout === 'pagets__' . $conditionParameters['conditionParameters'][0]) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * matchRootlineLength condition for use in a TCA displayCond in pages
+     *
+     * @param array $conditionParameters
+     * @return bool
+     *
+     * Usage
+     * -----
+     * 'displayCond' => 'USER:UI\\UiProvider\\TCA\\Conditions->matchRootlineLength:2'
+     */
+    public function matchRootlineLength(array $conditionParameters) {
+        $field = isset($conditionParameters['record']['doktype']) ? 'uid' : 'pid';
+        $rootline = GeneralUtility::makeInstance(RootlineUtility::class, $conditionParameters['record'][$field])->get();
+
+        if(count($rootline) === intval($conditionParameters['conditionParameters'][0])) {
             return true;
         }
 

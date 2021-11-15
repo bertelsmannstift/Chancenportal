@@ -31,15 +31,9 @@ call_user_func(
         /**
          * Disable Deprecation Logs in Production Context
          */
-        if(!\TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext()->isDevelopment()) {
+        if(!\TYPO3\CMS\Core\Core\Environment::getContext()->isDevelopment()) {
             $GLOBALS['TYPO3_CONF_VARS']['LOG']['TYPO3']['CMS']['deprecations']['writerConfiguration'][\TYPO3\CMS\Core\Log\LogLevel::NOTICE] = [];
         }
-
-        /**
-         * Register Ajax Class
-         * TODO: Still needed? Add further description
-         */
-        $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ui_provider_version'] = 'EXT:ui_provider/Classes/Ajax/Version.php';
 
         /**
          * Xclass to extend File Object
@@ -87,6 +81,13 @@ call_user_func(
          */
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\EBT\ExtensionBuilder\Domain\Repository\ExtensionRepository::class] = [
             'className' => \UI\UiProvider\Xclass\EBT\ExtensionBuilder\Domain\Repository\ExtensionRepository::class
+        ];
+
+        /**
+         * Stop Extension Builder from generating empty git repository
+         */
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\EBT\ExtensionBuilder\Service\FileGenerator::class] = [
+            'className' => \UI\UiProvider\Xclass\EBT\ExtensionBuilder\Service\FileGenerator::class
         ];
     }
 );

@@ -45,21 +45,6 @@
                     <p>Wir haben Ihnen eine E-Mail zur Bestätigung Ihrer Anmeldung geschickt. Bitte bestätigen Sie die Anmeldung über den Link in der E-Mail. Dieser Link ist für 24 Stunden gültig.</p>
                 </f:else>
                 <f:else>
-
-                    <f:form.validationResults for="{object}">
-                        <f:if condition="{validationResults.flattenedErrors}">
-                            <f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
-                                <f:for each="{errors}" as="error">
-                                    <f:if condition="{0: error.code} == {0: 'user_exists'}">
-                                        <div class="info-box margin-inner-lg">
-                                            {error.message}
-                                        </div>
-                                    </f:if>
-                                </f:for>
-                            </f:for>
-                        </f:if>
-                    </f:form.validationResults>
-
                     <f:if condition="{error}">
                         <div class="info-box margin-inner-lg">
                             Die E-Mail wurde bereits registriert! Bitte wählen Sie eine andere E-Mail-Adresse oder fordern Sie ein neues Passwort an.

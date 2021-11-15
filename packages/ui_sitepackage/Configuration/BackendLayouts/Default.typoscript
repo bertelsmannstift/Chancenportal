@@ -26,11 +26,3 @@ mod.web_layout.BackendLayouts {
         icon = EXT:ui_sitepackage/Resources/Public/Icons/BackendLayouts/Default.png
     }
 }
-
-/**
-* Configure allowed CTypes per colPos for this BackendLayout
-* Used in New Content Element Wizard
-*/
-[globalVar = GP:colPos == 0] && [UI\UiProvider\TypoScript\BeLayoutCondition Default]
-    TCEFORM.tt_content.CType.keepItems < mod.web_layout.BackendLayouts.Default.config.backend_layout.rows.1.columns.1.allowed
-[end]

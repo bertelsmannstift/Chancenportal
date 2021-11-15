@@ -2,7 +2,9 @@
 
 namespace Chancenportal\Chancenportal\ViewHelper;
 
-class IfHasRoleViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractConditionViewHelper
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
+
+class IfHasRoleViewHelper extends AbstractConditionViewHelper
 {
     /**
      * Initializes the "role" argument.

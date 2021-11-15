@@ -96,29 +96,35 @@
                                         <c:ExtractCity address="{offer.address}" />
                                     </td>
                                     <td>
-                                        <f:if condition="{offer.creator}">
-                                            <f:then>
-                                                {offer.creator.name}
-                                            </f:then>
-                                            <f:else>
-                                                Kein Benutzer zugewiesen
-                                            </f:else>
-                                        </f:if>
+                                        <c:lazyLoad property="{offer.creator}" as="creator">
+                                            <f:if condition="{creator.name}">
+                                                <f:then>
+                                                    {creator.name}
+                                                </f:then>
+                                                <f:else>
+                                                    Kein Benutzer zugewiesen
+                                                </f:else>
+                                            </f:if>
+                                        </c:lazyLoad>
                                     </td>
                                     <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
                                         <td>
-                                            {offer.provider.name}
+                                            <c:lazyLoad property="{offer.provider}" as="provider">
+                                                {provider.name}
+                                            </c:lazyLoad>
                                         </td>
                                     </f:security.ifHasRole>
                                     <td>
-                                        <f:if condition="{offer.lastEditor.name}">
-                                            <f:then>
-                                                {offer.lastEditor.name}
-                                            </f:then>
-                                            <f:else>
-                                                Kein Benutzer zugewiesen
-                                            </f:else>
-                                        </f:if>
+                                        <c:lazyLoad property="{offer.lastEditor}" as="lastEditor">
+                                            <f:if condition="{lastEditor.name}">
+                                                <f:then>
+                                                    {lastEditor.name}
+                                                </f:then>
+                                                <f:else>
+                                                    Kein Benutzer zugewiesen
+                                                </f:else>
+                                            </f:if>
+                                        </c:lazyLoad>
                                     </td>
                                     <td>
                                         <f:format.date format="d.m.Y">{offer.crdate}</f:format.date>

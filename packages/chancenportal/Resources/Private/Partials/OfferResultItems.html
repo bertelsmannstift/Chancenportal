@@ -31,14 +31,16 @@
                                                     {offer.city}
                                                 </f:then>
                                                 <f:else>
-                                                    <f:if condition="{offer.district}">
-                                                        <f:then>
-                                                            {offer.district.name}
-                                                        </f:then>
-                                                        <f:else>
-                                                            Alle Ortsteile
-                                                        </f:else>
-                                                    </f:if>
+                                                    <c:lazyLoad property="{offer.district}" as="district">
+                                                        <f:if condition="{district}">
+                                                            <f:then>
+                                                                {district.name}
+                                                            </f:then>
+                                                            <f:else>
+                                                                Alle Ortsteile
+                                                            </f:else>
+                                                        </f:if>
+                                                    </c:lazyLoad>
                                                 </f:else>
                                             </f:if>
                                         </div>

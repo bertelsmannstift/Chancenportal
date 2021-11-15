@@ -3,7 +3,10 @@
 namespace Chancenportal\Chancenportal\Domain\Repository;
 
 use Chancenportal\Chancenportal\Domain\Model\FrontendUser;
+use Chancenportal\Chancenportal\Utility\UserUtility;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -102,8 +105,91 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
         $and[] = $query->in('usergroup', $groups);
         $query->matching($query->logicalAnd($and));
-        $query->setOrderings(['username' => QueryInterface::ORDER_ASCENDING]);
+        $query->setOrderings([
+            'disable' => QueryInterface::ORDER_DESCENDING,
+            'username' => QueryInterface::ORDER_ASCENDING
+        ]);
         return $query->execute();
+    }
+
+    /**
+     * @return array
+     * @throws InvalidQueryException
+     * @throws \Doctrine\DBAL\Driver\Exception
+     */
+    public function findAllNonAdmins()
+    {
+        $users = [];
+        $usergroups = [];
+        $providers = [];
+
+        $queryBuilderUsers = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_users');
+        $queryBuilderUsers->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+        $queryBuilderUsers
+            ->select('*')
+            ->from('fe_users', 'users')
+            ->addOrderBy('disable', 'DESC')
+            ->addOrderBy('name', 'ASC');
+
+        $queryBuilderGroups = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('fe_groups');
+        $queryBuilderGroups
+            ->select('*')
+            ->from('fe_groups', 'groups');
+
+        $queryBuilderProviders = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('tx_chancenportal_domain_model_provider');
+        $queryBuilderProviders
+            ->select('*')
+            ->from('tx_chancenportal_domain_model_provider', 'providers');
+
+        $statement = $queryBuilderGroups->execute();
+        if ($statement instanceof \Doctrine\DBAL\Driver\Statement) {
+            $_usergroups = $statement->fetchAll();
+
+            foreach ($_usergroups as $usergroup) {
+                $usergroups[$usergroup['uid']] = $usergroup;
+            }
+        }
+
+        $statement = $queryBuilderProviders->execute();
+        if ($statement instanceof \Doctrine\DBAL\Driver\Statement) {
+            $providers = $statement->fetchAll();
+        }
+
+        $statement = $queryBuilderUsers->execute();
+        if ($statement instanceof \Doctrine\DBAL\Driver\Statement) {
+            $_users = $statement->fetchAll();
+            $permissions = array_flip(UserUtility::getPermissions());
+
+            foreach ($_users as $user) {
+                $userUsergroups = GeneralUtility::trimExplode(',', $user['usergroup']);
+
+                if (in_array((string)$permissions['admin_group'], $userUsergroups)) {
+                    continue;
+                }
+
+                foreach ($userUsergroups as $userUsergroupUid) {
+                    if (empty($user['group']) && in_array($userUsergroupUid, $permissions)) {
+                        $user['group'] = $usergroups[$userUsergroupUid];
+                    }
+                    if (empty($user['companyGroup']) && !in_array($userUsergroupUid, $permissions)) {
+                        $user['companyGroup'] = $usergroups[$userUsergroupUid];
+                    }
+                }
+
+                if (!empty($user['companyGroup']['uid'])) {
+                    foreach ($providers as $provider) {
+                        if ($provider['owner_group'] === $user['companyGroup']['uid']) {
+                            $user['provider'] = $provider;
+                            break;
+                        }
+                    }
+                }
+
+                $users[] = $user;
+            }
+        }
+
+        return $users;
     }
 
     /**

@@ -2,6 +2,7 @@
 namespace Chancenportal\Chancenportal\Domain\Model;
 
 use FluidTYPO3\Flux\Form\Field\DateTime;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 
 /***
  *

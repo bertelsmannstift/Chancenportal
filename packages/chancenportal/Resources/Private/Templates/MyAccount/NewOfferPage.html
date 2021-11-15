@@ -830,6 +830,17 @@
                 </div>
             </div>
         </div>
+        <f:if condition="{settings.chancenportal.filter_show_parent_school}">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <div class="input">
+                        <label class="input__label">Elternschule</label>
+                        <c:formConfiguration property="tx_chancenportal_chancenportal[offer]" allowProperties="parentSchool"></c:formConfiguration>
+                        <custom-select label="Angebot der Elternschule" theme="light" id="tx_chancenportal_chancenportal[offer][parentSchool]" name="tx_chancenportal_chancenportal[offer][parentSchool]" is-checked="{f:if(condition: '{offer.parentSchool}', then: 'true', else: 'false')}" value="1" id="parentSchool"></custom-select>
+                    </div>
+                </div>
+            </div>
+        </f:if>
 		<div class="row">
             <div class="col-lg-12 col-sm-12">
                 <div class="input">

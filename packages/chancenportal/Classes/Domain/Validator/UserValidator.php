@@ -14,7 +14,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     public $configurationManager;
     /**
@@ -46,7 +46,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\FrontendUserRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserRepository = null;
 
@@ -71,7 +71,7 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
 
             if($newUsername !== $user->getUsername()) {
                 if($this->frontendUserRepository->findOneByUsername($newUsername)) {
-                    $this->addError('validationErrorUsernameExists', 'new_username');
+                    $this->addError('validationErrorUsernameExists', 'new_username', ['field' => 'new_username']);
                     return false;
                 } elseif(filter_var($newUsername, FILTER_VALIDATE_EMAIL) !== false) {
                     $user->setUsername($newUsername);
@@ -84,16 +84,16 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
                 if ($hashInstance->checkPassword($password, $user->getPassword())) {
 
                     if (empty($newPassword) || strlen($newPassword) < 7) {
-                        $this->addError('validationErrorPasswordRepeat', 'new_password');
+                        $this->addError('validationErrorPasswordRepeat', 'new_password', ['field' => 'new_password']);
                         return false;
                     } else {
                         if (empty($newPassword) || $newPassword !== $newPasswordRepeat) {
-                            $this->addError('validationErrorPasswordRepeat', 'new_password_repeat');
+                            $this->addError('validationErrorPasswordRepeat', 'new_password_repeat', ['field' => 'new_password_repeat']);
                             return false;
                         }
                     }
                 } else {
-                    $this->addError('validationErrorPasswordRepeat', 'password');
+                    $this->addError('validationErrorPasswordRepeat', 'password', ['field' => 'password']);
                     return false;
                 }
 
@@ -103,11 +103,11 @@ class UserValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVali
 
                 // new user
                 if ($password !== $passwordRepeat) {
-                    $this->addError('validationErrorPasswordRepeat', 'password_repeat');
+                    $this->addError('validationErrorPasswordRepeat', 'password_repeat', ['field' => 'password_repeat']);
                     return false;
                 } else {
                     if (strlen($password) < 7) {
-                        $this->addError('validationErrorPasswordRepeat', 'password');
+                        $this->addError('validationErrorPasswordRepeat', 'password', ['field' => 'password']);
                         return false;
                     }
                 }

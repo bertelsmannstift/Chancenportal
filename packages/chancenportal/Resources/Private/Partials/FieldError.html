@@ -9,7 +9,7 @@
                         </div>
                     </f:then>
                     <f:else>
-                        <f:if condition="{0:'{fieldName}'} == {0:'{error.code}'}">
+                        <f:if condition="{0:'{fieldName}'} == {0:'{error.arguments.field}'}">
                             <div class="input__error">
                                 {errorMsg}
                             </div>

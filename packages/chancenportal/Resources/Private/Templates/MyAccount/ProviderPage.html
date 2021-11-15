@@ -50,15 +50,19 @@
                                         {provider.zip}
                                     </td>
                                     <td>
-                                        <f:if condition="{provider.author}">
-                                            {provider.author.name}
-                                        </f:if>
+                                        <c:lazyLoad property="{provider.author}" as="author">
+                                            <f:if condition="{author.name}">
+                                                {author.name}
+                                            </f:if>
+                                        </c:lazyLoad>
                                     </td>
 
                                     <td>
-                                        <f:if condition="{provider.creator}">
-                                            {provider.creator.name}
-                                        </f:if>
+                                        <c:lazyLoad property="{provider.creator}" as="creator">
+                                            <f:if condition="{creator.name}">
+                                                {creator.name}
+                                            </f:if>
+                                        </c:lazyLoad>
                                     </td>
                                     <td>
                                         <f:if condition="{provider.crdate}">

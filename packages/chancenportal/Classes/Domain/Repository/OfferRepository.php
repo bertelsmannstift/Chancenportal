@@ -31,13 +31,13 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\LogRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $logRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $categoryRepository = null;
 
@@ -45,7 +45,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\ProviderRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $providerRepository = null;
 
@@ -321,6 +321,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['noCosts']) && $fields['noCosts'] === '1') {
                 $params[] = $query->equals('noCosts', 1);
+            }
+            if (isset($fields['parentSchool']) && $fields['parentSchool'] === '1') {
+                $params[] = $query->equals('parentSchool', 1);
             }
             if (isset($fields['participation']) && $fields['participation'] === '1') {
                 $params[] = $query->equals('participation', 1);

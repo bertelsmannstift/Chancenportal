@@ -39,24 +39,30 @@ class Repository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $_constraints = [];
 
         /** UID */
-        if (isset($constraints['uid']) && count($constraints['uid']) > 0) {
-            $uids = $constraints['uid'];
-
-            /**
-             * Behave like findByUid() and return all items regardless of current language.
-             * Apply language_overlay if possible
-             */
-            $this->behaveLikeFindByUid($query);
-
-            /**
-             * Return only translated records. Otherwise default language items that match the 'uid' constraint
-             * are returned as well
-             */
-            if($constraints['_getOnlyTranslatedRecords'] === true) {
-                $uids = $this->filterNonTranslatedUids($this, $constraints['uid']);
+        if (isset($constraints['uid'])) {
+            if(is_string($constraints['uid'])) {
+                $constraints['uid'] = \UI\UiProvider\Utility\GeneralUtility::intExplode(',', $constraints['uid'], true);
             }
 
-            $_constraints[] = $query->in('uid', (array) $uids);
+            if (count($constraints['uid']) > 0) {
+                $uids = $constraints['uid'];
+
+                /**
+                 * Behave like findByUid() and return all items regardless of current language.
+                 * Apply language_overlay if possible
+                 */
+                $this->behaveLikeFindByUid($query);
+
+                /**
+                 * Return only translated records. Otherwise default language items that match the 'uid' constraint
+                 * are returned as well
+                 */
+                if($constraints['_getOnlyTranslatedRecords'] === true) {
+                    $uids = $this->filterNonTranslatedUids($this, $constraints['uid']);
+                }
+
+                $_constraints[] = $query->in('uid', (array) $uids);
+            }
         }
 
         /** Set storage pids */

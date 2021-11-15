@@ -3,6 +3,7 @@
 namespace Chancenportal\Chancenportal\Utility;
 
 use Chancenportal\Chancenportal\Domain\Model\Offer;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * Class MailUtility
@@ -12,43 +13,43 @@ class SelectUtility
 {
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CarrierRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $carrierRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $categoryRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\DistrictRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $districtRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\TargetGroupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $targetGroupRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $offerRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\ProviderRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $providerRepository = null;
 
     /**
      * @var \UI\UiProvider\Service\CacheService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $cacheService = null;
 
@@ -235,7 +236,14 @@ class SelectUtility
     public function getCategoriesForSelect($offerOrProvider = null, $showCategoryAll = true, $onlyWithAssignments = false, $useProviderCategories = false, $activeCategory = null)
     {
         /** Cache rendered output */
-        $cacheKey = 'getCategoriesForSelect_' . md5(serialize(func_get_args()));
+        $cacheKeyValues = [
+            !empty($offerOrProvider) ? get_class($offerOrProvider) . ':' . $offerOrProvider->getUid() : null,
+            $showCategoryAll,
+            $onlyWithAssignments,
+            $useProviderCategories,
+            $activeCategory
+        ];
+        $cacheKey = 'getCategoriesForSelect_' . md5(serialize($cacheKeyValues));
         $categoryItems = $this->cacheService->getFromCacheOrSet('chancenportal', $cacheKey, function($offerOrProvider, $showCategoryAll, $onlyWithAssignments, $useProviderCategories, $activeCategory) {
             $categoryItems = [];
 

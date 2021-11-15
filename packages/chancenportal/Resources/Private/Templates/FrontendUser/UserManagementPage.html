@@ -1,4 +1,4 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:c="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper" data-namespace-typo3-fluid="true">
 <f:layout name="Default"/>
 <f:section name="main">
     <h1>
@@ -82,18 +82,18 @@
                                     </td>
                                     <td>
                                         <div class="custom-confirm" text="Wollen Sie den Benuzter wirklich löschen?">
-                                            <a href="{f:uri.action(action: 'deleteUser', arguments: '{user: user}')}">
+                                            <a href="{f:uri.action(action: 'deleteUser', arguments: '{user: user.uid}')}">
                                                 <i class="icon-times-circle"></i>
                                             </a>
                                         </div>
-                                        <a href="{f:uri.action(action: 'userEditPage', arguments: '{user: user}', pageUid: settings.chancenportal.pageIds.edituser)}">
+                                        <a href="{f:uri.action(action: 'userEditPage', arguments: '{user: user.uid}', pageUid: settings.chancenportal.pageIds.edituser)}">
                                             <i class="icon-pencil"></i>
                                         </a>
                                         <f:if condition="{settings.chancenportal.activate_account_takeover}">
                                             <f:if condition="{user.disable}">
                                                 <f:else>
                                                     <f:security.ifHasRole role="{settings.chancenportal.permissions.admin_group}">
-                                                        <a title="Einloggen als" href="{f:uri.action(action: 'loginAs', arguments: '{user: user}', pageUid: settings.chancenportal.pageIds.useroverview)}">
+                                                        <a title="Einloggen als" href="{f:uri.action(action: 'loginAs', arguments: '{user: user.uid}', pageUid: settings.chancenportal.pageIds.useroverview)}">
                                                             <i class="icon-user"></i>
                                                         </a>
                                                     </f:security.ifHasRole>

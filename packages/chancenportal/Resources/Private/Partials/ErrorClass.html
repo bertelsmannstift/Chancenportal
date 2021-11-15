@@ -7,7 +7,7 @@
                         {className}
                     </f:then>
                     <f:else>
-                        <f:if condition="{0:'{fieldName}'} == {0:'{error.code}'}">
+                        <f:if condition="{0:'{fieldName}'} == {0:'{error.arguments.field}'}">
                             {className}
                         </f:if>
                     </f:else>

@@ -6,5 +6,5 @@ if (!defined('TYPO3_MODE')) {
 /***************
  * Default TypoScript
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'u+i Grid');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ui_grid', 'Configuration/TypoScript', 'u+i Grid');
 

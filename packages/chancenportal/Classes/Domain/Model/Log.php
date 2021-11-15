@@ -2,6 +2,8 @@
 namespace Chancenportal\Chancenportal\Domain\Model;
 
 
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
+
 /***
  *
  * This file is part of the "Chancenportal" Extension for TYPO3 CMS.

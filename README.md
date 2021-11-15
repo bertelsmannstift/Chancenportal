@@ -5,18 +5,18 @@ Datenbank und Landkarte der Angebote und Anbieter zur Unterstützung von Benacht
 Das „Chancenportal“ wurde im Rahmen des Projekts „Synergien vor Ort“ der Bertelsmann Stiftung entwickelt. Das Projekt hatte zum Ziel, die Zusammenarbeit zwischen Zivilgesellschaft, Verwaltung und Bürgern in den Handlungsfeldern Kinder- und Jugendarbeit, Flüchtlingshilfe und Seniorenarbeit zu untersuchen und zu verbessern. Ein zentraler Befund des Projekts lag darin, dass es in vielen Kommunen in den genannten Bereichen an einem Überblick über Angebote und Anbieter fehlt, ohne den eine bessere Zusammenarbeit nur begrenzt realisierbar ist.
 Das „Chancenportal“ dient dem Zweck, einen umfassenden Überblick über Angebote und Anbieter für soziale Leistungen im lokalen Raum herzustellen (insbesondere in den Bereichen Kinder- und Jugendarbeit, Bildung, Seniorenarbeit und Flüchtlingshilfe). Konkret sollen im Portal unterstützende Angebote von nicht gewinnorientierten Anbietern eingestellt werden. Die Stiftung verfolgt damit ausschließlich und unmittelbar gemeinnützige Zwecke, darunter die in § 2 Abs. 2 b und f ihrer Satzung genannte Förderung zeitgemäßer und wirkungsvoller Strukturen sowie innovative Modelle von Führung und Organisationen zur Erbringung öffentlicher Leistungen. Das Portal hat dabei mehrere Nutzergruppen im Blick, die einen unterschiedlichen Mehrwert durch das Portal erhalten sollen.
 Für die Zielgruppe (Kinder, Eltern, Senioren, Menschen mit Behinderungen, Geflüchtete etc.) aber auch vermittelnde Akteure (Lehrer, Betreuer, Sozial- und Sonderpädagogen) soll das Portal vor allem das zielsichere Finden passender Angebote ermöglichen. Für Anbieter (öffentliche, freie Träger, Initiativen, Vereine) soll sie eine Möglichkeit bieten, Angebote an zentraler Stelle darzustellen und damit die jeweilige Zielgruppe besser zu erreichen. Für Planer auf Seiten der Träger und der Kommunalverwaltung soll sie einen Überblick über die Angebotslandschaft herstellen, der ein Auffinden von Überangeboten und Angebotslücken erleichtert, um neue Angebote darauf anzupassen, Kooperationspartner zu finden und die Angebotslandschaft beispielsweise im Rahmen der Jugendhilfeplanung besser auszubalancieren.
-Ergänzend zum Portal wurde eine praxisorientierte Handlungsanleitung für kommunale Vertreter/innen erstellt, die Empfehlungen gibt, wie der Einführungsprozess inhaltlich begleitet werden kann (Durchführung einer Bestandsaufnahme von Anbietern und Angeboten für ein Handlungsfeld, Überzeugung von relevanten Stakeholdern und Bewerbung des Portals bei den Zielgruppen). 
+Ergänzend zum Portal wurde eine praxisorientierte Handlungsanleitung für kommunale Vertreter/innen erstellt, die Empfehlungen gibt, wie der Einführungsprozess inhaltlich begleitet werden kann (Durchführung einer Bestandsaufnahme von Anbietern und Angeboten für ein Handlungsfeld, Überzeugung von relevanten Stakeholdern und Bewerbung des Portals bei den Zielgruppen).
 
 ## Kernfunktionen des Portals
-Das Portal stellt im Kern eine Datenbank über Angebote und Anbieter dar, die durch den Nutzer  durchsucht und umfangreich gefiltert werden können. Der Nutzer kann über das Portal via mail-to Funktion einen Anbieter zu einem Angebot kontaktieren. 
-Die Eingabe der Daten zu Angeboten und Anbietern kann durch eine zentrale Redaktion sowie durch Nutzer erfolgen, die sich als Anbieter registriert haben und durch den Betreiber als solche qualifiziert und freigeschaltet wurden. Anbieter können zudem weitere Personen in ihrer Organisation freischalten, um Daten einzupflegen. Alle Anbieterbeschreibungen und Angebote müssen durch den Betreiber in Rolle der Redaktion freigeschaltet werden sowohl bei der Ersteinstellung als auch bei der Anpassung. Der Betreiber trägt damit Sorge dafür, dass nur solche Angebote und Darstellungen auf dem Portal ausgegeben werden, die dem Ziel des Portals entsprechen und den Nutzungsbedingungen nicht zuwiderlaufen. Hierfür kann er sich auch über die Nutzungsbedingungen das Recht einräumen, beispielsweise diskriminierende, kommerziell werbende oder dem Zweck nicht dienliche Inhalte nicht freizugeben, abzuändern oder auch nachträglich zu entfernen. 
+Das Portal stellt im Kern eine Datenbank über Angebote und Anbieter dar, die durch den Nutzer  durchsucht und umfangreich gefiltert werden können. Der Nutzer kann über das Portal via mail-to Funktion einen Anbieter zu einem Angebot kontaktieren.
+Die Eingabe der Daten zu Angeboten und Anbietern kann durch eine zentrale Redaktion sowie durch Nutzer erfolgen, die sich als Anbieter registriert haben und durch den Betreiber als solche qualifiziert und freigeschaltet wurden. Anbieter können zudem weitere Personen in ihrer Organisation freischalten, um Daten einzupflegen. Alle Anbieterbeschreibungen und Angebote müssen durch den Betreiber in Rolle der Redaktion freigeschaltet werden sowohl bei der Ersteinstellung als auch bei der Anpassung. Der Betreiber trägt damit Sorge dafür, dass nur solche Angebote und Darstellungen auf dem Portal ausgegeben werden, die dem Ziel des Portals entsprechen und den Nutzungsbedingungen nicht zuwiderlaufen. Hierfür kann er sich auch über die Nutzungsbedingungen das Recht einräumen, beispielsweise diskriminierende, kommerziell werbende oder dem Zweck nicht dienliche Inhalte nicht freizugeben, abzuändern oder auch nachträglich zu entfernen.
 
 ## Hintergrund und Technik
 
 Die Plattform wird durch die Bertelsmann Stiftung herausgegeben und wurde durch u+i interact im Auftrag der Bertelsmann Stiftung erstellt. Am Konzept der Plattform haben zudem die Stadt Rheda-Wiedenbrück als Pilot-Kommune sowie die SYSPONS GmbH mitgewirkt. Sie wird unter einer Open Source Lizenz veröffentlich, so dass die technologische Basis auch von anderen Städten und Gemeinden eingesetzt werden kann.
 
 Das Chancenportal ist als Erweiterung für das TYPO3 CMS entwickelt worden, sodass die Inhalte und gespeicherten Daten
- durch eine Redaktion eingesehen und bearbeitet werden können. Eine Kommune, die sich dazu entscheidet, das Portal bei 
+ durch eine Redaktion eingesehen und bearbeitet werden können. Eine Kommune, die sich dazu entscheidet, das Portal bei
  sich zu installieren und zu betreiben, hat die Möglichkeit, die Oberfläche mit geringem Aufwand optisch anzupassen. Der Einsatz ist dabei nicht auf den Bereich der Kinder- und Jugendarbeit begrenzt sondern für alle Bereiche offen, in denen eine Vielzahl von Anbietern und Angebote existieren und ein Überblick ermöglicht werden soll.
 
 ## Installation
@@ -36,7 +36,7 @@ Das Repository enthält sämtliche Daten, um eine Basisplattform lauffähig zu m
 * Symlinks erstellbar (Composer Installation)
 * Unix / Linux Betriebssystem
 * Das Document-Root sollte anpassbar sein, denn es muss auf den `web` Ordner gesetzt werden (Composer Installation)
- 
+
 Darüber hinaus empfehlen wir einen Root-Server / vServer zu benutzen, da Sie bei einfachen Web-Hosting-Angeboten meist nicht die erforderlichen Aktionen für die Installation ausführen können.
 Eine Anleitung für die Installation auf einfachen Web-Hosting-Angeboten finden Sie unter "Step-by-step - Web-Hosting".
 
@@ -51,7 +51,7 @@ Zur Installation sind folgende Schritte notwendig:
 5. Konfiguration der Datenbank in der Datei `.env` vornehmen
 6. Im TYPO3 kann über den Menüpunkt "Sites bzw. Seiten" eine Konfiguration für das Chancenportal erzeugt werden. Dies hat z.B. Auswirkungen auf die Erzeugung sprechender URLs. Siehe dazu auch [Site Handling](https://docs.typo3.org/m/typo3/reference-coreapi/master/en-us/ApiOverview/SiteHandling/Index.html) in der TYPO3 Dokumentation.
 
-Je nach gesetzter `TYPO3_CONTEXT` Umgebungsvariable wird die entsprechende Konfigurationsdatei aus dem Ordner 
+Je nach gesetzter `TYPO3_CONTEXT` Umgebungsvariable wird die entsprechende Konfigurationsdatei aus dem Ordner
 `configuration` geladen. Sie überschreibt die Standard-Konfiguration aus der Datei `LocalConfiguration.php`.
 Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei überschrieben werden können.
 
@@ -66,7 +66,7 @@ Das bedeutet, dass eventuelle Änderungen im TYPO3 Installtool durch diese Datei
 7. Laden Sie das Paket [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet/archive/1.10.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/PhpSpreadsheet`
 8. Laden Sie das Paket [Simple Cache PSR](https://github.com/php-fig/simple-cache/archive/1.0.1.zip) herunter und kopieren Sie den Inhalt des Archivs nach `typo3conf/ext/chancenportal/Vendor/psr/simple-cache`
 9. Kopieren Sie die Datei `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/_custom.css` nach `typo3conf/ext/ui_sitepackage/Resources/Public/assets/css/custom.css`.
-10. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den 
+10. Ihre Datenbank wird in der Datei `typo3conf/LocalConfiguration.php` konfiguriert (Details zur Datenbank und den
 Zugangsdaten sollten im Backend Ihres Providers zu finden sein)
 11. Importieren Sie den Datenbankdump (`/database/chancenportal.sql`) in eine neue MySQL- oder MariaDB-Datenbank
 12. Melden Sie sich im TYPO3 Install-Tool (http://www.example.org/typo3/install.php) an und wählen Sie hier den Punkt "Maintenance" aus. Klicken Sie hier den Button "Dump autoload" in der Kachel "Rebuild PHP Autoload Information".
@@ -110,6 +110,39 @@ Das Frontend ist nach dem Start im Browser über [http://0.0.0.0:3000](http://0.
 Um einen entwickelten Stand zu kompilieren und an den korrekten Stellen in der TYPO3 Verzeichnisstruktur abzulegen, muss folgender Befehl ausgeführt werden:
 
 * `npm run build`
+
+
+## TYPO3 Upgrade von 9.5.x auf 10.4.x (Non-Composer)
+
+Für das Upgrade von bestehenden Versionen des Chancenportals, die auf TYPO3-Version 9.5.x basieren, müssen die nachfolgenden Schritte ausgeführt werden. Es empfiehlt sich vor dem Upgrad Backups von Datenbank und Dateisystem zu machen und das Upgrade zunächst auf einer lokalen Maschine durchzuspielen.
+
+1. Aktuelle TYPO3 10.4 Version von [https://get.typo3.org/version/10](https://get.typo3.org/version/10) herunterladen und entpacken. Die Ordner `typo3` und `vendor` in das Webroot des bestehenden Chancenportal kopieren und ggf. vorhandene Verzeichnisse ersetzen.
+2. Aus dem aktuellen Github-Stand des Chancenportals müssen die folgenden TYPO3-Extensions aus dem Verzeichnis `packages` nach `typo3conf/ext/` des bestehenden Chancenportals kopiert und bestehende Verzeichnisse ersetzt werden:
+    * chancenportal
+    * ui_ce
+    * ui_ce_overrides
+    * ui_forms
+    * ui_grid
+    * ui_provider
+    * ui_sitepackage
+3. Aus dem aktuellen Github-Stand des Chancenportals müssen die folgenden Dateien in das bestehende Chancenportal kopiert und bestehende Dateien ersetzt werden:
+    * `web/typo3conf/AdditionalConfiguration.php` nach `typo3conf/AdditionalConfiguration.php` kopieren
+    * `web/typo3conf/PackageStates.php` nach `typo3conf/PackageStates.php` kopieren
+4. Folgende TYPO3-Extensions müssen im Verzeichnis `typo3conf/ext/` des bestehenden Chancenportals mit den nachfolgend verlinkten Versionen ersetzt werden:
+    * [flux](https://extensions.typo3.org/extension/download/flux/9.5.0/zip)
+    * [typoscript_rendering](https://extensions.typo3.org/extension/download/typoscript_rendering/2.3.1/zip)
+    * [vhs](https://extensions.typo3.org/extension/download/vhs/6.0.5/zip)
+5. Im TYPO3-InstallTool unter [DOMAIN/typo3/install.php](DOMAIN/typo3/install.php) anmelden und die folgenden Aufgaben durchführen:
+    * Menüpunkt Maintenance
+        * Analyze database
+            * Alle Haken setzen und `Apply selected changes` klicken
+            * Ggf. so lange wiederholen bis keine DB-Änderungen mehr angezeigt werden
+    * Menüpunkt "Upgrade"
+        * Run Upgrade Wizard und dann folgende Wizards ausführen:
+            * `Execute database migrations on single rows`
+   * Menüpunkt Maintenance
+       * Caches leeren
+6. Die Seite sollte nun wieder funktionieren und eine normale Anmeldung im TYPO3 möglich sein.
 
 
 ## Bildmaterial

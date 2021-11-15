@@ -56,6 +56,7 @@ class FindActiveCheckboxesViewHelper extends AbstractViewHelper
     {
         parent::initializeArguments();
         $this->registerArgument('value', 'int', 'decimal value of active checkboxes', true);
+        $this->registerArgument('index', 'int', 'Index of the Checkbox you want to check', false);
     }
 
     /**
@@ -76,6 +77,11 @@ class FindActiveCheckboxesViewHelper extends AbstractViewHelper
                 $activeCheckboxes[] = $i+1;
             }
         }
+
+        if(!empty($this->arguments['index'])) {
+            return in_array($this->arguments['index'], $activeCheckboxes);
+        }
+
         return $activeCheckboxes;
     }
 }

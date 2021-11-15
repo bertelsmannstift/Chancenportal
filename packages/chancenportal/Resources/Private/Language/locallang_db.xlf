@@ -192,6 +192,9 @@
 			<trans-unit id="tx_chancenportal_domain_model_offer.no_costs">
 				<source>No Costs</source>
 			</trans-unit>
+            <trans-unit id="tx_chancenportal_domain_model_offer.parent_school">
+                <source>Parent School</source>
+            </trans-unit>
 			<trans-unit id="tx_chancenportal_domain_model_offer.contact_salutation">
 				<source>Contact Salutation</source>
 			</trans-unit>

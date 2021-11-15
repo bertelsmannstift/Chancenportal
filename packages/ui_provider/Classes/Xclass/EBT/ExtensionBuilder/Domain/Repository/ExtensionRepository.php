@@ -31,7 +31,7 @@ class ExtensionRepository extends \EBT\ExtensionBuilder\Domain\Repository\Extens
      * @throws \Exception
      * @throws \TYPO3\CMS\Core\Package\Exception
      */
-    public function saveExtensionConfiguration(Extension $extension)
+    public function saveExtensionConfiguration(Extension $extension): void
     {
         $extensionBuildConfiguration = $this->configurationManager->getConfigurationFromModeler();
         $extensionBuildConfiguration['log'] = [

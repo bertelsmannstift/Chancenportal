@@ -11,7 +11,7 @@ if (file_exists($envFile)) {
     (new Dotenv\Dotenv(dirname($envFile)))->load();
 }
 
-$currentApplicationContext = \TYPO3\CMS\Core\Utility\GeneralUtility::getApplicationContext()->__toString();
+$currentApplicationContext = \TYPO3\CMS\Core\Core\Environment::getContext()->__toString();
 $configPath = realpath(__DIR__) . '/../../configuration/';
 
 $file = $configPath . 'Default.php';
@@ -76,3 +76,15 @@ if(getenv('TYPO3_MAIL_TRANSPORT') && getenv('TYPO3_MAIL_TRANSPORT') === 'smtp') 
 if(getenv('TYPO3_BE_INSTALLTOOLPASSWORD')) {
     $GLOBALS['TYPO3_CONF_VARS']['BE']['installToolPassword'] = getenv('TYPO3_BE_INSTALLTOOLPASSWORD');
 }
+
+/**
+ * PasswordHashing
+ */
+$GLOBALS['TYPO3_CONF_VARS']['BE']['passwordHashing'] = [
+    'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Pbkdf2PasswordHash',
+    'options' => [],
+];
+$GLOBALS['TYPO3_CONF_VARS']['FE']['passwordHashing'] = [
+    'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Pbkdf2PasswordHash',
+    'options' => [],
+];

@@ -51,10 +51,12 @@ class MailUtility extends AbstractUtility
         }
 
         $msgId = $message->getHeaders()->get('Message-ID');
-        $msgId->setId(microtime(true) . '.' . uniqid($templateName . 'chancenportal') . '@' . $_SERVER["SERVER_NAME"]);
+        if (!is_null($msgId)) {
+            $msgId->setId(microtime(true) . '.' . uniqid($templateName . 'chancenportal') . '@' . $_SERVER["SERVER_NAME"]);
+        }
 
         // HTML Email
-        $message->setBody($emailBody, 'text/html');
+        $message->html($emailBody);
         $message->send();
 
         return $message->isSent();

@@ -63,14 +63,6 @@ return [
                 'type' => 'passthrough',
             ],
         ],
-        't3ver_label' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'max' => 255,
-            ],
-        ],
         'hidden' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
@@ -169,7 +161,7 @@ return [
                 'rows' => 15,
                 'eval' => 'trim',
             ],
-            
+
         ],
         'number_of_employees' => [
             'exclude' => true,
@@ -196,7 +188,7 @@ return [
         'content_image' => [
             'exclude' => true,
             'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_provider.content_image',
-            'config' => 
+            'config' =>
             \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'content_image',
                 [
@@ -244,7 +236,7 @@ return [
         'logo' => [
             'exclude' => true,
             'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_provider.logo',
-            'config' => 
+            'config' =>
             \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'logo',
                 [
@@ -378,7 +370,7 @@ return [
         'contact_image' => [
             'exclude' => true,
             'label' => 'LLL:EXT:chancenportal/Resources/Private/Language/locallang_db.xlf:tx_chancenportal_domain_model_provider.contact_image',
-            'config' => 
+            'config' =>
             \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'contact_image',
                 [
@@ -617,7 +609,7 @@ return [
                     ],
                 ],
             ],
-            
+
         ],
         'creator' => [
             'exclude' => true,
@@ -641,6 +633,6 @@ return [
                 'maxitems' => 1,
             ],
         ],
-    
+
     ],
 ];

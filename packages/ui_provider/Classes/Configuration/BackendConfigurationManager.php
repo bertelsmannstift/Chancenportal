@@ -34,6 +34,6 @@ class BackendConfigurationManager extends \TYPO3\CMS\Extbase\Configuration\Backe
 {
     public function setCurrentPageId($id)
     {
-        $this->currentPageId = $id;
+        $this->currentPageId = (int) $id;
     }
 }

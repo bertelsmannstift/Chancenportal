@@ -86,6 +86,7 @@ config.tx_extbase {
             show_google_translator = {$plugin.tx_chancenportal_chancenportal.settings.show_google_translator}
 
             filter_folded_out = {$plugin.tx_chancenportal_chancenportal.settings.filter_folded_out}
+            filter_show_parent_school = {$plugin.tx_chancenportal_chancenportal.settings.filter_show_parent_school}
             terms_and_condition_element_id = {$plugin.tx_chancenportal_chancenportal.settings.terms_and_condition_element_id}
             search_show_similiar = {$plugin.tx_chancenportal_chancenportal.settings.search_show_similiar}
             search_user_header_openthesaurus = {$plugin.tx_chancenportal_chancenportal.settings.search_user_header_openthesaurus}

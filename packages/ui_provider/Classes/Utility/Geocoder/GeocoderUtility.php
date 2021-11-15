@@ -17,6 +17,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Class GeocoderUtility
  * @package UI\UiProvider\Utility\Geocoder
+ * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10 (Use UI\UiProvider\Utility\GeocoderUtility)
  */
 class GeocoderUtility
 {
@@ -26,6 +27,7 @@ class GeocoderUtility
      * @param $location
      * @param array $options
      * @return array|null
+     * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10 (Use UI\UiProvider\Utility\GeocoderUtility)
      *
      * Usage
      * -----
@@ -49,6 +51,7 @@ class GeocoderUtility
      * @param $location
      * @param $options
      * @return array|null
+     * @deprecated Deprecated in Version 9 of ui_provider. Will be removed in Version 10 (Use UI\UiProvider\Utility\GeocoderUtility)
      *
      * Usage
      * -----

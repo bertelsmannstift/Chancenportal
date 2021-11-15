@@ -15,14 +15,15 @@ namespace UI\UiCeOverrides\ViewHelpers\Teaserblock;
 use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3\CMS\Fluid\ViewHelpers\Uri\TypolinkViewHelper;
 use TYPO3\CMS\Fluid\ViewHelpers\Uri\ImageViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 
-class EncodeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class EncodeViewHelper extends AbstractViewHelper
 {
 
     /**
      * @var \TYPO3\CMS\Extbase\Service\ImageService
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $imageService;
 

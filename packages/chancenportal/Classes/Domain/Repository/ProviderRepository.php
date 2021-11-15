@@ -30,19 +30,19 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\LogRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $logRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\CategoryRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $categoryRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\OfferRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $offerRepository = null;
 
@@ -169,6 +169,9 @@ class ProviderRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             if (isset($fields['districts']) && count($fields['districts'])) {
                 $params[] = $query->in('offers.district.uid', $fields['districts']);
+            }
+            if (isset($fields['parentSchool']) && $fields['parentSchool'] === '1') {
+                $params[] = $query->equals('offers.parentSchool', 1);
             }
             if (isset($fields['dateType']) && $fields['dateType'] === '1' && count($fields['dates']) > 1) {
                 $dates = [];

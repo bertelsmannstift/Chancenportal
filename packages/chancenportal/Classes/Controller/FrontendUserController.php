@@ -19,9 +19,13 @@ use Chancenportal\Chancenportal\Domain\Model\Provider;
 use Chancenportal\Chancenportal\Utility\MailUtility;
 use Chancenportal\Chancenportal\Utility\UserUtility;
 use DmitryDulepov\Realurl\Utility;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
+use TYPO3\CMS\Extbase\Validation\Validator\ConjunctionValidator;
+use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
+use TYPO3\CMS\Saltedpasswords\SaltedPasswordService;
+use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
 
 /**
  * FrontendUserController
@@ -32,13 +36,13 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\FrontendUserRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserRepository = null;
 
     /**
      * @var \Chancenportal\Chancenportal\Domain\Repository\FrontendUserGroupRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $frontendUserGroupRepository = null;
 
@@ -46,21 +50,9 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
      * providerRepository
      *
      * @var \Chancenportal\Chancenportal\Domain\Repository\ProviderRepository
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $providerRepository = null;
-
-    /**
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
-     */
-    public function initializeCreateAction()
-    {
-        if ($this->arguments->hasArgument('user')) {
-            $this->arguments->getArgument('user')->getPropertyMappingConfiguration()->allowProperties('group');
-            $this->arguments->getArgument('user')->getPropertyMappingConfiguration()->setTargetTypeForSubProperty('group',
-                'string');
-        }
-    }
 
     /**
      * @return string
@@ -125,10 +117,11 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
             $passwordRepeat = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('password_repeat');
 
             if (strlen($password) > 6 && $password === $passwordRepeat) {
+                $saltFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
+                $defaultHashInstance = $saltFactory->getDefaultHashInstance(TYPO3_MODE);
 
-                $objInstanceSaltedPw = SaltFactory::getSaltingInstance();
                 $user->setPasswordResetHash('');
-                $user->setPassword($objInstanceSaltedPw->getHashedPassword($password));
+                $user->setPassword($defaultHashInstance->getHashedPassword($password));
                 $this->frontendUserRepository->update($user);
                 $persistenceManager->persistAll();
                 $this->view->assign('done', true);
@@ -197,8 +190,43 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @validate $user \Chancenportal\Chancenportal\Domain\Validator\UserValidator
-     * @validate $user \Chancenportal\Chancenportal\Domain\Validator\GroupValidator
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     */
+    public function initializeCreateAction()
+    {
+        if ($this->arguments->hasArgument('user')) {
+            $this->arguments->getArgument('user')->getPropertyMappingConfiguration()->allowProperties('group');
+            $this->arguments->getArgument('user')
+                ->getPropertyMappingConfiguration()
+                ->setTargetTypeForSubProperty('group','string');
+        }
+
+        /**
+         * Remove validation for user.provider
+         * This caused errors with the user.provider.contentImage property
+         * See: BSTCP-638
+         */
+
+        /** @var ConjunctionValidator $validator */
+        $validator = $this->arguments
+            ->getArgument('user')
+            ->getValidator();
+
+        foreach ($validator->getValidators() as $subValidator) {
+            if ($subValidator instanceof ConjunctionValidator) {
+                /** @var GenericObjectValidator $subValidatorSub */
+                foreach ($subValidator->getValidators() as $subValidatorSub) {
+                    $subValidatorSub->getPropertyValidators('provider')->removeAll(
+                        $subValidatorSub->getPropertyValidators('provider')
+                    );
+                }
+            }
+        }
+    }
+
+    /**
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\Chancenportal\Chancenportal\Domain\Validator\UserValidator", param="user")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\Chancenportal\Chancenportal\Domain\Validator\GroupValidator", param="user")
      * @param FrontendUser $user
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -320,23 +348,13 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         $users = [];
 
         if ($group && $group->getUid() == $this->settings['chancenportal']['permissions']['admin_group']) {
-            $users = [];
-            $data = $this->frontendUserRepository->findAll();
-            foreach($data as $item) {
-                if(!UserUtility::isAdmin($item)) {
-                    $users[] = $item;
-                }
-            }
+            $users = $this->frontendUserRepository->findAllNonAdmins();
         } else {
             if ($group && $group->getUid() == $this->settings['chancenportal']['permissions']['provider_group']) {
                 $users = $this->frontendUserRepository->findAllByUserGroup(UserUtility::getCurrentUser(),
                     array_flip($this->settings['chancenportal']['permissions']));
             }
         }
-
-        usort($users, function($a, $b){
-            return intval($a->getDisable()) < intval($b->getDisable());
-        });
 
         $this->view->assign('users', $users);
     }
@@ -352,7 +370,7 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @validate $user \Chancenportal\Chancenportal\Domain\Validator\UserValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\Chancenportal\Chancenportal\Domain\Validator\UserValidator", param="user")
      * @param FrontendUser $user
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -367,9 +385,33 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         $this->redirect('myDataPage', null, null, ['saved' => true]);
     }
 
+    public function initializeUserEditSaveAction() {
+        /**
+         * Remove validation for user.provider
+         * This caused errors with the user.provider.contentImage property
+         * See: BSTCP-638
+         */
+
+        /** @var ConjunctionValidator $validator */
+        $validator = $this->arguments
+            ->getArgument('user')
+            ->getValidator();
+
+        foreach ($validator->getValidators() as $subValidator) {
+            if ($subValidator instanceof ConjunctionValidator) {
+                /** @var GenericObjectValidator $subValidatorSub */
+                foreach ($subValidator->getValidators() as $subValidatorSub) {
+                    $subValidatorSub->getPropertyValidators('provider')->removeAll(
+                        $subValidatorSub->getPropertyValidators('provider')
+                    );
+                }
+            }
+        }
+    }
+
     /**
-     * @validate $user \Chancenportal\Chancenportal\Domain\Validator\AdminUserValidator
-     * @validate $user \Chancenportal\Chancenportal\Domain\Validator\GroupValidator
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\Chancenportal\Chancenportal\Domain\Validator\AdminUserValidator", param="user")
+     * @TYPO3\CMS\Extbase\Annotation\Validate("\Chancenportal\Chancenportal\Domain\Validator\GroupValidator", param="user")
      * @param FrontendUser $user |null
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -511,6 +553,12 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         if (!$isAdmin && !$isProvider) {
             $this->redirectToUri($overviewUrl);
         }
+    }
+
+    protected function initializeUserEditPageAction(): void
+    {
+        $userId = $this->request->getArguments()['user'];
+        $user = $this->frontendUserRepository->findByUid($userId);
     }
 
     /**

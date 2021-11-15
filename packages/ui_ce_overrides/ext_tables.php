@@ -6,4 +6,4 @@ if (!defined('TYPO3_MODE')) {
 /***************
  * Default TypoScript
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'u+i Content Elements (Overrides)');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ui_ce_overrides', 'Configuration/TypoScript', 'u+i Content Elements (Overrides)');

@@ -24,9 +24,13 @@ class OfferUtility extends AbstractUtility
 
         /** @var Offer $offer */
         foreach ($offers as $offer) {
+            if (!$offer->isActive()) {
+                continue;
+            }
+
             if ($offer->getDateType() === 0) {
-                $offer->setNextCalculatedDate($offer->getNextDate());
-            } elseif ($offer->getDateType() > 0) {
+                $offer->setNextCalculatedDate(new \DateTime('today 23:59'));
+            } elseif ($offer->getDateType() > 0 && $offer->getDateType() < 4) {
                 $ended = true;
                 foreach ($offer->getDates() as $date) {
                     if ($date->getEndDate() && ($date->getEndDate()->format('Y-m-d') >= $now->format('Y-m-d') || $date->getEndDate() === null || $date->getEndDate() === '0000-00-00')) {
@@ -36,6 +40,16 @@ class OfferUtility extends AbstractUtility
 
                 if (!$ended) {
                     $offer->setNextCalculatedDate($offer->getNextDate());
+                } else {
+                    $offer->setNextCalculatedDate(null);
+                }
+            } elseif ($offer->getDateType() === 4) {
+                $ended = true;
+                if (!$offer->getEndDate() || $offer->getEndDate()->format('Y-m-d') >= $now->format('Y-m-d')) {
+                    $ended = false;
+                }
+                if (!$ended) {
+                    $offer->setNextCalculatedDate(new \DateTime('today 23:59'));
                 } else {
                     $offer->setNextCalculatedDate(null);
                 }

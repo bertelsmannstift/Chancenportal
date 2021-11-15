@@ -75,6 +75,9 @@
 			<trans-unit id="no_costs.description">
 				<source>noCosts</source>
 			</trans-unit>
+            <trans-unit id="parent_school.description">
+                <source>parentSchool</source>
+            </trans-unit>
 			<trans-unit id="contact_salutation.description">
 				<source>contactSalutation</source>
 			</trans-unit>

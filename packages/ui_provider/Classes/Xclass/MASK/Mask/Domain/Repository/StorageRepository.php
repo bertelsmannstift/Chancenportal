@@ -12,6 +12,7 @@ namespace UI\UiProvider\Xclass\MASK\Mask\Domain\Repository;
  *
  ***/
 
+use TYPO3\CMS\Core\Core\Environment;
 use UI\UiProvider\Service\MaskJsonService;
 
 /**
@@ -28,16 +29,16 @@ class StorageRepository extends \MASK\Mask\Domain\Repository\StorageRepository
      * @return array
      * @throws \TYPO3\CMS\Core\Exception
      */
-    public function load()
+    public function load(): array
     {
-        return MaskJsonService::getInstance()->getConfiguration(PATH_site . $this->extSettings["json"]);
+        return MaskJsonService::getInstance()->getConfiguration(Environment::getPublicPath() . '/' . $this->extSettings["json"]);
     }
 
     /**
      * Write Storage
      */
-    public function write($json)
+    public function write($json): void
     {
-        MaskJsonService::getInstance()->saveConfiguration(PATH_site . $this->extSettings["json"], $json);
+        MaskJsonService::getInstance()->saveConfiguration(Environment::getPublicPath() . '/' . $this->extSettings["json"], $json);
     }
 }

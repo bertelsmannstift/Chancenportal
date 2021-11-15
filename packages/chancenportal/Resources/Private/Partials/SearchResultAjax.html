@@ -2,7 +2,7 @@
     xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
     xmlns:t="http://typo3.org/ns/Helhum/TyposcriptRendering/ViewHelpers"
-    xmlns:uiProvider="http://typo3.org/ns/UI/UiProvider/ViewHelpers"
+    xmlns:cp="http://typo3.org/ns/Chancenportal/Chancenportal/ViewHelper"
     data-namespace-typo3-fluid="true"
 >
 
@@ -15,7 +15,7 @@
         <f:render partial="OfferResultItems" arguments="{_all}" />
     </div>
 
-    <uiProvider:widget.pagination totalItems="{offers-total}" itemsOffset="{offers-offset}" itemsPerPage="{offers-limit}" maxPaginationLinks="3" linkConfiguration="{
+    <f:variable name="pagination" value="{cp:pagination(totalItems: '{offers-total}', itemsOffset: '{offers-offset}', itemsPerPage: '{offers-limit}', maxPaginationLinks: '3', linkConfiguration: {
         linktype: 'offer',
         offsetOffer: '{offers-offset}',
         offsetProvider: '{providers-offset}',
@@ -24,7 +24,8 @@
         extensionName: 'Chancenportal',
         pluginName: 'Chancenportal',
         arguments: '{postVars}'
-    }" />
+    })}" />
+    <f:render partial="Pagination" arguments="{pagination: pagination}" />
 </div>
 
 <div class="kachel-list--providers" data-total="{providers-total}">
@@ -36,7 +37,7 @@
         <f:render partial="ProviderResultItems" arguments="{_all}" />
     </div>
 
-    <uiProvider:widget.pagination totalItems="{providers-total}" itemsOffset="{providers-offset}" itemsPerPage="{providers-limit}" maxPaginationLinks="3" linkConfiguration="{
+    <f:variable name="pagination" value="{cp:pagination(totalItems: '{providers-total}', itemsOffset: '{providers-offset}', itemsPerPage: '{providers-limit}', maxPaginationLinks: '3', linkConfiguration: {
         linktype: 'provider',
         offsetOffer: '{offers-offset}',
         offsetProvider: '{providers-offset}',
@@ -45,7 +46,8 @@
         extensionName: 'Chancenportal',
         pluginName: 'Chancenportal',
         arguments: '{postVars}'
-    }" />
+    })}" />
+    <f:render partial="Pagination" arguments="{pagination: pagination}" />
 </div>
 
 <f:if condition="{similarTerms} && {offers-total} == 0 && {providers-total} == 0">

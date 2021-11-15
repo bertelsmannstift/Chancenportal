@@ -16,7 +16,7 @@ class GroupValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVal
      * configurationManager
      *
      * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     public $configurationManager;
     /**
@@ -60,13 +60,13 @@ class GroupValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVal
         }
 
         if (!$currentUser && !$usergroup && empty($this->piVars['user']['company'])) {
-            $this->addError('validationErrorPasswordRepeat', 'company');
+            $this->addError('validationErrorPasswordRepeat', 'company', ['field' => 'company']);
             return false;
         } else {
 
             if ($currentUser && !$usergroup && empty($this->piVars['user']['company']) && empty($this->piVars['user']['companyGroup'])) {
                 if (!$isProvider) {
-                    $this->addError('validationErrorPasswordRepeat', 'company');
+                    $this->addError('validationErrorPasswordRepeat', 'company', ['field' => 'company']);
                     return false;
                 }
             }

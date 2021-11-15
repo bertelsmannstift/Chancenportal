@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: false
+    autoconfigure: true
+    public: false
+
+  UI\UiProvider\:
+    resource: '../Classes/*'
+
+  UI\UiProvider\Configuration\BackendConfigurationManager:
+    autowire: true
+    public: true

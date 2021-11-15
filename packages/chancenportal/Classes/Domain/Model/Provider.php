@@ -61,7 +61,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * name
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
@@ -84,7 +83,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * shortDescription
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $shortDescription = '';
 
@@ -113,7 +112,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contentImage
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $contentImage = null;
 
@@ -121,7 +120,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * logo
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $logo = null;
 
@@ -129,7 +128,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * street
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $street = '';
@@ -138,7 +136,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * city
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $city = '';
@@ -147,7 +144,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * email
      *
      * @var string
-     * @validate NotEmpty
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $email = '';
@@ -198,7 +194,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * contactImage
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $contactImage = null;
 
@@ -284,7 +280,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Label>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $labels = null;
 
@@ -293,7 +289,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Chancenportal\Chancenportal\Domain\Model\Offer>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $offers = null;
 
@@ -302,7 +298,7 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var \Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @cascade remove
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      */
     protected $ownerGroup = null;
 
@@ -763,9 +759,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCarrier()
     {
-        if ($this->carrier instanceof LazyLoadingProxy) {
-            $this->carrier = $this->carrier->_loadRealInstance();
-        }
         return $this->carrier;
     }
 
@@ -784,9 +777,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getOwnerGroup()
     {
-        if ($this->ownerGroup instanceof LazyLoadingProxy) {
-            $this->ownerGroup = $this->ownerGroup->_loadRealInstance();
-        }
         return $this->ownerGroup;
     }
 
@@ -1403,9 +1393,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCreator()
     {
-        if ($this->creator instanceof LazyLoadingProxy) {
-            $this->creator = $this->creator->_loadRealInstance();
-        }
         return $this->creator;
     }
 
@@ -1427,9 +1414,6 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getAuthor()
     {
-        if ($this->author instanceof LazyLoadingProxy) {
-            $this->author = $this->author->_loadRealInstance();
-        }
         return $this->author;
     }
 

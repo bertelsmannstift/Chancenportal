@@ -26,18 +26,3 @@ mod.web_layout.BackendLayouts {
         icon = EXT:ui_sitepackage/Resources/Public/Icons/BackendLayouts/Homepage.png
     }
 }
-
-/**
-* Configure allowed CTypes per colPos for this BackendLayout
-* Used in New Content Element Wizard
-*/
-[globalVar = GP:colPos == 0] && [UI\UiProvider\TypoScript\BeLayoutCondition Homepage]
-    TCEFORM.tt_content.CType.keepItems < mod.web_layout.BackendLayouts.Homepage.config.backend_layout.rows.1.columns.1.allowed
-[end]
-
-/**
- * Enable TCEForm fields for this BeLayout
- */
-[UI\UiProvider\TypoScript\BeLayoutCondition Homepage]
-    TCEFORM.pages.ui_company_logos.disabled = 0
-[end]

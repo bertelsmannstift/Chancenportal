@@ -2,10 +2,10 @@
     "name": "uandi-typo3/ui_provider",
     "type": "typo3-cms-extension",
     "description": "u+i TYPO3 Provider Extension",
-    "version": "9.5.16",
+    "version": "9.5.26",
     "authors": [],
     "require": {
-        "typo3/cms-core": "^9.5"
+        "typo3/cms-core": "^9.5 || ^10"
     },
     "autoload": {
         "psr-4": {

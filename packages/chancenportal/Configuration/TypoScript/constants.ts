@@ -56,6 +56,8 @@ plugin.tx_chancenportal_chancenportal {
         search_show_similiar = 1
         # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Filter standardmäßig ausgeklappt
         filter_folded_out = 1
+        # cat=plugin.tx_chancenportal_chancenportal//a; type=boolean; label=Filteroption für "Elternschule" anzeigen. (RHWD-Spezifische Anforderung)
+        filter_show_parent_school = 0
         # cat=plugin.tx_chancenportal_chancenportal//a; type=string; label=Email als User Header für Openthesaurus als Kontaktmöglichkeit (aktiviert 'Meinten Sie' Funktionilität)
         search_user_header_openthesaurus = chancenportal@example.org
     }

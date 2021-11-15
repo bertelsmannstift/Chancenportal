@@ -7,9 +7,12 @@ use Chancenportal\Chancenportal\Domain\Model\FrontendUserGroup;
 use Chancenportal\Chancenportal\Domain\Model\Provider;
 use Chancenportal\Chancenportal\Domain\Repository\FrontendUserRepository;
 use Chancenportal\Chancenportal\Domain\Repository\ProviderRepository;
+use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Query\QueryHelper;
+use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Saltedpasswords\Salt\SaltFactory;
 use TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility;
 
 /**
@@ -258,10 +261,9 @@ class UserUtility extends AbstractUtility
                 break;
 
             default:
-                if (SaltedPasswordsUtility::isUsageEnabled('FE')) {
-                    $objInstanceSaltedPw = SaltFactory::getSaltingInstance();
-                    $user->setPassword($objInstanceSaltedPw->getHashedPassword($user->getPassword()));
-                }
+                $saltFactory = GeneralUtility::makeInstance(PasswordHashFactory::class);
+                $defaultHashInstance = $saltFactory->getDefaultHashInstance(TYPO3_MODE);
+                $user->setPassword($defaultHashInstance->getHashedPassword($user->getPassword()));
         }
     }
 
@@ -270,18 +272,14 @@ class UserUtility extends AbstractUtility
      * @param null $storagePids
      * @throws \ReflectionException
      */
-    public static function login(FrontendUser $user, $storagePids = null)
+    public static function login(FrontendUser $user)
     {
         $tsfe = self::getTypoScriptFrontendController();
         $tsfe->fe_user->checkPid = false;
         $info = $tsfe->fe_user->getAuthInfoArray();
 
         $extraWhere = ' AND uid = ' . (int)$user->getUid();
-        if (!empty($storagePids)) {
-            $extraWhere = ' AND pid IN (' . self::getDatabaseConnection()->cleanIntList($storagePids) . ')';
-        }
-
-        $userArr = $tsfe->fe_user->fetchUserRecord($info['db_user'], $user->getUsername(), $extraWhere);
+        $userArr = self::fetchUserRecord($info['db_user'], $user->getUsername(), $extraWhere);
         $tsfe->fe_user->createUserSession($userArr);
         $tsfe->fe_user->user = $tsfe->fe_user->fetchUserSession();
         $GLOBALS['TSFE']->fe_user->forceSetCookie = true;
@@ -293,5 +291,47 @@ class UserUtility extends AbstractUtility
         $setSessionCookieMethod = $reflection->getMethod('setSessionCookie');
         $setSessionCookieMethod->setAccessible(true);
         $setSessionCookieMethod->invoke($GLOBALS['TSFE']->fe_user);
+    }
+
+    /**
+     * Get a user from DB by username
+     * provided for usage from services
+     *
+     * @param array $dbUser User db table definition: $this->db_user
+     * @param string $username user name
+     * @param string $extraWhere Additional WHERE clause: " AND ...
+     * @return mixed User array or FALSE
+     */
+    public static function fetchUserRecord($dbUser, $username, $extraWhere = '')
+    {
+        $user = false;
+        if ($username || $extraWhere) {
+            $query = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($dbUser['table']);
+            $query->getRestrictions()->removeAll()
+                ->add(GeneralUtility::makeInstance(DeletedRestriction::class));
+
+            $constraints = array_filter([
+                QueryHelper::stripLogicalOperatorPrefix($dbUser['check_pid_clause']),
+                QueryHelper::stripLogicalOperatorPrefix($dbUser['enable_clause']),
+                QueryHelper::stripLogicalOperatorPrefix($extraWhere),
+            ]);
+
+            if (!empty($username)) {
+                array_unshift(
+                    $constraints,
+                    $query->expr()->eq(
+                        $dbUser['username_column'],
+                        $query->createNamedParameter($username, \PDO::PARAM_STR)
+                    )
+                );
+            }
+
+            $user = $query->select('*')
+                ->from($dbUser['table'])
+                ->where(...$constraints)
+                ->execute()
+                ->fetch();
+        }
+        return $user;
     }
 }

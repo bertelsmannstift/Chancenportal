@@ -6,4 +6,4 @@ if (!defined('TYPO3_MODE')) {
 /**
  * Default TypoScript
  */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'u+i Forms');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ui_forms', 'Configuration/TypoScript', 'u+i Forms');

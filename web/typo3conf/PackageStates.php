@@ -38,14 +38,20 @@ return [
         'install' => [
             'packagePath' => 'typo3/sysext/install/',
         ],
+        'reports' => [
+            'packagePath' => 'typo3/sysext/reports/',
+        ],
+        'redirects' => [
+            'packagePath' => 'typo3/sysext/redirects/',
+        ],
         'recordlist' => [
             'packagePath' => 'typo3/sysext/recordlist/',
         ],
         'backend' => [
             'packagePath' => 'typo3/sysext/backend/',
         ],
-        'reports' => [
-            'packagePath' => 'typo3/sysext/reports/',
+        'recycler' => [
+            'packagePath' => 'typo3/sysext/recycler/',
         ],
         'setup' => [
             'packagePath' => 'typo3/sysext/setup/',
@@ -77,17 +83,11 @@ return [
         'lowlevel' => [
             'packagePath' => 'typo3/sysext/lowlevel/',
         ],
-        'redirects' => [
-            'packagePath' => 'typo3/sysext/redirects/',
+        'opendocs' => [
+            'packagePath' => 'typo3/sysext/opendocs/',
         ],
         'seo' => [
             'packagePath' => 'typo3/sysext/seo/',
-        ],
-        'sys_note' => [
-            'packagePath' => 'typo3/sysext/sys_note/',
-        ],
-        't3editor' => [
-            'packagePath' => 'typo3/sysext/t3editor/',
         ],
         'tstemplate' => [
             'packagePath' => 'typo3/sysext/tstemplate/',
@@ -124,9 +124,6 @@ return [
         ],
         'flux' => [
             'packagePath' => 'typo3conf/ext/flux/',
-        ],
-        'typo3db_legacy' => [
-            'packagePath' => 'typo3conf/ext/typo3db_legacy/',
         ],
         'typoscript_rendering' => [
             'packagePath' => 'typo3conf/ext/typoscript_rendering/',
