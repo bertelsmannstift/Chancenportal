@@ -59,7 +59,7 @@
     "lorem-ipsum": "^1.0.6",
     "mediaelement": "^4.2.14",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "normalize.css": "^8.0.1",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.6",
