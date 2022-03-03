@@ -33,8 +33,18 @@ class OfferUtility extends AbstractUtility
             } elseif ($offer->getDateType() > 0 && $offer->getDateType() < 4) {
                 $ended = true;
                 foreach ($offer->getDates() as $date) {
-                    if ($date->getEndDate() && ($date->getEndDate()->format('Y-m-d') >= $now->format('Y-m-d') || $date->getEndDate() === null || $date->getEndDate() === '0000-00-00')) {
-                        $ended = false;
+                    if ($date->getEndDate() && $date->getEndDate() !== '0000-00-00') {
+                        if ($date->getEndDate()->format('Y-m-d') >= $now->format('Y-m-d')) {
+                            $ended = false;
+                        }
+                    } else if ($date->getStartDate() && $date->getStartDate() !== '0000-00-00') {
+                        if ($date->getStartDate()->format('Y-m-d') >= $now->format('Y-m-d')) {
+                            $ended = false;
+                        }
+                    }
+
+                    if (!$ended) {
+                        break;
                     }
                 }
 

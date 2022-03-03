@@ -43,8 +43,7 @@ call_user_func(
     }
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
-$pluginProjektSignature = 'chancenportal_chancenportal';
 
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginProjektSignature] = 'layout,select_key,pages';
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginProjektSignature] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginProjektSignature, 'FILE:EXT:chancenportal/Configuration/FlexForms/Frontend.xml');
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['chancenportal_chancenportal'] = 'layout,select_key,pages,recursive';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['chancenportal_chancenportal'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('chancenportal_chancenportal', 'FILE:EXT:chancenportal/Configuration/FlexForms/Frontend.xml');

@@ -146,7 +146,7 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @return array|mixed
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findAllActive($limit = null, $provider = null, $uid = null)
+    public function findAllActive($limit = null, $provider = null, $uid = null, $dateTypes = null)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -168,6 +168,9 @@ class OfferRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         if (!is_null($uid)) {
             $constraints[] = $query->equals('uid', $uid);
+        }
+        if (!is_null($dateTypes)) {
+            $constraints[] = $query->in('dateType', (array)$dateTypes);
         }
         if (!is_null($provider)) {
             $constraints[] = $query->equals('provider', $provider);

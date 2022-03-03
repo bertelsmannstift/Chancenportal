@@ -240,7 +240,7 @@ class FrontendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         /** Cache rendered output instead of serialized domain objects, which would be way too big */
         $offers = $this->cacheService->getFromCacheOrSet('chancenportal', 'offersTeaserAction', function() {
             $this->view->assign('settings', $this->settings);
-            $this->view->assign('offers', $this->offerRepository->findAllActive(7));
+            $this->view->assign('offers', $this->offerRepository->findAllActive(7, null, null, [1,2,3,4]));
 
             return $this->view->render();
         }, [], [], $this->settings['chancenportal']['caching']['lifetimes']['offersTeaserAction']);

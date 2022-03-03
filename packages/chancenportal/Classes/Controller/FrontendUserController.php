@@ -423,6 +423,12 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         $persistenceManager = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class);
         $data = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('tx_chancenportal_chancenportal');
 
+        if (!$user && $this->request->hasArgument('user')) {
+            if (isset($this->request->getArgument('user')['__identity'])) {
+                $user = $this->frontendUserRepository->findByUid($this->request->getArgument('user')['__identity']);
+            }
+        }
+
         if(!$user || !$user->getUid()) {
             $userCheck = $this->frontendUserRepository->findOneByUsername($user->getUsername());
 
