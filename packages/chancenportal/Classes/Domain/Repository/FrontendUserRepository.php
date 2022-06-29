@@ -8,6 +8,7 @@ use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
@@ -213,5 +214,24 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
         return null;
+    }
+
+    /**
+     * Removes an object from this repository.
+     *
+     * @param object|int $object The object to remove
+     * @throws IllegalObjectTypeException
+     */
+    public function remove($object)
+    {
+        if (is_int($object)) {
+            $object = $this->findByUid($object);
+        }
+
+        if (!$object instanceof $this->objectType) {
+            throw new IllegalObjectTypeException('The object given to remove() was not of the type (' . $this->objectType . ') this repository manages.', 1248363336);
+        }
+
+        $this->persistenceManager->remove($object);
     }
 }

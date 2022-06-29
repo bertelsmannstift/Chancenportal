@@ -523,13 +523,12 @@ class FrontendUserController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
     }
 
     /**
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("user")
-     * @param FrontendUser $user
+     * @param int $user
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      */
-    public function deleteUserAction(\Chancenportal\Chancenportal\Domain\Model\FrontendUser $user)
+    public function deleteUserAction($user)
     {
         $this->frontendUserRepository->remove($user);
         $this->redirect('userManagementPage');
