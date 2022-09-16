@@ -1066,25 +1066,15 @@ class Provider extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getActiveOffers()
     {
-        $now = new \DateTime('midnight');
+        $inactiveOffers = array_keys($this->getInActiveOffers());
+
         $offers = [];
         foreach ($this->getOffers() as $offer) {
-            if ($offer->getApproved() && $offer->getActive()) {
-                if ($offer->getDateType() === 0) {
-                    $offers[$offer->getUid()] = $offer;
-                } elseif($offer->getDateType() === 4) {
-                    if($offer->getEndDate() === null || $offer->getEndDate() >= $now) {
-                        $offers[$offer->getUid()] = $offer;
-                    }
-                } else {
-                    foreach ($offer->getDates() as $date) {
-                        if ($date->getEndDate() >= $now) {
-                            $offers[$offer->getUid()] = $offer;
-                        }
-                    }
-                }
+            if (!in_array($offer->getUid(), $inactiveOffers)) {
+                $offers[$offer->getUid()] = $offer;
             }
         }
+
         return $offers;
     }
 
